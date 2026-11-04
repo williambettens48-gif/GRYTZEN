@@ -5,391 +5,97 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090d18">
-<meta name="description" content="Feu Follet, boutique médiévale et fantastique.">
+<meta name="description" content="FEU FOLLET, boutique médiévale et fantastique.">
 <title>FEU FOLLET — Boutique médiévale & fantastique</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 :root{
---bg:#090d18;
---panel:#111827;
---gold:#c6a15b;
---light:#f1dba8;
---blue:#50c9ef;
---text:#eee8dc;
+--bg:#090d18;--panel:#111827;--gold:#c6a15b;
+--light:#f1dba8;--blue:#50c9ef;--text:#eee8dc;
 --muted:#a9a9ad;
 }
-
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:Raleway,sans-serif}
 a{text-decoration:none;color:inherit}
 button,input{font:inherit}
-
-.topbar{
-background:#05070d;
-color:var(--light);
-text-align:center;
-padding:9px;
-font-size:10px;
-letter-spacing:3px;
-border-bottom:1px solid #45351e;
-}
-
-header{
-position:relative;
-z-index:10;
-background:#0b101b;
-border-bottom:1px solid #59472b;
-padding:15px 5%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
-flex-wrap:wrap;
-}
-
+.topbar{background:#05070d;color:var(--light);text-align:center;padding:9px;font-size:10px;letter-spacing:3px;border-bottom:1px solid #45351e}
+header{position:relative;z-index:10;background:#0b101b;border-bottom:1px solid #59472b;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:12px}
-.flame{
-font-size:38px;
-color:var(--blue);
-filter:drop-shadow(0 0 12px #36bde8);
-}
-.brand h1{
-font-family:Cinzel,serif;
-font-size:25px;
-letter-spacing:4px;
-color:var(--light);
-}
-.brand small{
-display:block;
-font-size:9px;
-letter-spacing:2px;
-color:var(--muted);
-margin-top:4px;
-}
-
+.flame{font-size:38px;color:var(--blue);filter:drop-shadow(0 0 12px #36bde8)}
+.brand h1{font-family:Cinzel,serif;font-size:25px;letter-spacing:4px;color:var(--light)}
+.brand small{display:block;font-size:9px;letter-spacing:2px;color:var(--muted);margin-top:4px}
 nav{display:flex;gap:23px}
-nav a{
-font-family:Cinzel,serif;
-font-size:11px;
-color:var(--light);
-transition:.2s;
-}
+nav a{font-family:Cinzel,serif;font-size:11px;color:var(--light)}
 nav a:hover{color:var(--blue)}
-
 .actions{display:flex;gap:8px}
-.search{
-width:180px;
-padding:11px;
-border:1px solid #57482d;
-background:#111827;
-color:white;
-border-radius:3px;
-outline:none;
-}
+.search{width:180px;padding:11px;border:1px solid #57482d;background:#111827;color:white;border-radius:3px;outline:none}
 .search:focus{border-color:var(--blue)}
-.menu{
-display:none;
-background:none;
-border:1px solid var(--gold);
-color:var(--light);
-padding:9px 13px;
-}
-
-/* BANNIÈRE */
-.hero{
-min-height:580px;
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-overflow:hidden;
-background:#080c16 url("assets/banni%C3%A8re-feu-follet.png") center center/cover no-repeat;
-}
-
-.hero:after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(
-90deg,
-rgba(5,8,17,.12),
-rgba(5,8,17,.02),
-rgba(5,8,17,.12)
-);
-pointer-events:none;
-}
-
-/* ACCUEIL SOUS LA BANNIÈRE */
-.welcome{
-text-align:center;
-padding:55px 20px 65px;
-background:
-radial-gradient(ellipse at top,rgba(44,93,120,.22),transparent 65%),
-#090d18;
-border-bottom:1px solid #493a26;
-}
-
-.welcome small{
-color:var(--blue);
-letter-spacing:4px;
-font-size:10px;
-}
-
-.welcome h2{
-font-family:Cinzel,serif;
-font-size:clamp(25px,4vw,39px);
-font-weight:500;
-color:var(--light);
-margin:15px 0;
-}
-
-.welcome p{
-max-width:650px;
-margin:auto;
-color:#c2c4ca;
-font-size:14px;
-line-height:1.8;
-}
-
-.welcome-buttons{
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-margin-top:28px;
-}
-
-.btn{
-display:inline-block;
-padding:15px 25px;
-font-family:Cinzel,serif;
-font-size:11px;
-letter-spacing:1px;
-border:1px solid var(--gold);
-transition:.3s;
-}
-
-.btn-primary{
-background:linear-gradient(135deg,#c6a15b,#8d6833);
-color:#090d18;
-}
-
-.btn-secondary{
-background:transparent;
-color:var(--light);
-}
-
-.btn:hover{
-transform:translateY(-4px);
-box-shadow:0 0 22px rgba(80,201,239,.25);
-border-color:var(--blue);
-}
-
-.section{
-max-width:1400px;
-margin:auto;
-padding:65px 6%;
-}
-
-.features{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-margin-bottom:20px;
-}
-
-.feature{
-padding:23px 12px;
-text-align:center;
-background:#111827;
-border:1px solid #3e382c;
-}
-
-.feature strong{
-display:block;
-color:var(--light);
-font-family:Cinzel,serif;
-font-size:13px;
-margin-top:9px;
-}
-
+.menu{display:none;background:none;border:1px solid var(--gold);color:var(--light);padding:9px 13px}
+.hero{min-height:580px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#080c16 url("assets/banni%C3%A8re-feu-follet.png") center center/cover no-repeat}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,8,17,.12),rgba(5,8,17,.02),rgba(5,8,17,.12))}
+.section{max-width:1400px;margin:auto;padding:65px 6%}
+.welcome{text-align:center;padding:55px 7% 65px;background:radial-gradient(ellipse at center,#1a2c3c,#090d18 75%)}
+.welcome h2{font-family:Cinzel,serif;color:var(--light);font-size:clamp(25px,4vw,39px)}
+.welcome p{max-width:760px;margin:18px auto;color:#c5c6cc;line-height:1.8;font-size:14px}
+.gold-button{display:inline-block;background:linear-gradient(135deg,#d8b66e,#9b7136);color:#17120a;padding:13px 22px;font-family:Cinzel,serif;font-size:11px;font-weight:bold;letter-spacing:1px;margin:8px;border:1px solid #f0d99c}
+.gold-button:hover{filter:brightness(1.15);transform:translateY(-2px)}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:20px}
+.feature{padding:23px 12px;text-align:center;background:#111827;border:1px solid #3e382c}
+.feature strong{display:block;color:var(--light);font-family:Cinzel,serif;font-size:13px;margin-top:9px}
 .feature span{font-size:24px;color:var(--blue)}
 .feature p{font-size:11px;color:var(--muted);margin-top:7px}
-
 .heading{text-align:center;margin-bottom:38px}
 .heading small{color:var(--blue);letter-spacing:4px;font-size:10px}
-
-.heading h2{
-font-family:Cinzel,serif;
-font-size:clamp(25px,4vw,38px);
-color:var(--light);
-font-weight:500;
-margin-top:13px;
-}
-
+.heading h2{font-family:Cinzel,serif;font-size:clamp(25px,4vw,38px);color:var(--light);font-weight:500;margin-top:13px}
 .heading p{color:var(--muted);font-size:13px;margin-top:12px}
-
-.categories{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:16px;
-}
-
-.category{
-position:relative;
-min-height:190px;
-padding:23px;
-background:linear-gradient(145deg,#1c2b3b,#111827 70%);
-border:1px solid #58482e;
-display:flex;
-flex-direction:column;
-justify-content:flex-end;
-overflow:hidden;
-transition:.3s;
-}
-
-.category:before{
-content:"";
-position:absolute;
-width:150px;
-height:150px;
-right:-35px;
-top:-40px;
-border-radius:50%;
-background:radial-gradient(circle,rgba(80,201,239,.16),transparent 70%);
-}
-
-.category:hover{
-transform:translateY(-5px);
-border-color:var(--blue);
-box-shadow:0 8px 25px rgba(0,0,0,.25);
-}
-
-.category .icon{
-position:absolute;
-top:17px;
-right:20px;
-font-size:45px;
-opacity:.85;
-}
-
-.category h3{
-position:relative;
-font-family:Cinzel,serif;
-font-size:17px;
-color:var(--light);
-}
-
-.category p{
-position:relative;
-font-size:12px;
-line-height:1.6;
-color:var(--muted);
-margin-top:8px;
-}
-
-.category.hidden{display:none}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.category{position:relative;min-height:190px;padding:23px;background:linear-gradient(145deg,#1c2b3b,#111827 70%);border:1px solid #58482e;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;transition:.3s}
+.category:before{content:"";position:absolute;width:150px;height:150px;right:-35px;top:-40px;border-radius:50%;background:radial-gradient(circle,rgba(80,201,239,.16),transparent 70%)}
+.category:hover{transform:translateY(-5px);border-color:var(--blue)}
+.category .icon{position:absolute;top:17px;right:20px;font-size:45px;opacity:.85}
+.category h3{position:relative;font-family:Cinzel,serif;font-size:17px;color:var(--light)}
+.category p{position:relative;font-size:12px;line-height:1.6;color:var(--muted);margin-top:8px}
 .empty{display:none;text-align:center;padding:20px;color:var(--muted)}
+.story{text-align:center;padding:75px 8%;background:radial-gradient(ellipse at center,#293c4b,#111827 70%);border-top:1px solid #59472b;border-bottom:1px solid #59472b}
+.story h2{font-family:Cinzel,serif;font-size:clamp(24px,4vw,37px);color:var(--light)}
+.story p{max-width:720px;margin:22px auto 0;color:#c6c8ce;font-size:14px;line-height:1.9}
 
-.story{
-text-align:center;
-padding:75px 8%;
-background:radial-gradient(ellipse at center,#293c4b,#111827 70%);
-border-top:1px solid #59472b;
-border-bottom:1px solid #59472b;
-}
-
-.story h2{
-font-family:Cinzel,serif;
-font-size:clamp(24px,4vw,37px);
-color:var(--light);
-}
-
-.story p{
-max-width:720px;
-margin:22px auto 0;
-color:#c6c8ce;
-font-size:14px;
-line-height:1.9;
-}
-
-.catalogue{
-text-align:center;
-background:#111827;
-border:1px solid #59472b;
-padding:40px 20px;
-}
-
-.catalogue .icon{font-size:38px;color:var(--blue)}
-.catalogue h3{
-font-family:Cinzel,serif;
-color:var(--light);
-margin:14px 0;
-}
-
-.catalogue p{
-color:var(--muted);
-font-size:13px;
-line-height:1.8;
-}
-
-footer{
-background:#05070d;
-border-top:1px solid #59472b;
-text-align:center;
-padding:45px 5% 25px;
-}
-
-.footer-logo{
-font-family:Cinzel,serif;
-font-size:25px;
-letter-spacing:4px;
-color:var(--light);
-}
-
+/* CATALOGUE */
+.catalogue-intro{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;max-width:750px;margin:-15px auto 30px}
+.filters{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:25px 0 35px}
+.filter-btn{background:#111827;border:1px solid #65502f;color:var(--light);padding:10px 15px;font-size:11px;cursor:pointer}
+.filter-btn.active,.filter-btn:hover{background:#c6a15b;color:#10131b;border-color:#f1dba8}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.product{background:linear-gradient(160deg,#172437,#0e1420);border:1px solid #51432c;overflow:hidden;transition:.25s}
+.product:hover{transform:translateY(-5px);border-color:var(--blue)}
+.product-art{height:190px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at center,#29465a,#111827 70%);font-size:75px;border-bottom:1px solid #51432c}
+.product-info{padding:19px}
+.product-tag{font-size:9px;letter-spacing:2px;color:var(--blue);text-transform:uppercase}
+.product h3{font-family:Cinzel,serif;color:var(--light);font-size:16px;margin:10px 0}
+.product p{font-size:12px;color:var(--muted);line-height:1.7;min-height:42px}
+.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:17px;padding-top:13px;border-top:1px solid #393a3c}
+.product-price{font-family:Cinzel,serif;color:var(--gold);font-size:12px}
+.product-link{font-size:10px;color:var(--blue);border:1px solid #356176;padding:8px 10px}
+.product.hidden{display:none}
+.catalogue-note{margin-top:30px;padding:18px;text-align:center;border:1px dashed #665333;color:var(--muted);font-size:11px;line-height:1.8}
+footer{background:#05070d;border-top:1px solid #59472b;text-align:center;padding:45px 5% 25px}
+.footer-logo{font-family:Cinzel,serif;font-size:25px;letter-spacing:4px;color:var(--light)}
 footer p{font-size:12px;color:var(--muted);margin-top:12px}
-
-.footer-links{
-display:flex;
-justify-content:center;
-gap:22px;
-flex-wrap:wrap;
-margin:25px 0;
-color:var(--gold);
-font-size:12px;
-}
-
-.copyright{
-border-top:1px solid #282a30;
-padding-top:20px;
-font-size:10px;
-color:#777;
-}
-
+.footer-links{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin:25px 0;color:var(--gold);font-size:12px}
+.copyright{border-top:1px solid #282a30;padding-top:20px;font-size:10px;color:#777}
 @media(max-width:850px){
 header{gap:14px}
-nav{
-display:none;
-width:100%;
-flex-direction:column;
-gap:18px;
-padding:15px 0;
-}
+nav{display:none;width:100%;flex-direction:column;gap:18px;padding:15px 0}
 nav.open{display:flex}
 .menu{display:block}
 .actions{width:100%;order:3}
 .search{width:100%}
+.products{grid-template-columns:repeat(2,1fr)}
 }
-
 @media(max-width:600px){
 .brand h1{font-size:20px}
 .hero{min-height:360px;background-position:center}
-.welcome{padding:40px 18px 48px}
-.welcome p{font-size:13px}
-.btn{padding:13px 17px;font-size:10px}
 .categories{grid-template-columns:1fr 1fr;gap:10px}
 .category{min-height:175px;padding:15px}
 .category h3{font-size:14px}
@@ -400,14 +106,17 @@ nav.open{display:flex}
 .feature strong{font-size:10px}
 .feature p{font-size:10px}
 .section{padding:48px 5%}
+.products{grid-template-columns:1fr 1fr;gap:10px}
+.product-art{height:130px;font-size:53px}
+.product-info{padding:12px}
+.product h3{font-size:13px}
+.product p{font-size:11px}
+.product-link{font-size:9px;padding:7px}
+.product-price{font-size:10px}
 }
-
-@media(max-width:360px){
-.categories{grid-template-columns:1fr}
-}
+@media(max-width:360px){.categories,.products{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
 
 <div class="topbar">✦ BOUTIQUE MÉDIÉVALE & FANTASTIQUE ✦</div>
@@ -415,19 +124,14 @@ nav.open{display:flex}
 <header>
 <a class="brand" href="#accueil">
 <span class="flame">♨</span>
-<div>
-<h1>FEU FOLLET</h1>
-<small>ENTREZ DANS LA LÉGENDE</small>
-</div>
+<div><h1>FEU FOLLET</h1><small>ENTREZ DANS LA LÉGENDE</small></div>
 </a>
-
 <nav id="nav">
 <a href="#accueil">ACCUEIL</a>
 <a href="#univers">UNIVERS</a>
 <a href="#catalogue">BOUTIQUE</a>
 <a href="#histoire">NOTRE HISTOIRE</a>
 </nav>
-
 <div class="actions">
 <input class="search" id="search" type="search" placeholder="Rechercher un univers..." aria-label="Rechercher">
 <button class="menu" id="menu">☰ MENU</button>
@@ -435,42 +139,20 @@ nav.open{display:flex}
 </header>
 
 <main>
-
 <section class="hero" id="accueil" aria-label="Bienvenue chez Feu Follet"></section>
 
 <section class="welcome">
-<small>BIENVENUE DANS NOTRE ROYAUME</small>
 <h2>La magie prend vie...</h2>
-<p>
-Des légendes anciennes aux univers fantastiques,
-partez à la découverte d'un monde où chaque objet
-raconte une histoire.
-Bienvenue chez FEU FOLLET.
-</p>
-
-<div class="welcome-buttons">
-<a class="btn btn-primary" href="#univers">⚔ EXPLORER LES UNIVERS</a>
-<a class="btn btn-secondary" href="#catalogue">✧ DÉCOUVRIR LA BOUTIQUE</a>
-</div>
+<p>Bienvenue chez FEU FOLLET, votre porte d'entrée vers les mondes médiévaux et fantastiques. Explorez des univers légendaires, découvrez l'artisanat et préparez votre prochaine aventure.</p>
+<a class="gold-button" href="#univers">⚔ EXPLORER LES UNIVERS</a>
+<a class="gold-button" href="#catalogue">✧ DÉCOUVRIR LA BOUTIQUE</a>
 </section>
 
 <section class="section">
 <div class="features">
-<div class="feature">
-<span>⚔</span>
-<strong>UNIVERS PASSIONNÉS</strong>
-<p>Médiéval, viking et fantastique</p>
-</div>
-<div class="feature">
-<span>✧</span>
-<strong>SÉLECTION SOIGNÉE</strong>
-<p>Des articles et accessoires sélectionnés</p>
-</div>
-<div class="feature">
-<span>♜</span>
-<strong>UN ROYAUME À EXPLORER</strong>
-<p>Un catalogue en construction</p>
-</div>
+<div class="feature"><span>⚔</span><strong>UNIVERS PASSIONNÉS</strong><p>Médiéval, viking et fantastique</p></div>
+<div class="feature"><span>✧</span><strong>SÉLECTION SOIGNÉE</strong><p>Des articles et accessoires sélectionnés</p></div>
+<div class="feature"><span>♜</span><strong>UN ROYAUME À EXPLORER</strong><p>Un catalogue en construction</p></div>
 </div>
 </section>
 
@@ -480,110 +162,118 @@ Bienvenue chez FEU FOLLET.
 <h2>Explorez nos univers</h2>
 <p>Choisissez votre monde et partez à l'aventure.</p>
 </div>
-
 <div class="categories" id="categories">
-<a class="category" href="#catalogue" data-search="médiéval chevalier costume tunique">
-<span class="icon">⚔</span>
-<h3>Médiéval</h3>
-<p>Costumes, tuniques, robes et accessoires.</p>
-</a>
-
-<a class="category" href="#catalogue" data-search="viking nordique guerrier">
-<span class="icon">ᛟ</span>
-<h3>Viking & Nordique</h3>
-<p>Inspirations nordiques et esprit guerrier.</p>
-</a>
-
-<a class="category" href="#catalogue" data-search="fantastique fantasy magie">
-<span class="icon">✧</span>
-<h3>Fantastique</h3>
-<p>Magie, créatures et mondes imaginaires.</p>
-</a>
-
-<a class="category" href="#catalogue" data-search="armure casque bouclier épée">
-<span class="icon">🛡</span>
-<h3>Armes & Armures</h3>
-<p>Équipements, protections et décorations.</p>
-</a>
-
-<a class="category" href="#catalogue" data-search="cuir sac ceinture bourse bottes">
-<span class="icon">♜</span>
-<h3>Cuir & Artisanat</h3>
-<p>Sacs, ceintures, bourses et accessoires.</p>
-</a>
-
-<a class="category" href="#catalogue" data-search="gn cosplay jeu grandeur nature">
-<span class="icon">♛</span>
-<h3>GN & Cosplay</h3>
-<p>Costumes et équipements de personnages.</p>
-</a>
-
-<a class="category" href="#catalogue" data-search="décoration chandelier maison médiévale">
-<span class="icon">♨</span>
-<h3>Décoration</h3>
-<p>Objets, chandeliers et ambiance d'époque.</p>
-</a>
-
-<a class="category" href="#catalogue" data-search="bijoux bague pendentif">
-<span class="icon">✥</span>
-<h3>Bijoux & Ornements</h3>
-<p>Bagues, pendentifs et pièces décoratives.</p>
-</a>
-
-<a class="category" href="#catalogue" data-search="renaissance robe costume historique">
-<span class="icon">♕</span>
-<h3>Renaissance</h3>
-<p>Élégance, costumes et inspirations historiques.</p>
-</a>
+<a class="category" href="#catalogue" data-search="médiéval chevalier costume tunique"><span class="icon">⚔</span><h3>Médiéval</h3><p>Costumes, tuniques, robes et accessoires.</p></a>
+<a class="category" href="#catalogue" data-search="viking nordique guerrier"><span class="icon">ᛟ</span><h3>Viking & Nordique</h3><p>Inspirations nordiques et esprit guerrier.</p></a>
+<a class="category" href="#catalogue" data-search="fantastique fantasy magie"><span class="icon">✧</span><h3>Fantastique</h3><p>Magie, créatures et mondes imaginaires.</p></a>
+<a class="category" href="#catalogue" data-search="armure casque bouclier épée"><span class="icon">🛡</span><h3>Armes & Armures</h3><p>Équipements, protections et décorations.</p></a>
+<a class="category" href="#catalogue" data-search="cuir sac ceinture bourse bottes"><span class="icon">♜</span><h3>Cuir & Artisanat</h3><p>Sacs, ceintures, bourses et accessoires.</p></a>
+<a class="category" href="#catalogue" data-search="gn cosplay jeu grandeur nature"><span class="icon">♛</span><h3>GN & Cosplay</h3><p>Costumes et équipements de personnages.</p></a>
+<a class="category" href="#catalogue" data-search="décoration chandelier maison médiévale"><span class="icon">♨</span><h3>Décoration</h3><p>Objets, chandeliers et ambiance d'époque.</p></a>
+<a class="category" href="#catalogue" data-search="bijoux bague pendentif"><span class="icon">✥</span><h3>Bijoux & Ornements</h3><p>Bagues, pendentifs et pièces décoratives.</p></a>
+<a class="category" href="#catalogue" data-search="renaissance robe costume historique"><span class="icon">♕</span><h3>Renaissance</h3><p>Élégance, costumes et inspirations historiques.</p></a>
 </div>
-
 <div class="empty" id="empty">Aucun univers trouvé.</div>
 </section>
 
 <section class="story" id="histoire">
 <h2>Une flamme dans la nuit...</h2>
-<p>
-FEU FOLLET est né d'une passion pour les mondes anciens,
-les légendes et les univers fantastiques. Notre ambition
-est de réunir les passionnés autour d'une boutique dédiée
-à l'imaginaire médiéval, aux aventures et à l'art de vivre
-hors du temps.
-</p>
+<p>FEU FOLLET est né d'une passion pour les mondes anciens, les légendes et les univers fantastiques. Notre ambition est de réunir les passionnés autour d'une boutique dédiée à l'imaginaire médiéval, aux aventures et à l'art de vivre hors du temps.</p>
 </section>
 
 <section class="section" id="catalogue">
 <div class="heading">
 <small>LE GRAND MARCHÉ</small>
 <h2>Les trésors du royaume</h2>
-<p>Notre catalogue se construit progressivement.</p>
+<p>Explorez les premières familles de produits de FEU FOLLET.</p>
+</div>
+<p class="catalogue-intro">Voici un aperçu de notre future sélection. Les articles, photographies, variantes et tarifs définitifs seront ajoutés après validation de nos fournisseurs.</p>
+
+<div class="filters" id="filters">
+<button class="filter-btn active" data-filter="all">TOUT VOIR</button>
+<button class="filter-btn" data-filter="medieval">MÉDIÉVAL</button>
+<button class="filter-btn" data-filter="viking">VIKING</button>
+<button class="filter-btn" data-filter="fantasy">FANTASTIQUE</button>
+<button class="filter-btn" data-filter="armor">ARMURES</button>
+<button class="filter-btn" data-filter="leather">CUIR</button>
+<button class="filter-btn" data-filter="decor">DÉCORATION</button>
 </div>
 
-<div class="catalogue">
-<div class="icon">✧</div>
-<h3>Les portes du marché s'ouvrent bientôt</h3>
-<p>
-Nous préparons une sélection de produits réels auprès
-de fournisseurs spécialisés. Chaque article disposera
-de ses propres photographies, caractéristiques, tailles
-et variantes.
-</p>
+<div class="products" id="products">
+
+<article class="product" data-category="medieval">
+<div class="product-art">⚔️</div>
+<div class="product-info">
+<span class="product-tag">Univers médiéval</span>
+<h3>Tunique du voyageur</h3>
+<p>Une tenue inspirée des voyageurs et aventuriers des temps anciens.</p>
+<div class="product-bottom"><span class="product-price">Prix à venir</span><span class="product-link">BIENTÔT</span></div>
 </div>
+</article>
+
+<article class="product" data-category="viking">
+<div class="product-art">ᛟ</div>
+<div class="product-info">
+<span class="product-tag">Univers nordique</span>
+<h3>Accessoires vikings</h3>
+<p>Des accessoires inspirés des traditions et légendes nordiques.</p>
+<div class="product-bottom"><span class="product-price">Prix à venir</span><span class="product-link">BIENTÔT</span></div>
+</div>
+</article>
+
+<article class="product" data-category="fantasy">
+<div class="product-art">🐉</div>
+<div class="product-info">
+<span class="product-tag">Univers fantastique</span>
+<h3>Trésors du dragon</h3>
+<p>Objets et accessoires pour donner vie à vos mondes imaginaires.</p>
+<div class="product-bottom"><span class="product-price">Prix à venir</span><span class="product-link">BIENTÔT</span></div>
+</div>
+</article>
+
+<article class="product" data-category="armor">
+<div class="product-art">🛡️</div>
+<div class="product-info">
+<span class="product-tag">Armes & armures</span>
+<h3>Équipement du chevalier</h3>
+<p>Protections, pièces d'armure et accessoires pour vos aventures.</p>
+<div class="product-bottom"><span class="product-price">Prix à venir</span><span class="product-link">BIENTÔT</span></div>
+</div>
+</article>
+
+<article class="product" data-category="leather">
+<div class="product-art">🎒</div>
+<div class="product-info">
+<span class="product-tag">Cuir & artisanat</span>
+<h3>Bourse de l'artisan</h3>
+<p>Petite maroquinerie et accessoires au caractère authentique.</p>
+<div class="product-bottom"><span class="product-price">Prix à venir</span><span class="product-link">BIENTÔT</span></div>
+</div>
+</article>
+
+<article class="product" data-category="decor">
+<div class="product-art">🕯️</div>
+<div class="product-info">
+<span class="product-tag">Décoration</span>
+<h3>Chandelier d'antan</h3>
+<p>Une touche d'ambiance médiévale pour votre intérieur.</p>
+<div class="product-bottom"><span class="product-price">Prix à venir</span><span class="product-link">BIENTÔT</span></div>
+</div>
+</article>
+
+</div>
+
+<div class="catalogue-note">✧ COLLECTION EN PRÉPARATION ✧<br>Les véritables fiches produits seront publiées après vérification des fournisseurs, des photos, des prix et des conditions de livraison.</div>
 </section>
-
 </main>
 
 <footer>
 <div class="footer-logo">FEU FOLLET</div>
 <p>Boutique médiévale & fantastique</p>
 <p>Entrez dans la légende.</p>
-
 <div class="footer-links">
-<a href="#accueil">Accueil</a>
-<a href="#univers">Univers</a>
-<a href="#catalogue">Boutique</a>
-<a href="#histoire">Notre histoire</a>
+<a href="#accueil">Accueil</a><a href="#univers">Univers</a><a href="#catalogue">Boutique</a><a href="#histoire">Notre histoire</a>
 </div>
-
 <div class="copyright">© 2026 FEU FOLLET — Tous droits réservés</div>
 </footer>
 
@@ -591,33 +281,40 @@ et variantes.
 const menu=document.getElementById("menu");
 const nav=document.getElementById("nav");
 const search=document.getElementById("search");
-const cards=[...document.querySelectorAll(".category")];
+const categories=[...document.querySelectorAll(".category")];
 const empty=document.getElementById("empty");
+const products=[...document.querySelectorAll(".product")];
+const filterButtons=[...document.querySelectorAll(".filter-btn")];
 
-menu.addEventListener("click",()=>{
-nav.classList.toggle("open");
-});
+menu.addEventListener("click",()=>nav.classList.toggle("open"));
 
 nav.querySelectorAll("a").forEach(link=>{
-link.addEventListener("click",()=>{
-nav.classList.remove("open");
-});
+link.addEventListener("click",()=>nav.classList.remove("open"));
 });
 
 search.addEventListener("input",()=>{
 const value=search.value.trim().toLowerCase();
 let count=0;
-
-cards.forEach(card=>{
+categories.forEach(card=>{
 const text=(card.innerText+" "+card.dataset.search).toLowerCase();
 const visible=text.includes(value);
-card.classList.toggle("hidden",!visible);
+card.style.display=visible?"flex":"none";
 if(visible)count++;
 });
-
 empty.style.display=count===0?"block":"none";
 });
-</script>
 
+filterButtons.forEach(button=>{
+button.addEventListener("click",()=>{
+filterButtons.forEach(item=>item.classList.remove("active"));
+button.classList.add("active");
+const filter=button.dataset.filter;
+products.forEach(product=>{
+const visible=filter==="all"||product.dataset.category===filter;
+product.classList.toggle("hidden",!visible);
+});
+});
+});
+</script>
 </body>
 </html>
