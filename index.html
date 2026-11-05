@@ -1,320 +1,990 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090d18">
+<meta name="description" content="FEU FOLLET — une saga médiévale fantastique à explorer, résoudre et collectionner.">
+<title>FEU FOLLET — Entrez dans la légende</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080c15;--panel:#101827;--panel2:#172538;--gold:#c6a15b;--pale:#f1dba8;--blue:#55c9ee;--text:#eee9df;--muted:#aeb4c0;--line:#51432d;--green:#8fc9a6}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Raleway,Arial,sans-serif}a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}.topbar{padding:9px 14px;text-align:center;background:#04060b;border-bottom:1px solid var(--line);color:var(--pale);font-size:10px;letter-spacing:3px}
+header{position:sticky;top:0;z-index:20;background:rgba(8,12,21,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:13px 5%;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;min-width:max-content}.flame{font-size:34px;color:var(--blue);filter:drop-shadow(0 0 10px #36bde8)}.brand h1{font:600 23px Cinzel,serif;letter-spacing:3px;color:var(--pale);margin:0}.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:2px;margin-top:3px}nav{display:flex;gap:20px;align-items:center}nav a{font:500 10px Cinzel,serif;letter-spacing:1px;color:var(--pale);padding:8px 0}nav a:hover{color:var(--blue)}.head-actions{display:flex;gap:8px}.nav-button,.menu-button{border:1px solid var(--gold);background:#111827;color:var(--pale);padding:10px 13px}.menu-button{display:none}
+.hero{min-height:540px;display:grid;place-items:center;text-align:center;padding:65px 7%;position:relative;background:linear-gradient(90deg,rgba(4,7,14,.9),rgba(4,7,14,.38),rgba(4,7,14,.84)),url("assets/banni%C3%A8re-feu-follet.png") center/cover no-repeat;border-bottom:1px solid var(--line)}.hero-inner{max-width:900px}.eyebrow{font-size:10px;letter-spacing:4px;color:var(--blue);text-transform:uppercase}.hero h2{font:500 clamp(36px,6vw,68px) Cinzel,serif;color:var(--pale);margin:18px 0;text-shadow:0 3px 25px #000}.hero p{max-width:700px;margin:auto;color:#e1e2e5;line-height:1.9;font-size:15px}.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}.btn{display:inline-block;border:1px solid var(--gold);padding:13px 21px;font:500 10px Cinzel,serif;letter-spacing:1px;transition:.2s;background:transparent;color:var(--pale)}.btn.primary{background:linear-gradient(135deg,var(--gold),#8c6632);color:#080c15}.btn:hover{transform:translateY(-2px);border-color:var(--blue);box-shadow:0 0 18px #55c9ee30}.notice{padding:13px 5%;text-align:center;background:#101a27;border-bottom:1px solid #26364a;color:#cbd4df;font-size:12px}.notice strong{color:var(--pale)}
+.section{max-width:1250px;margin:auto;padding:68px 5%}.section-head{text-align:center;margin:0 auto 35px;max-width:780px}.section-head small{color:var(--blue);letter-spacing:4px;font-size:10px}.section-head h2{font:500 clamp(25px,4vw,40px) Cinzel,serif;color:var(--pale);margin:12px 0}.section-head p{font-size:13px;color:var(--muted);line-height:1.8}.intro-grid,.archive-grid,.relic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.tile,.archive-card,.relic-card{background:linear-gradient(145deg,#172538,#101827 75%);border:1px solid var(--line);padding:23px}.symbol{font-size:30px;color:var(--blue)}.tile h3,.archive-card h3,.relic-card h3{font:500 17px Cinzel,serif;color:var(--pale);margin:13px 0 8px}.tile p,.archive-card p,.relic-card p{font-size:12px;line-height:1.8;color:var(--muted)}.story-feature{background:radial-gradient(ellipse at center,#20394b,#101827 72%);border-block:1px solid var(--line);padding:65px 7%;text-align:center}.story-feature h2{font:500 clamp(25px,4vw,40px) Cinzel,serif;color:var(--pale);margin:10px}.story-feature p{max-width:780px;margin:18px auto;color:#cbd0d7;line-height:1.9;font-size:14px}.tag{display:inline-block;color:var(--blue);border:1px solid #386077;padding:5px 8px;font-size:9px;letter-spacing:1px;text-transform:uppercase}.archive-card{padding:0;overflow:hidden}.art{height:180px;display:grid;place-items:center;background:radial-gradient(circle,#2c5268,#101827 65%);font-size:65px;color:#b9eaff;text-shadow:0 0 25px #55c9ee}.archive-content{padding:21px}
+.video-frame{max-width:900px;min-height:300px;margin:auto;border:1px solid var(--gold);background:radial-gradient(ellipse at center,#1a3b50 0%,#0b1422 48%,#05080e 100%);display:grid;place-items:center;text-align:center;padding:35px;position:relative;overflow:hidden}.video-frame:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:#55c9ee12;filter:blur(35px)}.video-inner{position:relative;max-width:620px}.play-mark{width:64px;height:64px;border:1px solid var(--blue);border-radius:50%;display:grid;place-items:center;margin:0 auto 20px;color:var(--blue);font-size:24px;box-shadow:0 0 25px #55c9ee25}.video-frame h3{font:500 24px Cinzel,serif;color:var(--pale)}.video-frame p{font-size:12px;line-height:1.8;color:var(--muted)}.video-caption{max-width:900px;margin:10px auto 0;color:var(--muted);font-size:10px;text-align:center;line-height:1.7}
+.game-box{max-width:900px;margin:auto;background:#111b2a;border:1px solid var(--gold);padding:30px;text-align:center}.game-progress{display:flex;justify-content:center;gap:8px;margin:18px 0 25px}.progress-dot{width:9px;height:9px;border:1px solid var(--blue);border-radius:50%}.progress-dot.done{background:var(--blue);box-shadow:0 0 10px var(--blue)}.game-box h3{font:500 23px Cinzel,serif;color:var(--pale)}.game-box p{color:#c4cbd4;line-height:1.8;font-size:14px}.choices{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}.choice{background:#0b1320;border:1px solid #6d5837;color:var(--pale);padding:12px 16px;font-size:12px;max-width:100%}.choice:hover{border-color:var(--blue);background:#163044}.game-result{min-height:34px;color:var(--blue);font-size:13px;line-height:1.7;margin-top:18px}.answer-row{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:18px}.answer-row input{width:min(260px,100%);background:#080f1b;border:1px solid #6d5837;color:var(--pale);padding:13px;text-align:center;outline:none}.answer-row input:focus{border-color:var(--blue)}.hidden{display:none!important}.relic-card{border-color:var(--blue);text-align:center}.relic-symbol{font-size:55px;color:var(--blue
+
+Écris toutes les parties d'un coup par contreÉcris toutes les parties d'un coup par contre
+.
+Oui, bien sûr ! Je te mets tout le fichier HTML complet dans un seul bloc, sans découpage. Tu pourras appuyer sur « Copier le code », puis remplacer entièrement le contenu de ton index.html sur GitHub.
+
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#090d18">
-<meta name="description" content="FEU FOLLET, boutique médiévale et fantastique.">
-<title>FEU FOLLET — Boutique médiévale & fantastique</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="FEU FOLLET — une saga médiévale fantastique à explorer, résoudre et collectionner.">
+<title>FEU FOLLET — Entrez dans la légende</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root{
---bg:#090d18;--panel:#111827;--gold:#c6a15b;
---light:#f1dba8;--blue:#50c9ef;--text:#eee8dc;
---muted:#a9a9ad;
+  --bg:#080c15;
+  --panel:#101827;
+  --panel2:#172538;
+  --gold:#c6a15b;
+  --pale:#f1dba8;
+  --blue:#55c9ee;
+  --text:#eee9df;
+  --muted:#aeb4c0;
+  --line:#51432d;
+  --green:#8fc9a6;
 }
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:Raleway,sans-serif}
-a{text-decoration:none;color:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Raleway,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
 button,input{font:inherit}
-.topbar{background:#05070d;color:var(--light);text-align:center;padding:9px;font-size:10px;letter-spacing:3px;border-bottom:1px solid #45351e}
-header{position:relative;z-index:10;background:#0b101b;border-bottom:1px solid #59472b;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px}
-.flame{font-size:38px;color:var(--blue);filter:drop-shadow(0 0 12px #36bde8)}
-.brand h1{font-family:Cinzel,serif;font-size:25px;letter-spacing:4px;color:var(--light)}
-.brand small{display:block;font-size:9px;letter-spacing:2px;color:var(--muted);margin-top:4px}
-nav{display:flex;gap:23px}
-nav a{font-family:Cinzel,serif;font-size:11px;color:var(--light)}
-nav a:hover{color:var(--blue)}
-.actions{display:flex;gap:8px}
-.search{width:180px;padding:11px;border:1px solid #57482d;background:#111827;color:white;border-radius:3px;outline:none}
-.search:focus{border-color:var(--blue)}
-.menu{display:none;background:none;border:1px solid var(--gold);color:var(--light);padding:9px 13px}
-.hero{min-height:580px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#080c16 url("assets/banni%C3%A8re-feu-follet.png") center center/cover no-repeat}
-.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,8,17,.12),rgba(5,8,17,.02),rgba(5,8,17,.12))}
-.section{max-width:1400px;margin:auto;padding:65px 6%}
-.welcome{text-align:center;padding:55px 7% 65px;background:radial-gradient(ellipse at center,#1a2c3c,#090d18 75%)}
-.welcome h2{font-family:Cinzel,serif;color:var(--light);font-size:clamp(25px,4vw,39px)}
-.welcome p{max-width:760px;margin:18px auto;color:#c5c6cc;line-height:1.8;font-size:14px}
-.gold-button{display:inline-block;background:linear-gradient(135deg,#d8b66e,#9b7136);color:#17120a;padding:13px 22px;font-family:Cinzel,serif;font-size:11px;font-weight:bold;letter-spacing:1px;margin:8px;border:1px solid #f0d99c}
-.gold-button:hover{filter:brightness(1.15);transform:translateY(-2px)}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:20px}
-.feature{padding:23px 12px;text-align:center;background:#111827;border:1px solid #3e382c}
-.feature strong{display:block;color:var(--light);font-family:Cinzel,serif;font-size:13px;margin-top:9px}
-.feature span{font-size:24px;color:var(--blue)}
-.feature p{font-size:11px;color:var(--muted);margin-top:7px}
-.heading{text-align:center;margin-bottom:38px}
-.heading small{color:var(--blue);letter-spacing:4px;font-size:10px}
-.heading h2{font-family:Cinzel,serif;font-size:clamp(25px,4vw,38px);color:var(--light);font-weight:500;margin-top:13px}
-.heading p{color:var(--muted);font-size:13px;margin-top:12px}
-.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.category{position:relative;min-height:190px;padding:23px;background:linear-gradient(145deg,#1c2b3b,#111827 70%);border:1px solid #58482e;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;transition:.3s}
-.category:before{content:"";position:absolute;width:150px;height:150px;right:-35px;top:-40px;border-radius:50%;background:radial-gradient(circle,rgba(80,201,239,.16),transparent 70%)}
-.category:hover{transform:translateY(-5px);border-color:var(--blue)}
-.category .icon{position:absolute;top:17px;right:20px;font-size:45px;opacity:.85}
-.category h3{position:relative;font-family:Cinzel,serif;font-size:17px;color:var(--light)}
-.category p{position:relative;font-size:12px;line-height:1.6;color:var(--muted);margin-top:8px}
-.empty{display:none;text-align:center;padding:20px;color:var(--muted)}
-.story{text-align:center;padding:75px 8%;background:radial-gradient(ellipse at center,#293c4b,#111827 70%);border-top:1px solid #59472b;border-bottom:1px solid #59472b}
-.story h2{font-family:Cinzel,serif;font-size:clamp(24px,4vw,37px);color:var(--light)}
-.story p{max-width:720px;margin:22px auto 0;color:#c6c8ce;font-size:14px;line-height:1.9}
+button{cursor:pointer}
 
-/* CATALOGUE */
-.catalogue-intro{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;max-width:750px;margin:-15px auto 30px}
-.filters{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:25px 0 35px}
-.filter-btn{background:#111827;border:1px solid #65502f;color:var(--light);padding:10px 15px;font-size:11px;cursor:pointer}
-.filter-btn.active,.filter-btn:hover{background:#c6a15b;color:#10131b;border-color:#f1dba8}
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.product{background:linear-gradient(160deg,#172437,#0e1420);border:1px solid #51432c;overflow:hidden;transition:.25s}
-.product:hover{transform:translateY(-5px);border-color:var(--blue)}
-.product-art{height:190px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at center,#29465a,#111827 70%);font-size:75px;border-bottom:1px solid #51432c}
-.product-info{padding:19px}
-.product-tag{font-size:9px;letter-spacing:2px;color:var(--blue);text-transform:uppercase}
-.product h3{font-family:Cinzel,serif;color:var(--light);font-size:16px;margin:10px 0}
-.product p{font-size:12px;color:var(--muted);line-height:1.7;min-height:42px}
-.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:17px;padding-top:13px;border-top:1px solid #393a3c}
-.product-price{font-family:Cinzel,serif;color:var(--gold);font-size:12px}
-.product-link{font-size:10px;color:var(--blue);border:1px solid #356176;padding:8px 10px}
-.product.hidden{display:none}
-.catalogue-note{margin-top:30px;padding:18px;text-align:center;border:1px dashed #665333;color:var(--muted);font-size:11px;line-height:1.8}
-footer{background:#05070d;border-top:1px solid #59472b;text-align:center;padding:45px 5% 25px}
-.footer-logo{font-family:Cinzel,serif;font-size:25px;letter-spacing:4px;color:var(--light)}
-footer p{font-size:12px;color:var(--muted);margin-top:12px}
-.footer-links{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin:25px 0;color:var(--gold);font-size:12px}
-.copyright{border-top:1px solid #282a30;padding-top:20px;font-size:10px;color:#777}
-@media(max-width:850px){
-header{gap:14px}
-nav{display:none;width:100%;flex-direction:column;gap:18px;padding:15px 0}
-nav.open{display:flex}
-.menu{display:block}
-.actions{width:100%;order:3}
-.search{width:100%}
-.products{grid-template-columns:repeat(2,1fr)}
+.topbar{
+  padding:9px 14px;
+  text-align:center;
+  background:#04060b;
+  border-bottom:1px solid var(--line);
+  color:var(--pale);
+  font-size:10px;
+  letter-spacing:3px
 }
-@media(max-width:600px){
-.brand h1{font-size:20px}
-.hero{min-height:360px;background-position:center}
-.categories{grid-template-columns:1fr 1fr;gap:10px}
-.category{min-height:175px;padding:15px}
-.category h3{font-size:14px}
-.category p{font-size:11px}
-.category .icon{font-size:35px}
-.features{gap:7px}
-.feature{padding:18px 7px}
-.feature strong{font-size:10px}
-.feature p{font-size:10px}
-.section{padding:48px 5%}
-.products{grid-template-columns:1fr 1fr;gap:10px}
-.product-art{height:130px;font-size:53px}
-.product-info{padding:12px}
-.product h3{font-size:13px}
-.product p{font-size:11px}
-.product-link{font-size:9px;padding:7px}
-.product-price{font-size:10px}
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(8,12,21,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+  padding:13px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px
 }
-@media(max-width:360px){.categories,.products{grid-template-columns:1fr}}
+.brand{display:flex;align-items:center;gap:11px;min-width:max-content}
+.flame{font-size:34px;color:var(--blue);filter:drop-shadow(0 0 10px #36bde8)}
+.brand h1{
+  font:600 23px Cinzel,serif;
+  letter-spacing:3px;
+  color:var(--pale);
+  margin:0
+}
+.brand small{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  letter-spacing:2px;
+  margin-top:3px
+}
+nav{display:flex;gap:20px;align-items:center}
+nav a{
+  font:500 10px Cinzel,serif;
+  letter-spacing:1px;
+  color:var(--pale);
+  padding:8px 0
+}
+nav a:hover{color:var(--blue)}
+.head-actions{display:flex;gap:8px}
+.nav-button,.menu-button{
+  border:1px solid var(--gold);
+  background:#111827;
+  color:var(--pale);
+  padding:10px 13px
+}
+.menu-button{display:none}
+
+.hero{
+  min-height:540px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:65px 7%;
+  position:relative;
+  background:
+    linear-gradient(90deg,rgba(4,7,14,.9),rgba(4,7,14,.38),rgba(4,7,14,.84)),
+    url("assets/banni%C3%A8re-feu-follet.png") center/cover no-repeat;
+  border-bottom:1px solid var(--line)
+}
+.hero-inner{max-width:900px}
+.eyebrow{
+  font-size:10px;
+  letter-spacing:4px;
+  color:var(--blue);
+  text-transform:uppercase
+}
+.hero h2{
+  font:500 clamp(36px,6vw,68px) Cinzel,serif;
+  color:var(--pale);
+  margin:18px 0;
+  text-shadow:0 3px 25px #000
+}
+.hero p{
+  max-width:700px;
+  margin:auto;
+  color:#e1e2e5;
+  line-height:1.9;
+  font-size:15px
+}
+.actions{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:28px
+}
+.btn{
+  display:inline-block;
+  border:1px solid var(--gold);
+  padding:13px 21px;
+  font:500 10px Cinzel,serif;
+  letter-spacing:1px;
+  transition:.2s;
+  background:transparent;
+  color:var(--pale)
+}
+.btn.primary{
+  background:linear-gradient(135deg,var(--gold),#8c6632);
+  color:#080c15
+}
+.btn:hover{
+  transform:translateY(-2px);
+  border-color:var(--blue);
+  box-shadow:0 0 18px #55c9ee30
+}
+.notice{
+  padding:13px 5%;
+  text-align:center;
+  background:#101a27;
+  border-bottom:1px solid #26364a;
+  color:#cbd4df;
+  font-size:12px
+}
+.notice strong{color:var(--pale)}
+
+.section{max-width:1250px;margin:auto;padding:68px 5%}
+.section-head{text-align:center;margin:0 auto 35px;max-width:780px}
+.section-head small{color:var(--blue);letter-spacing:4px;font-size:10px}
+.section-head h2{
+  font:500 clamp(25px,4vw,40px) Cinzel,serif;
+  color:var(--pale);
+  margin:12px 0
+}
+.section-head p{font-size:13px;color:var(--muted);line-height:1.8}
+
+.intro-grid,.archive-grid,.relic-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:17px
+}
+.tile,.archive-card,.relic-card{
+  background:linear-gradient(145deg,#172538,#101827 75%);
+  border:1px solid var(--line);
+  padding:23px
+}
+.symbol{font-size:30px;color:var(--blue)}
+.tile h3,.archive-card h3,.relic-card h3{
+  font:500 17px Cinzel,serif;
+  color:var(--pale);
+  margin:13px 0 8px
+}
+.tile p,.archive-card p,.relic-card p{
+  font-size:12px;
+  line-height:1.8;
+  color:var(--muted)
+}
+.story-feature{
+  background:radial-gradient(ellipse at center,#20394b,#101827 72%);
+  border-block:1px solid var(--line);
+  padding:65px 7%;
+  text-align:center
+}
+.story-feature h2{
+  font:500 clamp(25px,4vw,40px) Cinzel,serif;
+  color:var(--pale);
+  margin:10px
+}
+.story-feature p{
+  max-width:780px;
+  margin:18px auto;
+  color:#cbd0d7;
+  line-height:1.9;
+  font-size:14px
+}
+.tag{
+  display:inline-block;
+  color:var(--blue);
+  border:1px solid #386077;
+  padding:5px 8px;
+  font-size:9px;
+  letter-spacing:1px;
+  text-transform:uppercase
+}
+.archive-card{padding:0;overflow:hidden}
+.art{
+  height:180px;
+  display:grid;
+  place-items:center;
+  background:radial-gradient(circle,#2c5268,#101827 65%);
+  font-size:65px;
+  color:#b9eaff;
+  text-shadow:0 0 25px #55c9ee
+}
+.archive-content{padding:21px}
+
+.video-frame{
+  max-width:900px;
+  min-height:300px;
+  margin:auto;
+  border:1px solid var(--gold);
+  background:radial-gradient(ellipse at center,#1a3b50 0%,#0b1422 48%,#05080e 100%);
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:35px;
+  position:relative;
+  overflow:hidden
+}
+.video-frame:before{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:#55c9ee12;
+  filter:blur(35px)
+}
+.video-inner{position:relative;max-width:620px}
+.play-mark{
+  width:64px;
+  height:64px;
+  border:1px solid var(--blue);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  margin:0 auto 20px;
+  color:var(--blue);
+  font-size:24px;
+  box-shadow:0 0 25px #55c9ee25
+}
+.video-frame h3{font:500 24px Cinzel,serif;color:var(--pale)}
+.video-frame p{font-size:12px;line-height:1.8;color:var(--muted)}
+.video-caption{
+  max-width:900px;
+  margin:10px auto 0;
+  color:var(--muted);
+  font-size:10px;
+  text-align:center;
+  line-height:1.7
+}
+
+.game-box{
+  max-width:900px;
+  margin:auto;
+  background:#111b2a;
+  border:1px solid var(--gold);
+  padding:30px;
+  text-align:center
+}
+.game-progress{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin:18px 0 25px
+}
+.progress-dot{
+  width:9px;
+  height:9px;
+  border:1px solid var(--blue);
+  border-radius:50%
+}
+.progress-dot.done{background:var(--blue);box-shadow:0 0 10px var(--blue)}
+.game-box h3{font:500 23px Cinzel,serif;color:var(--pale)}
+.game-box p{color:#c4cbd4;line-height:1.8;font-size:14px}
+.choices{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:20px
+}
+.choice{
+  background:#0b1320;
+  border:1px solid #6d5837;
+  color:var(--pale);
+  padding:12px 16px;
+  font-size:12px;
+  max-width:100%
+}
+.choice:hover{border-color:var(--blue);background:#163044}
+.game-result{
+  min-height:34px;
+  color:var(--blue);
+  font-size:13px;
+  line-height:1.7;
+  margin-top:18px
+}
+.answer-row{
+  display:flex;
+  justify-content:center;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:18px
+}
+.answer-row input{
+  width:min(260px,100%);
+  background:#080f1b;
+  border:1px solid #6d5837;
+  color:var(--pale);
+  padding:13px;
+  text-align:center;
+  outline:none
+}
+.answer-row input:focus{border-color:var(--blue)}
+.hidden{display:none!important}
+.relic-card{border-color:var(--blue);text-align:center}
+.relic-symbol{
+  font-size:55px;
+  color:var(--blue);
+  text-shadow:0 0 25px #55c9ee66
+}
+.collection-status{
+  font-size:11px;
+  color:var(--green);
+  letter-spacing:1px
+}
+.product-options{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:20px 0
+}
+.product-options button{
+  background:#0b1320;
+  border:1px solid #6d5837;
+  color:var(--pale);
+  padding:10px 13px;
+  font-size:11px
+}
+.product-options button.active{
+  border-color:var(--blue);
+  background:#163044
+}
+.selected-product{color:var(--blue);font-size:12px;min-height:20px}
+
+footer{
+  background:#04060b;
+  border-top:1px solid var(--line);
+  text-align:center;
+  padding:40px 5% 25px
+}
+.footer-logo{
+  font:600 24px Cinzel,serif;
+  letter-spacing:4px;
+  color:var(--pale)
+}
+footer p{font-size:12px;color:var(--muted);line-height:1.7}
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin:22px 0;
+  color:var(--gold);
+  font-size:11px
+}
+.reset-link{
+  background:none;
+  border:0;
+  color:#8b94a2;
+  text-decoration:underline;
+  font-size:10px;
+  margin-top:18px
+}
+
+@media(max-width:900px){
+  header{flex-wrap:wrap}
+  nav{
+    order:3;
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px
+  }
+  .intro-grid,.archive-grid,.relic-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  header{padding:11px 4%}
+  .brand h1{font-size:19px}
+  .brand small{font-size:8px}
+  .menu-button{display:block}
+  nav{
+    display:none;
+    flex-direction:column;
+    align-items:flex-start;
+    padding:10px 4%;
+    gap:8px
+  }
+  nav.open{display:flex}
+  .head-actions{margin-left:auto}
+  .hero{min-height:450px;padding:50px 6%}
+  .hero p{font-size:13px}
+  .section{padding:48px 5%}
+  .intro-grid,.archive-grid,.relic-grid{grid-template-columns:1fr}
+  .tile{padding:19px}
+  .game-box{padding:22px 16px}
+  .video-frame{min-height:260px;padding:22px}
+}
 </style>
 </head>
+
 <body>
 
-<div class="topbar">✦ BOUTIQUE MÉDIÉVALE & FANTASTIQUE ✦</div>
+<div class="topbar">
+  ✦ SAGA MÉDIÉVALE & FANTASTIQUE · AVENTURES · ÉNIGMES · COLLECTIONS ✦
+</div>
 
 <header>
-<a class="brand" href="#accueil">
-<span class="flame">♨</span>
-<div><h1>FEU FOLLET</h1><small>ENTREZ DANS LA LÉGENDE</small></div>
-</a>
-<nav id="nav">
-<a href="#accueil">ACCUEIL</a>
-<a href="#univers">UNIVERS</a>
-<a href="#catalogue">BOUTIQUE</a>
-<a href="#histoire">NOTRE HISTOIRE</a>
-</nav>
-<div class="actions">
-<input class="search" id="search" type="search" placeholder="Rechercher un univers..." aria-label="Rechercher">
-<button class="menu" id="menu">☰ MENU</button>
-</div>
+  <a class="brand" href="#accueil">
+    <span class="flame">♨</span>
+    <span>
+      <h1>FEU FOLLET</h1>
+      <small>ENTREZ DANS LA LÉGENDE</small>
+    </span>
+  </a>
+
+  <nav id="nav">
+    <a href="#accueil">ACCUEIL</a>
+    <a href="#saga">LA SAGA</a>
+    <a href="#volet1">VOLET I</a>
+    <a href="#jouer">JOUER</a>
+    <a href="#grimoire">GRIMOIRE</a>
+  </nav>
+
+  <div class="head-actions">
+    <button class="nav-button" onclick="document.getElementById('grimoire').scrollIntoView({behavior:'smooth'})">
+      MON GRIMOIRE
+    </button>
+    <button class="menu-button" id="menuButton">☰</button>
+  </div>
 </header>
 
 <main>
-<section class="hero" id="accueil" aria-label="Bienvenue chez Feu Follet"></section>
 
-<section class="welcome">
-<h2>La magie prend vie...</h2>
-<p>Bienvenue chez FEU FOLLET, votre porte d'entrée vers les mondes médiévaux et fantastiques. Explorez des univers légendaires, découvrez l'artisanat et préparez votre prochaine aventure.</p>
-<a class="gold-button" href="#univers">⚔ EXPLORER LES UNIVERS</a>
-<a class="gold-button" href="#catalogue">✧ DÉCOUVRIR LA BOUTIQUE</a>
+<section class="hero" id="accueil">
+  <div class="hero-inner">
+    <div class="eyebrow">UNE SAGA INTERACTIVE · UN MONDE À DÉCOUVRIR</div>
+    <h2>La légende ne fait que commencer.</h2>
+    <p>
+      Des royaumes oubliés. Des secrets que personne n'aurait dû retrouver.
+      Des énigmes cachées dans les récits, les images et les sons.
+      Ici, tu ne te contentes pas de lire une légende :
+      tu en deviens une pièce essentielle.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="#volet1">DÉCOUVRIR LE PREMIER VOLET</a>
+      <a class="btn" href="#saga">ENTRER DANS L'UNIVERS</a>
+    </div>
+  </div>
+</section>
+
+<div class="notice">
+  <strong>Une aventure avant une boutique.</strong>
+  Les découvertes pourront ensuite devenir des créations à collectionner :
+  t-shirts, mugs, affiches et bien plus encore.
+</div>
+
+<section class="section" id="saga">
+  <div class="section-head">
+    <small>BIENVENUE DANS L'UNIVERS FEU FOLLET</small>
+    <h2>Une histoire dont tu es le héros</h2>
+    <p>
+      Feu Follet est un univers médiéval fantastique construit autour d'une grande saga.
+      Chaque volet raconte une aventure complète, avec ses mystères, ses personnages
+      et ses secrets. Mais chaque découverte révèle aussi une partie d'une histoire
+      beaucoup plus vaste.
+    </p>
+  </div>
+
+  <div class="intro-grid">
+    <article class="tile">
+      <div class="symbol">📜</div>
+      <h3>Une grande saga</h3>
+      <p>
+        Plusieurs aventures, plusieurs territoires, des personnages mystérieux
+        et une mythologie qui se dévoile progressivement.
+      </p>
+    </article>
+
+    <article class="tile">
+      <div class="symbol">🔎</div>
+      <h3>Des énigmes à résoudre</h3>
+      <p>
+        Observe les détails, écoute les messages, déchiffre les symboles
+        et rassemble les indices pour avancer dans l'histoire.
+      </p>
+    </article>
+
+    <article class="tile">
+      <div class="symbol">🏺</div>
+      <h3>Des reliques à collectionner</h3>
+      <p>
+        Tes découvertes enrichissent ton grimoire et pourront donner naissance
+        à des objets physiques liés à l'univers.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="story-feature" id="volet1">
+  <span class="tag">PREMIER VOLET · UNE ENQUÊTE COMMENCE</span>
+  <h2>Le Dernier Veilleur</h2>
+  <p>
+    Dans le monde oublié de Valombre, un village entier a disparu en une seule nuit.
+    Les maisons sont intactes. Les repas sont encore posés sur les tables.
+    Les portes sont ouvertes. Mais aucun habitant ne répond à l'appel.
+  </p>
+  <p>
+    Dans la chapelle, un homme se tient devant une étrange flamme bleue.
+    Il répète inlassablement une phrase :
+    <br><br>
+    <em>« Je les ai tous sauvés. Mais personne ne doit se souvenir de moi. »</em>
+  </p>
+  <p>
+    À ses pieds repose un livre ancien, fermé par sept serrures.
+    Qui est cet homme ? Où sont passés les habitants ?
+    Et pourquoi personne ne doit-il se souvenir de lui ?
+  </p>
+  <div class="actions">
+    <a class="btn primary" href="#jouer">COMMENCER L'ENQUÊTE</a>
+  </div>
 </section>
 
 <section class="section">
-<div class="features">
-<div class="feature"><span>⚔</span><strong>UNIVERS PASSIONNÉS</strong><p>Médiéval, viking et fantastique</p></div>
-<div class="feature"><span>✧</span><strong>SÉLECTION SOIGNÉE</strong><p>Des articles et accessoires sélectionnés</p></div>
-<div class="feature"><span>♜</span><strong>UN ROYAUME À EXPLORER</strong><p>Un catalogue en construction</p></div>
-</div>
+  <div class="section-head">
+    <small>LES PREMIÈRES PIÈCES DU DOSSIER</small>
+    <h2>Les archives de Valombre</h2>
+    <p>
+      Chaque élément découvert pourra révéler un nouvel indice.
+      Certaines pièces sembleront anodines au départ.
+      D'autres prendront tout leur sens beaucoup plus tard.
+    </p>
+  </div>
+
+  <div class="archive-grid">
+    <article class="archive-card">
+      <div class="art">🏚️</div>
+      <div class="archive-content">
+        <span class="tag">Indice · Village</span>
+        <h3>Le village silencieux</h3>
+        <p>
+          Les maisons sont intactes. Les habitants ont disparu,
+          mais rien ne semble indiquer une attaque.
+        </p>
+      </div>
+    </article>
+
+    <article class="archive-card">
+      <div class="art">♨</div>
+      <div class="archive-content">
+        <span class="tag">Indice · Chapelle</span>
+        <h3>La flamme bleue</h3>
+        <p>
+          Elle brûle sans bois, sans fumée et sans chaleur.
+          Elle semble réagir à la présence du veilleur.
+        </p>
+      </div>
+    </article>
+
+    <article class="archive-card">
+      <div class="art">📖</div>
+      <div class="archive-content">
+        <span class="tag">Pièce à conviction · Livre</span>
+        <h3>Le livre aux sept serrures</h3>
+        <p>
+          Un ouvrage fermé par sept mécanismes.
+          Sur sa couverture, un symbole presque effacé.
+        </p>
+      </div>
+    </article>
+  </div>
 </section>
 
-<section class="section" id="univers">
-<div class="heading">
-<small>LES PORTES DU ROYAUME</small>
-<h2>Explorez nos univers</h2>
-<p>Choisissez votre monde et partez à l'aventure.</p>
-</div>
-<div class="categories" id="categories">
-<a class="category" href="#catalogue" data-search="médiéval chevalier costume tunique"><span class="icon">⚔</span><h3>Médiéval</h3><p>Costumes, tuniques, robes et accessoires.</p></a>
-<a class="category" href="#catalogue" data-search="viking nordique guerrier"><span class="icon">ᛟ</span><h3>Viking & Nordique</h3><p>Inspirations nordiques et esprit guerrier.</p></a>
-<a class="category" href="#catalogue" data-search="fantastique fantasy magie"><span class="icon">✧</span><h3>Fantastique</h3><p>Magie, créatures et mondes imaginaires.</p></a>
-<a class="category" href="#catalogue" data-search="armure casque bouclier épée"><span class="icon">🛡</span><h3>Armes & Armures</h3><p>Équipements, protections et décorations.</p></a>
-<a class="category" href="#catalogue" data-search="cuir sac ceinture bourse bottes"><span class="icon">♜</span><h3>Cuir & Artisanat</h3><p>Sacs, ceintures, bourses et accessoires.</p></a>
-<a class="category" href="#catalogue" data-search="gn cosplay jeu grandeur nature"><span class="icon">♛</span><h3>GN & Cosplay</h3><p>Costumes et équipements de personnages.</p></a>
-<a class="category" href="#catalogue" data-search="décoration chandelier maison médiévale"><span class="icon">♨</span><h3>Décoration</h3><p>Objets, chandeliers et ambiance d'époque.</p></a>
-<a class="category" href="#catalogue" data-search="bijoux bague pendentif"><span class="icon">✥</span><h3>Bijoux & Ornements</h3><p>Bagues, pendentifs et pièces décoratives.</p></a>
-<a class="category" href="#catalogue" data-search="renaissance robe costume historique"><span class="icon">♕</span><h3>Renaissance</h3><p>Élégance, costumes et inspirations historiques.</p></a>
-</div>
-<div class="empty" id="empty">Aucun univers trouvé.</div>
+<section class="section" id="cinema">
+  <div class="section-head">
+    <small>OUVERTURE CINÉMATOGRAPHIQUE</small>
+    <h2>La première trace de Valombre</h2>
+    <p>
+      La saga est pensée pour être racontée aussi par des séquences vidéo :
+      voix, paysages, sons et détails à observer.
+      Cet emplacement accueillera la véritable vidéo lorsque nous l'aurons créée et hébergée.
+    </p>
+  </div>
+
+  <div class="video-frame">
+    <div class="video-inner">
+      <div class="play-mark">▶</div>
+      <span class="tag">SÉQUENCE 01 · BANDE-ANNONCE À PRODUIRE</span>
+      <h3>La nuit où Valombre s'est tue</h3>
+      <p>
+        Le vent traverse une rue vide. Une cloche oscille sans sonner.
+        Au fond de la chapelle, une faible lumière bleue pulse derrière une porte entrouverte.
+      </p>
+      <a class="btn" href="#jouer">EXAMINER LES PREMIERS INDICES</a>
+    </div>
+  </div>
+
+  <p class="video-caption">
+    Note de développement : aucune vidéo réelle n'est intégrée dans cette maquette.
+    Nous ajouterons le fichier vidéo ou son lecteur lorsque la séquence sera produite.
+  </p>
 </section>
 
-<section class="story" id="histoire">
-<h2>Une flamme dans la nuit...</h2>
-<p>FEU FOLLET est né d'une passion pour les mondes anciens, les légendes et les univers fantastiques. Notre ambition est de réunir les passionnés autour d'une boutique dédiée à l'imaginaire médiéval, aux aventures et à l'art de vivre hors du temps.</p>
+<section class="section" id="jouer">
+  <div class="section-head">
+    <small>ENQUÊTE INTERACTIVE · VOLET I</small>
+    <h2>Ouvre le dossier du Dernier Veilleur</h2>
+    <p>
+      Observe les pièces, résous les premières épreuves et découvre une relique.
+      Ta progression est enregistrée sur cet appareil pour cette maquette.
+    </p>
+  </div>
+
+  <div class="game-box">
+    <span class="tag" id="stageTag">ÉPREUVE 01 · LA CHAPELLE</span>
+
+    <div class="game-progress">
+      <span class="progress-dot" id="dot1"></span>
+      <span class="progress-dot" id="dot2"></span>
+      <span class="progress-dot" id="dot3"></span>
+    </div>
+
+    <div id="stage1">
+      <h3>Le livre aux sept serrures</h3>
+      <p>
+        Le veilleur pose une main sur un vieux livre.
+        Sept serrures de tailles différentes entourent son sceau.
+        Sur la première page, une phrase est gravée :
+        <br><br>
+        <em>« Ce que je protège ne s'ouvre pas avec une clé, mais avec le nombre de mes serments. »</em>
+        <br><br>
+        Combien de serrures dois-tu examiner ?
+      </p>
+
+      <div class="answer-row">
+        <input id="answer1" type="text" placeholder="Écris le nombre en lettres ou en chiffres" autocomplete="off">
+        <button class="btn primary" id="check1">VALIDER</button>
+      </div>
+    </div>
+
+    <div id="stage2" class="hidden">
+      <h3>La phrase du veilleur</h3>
+      <p>
+        L'homme lève enfin les yeux. Il murmure :
+        <br><br>
+        <em>« Je les ai tous sauvés. Mais personne ne doit se souvenir de moi. »</em>
+        <br><br>
+        Quelle piste mérite d'être suivie en premier ?
+      </p>
+
+      <div class="choices">
+        <button class="choice" data-choice="memory">
+          Le veilleur a peut-être effacé les souvenirs des habitants.
+        </button>
+        <button class="choice" data-choice="escape">
+          Les habitants ont fui en laissant tout derrière eux.
+        </button>
+        <button class="choice" data-choice="curse">
+          Une malédiction a transformé le village.
+        </button>
+      </div>
+    </div>
+
+    <div id="stage3" class="hidden">
+      <h3>Le symbole sous la cendre</h3>
+      <p>
+        En déplaçant le livre, tu découvres une marque gravée dans la pierre :
+        une flamme entourée d'un cercle incomplet.
+        Le veilleur dit :
+        <br><br>
+        <em>« Ce signe n'est pas la fin d'une histoire. C'est la marque de ceux qui gardent la porte. »</em>
+        <br><br>
+        Que décides-tu de faire ?
+      </p>
+
+      <div class="choices">
+        <button class="choice" data-end="touch">Toucher la flamme bleue.</button>
+        <button class="choice" data-end="book">Ouvrir le livre aux sept serrures.</button>
+        <button class="choice" data-end="watcher">Interroger le veilleur sur la porte.</button>
+      </div>
+    </div>
+
+    <div class="game-result" id="gameResult" aria-live="polite">
+      Ton enquête commence ici. La première réponse t'attend.
+    </div>
+
+    <button id="restartGame" class="reset-link hidden">
+      Recommencer cette enquête
+    </button>
+  </div>
 </section>
 
-<section class="section" id="catalogue">
-<div class="heading">
-<small>LE GRAND MARCHÉ</small>
-<h2>Les trésors du royaume</h2>
-<p>Explorez les premières familles de produits de FEU FOLLET.</p>
-</div>
-<p class="catalogue-intro">Voici un aperçu de notre future sélection. Les articles, photographies, variantes et tarifs définitifs seront ajoutés après validation de nos fournisseurs.</p>
+<section class="section" id="grimoire">
+  <div class="section-head">
+    <small>TON ESPACE DE DÉCOUVERTES</small>
+    <h2>Le Grimoire du voyageur</h2>
+    <p>
+      Chaque aventure enrichira ton grimoire.
+      Les reliques découvertes ici sont des prototypes numériques ;
+      elles ne sont pas encore des produits à acheter.
+    </p>
+  </div>
 
-<div class="filters" id="filters">
-<button class="filter-btn active" data-filter="all">TOUT VOIR</button>
-<button class="filter-btn" data-filter="medieval">MÉDIÉVAL</button>
-<button class="filter-btn" data-filter="viking">VIKING</button>
-<button class="filter-btn" data-filter="fantasy">FANTASTIQUE</button>
-<button class="filter-btn" data-filter="armor">ARMURES</button>
-<button class="filter-btn" data-filter="leather">CUIR</button>
-<button class="filter-btn" data-filter="decor">DÉCORATION</button>
-</div>
+  <div class="relic-grid">
+    <article class="relic-card" id="relicCard">
+      <div class="relic-symbol">🔒</div>
+      <span class="tag">RELIQUE 001</span>
+      <h3>Le Sceau du Veilleur</h3>
+      <p>
+        Un sceau ancien marqué d'une flamme bleue.
+        Son origine reste inconnue.
+      </p>
+      <div class="collection-status" id="relicStatus">
+        VERROUILLÉ · TERMINE L'ENQUÊTE POUR LE DÉCOUVRIR
+      </div>
+    </article>
 
-<div class="products" id="products">
+    <article class="tile">
+      <div class="symbol">📜</div>
+      <h3>Ton parcours</h3>
+      <p id="progressText">
+        Aucune épreuve terminée pour le moment.
+        Ton histoire commence lorsque tu lances l'enquête.
+      </p>
+    </article>
 
-<article class="product" data-category="medieval">
-<div class="product-art">⚔️</div>
-<div class="product-info">
-<span class="product-tag">Univers médiéval</span>
-<h3>Tunique du voyageur</h3>
-<p>Une tenue inspirée des voyageurs et aventuriers des temps anciens.</p>
-<div class="product-bottom"><span class="product-price">Prix à venir</span><span class="product-link">BIENTÔT</span></div>
-</div>
-</article>
-
-<article class="product" data-category="viking">
-<div class="product-art">ᛟ</div>
-<div class="product-info">
-<span class="product-tag">Univers nordique</span>
-<h3>Accessoires vikings</h3>
-<p>Des accessoires inspirés des traditions et légendes nordiques.</p>
-<div class="product-bottom"><span class="product-price">Prix à venir</span><span class="product-link">BIENTÔT</span></div>
-</div>
-</article>
-
-<article class="product" data-category="fantasy">
-<div class="product-art">🐉</div>
-<div class="product-info">
-<span class="product-tag">Univers fantastique</span>
-<h3>Trésors du dragon</h3>
-<p>Objets et accessoires pour donner vie à vos mondes imaginaires.</p>
-<div class="product-bottom"><span class="product-price">Prix à venir</span><span class="product-link">BIENTÔT</span></div>
-</div>
-</article>
-
-<article class="product" data-category="armor">
-<div class="product-art">🛡️</div>
-<div class="product-info">
-<span class="product-tag">Armes & armures</span>
-<h3>Équipement du chevalier</h3>
-<p>Protections, pièces d'armure et accessoires pour vos aventures.</p>
-<div class="product-bottom"><span class="product-price">Prix à venir</span><span class="product-link">BIENTÔT</span></div>
-</div>
-</article>
-
-<article class="product" data-category="leather">
-<div class="product-art">🎒</div>
-<div class="product-info">
-<span class="product-tag">Cuir & artisanat</span>
-<h3>Bourse de l'artisan</h3>
-<p>Petite maroquinerie et accessoires au caractère authentique.</p>
-<div class="product-bottom"><span class="product-price">Prix à venir</span><span class="product-link">BIENTÔT</span></div>
-</div>
-</article>
-
-<article class="product" data-category="decor">
-<div class="product-art">🕯️</div>
-<div class="product-info">
-<span class="product-tag">Décoration</span>
-<h3>Chandelier d'antan</h3>
-<p>Une touche d'ambiance médiévale pour votre intérieur.</p>
-<div class="product-bottom"><span class="product-price">Prix à venir</span><span class="product-link">BIENTÔT</span></div>
-</div>
-</article>
-
-</div>
-
-<div class="catalogue-note">✧ COLLECTION EN PRÉPARATION ✧<br>Les véritables fiches produits seront publiées après vérification des fournisseurs, des photos, des prix et des conditions de livraison.</div>
+    <article class="tile">
+      <div class="symbol">✦</div>
+      <h3>Les pages à venir</h3>
+      <p>
+        Les prochains volets ajouteront de nouveaux lieux,
+        des énigmes vidéo, des reliques et des secrets
+        à découvrir seul ou avec la communauté.
+      </p>
+    </article>
+  </div>
 </section>
+
+<section class="section" id="collection">
+  <div class="section-head">
+    <small>DE LA DÉCOUVERTE À L'OBJET</small>
+    <h2>Emporte une trace de ton aventure</h2>
+    <p>
+      À terme, chaque relique pourra être déclinée sur le support de ton choix.
+      La découverte restera jouable sans achat.
+      Ici, tu peux déjà choisir le type d'objet que tu aimerais voir associé à ta relique.
+    </p>
+  </div>
+
+  <div class="game-box">
+    <span class="tag">APRÈS DÉCOUVERTE · CHOIX DU SUPPORT</span>
+    <h3>Sur quel objet porterais-tu le Sceau du Veilleur ?</h3>
+
+    <div class="product-options" id="productOptions">
+      <button data-product="T-shirt">T-shirt</button>
+      <button data-product="Mug">Mug</button>
+      <button data-product="Affiche">Affiche</button>
+      <button data-product="Housse de couette">Housse de couette</button>
+      <button data-product="Drap">Drap</button>
+    </div>
+
+    <div class="selected-product" id="selectedProduct">
+      Aucun support sélectionné.
+    </div>
+
+    <p style="font-size:11px;color:var(--muted)">
+      Cette sélection est une préférence de démonstration, pas une commande.
+      Les ventes, paiements et expéditions ne sont pas activés.
+    </p>
+  </div>
+</section>
+
 </main>
 
 <footer>
-<div class="footer-logo">FEU FOLLET</div>
-<p>Boutique médiévale & fantastique</p>
-<p>Entrez dans la légende.</p>
-<div class="footer-links">
-<a href="#accueil">Accueil</a><a href="#univers">Univers</a><a href="#catalogue">Boutique</a><a href="#histoire">Notre histoire</a>
-</div>
-<div class="copyright">© 2026 FEU FOLLET — Tous droits réservés</div>
+  <div class="footer-logo">FEU FOLLET</div>
+  <p>
+    Une saga médiévale & fantastique<br>
+    Aventures · Énigmes · Reliques · Collections
+  </p>
+
+  <div class="footer-links">
+    <a href="#accueil">Accueil</a>
+    <a href="#saga">La saga</a>
+    <a href="#volet1">Volet I</a>
+    <a href="#jouer">Jouer</a>
+    <a href="#grimoire">Grimoire</a>
+  </div>
+
+  <p>© 2026 FEU FOLLET — Univers en cours de création.</p>
 </footer>
 
 <script>
-const menu=document.getElementById("menu");
-const nav=document.getElementById("nav");
-const search=document.getElementById("search");
-const categories=[...document.querySelectorAll(".category")];
-const empty=document.getElementById("empty");
-const products=[...document.querySelectorAll(".product")];
-const filterButtons=[...document.querySelectorAll(".filter-btn")];
+const $ = id => document.getElementById(id);
 
-menu.addEventListener("click",()=>nav.classList.toggle("open"));
+const nav = $('nav');
 
-nav.querySelectorAll("a").forEach(link=>{
-link.addEventListener("click",()=>nav.classList.remove("open"));
+$('menuButton').addEventListener('click', () => {
+  nav.classList.toggle('open');
 });
 
-search.addEventListener("input",()=>{
-const value=search.value.trim().toLowerCase();
-let count=0;
-categories.forEach(card=>{
-const text=(card.innerText+" "+card.dataset.search).toLowerCase();
-const visible=text.includes(value);
-card.style.display=visible?"flex":"none";
-if(visible)count++;
-});
-empty.style.display=count===0?"block":"none";
+nav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => nav.classList.remove('open'));
 });
 
-filterButtons.forEach(button=>{
-button.addEventListener("click",()=>{
-filterButtons.forEach(item=>item.classList.remove("active"));
-button.classList.add("active");
-const filter=button.dataset.filter;
-products.forEach(product=>{
-const visible=filter==="all"||product.dataset.category===filter;
-product.classList.toggle("hidden",!visible);
+const KEY = 'feufollet_volet1_demo';
+
+let state = {
+  stage: 0,
+  choice: '',
+  ending: '',
+  relic: false,
+  product: ''
+};
+
+try {
+  const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+  if (saved) state = {...state, ...saved};
+} catch(e) {}
+
+function save() {
+  try {
+    localStorage.setItem(KEY, JSON.stringify(state));
+  } catch(e) {}
+}
+
+function render() {
+  ['stage1','stage2','stage3'].forEach((id,i) => {
+    $(id).classList.toggle('hidden', state.stage !== i);
+  });
+
+  $('dot1').classList.toggle('done', state.stage > 0);
+  $('dot2').classList.toggle('done', state.stage > 1);
+  $('dot3').classList.toggle('done', state.relic);
+
+  $('stageTag').textContent =
+    state.stage === 0 ? 'ÉPREUVE 01 · LA CHAPELLE' :
+    state.stage === 1 ? 'ÉPREUVE 02 · LE SERMENT' :
+    state.stage === 2 ? 'ÉPREUVE 03 · LE SYMBOLE' :
+    'ENQUÊTE TERMINÉE · PREMIÈRE RELIQUE';
+
+  $('relicStatus').textContent = state.relic
+    ? 'DÉCOUVERT · AJOUTÉ À TON GRIMOIRE'
+    : 'VERROUILLÉ · TERMINE L’ENQUÊTE POUR LE DÉCOUVRIR';
+
+  $('relicCard').style.opacity = state.relic ? '1' : '.68';
+
+  $('progressText').textContent = state.relic
+    ? '3 épreuves terminées. Le Sceau du Veilleur a rejoint ton grimoire. Fin provisoire du prototype : la suite reste à écrire.'
+    : state.stage === 0
+      ? 'Aucune épreuve terminée pour le moment. Ton histoire commence lorsque tu lances l’enquête.'
+      : state.stage + ' épreuve(s) terminée(s). Continue pour découvrir ta première relique.';
+
+  if (state.relic) {
+    $('gameResult').textContent =
+      'Le Sceau du Veilleur est découvert. Une marque bleue apparaît sur la page de ton grimoire. Tu viens de trouver la première trace d’une histoire beaucoup plus vaste.';
+    $('restartGame').classList.remove('hidden');
+  }
+
+  if (state.product) {
+    $('selectedProduct').textContent =
+      'Support choisi : ' + state.product + ' (préférence enregistrée sur cet appareil).';
+
+    document.querySelectorAll('[data-product]').forEach(b => {
+      b.classList.toggle('active', b.dataset.product === state.product);
+    });
+  }
+}
+
+$('check1').addEventListener('click', () => {
+  const v = $('answer1').value
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g,'');
+
+  if (v === '7' || v === 'sept') {
+    state.stage = 1;
+    save();
+    render();
+
+    $('gameResult').textContent =
+      'Exact. Les sept serrures correspondent aux sept serments du veilleur. Le livre s’entrouvre…';
+  } else {
+    $('gameResult').textContent =
+      'Ce n’est pas la bonne réponse. Observe bien la phrase et le nombre de serrures.';
+  }
 });
+
+document.querySelectorAll('[data-choice]').forEach(b => {
+  b.addEventListener('click', () => {
+    state.choice = b.dataset.choice;
+    state.stage = 2;
+    save();
+    render();
+
+    $('gameResult').textContent =
+      'Piste enregistrée. Le choix du joueur oriente son interprétation, mais ne ferme aucune autre possibilité.';
+  });
 });
+
+document.querySelectorAll('[data-end]').forEach(b => {
+  b.addEventListener('click', () => {
+    state.ending = b.dataset.end;
+    state.stage = 3;
+    state.relic = true;
+    save();
+    render();
+  });
 });
+
+$('restartGame').addEventListener('click', () => {
+  state.stage = 0;
+  state.choice = '';
+  state.ending = '';
+  state.relic = false;
+
+  save();
+
+  $('answer1').value = '';
+  $('gameResult').textContent =
+    'Ton enquête recommence. Les découvertes de cette démonstration seront réinitialisées.';
+
+  $('restartGame').classList.add('hidden');
+  render();
+});
+
+document.querySelectorAll('[data-product]').forEach(b => {
+  b.addEventListener('click', () => {
+    state.product = b.dataset.product;
+    save();
+    render();
+  });
+});
+
+render();
 </script>
+
 </body>
 </html>
