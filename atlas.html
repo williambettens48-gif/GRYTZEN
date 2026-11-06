@@ -12,18 +12,26 @@
 <details class="nav-dropdown">
   <summary aria-haspopup="true">L'ATLAS <span class="nav-chevron">⌄</span></summary>
   <div class="nav-submenu">
-    <a href="#atlas" data-atlas-action="map">Carte et régions</a>
-    <a href="#atlas-lore" data-atlas-action="temps">Explorer les connaissances</a>
-    <a href="#atlas-lore" data-atlas-action="temps">Calendriers</a>
-    <a href="#atlas-lore" data-atlas-action="langues">Peuples et langues</a>
-    <a href="#atlas-lore" data-atlas-action="croyances">Croyances et mythes</a>
-    <a href="#atlas-lore" data-atlas-action="magie">Magie</a>
-    <a href="#atlas-lore" data-atlas-action="terre-absente">La Terre absente</a>
+    <a href="#atlas" data-atlas-action="map">Carte et région</a>
+    <a href="#atlas-lore" data-atlas-action="knowledge">Explorer les connaissances</a>
   </div>
 </details>
 <a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav>
 <a class="nav-cta" href="jouer.html">DÉCOUVRIR</a>
-</div></header><main><div class="atlas-wrap" id="atlas"><section class="content atlas">
+</div></header><main>
+<section class="atlas-home" id="atlas-home">
+  <div class="atlas-home-art" role="img" aria-label="Illustration mystérieuse des terres connues d'Eldoria">
+    <div class="home-continent home-c1"></div><div class="home-continent home-c2"></div><div class="home-continent home-c3"></div>
+    <div class="home-island"></div><span class="home-map-stamp">ELDORIA · CARTES INCOMPLÈTES</span>
+  </div>
+  <div class="atlas-home-copy">
+    <div class="eyebrow">LES ARCHIVES DE FEU FOLLET</div>
+    <h1>L'Atlas d'Eldoria</h1>
+    <p>Un monde immense. Des terres encore inconnues. Des vérités que les cartes n'ont pas toutes révélées.</p>
+    <span class="atlas-home-hint">Ouvrez le menu de l'Atlas pour commencer votre exploration</span>
+  </div>
+</section>
+<div class="atlas-wrap" id="atlas" hidden><section class="content atlas">
 <div aria-label="Carte stylisée et mystérieuse des terres de FEU FOLLET" class="map-art" role="img"><div class="continent c1"></div><div class="continent c2"></div><div class="continent c3"></div><div class="island"></div><span class="map-label l1">AURENTH</span><span class="map-label l2">VARKHÖL</span><span class="map-label l3">ORVANE</span><button aria-label="Découvrir Aurenth" class="map-pin pin1" data-region="aurenth"></button><button aria-label="Découvrir Varkhöl" class="map-pin pin2" data-region="varkhol"></button><button aria-label="Découvrir Orvane" class="map-pin pin3" data-region="orvane"></button><div class="map-caption">ATLAS INCOMPLET · TERRES CONNUES</div></div>
 <div class="atlas-copy"><div class="eyebrow">L'ATLAS DES TERRES CONNUES</div><h2>Un monde immense.<br/>Des secrets sans fin.</h2><p>Six régions composent les premières pages de notre atlas. Certaines sont connues, d'autres cachent des civilisations dont l'existence même est contestée. La carte complète reste à découvrir.</p>
 </div>
@@ -57,6 +65,24 @@
 </section></div>
 
 <style>
+/* Accueil de l'Atlas : écran d'entrée immersif */
+.atlas-home{min-height:calc(100vh - 145px);max-width:1120px;margin:0 auto;padding:48px 26px 62px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:42px}
+.atlas-home[hidden],.atlas-wrap[hidden],.atlas-lore[hidden]{display:none!important}
+.atlas-home-art{position:relative;min-height:390px;aspect-ratio:1.18/1;overflow:hidden;border:1px solid rgba(194,157,91,.4);border-radius:13px;background:radial-gradient(ellipse at 48% 48%,#6a5637 0%,#342d25 42%,#111b28 78%);box-shadow:0 22px 65px rgba(0,0,0,.42),inset 0 0 55px rgba(0,0,0,.55)}
+.atlas-home-art:before{content:"";position:absolute;inset:18px;border:1px solid rgba(225,196,139,.27);border-radius:7px;background:repeating-linear-gradient(0deg,transparent 0 34px,rgba(229,203,157,.07) 35px),repeating-linear-gradient(90deg,transparent 0 34px,rgba(229,203,157,.06) 35px)}
+.home-continent{position:absolute;background:linear-gradient(135deg,#c5a875,#8d7954 55%,#5c5947);opacity:.9;filter:drop-shadow(4px 8px 4px rgba(0,0,0,.55));border:1px solid rgba(244,220,170,.5)}
+.home-c1{width:37%;height:48%;left:14%;top:23%;transform:rotate(-19deg);clip-path:polygon(22% 0,70% 8%,100% 35%,78% 65%,87% 100%,36% 84%,0 53%)}
+.home-c2{width:29%;height:57%;right:16%;top:13%;transform:rotate(17deg);clip-path:polygon(30% 0,82% 14%,100% 55%,62% 100%,14% 78%,0 35%)}
+.home-c3{width:27%;height:24%;left:44%;bottom:14%;transform:rotate(-8deg);clip-path:polygon(12% 12%,72% 0,100% 46%,62% 100%,0 72%)}
+.home-island{position:absolute;width:8%;height:5%;right:12%;bottom:17%;border-radius:50%;background:#b99b68;transform:rotate(20deg);box-shadow:-22px -15px 0 -3px #a58c60,12px 12px 0 -4px #c4a977}
+.home-map-stamp{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);white-space:nowrap;color:#e2c995;font:10px Cinzel,serif;letter-spacing:3px;text-shadow:0 2px 5px #000}
+.atlas-home-copy{max-width:480px}
+.atlas-home-copy .eyebrow{color:var(--gold,#c29d5b);letter-spacing:3px}
+.atlas-home-copy h1{font:500 clamp(36px,5vw,58px) Cinzel,serif;line-height:1.15;color:#f0e4cc;margin:18px 0}
+.atlas-home-copy p{font:15px/1.9 Manrope,sans-serif;color:#b9c3ce;max-width:430px}
+.atlas-home-hint{display:block;margin-top:32px;color:#d8bd85;font:10px Manrope,sans-serif;letter-spacing:1.7px;text-transform:uppercase}
+@media(max-width:760px){.atlas-home{min-height:calc(100vh - 120px);grid-template-columns:1fr;gap:25px;padding:28px 18px 42px;align-content:center}.atlas-home-art{min-height:270px;max-height:360px}.atlas-home-copy{text-align:center;margin:auto}.atlas-home-copy p{margin-left:auto;margin-right:auto}.atlas-home-hint{margin-top:20px}}
+
 /* Atlas : explorateur compact, ouvert uniquement à la demande */
 .atlas-copy .region-list,
 .atlas-copy .region-detail{display:none!important}
@@ -199,28 +225,30 @@ header nav{position:relative;z-index:10000;overflow:visible}
 (function(){
   const chooser=document.getElementById('lore-choice');
   const lore=document.getElementById('atlas-lore');
+  const map=document.getElementById('atlas');
+  const home=document.getElementById('atlas-home');
   const panels=Array.from(document.querySelectorAll('.lore-panel'));
   const dropdown=document.querySelector('.nav-dropdown');
-  if(!chooser||!lore)return;
+  if(!chooser||!lore||!map||!home)return;
+
+  function closeMenu(){if(dropdown)dropdown.open=false;}
   function showLore(){
     const selected=chooser.value;
     panels.forEach(panel=>{panel.hidden=panel.id!=='lore-'+selected;});
   }
+  function openView(view){
+    home.hidden=true;
+    map.hidden=view!=='map';
+    lore.hidden=view!=='knowledge';
+    closeMenu();
+    if(view==='knowledge')showLore();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
   chooser.addEventListener('change',showLore);
   document.querySelectorAll('[data-atlas-action]').forEach(link=>{
     link.addEventListener('click',function(event){
-      const action=this.getAttribute('data-atlas-action');
-      if(action==='map'){
-        lore.hidden=true;
-        if(dropdown)dropdown.open=false;
-        return;
-      }
       event.preventDefault();
-      chooser.value=action;
-      showLore();
-      lore.hidden=false;
-      if(dropdown)dropdown.open=false;
-      lore.scrollIntoView({behavior:'smooth',block:'start'});
+      openView(this.getAttribute('data-atlas-action'));
     });
   });
 })();
