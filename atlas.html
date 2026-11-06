@@ -1,1 +1,151 @@
 
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d18">
+<meta name="feu-follet-version" content="multipages-v1">
+<title>FEU FOLLET — L'Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="banner">
+<img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale FEU FOLLET">
+</div>
+
+<header>
+<div class="nav">
+<a class="brand" href="index.html"><span>✦</span> FEU FOLLET</a>
+<nav aria-label="Navigation principale">
+<a href="jouer.html">JOUER</a>
+<a href="atlas.html">L'ATLAS</a>
+<a href="grimoire.html">GRIMOIRE</a>
+<a href="boutique.html">BOUTIQUE</a>
+</nav>
+<a class="nav-cta" href="jouer.html">DÉCOUVRIR</a>
+</div>
+</header>
+
+<main>
+<div class="atlas-wrap" id="atlas">
+
+<section class="content atlas">
+<div aria-label="Carte stylisée et mystérieuse des terres de FEU FOLLET" class="map-art" role="img">
+<div class="continent c1"></div>
+<div class="continent c2"></div>
+<div class="continent c3"></div>
+<div class="island"></div>
+<span class="map-label l1">AURENTH</span>
+<span class="map-label l2">VARKHÖL</span>
+<span class="map-label l3">ORVANE</span>
+<button aria-label="Découvrir Aurenth" class="map-pin pin1" data-region="aurenth"></button>
+<button aria-label="Découvrir Varkhöl" class="map-pin pin2" data-region="varkhol"></button>
+<button aria-label="Découvrir Orvane" class="map-pin pin3" data-region="orvane"></button>
+<div class="map-caption">ATLAS INCOMPLET · TERRES CONNUES</div>
+</div>
+
+<div class="atlas-copy">
+<div class="eyebrow">L'ATLAS DES TERRES CONNUES</div>
+<h2>Un monde immense.<br>Des secrets sans fin.</h2>
+<p>Six régions composent les premières pages de notre atlas. Certaines sont connues, d'autres cachent des civilisations dont l'existence même est contestée. La carte complète reste à découvrir.</p>
+
+<div class="region-list">
+<button class="region active" data-region="aurenth">AURENTH</button>
+<button class="region" data-region="varkhol">VARKHÖL</button>
+<button class="region" data-region="sylvara">SYLVARA</button>
+<button class="region" data-region="drakem">DRAKEM</button>
+<button class="region" data-region="orvane">ÎLES D'ORVANE</button>
+<button class="region" data-region="nereth">NÉRÉTH</button>
+</div>
+
+<div aria-live="polite" class="region-detail" id="region-detail">
+Les terres des royaumes anciens. Plaines, cités fortifiées et dynasties dont les archives ne racontent pas toujours toute la vérité.
+</div>
+</div>
+</section>
+
+<section class="atlas-explorer">
+<div class="atlas-explorer-head">
+<div class="eyebrow">FEUILLETER L'ATLAS</div>
+<h2>Six régions. Six visages du monde.</h2>
+<p>Choisissez une région pour consulter sa première fiche. Les territoires inconnus et les secrets seront révélés au fil des aventures.</p>
+</div>
+
+<div class="region-cards" id="region-cards">
+<button class="region-card selected" data-region="aurenth">
+<span class="index">01 · TERRES ROYALES</span>
+<h3>AURENTH</h3>
+<p>Des plaines fertiles, des cités fortifiées et des dynasties anciennes.</p>
+<span class="discover">CONSULTER LA FICHE ↗</span>
+</button>
+
+<button class="region-card" data-region="varkhol">
+<span class="index">02 · HAUTES TERRES</span>
+<h3>VARKHÖL</h3>
+<p>Des montagnes glacées et des forteresses taillées dans la pierre.</p>
+<span class="discover">CONSULTER LA FICHE ↗</span>
+</button>
+
+<button class="region-card" data-region="sylvara">
+<span class="index">03 · TERRES VIVANTES</span>
+<h3>SYLVARA</h3>
+<p>Une forêt immense où les chemins semblent se déplacer.</p>
+<span class="discover">CONSULTER LA FICHE ↗</span>
+</button>
+
+<button class="region-card" data-region="drakem">
+<span class="index">04 · TERRES ARDENTES</span>
+<h3>DRAKEM</h3>
+<p>Des volcans, des cités de roche noire et des machines oubliées.</p>
+<span class="discover">CONSULTER LA FICHE ↗</span>
+</button>
+
+<button class="region-card" data-region="orvane">
+<span class="index">05 · ARCHIPEL</span>
+<h3>ÎLES D'ORVANE</h3>
+<p>Des cités portuaires et des routes maritimes incertaines.</p>
+<span class="discover">CONSULTER LA FICHE ↗</span>
+</button>
+
+<button class="region-card" data-region="nereth">
+<span class="index">06 · MONDE SOUTERRAIN</span>
+<h3>NÉRÉTH</h3>
+<p>Des profondeurs dont l'existence même reste contestée.</p>
+<span class="discover">CONSULTER LA FICHE ↗</span>
+</button>
+</div>
+
+<div aria-live="polite" class="region-dossier">
+<div class="dossier-mark"><span id="dossier-symbol">A</span></div>
+<div class="dossier-copy">
+<div class="eyebrow" id="dossier-kicker">FICHE DE RÉGION · 01</div>
+<h3 id="dossier-title">AURENTH — Les terres des couronnes</h3>
+<p id="dossier-description">Au cœur des terres connues s'étendent les royaumes d'Aurenth. Des routes anciennes relient les cités fortifiées, les marchés et les domaines des grandes maisons. Les chroniques y sont nombreuses, mais certaines pages semblent avoir été volontairement arrachées.</p>
+
+<div class="dossier-facts">
+<div class="dossier-fact"><b>PAYSAGES</b><span id="dossier-landscape">Plaines, forêts tempérées, collines et citadelles</span></div>
+<div class="dossier-fact"><b>PEUPLE ASSOCIÉ</b><span id="dossier-people">Les Auréans</span></div>
+<div class="dossier-fact"><b>RÉPUTATION</b><span id="dossier-reputation">Pouvoirs anciens, alliances et rivalités</span></div>
+<div class="dossier-fact"><b>MYSTÈRE CONNU</b><span id="dossier-mystery">Des archives qui ne racontent pas toute l'histoire</span></div>
+</div>
+</div>
+</div>
+</section>
+
+</div>
+</main>
+
+<footer>
+<strong>✦ FEU FOLLET</strong>
+UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
+
