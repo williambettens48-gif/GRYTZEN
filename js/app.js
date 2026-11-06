@@ -95,7 +95,7 @@ function episodeSolve(){
 function episodeFinish(){
  ffRecord("Première rencontre avec le Veilleur");ffRecord("Piste vers Hauterive");ffSetEpisodeState("complete",[]);
  ffScene("<p>Tu refermes le registre. Une destination apparaît désormais dans ton Grimoire : <strong>Hauterive, la ville des archives</strong>.</p><p>Valombre t'a livré un premier secret. Mais la carte, elle, demeure incomplète.</p><p><em>Fin de l'épisode 01 — La suite attend à Hauterive.</em></p>",
- '<button class="game-btn gold" onclick="location.href=\'episode-02.html\'">Poursuivre vers Hauterive</button><button class="game-btn" onclick="showGrimoire()">Consulter mon Grimoire</button>',
+ '<button class="game-btn gold" onclick="location.href=\'Episode-02.html\'">Poursuivre vers Hauterive</button><button class="game-btn" onclick="showGrimoire()">Consulter mon Grimoire</button>',
  "ÉPISODE 01 TERMINÉ","Ta progression est enregistrée sur cet appareil.");
 }
 function restoreEpisode(){
