@@ -41,84 +41,77 @@ function ffScene(text,controls,status,feedback){
  const st=document.getElementById("game-status");if(st)st.textContent=status||"PROGRESSION ENREGISTRÉE";
  const fb=document.getElementById("game-feedback");if(fb&&feedback)fb.textContent=feedback;
 }
+function ffEpisodeState(){return ffLoad().episode01||{stage:"intro",sequence:[]}}
+function ffSetEpisodeState(stage,sequence){
+ const data=ffLoad();data.episode01={stage:stage,sequence:sequence||[]};ffSave(data);
+ const progress=document.getElementById("episode-progress");
+ if(progress){const levels={intro:0,symbol:1,witness:1,register:2,riddle:3,solved:4,complete:5};progress.textContent="ÉTAPE "+(levels[stage]||0)+" / 5";}
+}
 function episodeChoice(choice){
  if(choice==="examiner"){
-  ffRecord("Le Signe sans royaume");
-  ffScene("<p>Tu approches la main du tissu. Le symbole n'est pas dessiné à l'encre : il semble avoir été pressé dans la fibre.</p><p>Au revers, trois mots presque effacés : <strong>règne · demeure · passe</strong>.</p><p>Le paquet est toujours là. Il semble attendre que tu l'ouvres.</p>",
+  ffRecord("Le Signe sans royaume");ffSetEpisodeState("symbol",[]);
+  ffScene("<p>Tu approches la main du tissu. Le symbole n'est pas dessiné à l'encre : il semble avoir été pressé dans la fibre.</p><p>Au revers, trois mots presque effacés : <strong>règne · demeure · passe</strong>.</p><p>La marque est froide. Pourtant, la toile semble vibrer sous tes doigts.</p>",
   '<button class="game-btn gold" onclick="episodeChoice(\'prendre\')">Ouvrir le paquet</button><button class="game-btn" onclick="episodeChoice(\'appeler\')">Appeler un archiviste</button>',
-  "DÉCOUVERTE : LE SYMBOLE OBSERVÉ","Le grimoire a enregistré le Signe sans royaume.");
+  "DÉCOUVERTE : LE SIGNE OBSERVÉ","Le Grimoire a enregistré le Signe sans royaume.");
  }else if(choice==="appeler"){
-  ffScene("<p>Un vieux copiste entrouvre la porte voisine. À la vue du symbole, son visage se ferme.</p><p>« Ne prononcez pas ce nom ici. Prenez ce paquet, et ne le montrez à personne avant d'avoir compris ce qu'il contient. »</p>",
+  ffSetEpisodeState("witness",[]);
+  ffScene("<p>Un vieux copiste entrouvre la porte voisine. À la vue du symbole, son visage se ferme. Il regarde la rue avant de parler.</p><p>« Ne prononcez pas ce nom ici. Prenez ce paquet, et ne le montrez à personne avant d'avoir compris ce qu'il contient. »</p><p>Il referme presque aussitôt. Tu entends le verrou glisser.</p>",
   '<button class="game-btn gold" onclick="episodeChoice(\'prendre\')">Prendre le paquet</button><button class="game-btn" onclick="episodeChoice(\'examiner\')">Examiner le symbole</button>',
   "RENCONTRE : LE COPISTE","Un témoin a reconnu le signe. Sa peur est désormais un indice.");
  }else{
-  ffRecord("Le Registre sans nom");
-  ffScene("<p>La toile se défait. À l'intérieur, un registre sans titre, sans auteur et sans sceau. Plusieurs pages ont été arrachées avec une précision remarquable.</p><p><strong>« Les routes furent comptées. Les couronnes furent nommées. Les frontières furent tracées. Mais nul ne consigna le lieu qui manquait. »</strong></p><p>Dans la reliure, tu découvres un disque de cuivre à trois symboles : une couronne, une montagne et une vague.</p><p><em>Dans quel ordre faut-il les placer ?</em></p>",
-  '<button class="game-btn gold" onclick="episodeRiddleStart()">Composer l’ordre des trois symboles</button>',
-  "ÉNIGME : LE DISQUE DE CUIVRE","Le registre est ajouté à votre grimoire.");
+  ffRecord("Le Registre sans nom");ffSetEpisodeState("register",[]);
+  ffScene("<p>La toile se défait. À l'intérieur, un registre sans titre, sans auteur et sans sceau. Plusieurs pages ont été arrachées avec une précision remarquable.</p><p><strong>« Les routes furent comptées. Les couronnes furent nommées. Les frontières furent tracées. Mais nul ne consigna le lieu qui manquait. »</strong></p><p>Dans la reliure, tu découvres un disque de cuivre à trois symboles : une couronne, une montagne et une vague.</p><p><em>Le mécanisme attend un ordre. Les mots gravés au revers de la toile pourraient t'aider.</em></p>",
+  '<button class="game-btn gold" onclick="episodeRiddleStart()">Examiner le disque de cuivre</button>',
+  "DÉCOUVERTE : LE REGISTRE","Le Registre sans nom a été ajouté à ton Grimoire.");
  }
 }
 let riddleSequence=[];
-function episodeRiddle(first){
- riddleSequence=[first];
- const labels={couronne:"Couronne",montagne:"Montagne",vague:"Vague"};
- ffScene(
-  "<p>Le disque réagit au premier symbole. Les trois mots gravés sur la toile semblent indiquer une action pour chaque signe : <strong>règne · demeure · passe</strong>.</p><p>Compose maintenant l'ordre complet en touchant les trois symboles, un par un.</p><p><strong>Ordre choisi :</strong> <span id=\"riddle-sequence\">"+labels[first]+"</span></p>",
-  '<div class="game-riddle"><button class="riddle-choice" onclick="riddleAdd(\'couronne\')">Couronne</button><button class="riddle-choice" onclick="riddleAdd(\'montagne\')">Montagne</button><button class="riddle-choice" onclick="riddleAdd(\'vague\')">Vague</button></div><div class="game-actions"><button class="game-btn gold" onclick="episodeCheckRiddle()">Vérifier l’ordre</button><button class="game-btn" onclick="riddleReset()">Recommencer</button></div>',
-  "ÉNIGME : LE DISQUE DE CUIVRE",
-  "Indice : règne, demeure, passe. Chaque mot correspond à un symbole."
- );
+function episodeRiddleStart(preserve=false){
+ if(!preserve){riddleSequence=[];ffSetEpisodeState("riddle",[]);}
+ ffScene("<p>Trois signes sont gravés sur le disque : une couronne, une montagne et une vague.</p><p>Sur la toile, tu as lu trois mots : <strong>règne · demeure · passe</strong>.</p><p>Associe chaque mot à son symbole, puis compose la séquence complète.</p><p><strong>Ordre choisi :</strong> <span id=\"riddle-sequence\">Aucun symbole</span></p>",
+ '<div class="game-riddle"><button class="riddle-choice" onclick="riddleAdd(\'couronne\')">Couronne</button><button class="riddle-choice" onclick="riddleAdd(\'montagne\')">Montagne</button><button class="riddle-choice" onclick="riddleAdd(\'vague\')">Vague</button></div><div class="game-actions"><button class="game-btn gold" onclick="episodeCheckRiddle()">Vérifier l’ordre</button><button class="game-btn" onclick="riddleReset()">Recommencer</button></div>',
+ "ÉNIGME : LE DISQUE DE CUIVRE","Indice : règne, demeure, passe. Chaque mot correspond à un symbole.");
 }
 function riddleAdd(symbol){
  if(riddleSequence.length>=3)return;
- riddleSequence.push(symbol);
+ riddleSequence.push(symbol);ffSetEpisodeState("riddle",riddleSequence);
  const labels={couronne:"Couronne",montagne:"Montagne",vague:"Vague"};
- const display=document.getElementById("riddle-sequence");
- if(display)display.textContent=riddleSequence.map(x=>labels[x]).join(" → ");
- const status=document.getElementById("game-status");
- if(status)status.textContent="SYMBOLES SÉLECTIONNÉS : "+riddleSequence.length+"/3";
+ const display=document.getElementById("riddle-sequence");if(display)display.textContent=riddleSequence.map(x=>labels[x]).join(" → ");
+ const status=document.getElementById("game-status");if(status)status.textContent="SYMBOLES SÉLECTIONNÉS : "+riddleSequence.length+"/3";
 }
-function riddleReset(){
- riddleSequence=[];
- episodeRiddleStart();
-}
-function episodeRiddleStart(){
- ffScene(
-  "<p>Les trois mots gravés sur la toile semblent indiquer une action pour chaque signe : <strong>règne · demeure · passe</strong>.</p><p>Compose l'ordre complet en touchant les trois symboles, un par un.</p><p><strong>Ordre choisi :</strong> <span id=\"riddle-sequence\">Aucun symbole</span></p>",
-  '<div class="game-riddle"><button class="riddle-choice" onclick="riddleAdd(\'couronne\')">Couronne</button><button class="riddle-choice" onclick="riddleAdd(\'montagne\')">Montagne</button><button class="riddle-choice" onclick="riddleAdd(\'vague\')">Vague</button></div><div class="game-actions"><button class="game-btn gold" onclick="episodeCheckRiddle()">Vérifier l’ordre</button><button class="game-btn" onclick="riddleReset()">Recommencer</button></div>',
-  "ÉNIGME : LE DISQUE DE CUIVRE",
-  "Indice : règne, demeure, passe. Chaque mot correspond à un symbole."
- );
-}
+function riddleReset(){riddleSequence=[];episodeRiddleStart();}
 function episodeCheckRiddle(){
- if(riddleSequence.length!==3){
-  const fb=document.getElementById("game-feedback");
-  if(fb)fb.textContent="Il faut choisir les trois symboles avant de vérifier.";
-  return;
- }
+ if(riddleSequence.length!==3){const fb=document.getElementById("game-feedback");if(fb)fb.textContent="Il faut choisir les trois symboles avant de vérifier.";return;}
  const answer=["couronne","montagne","vague"];
- if(riddleSequence.every((v,i)=>v===answer[i])){
-  episodeSolve();
- }else{
-  const fb=document.getElementById("game-feedback");
-  if(fb)fb.textContent="Le disque tremble puis se bloque. L'ordre n'est pas le bon. Relis les mots : règne · demeure · passe, puis recommence.";
-  const st=document.getElementById("game-status");
-  if(st)st.textContent="ORDRE INCORRECT · NOUVEL ESSAI POSSIBLE";
- }
+ if(riddleSequence.every((v,i)=>v===answer[i]))episodeSolve();
+ else{const fb=document.getElementById("game-feedback");if(fb)fb.textContent="Le disque tremble puis se bloque. L'ordre n'est pas le bon. Relis les mots : règne · demeure · passe, puis recommence.";const st=document.getElementById("game-status");if(st)st.textContent="ORDRE INCORRECT · NOUVEL ESSAI POSSIBLE";}
 }
 function episodeSolve(){
- ffRecord("Fragment de carte inconnu");
- ffRecord("Énigme du disque résolue");
- ffScene("<p>Le disque s'aligne. Un compartiment s'ouvre dans la reliure. Il contient un fragment de carte sans nom. Une côte y est dessinée, puis une ligne de points qui s'interrompt au milieu de la mer.</p><p>Au bout de la ruelle, une silhouette en manteau sombre apparaît. Une lueur bleue flotte près de son épaule.</p><p><strong>« Je ne garde pas la porte. Je garde le souvenir de ceux qui l'ont franchie. »</strong></p><p>Quand tu relèves les yeux, la silhouette a disparu. Sur la pierre, une phrase : <strong>Hauterive conserve ce que Valombre oublie.</strong></p>",
- '<button class="game-btn gold" onclick="episodeFinish()">Inscrire la découverte au grimoire</button>',
- "ÉPISODE 01 : PREMIÈRE PORTE OBSERVÉE","Bravo. Vous avez découvert le premier fragment de l'histoire.");
+ ffRecord("Fragment de carte inconnu");ffRecord("Énigme du disque résolue");ffSetEpisodeState("solved",[]);
+ ffScene("<p>La couronne s'aligne avec la montagne, puis la vague. Un déclic traverse le cuivre. Un compartiment s'ouvre dans la reliure.</p><p>À l'intérieur repose un fragment de carte sans nom. Une côte y est dessinée, puis une ligne de points qui s'interrompt au milieu de la mer.</p><p>Au bout de la ruelle, une silhouette en manteau sombre apparaît. Une lueur bleue flotte près de son épaule.</p><p><strong>« Je ne garde pas la porte. Je garde le souvenir de ceux qui l'ont franchie. »</strong></p><p>Quand tu relèves les yeux, la silhouette a disparu. Sur la pierre, une phrase demeure : <strong>Hauterive conserve ce que Valombre oublie.</strong></p>",
+ '<button class="game-btn gold" onclick="episodeFinish()">Inscrire la découverte au Grimoire</button>',
+ "ÉPISODE 01 : LE PREMIER SEUIL","Le disque est ouvert. Le fragment et le Veilleur ont laissé leur trace.");
 }
 function episodeFinish(){
- ffRecord("Première rencontre avec le Veilleur");
- ffRecord("Piste vers Hauterive");
- ffScene("<p>Le grimoire se referme. Une nouvelle destination y apparaît : <strong>Hauterive, la ville des archives</strong>.</p><p>Tu peux revenir plus tard. Le monde, lui, n'a pas fini de parler.</p>",
- '<button class="game-btn gold" onclick="showGrimoire()">Consulter mon grimoire</button><button class="game-btn" onclick="location.hash=\'atlas\'">Explorer l’atlas</button>',
- "ÉPISODE 01 TERMINÉ","Votre progression est enregistrée sur cet appareil.");
+ ffRecord("Première rencontre avec le Veilleur");ffRecord("Piste vers Hauterive");ffSetEpisodeState("complete",[]);
+ ffScene("<p>Tu refermes le registre. Une destination apparaît désormais dans ton Grimoire : <strong>Hauterive, la ville des archives</strong>.</p><p>Valombre t'a livré un premier secret. Mais la carte, elle, demeure incomplète.</p><p><em>Fin de l'épisode 01 — La suite attend à Hauterive.</em></p>",
+ '<button class="game-btn gold" onclick="showGrimoire()">Consulter mon Grimoire</button><button class="game-btn" onclick="location.href=\'atlas.html\'">Explorer l’Atlas</button>',
+ "ÉPISODE 01 TERMINÉ","Ta progression est enregistrée sur cet appareil.");
+}
+function restoreEpisode(){
+ const state=ffEpisodeState();riddleSequence=state.sequence||[];
+ if(state.stage==="symbol"){episodeChoice("examiner");}
+ else if(state.stage==="witness"){episodeChoice("appeler");}
+ else if(state.stage==="register"){episodeChoice("prendre");}
+ else if(state.stage==="riddle"){
+  episodeRiddleStart(true);
+  if(riddleSequence.length){const labels={couronne:"Couronne",montagne:"Montagne",vague:"Vague"};const display=document.getElementById("riddle-sequence");if(display)display.textContent=riddleSequence.map(x=>labels[x]).join(" → ");}
+ }else if(state.stage==="solved"){episodeSolve();}
+ else if(state.stage==="complete"){episodeFinish();}
+}
+function resetEpisode(){
+ if(!confirm("Recommencer l'épisode 01 ? Tes découvertes déjà inscrites au Grimoire seront conservées."))return;
+ ffSetEpisodeState("intro",[]);riddleSequence=[];location.reload();
 }
 const grimoireCatalog=[
  {name:"Le Signe sans royaume",art:"sigil",type:"SYMBOLE",desc:"Un cercle incomplet traversé par une ligne verticale.",detail:"Le signe a été pressé dans la fibre d'une toile ancienne. Il ne porte le blason d'aucune dynastie connue. Pourtant, certains témoins le reconnaissent et préfèrent se taire.",note:"Un signe sans royaume… ou le souvenir d'un royaume que les cartes ont effacé ?",origin:"Valombre · Première observation",lockHint:'Une marque que personne ne revendique. Pourtant, elle est reconnue.'},
@@ -217,3 +210,4 @@ window.addEventListener("DOMContentLoaded",function(){bindGrimoireCards();refres
 // Le script est placé en fin de page : le conteneur existe déjà au moment de l'exécution.
 bindGrimoireCards();
 
+window.addEventListener("DOMContentLoaded",function(){if(document.getElementById("game-scene"))restoreEpisode();});
