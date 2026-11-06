@@ -30,6 +30,33 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 @media(max-width:760px){.nav{padding:12px 16px;flex-wrap:wrap}.brand{font-size:14px}nav{order:3;width:100%;justify-content:center;border-top:1px solid rgba(210,178,119,.12);padding-top:5px}nav a{padding:9px 10px;font-size:9px}.nav-cta{font-size:9px}.hero{min-height:620px}.hero-inner{padding:75px 22px 100px}.flame-orb{right:4%;top:24%;width:105px;height:140px;opacity:.72}.hero h1{max-width:530px;font-size:clamp(40px,11vw,62px)}.hero p{max-width:470px;font-size:14px}.pillars{grid-template-columns:1fr}.pillar{min-height:190px}.atlas{grid-template-columns:1fr;gap:28px}.map-art{min-height:330px}.region-list{grid-template-columns:1fr 1fr}section.content{padding:75px 20px}}
 @media(max-width:390px){nav a{letter-spacing:1px;padding:8px 7px}.actions .button{width:100%}.region-list{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+.atlas-explorer{max-width:1200px;margin:0 auto;padding:0 26px 100px}
+.atlas-explorer-head{text-align:center;margin:0 auto 32px;max-width:700px}
+.atlas-explorer-head .eyebrow{color:var(--gold)}
+.atlas-explorer-head h2{font:500 clamp(26px,4vw,38px) var(--serif);color:var(--pale);margin:12px 0}
+.atlas-explorer-head p{color:var(--muted);font-size:13px}
+.region-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.region-card{position:relative;text-align:left;min-height:210px;padding:23px;border:1px solid var(--line);background:linear-gradient(145deg,#172536,#0b1420);color:#eee7d9;cursor:pointer;overflow:hidden;transition:.25s}
+.region-card:before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-70px;top:-75px;background:radial-gradient(circle,rgba(130,223,241,.16),transparent 70%)}
+.region-card:hover,.region-card.selected{transform:translateY(-4px);border-color:var(--ice);background:linear-gradient(145deg,#1b3042,#0b1420)}
+.region-card .index{font:12px var(--serif);color:var(--ice);letter-spacing:2px}
+.region-card h3{font:500 19px var(--serif);color:var(--pale);margin:14px 0 7px}
+.region-card p{font-size:12px;color:#b8c2cd;margin:0;max-width:300px}
+.region-card .discover{display:block;margin-top:17px;font-size:9px;letter-spacing:2px;color:var(--ice)}
+.region-dossier{display:grid;grid-template-columns:.75fr 1.25fr;gap:28px;margin-top:22px;padding:28px;border:1px solid rgba(130,223,241,.28);background:linear-gradient(120deg,rgba(22,45,61,.72),rgba(10,17,29,.95));}
+.dossier-mark{min-height:210px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);background:radial-gradient(circle,rgba(87,188,212,.16),transparent 60%),#0a1420}
+.dossier-mark span{font:500 clamp(38px,6vw,65px) var(--serif);color:rgba(130,223,241,.72);text-shadow:0 0 30px rgba(130,223,241,.3)}
+.dossier-copy .eyebrow{color:var(--ice)}
+.dossier-copy h3{font:500 clamp(23px,3vw,34px) var(--serif);color:var(--pale);margin:9px 0}
+.dossier-copy p{font-size:13px;color:#c3ccd5}
+.dossier-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+.dossier-fact{border-top:1px solid var(--line);padding-top:10px}
+.dossier-fact b{display:block;font-size:9px;letter-spacing:2px;color:var(--gold);margin-bottom:4px}
+.dossier-fact span{font-size:11px;color:#d5dce2}
+@media(max-width:760px){.region-cards{grid-template-columns:1fr 1fr}.region-dossier{grid-template-columns:1fr;padding:18px}.dossier-mark{min-height:130px}.atlas-explorer{padding:0 20px 75px}}
+@media(max-width:430px){.region-cards{grid-template-columns:1fr}.region-card{min-height:165px}.dossier-facts{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -61,22 +88,49 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 <div class="map-art" role="img" aria-label="Carte stylisée et mystérieuse des terres de FEU FOLLET"><div class="continent c1"></div><div class="continent c2"></div><div class="continent c3"></div><div class="island"></div><span class="map-label l1">AURENTH</span><span class="map-label l2">VARKHÖL</span><span class="map-label l3">ORVANE</span><button class="map-pin pin1" aria-label="Découvrir Aurenth" data-region="aurenth"></button><button class="map-pin pin2" aria-label="Découvrir Varkhöl" data-region="varkhol"></button><button class="map-pin pin3" aria-label="Découvrir Orvane" data-region="orvane"></button><div class="map-caption">ATLAS INCOMPLET · TERRES CONNUES</div></div>
 <div class="atlas-copy"><div class="eyebrow">L'ATLAS DES TERRES CONNUES</div><h2>Un monde immense.<br>Des secrets sans fin.</h2><p>Six régions composent les premières pages de notre atlas. Certaines sont connues, d'autres cachent des civilisations dont l'existence même est contestée. La carte complète reste à découvrir.</p>
 <div class="region-list"><button class="region active" data-region="aurenth">AURENTH</button><button class="region" data-region="varkhol">VARKHÖL</button><button class="region" data-region="sylvara">SYLVARA</button><button class="region" data-region="drakem">DRAKEM</button><button class="region" data-region="orvane">ÎLES D'ORVANE</button><button class="region" data-region="nereth">NÉRÉTH</button></div><div class="region-detail" id="region-detail" aria-live="polite">Les terres des royaumes anciens. Plaines, cités fortifiées et dynasties dont les archives ne racontent pas toujours toute la vérité.</div></div>
+</section>
+<section class="atlas-explorer">
+<div class="atlas-explorer-head"><div class="eyebrow">FEUILLETER L'ATLAS</div><h2>Six régions. Six visages du monde.</h2><p>Choisissez une région pour consulter sa première fiche. Les territoires inconnus et les secrets seront révélés au fil des aventures.</p></div>
+<div class="region-cards" id="region-cards">
+<button class="region-card selected" data-region="aurenth"><span class="index">01 · TERRES ROYALES</span><h3>AURENTH</h3><p>Des plaines fertiles, des cités fortifiées et des dynasties anciennes.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
+<button class="region-card" data-region="varkhol"><span class="index">02 · HAUTES TERRES</span><h3>VARKHÖL</h3><p>Des montagnes glacées et des forteresses taillées dans la pierre.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
+<button class="region-card" data-region="sylvara"><span class="index">03 · TERRES VIVANTES</span><h3>SYLVARA</h3><p>Une forêt immense où les chemins semblent se déplacer.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
+<button class="region-card" data-region="drakem"><span class="index">04 · TERRES ARDENTES</span><h3>DRAKEM</h3><p>Des volcans, des cités de roche noire et des machines oubliées.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
+<button class="region-card" data-region="orvane"><span class="index">05 · ARCHIPEL</span><h3>ÎLES D'ORVANE</h3><p>Des cités portuaires et des routes maritimes incertaines.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
+<button class="region-card" data-region="nereth"><span class="index">06 · MONDE SOUTERRAIN</span><h3>NÉRÉTH</h3><p>Des profondeurs dont l'existence même reste contestée.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
+</div>
+<div class="region-dossier" aria-live="polite">
+<div class="dossier-mark"><span id="dossier-symbol">A</span></div>
+<div class="dossier-copy"><div class="eyebrow" id="dossier-kicker">FICHE DE RÉGION · 01</div><h3 id="dossier-title">AURENTH — Les terres des couronnes</h3><p id="dossier-description">Au cœur des terres connues s'étendent les royaumes d'Aurenth. Des routes anciennes relient les cités fortifiées, les marchés et les domaines des grandes maisons. Les chroniques y sont nombreuses, mais certaines pages semblent avoir été volontairement arrachées.</p>
+<div class="dossier-facts">
+<div class="dossier-fact"><b>PAYSAGES</b><span id="dossier-landscape">Plaines, forêts tempérées, collines et citadelles</span></div>
+<div class="dossier-fact"><b>PEUPLE ASSOCIÉ</b><span id="dossier-people">Les Auréans</span></div>
+<div class="dossier-fact"><b>RÉPUTATION</b><span id="dossier-reputation">Pouvoirs anciens, alliances et rivalités</span></div>
+<div class="dossier-fact"><b>MYSTÈRE CONNU</b><span id="dossier-mystery">Des archives qui ne racontent pas toute l'histoire</span></div>
+</div></div></div>
 </section></div>
 <div class="manifesto"><div class="quote">« Tu ne viens pas acheter une légende.<br>Tu viens la découvrir. »</div><small>FEU FOLLET · LA SAGA COMMENCE</small></div>
 </main>
 <footer><strong>✦ FEU FOLLET</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer>
 <script>
-const descriptions={
-aurenth:"Les terres des royaumes anciens. Plaines, cités fortifiées et dynasties dont les archives ne racontent pas toujours toute la vérité.",
-varkhol:"Des montagnes glacées, des forteresses creusées dans la roche et des profondeurs où certains prétendent entendre des voix.",
-sylvara:"Une forêt immense où les chemins changent. Les habitants disent que la forêt n'appartient à personne et ne se laisse jamais posséder.",
-drakem:"Des terres volcaniques où subsistent des machines héritées de civilisations disparues. Personne ne sait vraiment les fabriquer.",
-orvane:"Un archipel de navigateurs et de cités marchandes. Certaines îles ne figurent sur les cartes qu'à certaines saisons.",
-nereth:"Un monde souterrain dont l'existence est contestée. Les rares témoignages évoquent des cités sous les montagnes."
+const regions={
+aurenth:{number:"01",symbol:"A",title:"AURENTH — Les terres des couronnes",description:"Au cœur des terres connues s'étendent les royaumes d'Aurenth. Des routes anciennes relient les cités fortifiées, les marchés et les domaines des grandes maisons. Les chroniques y sont nombreuses, mais certaines pages semblent avoir été volontairement arrachées.",landscape:"Plaines, forêts tempérées, collines et citadelles",people:"Les Auréans",reputation:"Pouvoirs anciens, alliances et rivalités",mystery:"Des archives qui ne racontent pas toute l'histoire"},
+varkhol:{number:"02",symbol:"V",title:"VARKHÖL — Les montagnes qui murmurent",description:"Au nord, les chaînes de Varkhöl dressent leurs sommets au-dessus des brumes et des glaces. Des bastions sont creusés dans la montagne. Les voyageurs racontent que, certaines nuits, la roche résonne comme si quelque chose bougeait très loin sous leurs pieds.",landscape:"Glaciers, cols étroits, vallées gelées et cavernes",people:"Les Varkhans",reputation:"Endurance, mémoire orale et forteresses",mystery:"Des sons inexpliqués dans les profondeurs"},
+sylvara:{number:"03",symbol:"S",title:"SYLVARA — La forêt aux chemins mouvants",description:"Sylvara est une étendue de forêts anciennes, de clairières brumeuses et d'eaux silencieuses. Les sentiers ne conduisent pas toujours au même endroit. Ceux qui y vivent semblent connaître des passages que les cartes ne peuvent retenir.",landscape:"Forêts monumentales, marais, rivières et clairières",people:"Les Sylvari",reputation:"Savoir des plantes, discrétion et traditions mouvantes",mystery:"Des chemins qui changent lorsque nul ne les regarde"},
+drakem:{number:"04",symbol:"D",title:"DRAKEM — Les terres ardentes",description:"Autour des volcans de Drakem s'élèvent des cités de roche sombre et des ateliers où l'on travaille des alliages rares. Des machines anciennes y fonctionnent encore. Leurs gardiens savent les entretenir, mais ignorent qui les a conçues.",landscape:"Volcans, champs de cendres, falaises et coulées pétrifiées",people:"Les Drakéens",reputation:"Forge, savoir-faire technique et secrets industriels",mystery:"Des machines dont personne ne connaît l'origine"},
+orvane:{number:"05",symbol:"O",title:"ORVANE — Les îles des routes changeantes",description:"Les îles d'Orvane sont dispersées sur une mer parcourue de courants puissants. Les navigateurs y échangent des marchandises, des récits et des cartes. Certaines routes ne seraient praticables qu'à des périodes précises, comme si la mer ouvrait et refermait ses passages.",landscape:"Falaises, ports, récifs, plages sombres et îlots isolés",people:"Les Orvaniens",reputation:"Navigation, commerce et exploration",mystery:"Des îles absentes de certaines cartes"},
+nereth:{number:"06",symbol:"N",title:"NÉRÉTH — Les profondeurs contestées",description:"Néréth n'apparaît sur aucune carte officielle. Pourtant, des récits évoquent des lacs souterrains, des galeries immenses et des cités éclairées par des cristaux. Aucun témoignage n'a encore permis de prouver que ce monde existe.",landscape:"Cavernes, lacs souterrains, failles et galeries profondes",people:"Les Néréthiens — existence non confirmée",reputation:"Légende, silence et savoirs inconnus",mystery:"Une civilisation qui pourrait vivre sous le monde"}
 };
 function selectRegion(name){
+ const r=regions[name]; if(!r)return;
  document.querySelectorAll(".region").forEach(b=>b.classList.toggle("active",b.dataset.region===name));
- const detail=document.getElementById("region-detail"); if(detail) detail.textContent=descriptions[name]||"Cette région reste à découvrir.";
+ document.querySelectorAll(".region-card").forEach(b=>b.classList.toggle("selected",b.dataset.region===name));
+ const set=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value};
+ set("region-detail",r.description);
+ set("dossier-symbol",r.symbol);set("dossier-kicker","FICHE DE RÉGION · "+r.number);
+ set("dossier-title",r.title);set("dossier-description",r.description);
+ set("dossier-landscape",r.landscape);set("dossier-people",r.people);
+ set("dossier-reputation",r.reputation);set("dossier-mystery",r.mystery);
 }
 document.querySelectorAll("[data-region]").forEach(el=>el.addEventListener("click",()=>selectRegion(el.dataset.region)));
 </script>
