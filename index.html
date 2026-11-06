@@ -5,8 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080d18">
-<meta name="feu-follet-version" content="episode-01-jouable-v2">
-<title>FEU FOLLET — Épisode 01 · Le Registre sans nom</title>
+<title>FEU FOLLET — Entrez dans la légende</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -206,15 +205,57 @@ function episodeChoice(choice){
  }else{
   ffRecord("Registre sans nom");
   ffScene("<p>La toile se défait. À l'intérieur, un registre sans titre, sans auteur et sans sceau. Plusieurs pages ont été arrachées avec une précision remarquable.</p><p><strong>« Les routes furent comptées. Les couronnes furent nommées. Les frontières furent tracées. Mais nul ne consigna le lieu qui manquait. »</strong></p><p>Dans la reliure, tu découvres un disque de cuivre à trois symboles : une couronne, une montagne et une vague.</p><p><em>Dans quel ordre faut-il les placer ?</em></p>",
-  '<div class="game-riddle"><button class="riddle-choice" onclick="episodeRiddle(\'couronne\')">Couronne</button><button class="riddle-choice" onclick="episodeRiddle(\'montagne\')">Montagne</button><button class="riddle-choice" onclick="episodeRiddle(\'vague\')">Vague</button></div>',
+  '<button class="game-btn gold" onclick="episodeRiddleStart()">Composer l’ordre des trois symboles</button>',
   "ÉNIGME : LE DISQUE DE CUIVRE","Le registre est ajouté à votre grimoire.");
  }
 }
+let riddleSequence=[];
 function episodeRiddle(first){
- const promptText = first==="couronne" ? "La couronne vient en premier. Il reste à trouver ce qui demeure, puis ce qui passe." : "Le disque résiste. Relis les trois mots gravés sur la toile : règne, demeure, passe.";
- ffScene("<p>"+promptText+"</p><p>Choisis maintenant l'ordre complet : <strong>Couronne → Montagne → Vague</strong>.</p>",
- '<button class="game-btn gold" onclick="episodeSolve()">Valider l’ordre</button><button class="game-btn" onclick="episodeChoice(\'examiner\')">Revoir les indices</button>',
- "ÉNIGME EN COURS","Indice : la couronne règne, la montagne demeure, la vague passe.");
+ riddleSequence=[first];
+ const labels={couronne:"Couronne",montagne:"Montagne",vague:"Vague"};
+ ffScene(
+  "<p>Le disque réagit au premier symbole. Les trois mots gravés sur la toile semblent indiquer une action pour chaque signe : <strong>règne · demeure · passe</strong>.</p><p>Compose maintenant l'ordre complet en touchant les trois symboles, un par un.</p><p><strong>Ordre choisi :</strong> <span id=\"riddle-sequence\">"+labels[first]+"</span></p>",
+  '<div class="game-riddle"><button class="riddle-choice" onclick="riddleAdd(\'couronne\')">Couronne</button><button class="riddle-choice" onclick="riddleAdd(\'montagne\')">Montagne</button><button class="riddle-choice" onclick="riddleAdd(\'vague\')">Vague</button></div><div class="game-actions"><button class="game-btn gold" onclick="episodeCheckRiddle()">Vérifier l’ordre</button><button class="game-btn" onclick="riddleReset()">Recommencer</button></div>',
+  "ÉNIGME : LE DISQUE DE CUIVRE",
+  "Indice : règne, demeure, passe. Chaque mot correspond à un symbole."
+ );
+}
+function riddleAdd(symbol){
+ if(riddleSequence.length>=3)return;
+ riddleSequence.push(symbol);
+ const labels={couronne:"Couronne",montagne:"Montagne",vague:"Vague"};
+ const display=document.getElementById("riddle-sequence");
+ if(display)display.textContent=riddleSequence.map(x=>labels[x]).join(" → ");
+ const status=document.getElementById("game-status");
+ if(status)status.textContent="SYMBOLES SÉLECTIONNÉS : "+riddleSequence.length+"/3";
+}
+function riddleReset(){
+ riddleSequence=[];
+ episodeRiddleStart();
+}
+function episodeRiddleStart(){
+ ffScene(
+  "<p>Les trois mots gravés sur la toile semblent indiquer une action pour chaque signe : <strong>règne · demeure · passe</strong>.</p><p>Compose l'ordre complet en touchant les trois symboles, un par un.</p><p><strong>Ordre choisi :</strong> <span id=\"riddle-sequence\">Aucun symbole</span></p>",
+  '<div class="game-riddle"><button class="riddle-choice" onclick="riddleAdd(\'couronne\')">Couronne</button><button class="riddle-choice" onclick="riddleAdd(\'montagne\')">Montagne</button><button class="riddle-choice" onclick="riddleAdd(\'vague\')">Vague</button></div><div class="game-actions"><button class="game-btn gold" onclick="episodeCheckRiddle()">Vérifier l’ordre</button><button class="game-btn" onclick="riddleReset()">Recommencer</button></div>',
+  "ÉNIGME : LE DISQUE DE CUIVRE",
+  "Indice : règne, demeure, passe. Chaque mot correspond à un symbole."
+ );
+}
+function episodeCheckRiddle(){
+ if(riddleSequence.length!==3){
+  const fb=document.getElementById("game-feedback");
+  if(fb)fb.textContent="Il faut choisir les trois symboles avant de vérifier.";
+  return;
+ }
+ const answer=["couronne","montagne","vague"];
+ if(riddleSequence.every((v,i)=>v===answer[i])){
+  episodeSolve();
+ }else{
+  const fb=document.getElementById("game-feedback");
+  if(fb)fb.textContent="Le disque tremble puis se bloque. L'ordre n'est pas le bon. Relis les mots : règne · demeure · passe, puis recommence.";
+  const st=document.getElementById("game-status");
+  if(st)st.textContent="ORDRE INCORRECT · NOUVEL ESSAI POSSIBLE";
+ }
 }
 function episodeSolve(){
  ffRecord("Fragment de carte inconnu");
