@@ -1,5 +1,4 @@
 
-
 /* FEU FOLLET — app.js complet — V3.1
    Corrections : illustration distincte pour le témoin de Valombre ; lien Episode-02.html avec E majuscule. */
 const regions={
@@ -336,22 +335,8 @@ function refreshGrimoire(){
 function openGrimoireEntry(index){
   const item=grimoireCatalog[index];
   const found=ffLoad().discoveries||[];
-  const detail=document.getElementById("grimoire-detail");
-  if(!item||!found.includes(item.name)||!detail)return;
-
-  detail.innerHTML=
-    grimoireArt(item.art,true)+
-    '<div class="detail-type">'+item.type+' · ARCHIVES DU GRIMOIRE</div>'+
-    '<h3>'+item.name+'</h3>'+
-    '<p>'+item.detail+'</p>'+
-    '<div class="detail-note">'+item.note+'</div>'+
-    '<p><strong>Origine :</strong> '+item.origin+'</p>'+
-    '<button type="button" class="detail-close" onclick="closeGrimoireEntry()">Refermer cette page</button>';
-
-  detail.classList.remove("open");
-  void detail.offsetWidth;
-  detail.classList.add("open");
-  detail.scrollIntoView({behavior:"smooth",block:"start"});
+  if(!item||!found.includes(item.name))return;
+  location.href="fiche.html?id="+encodeURIComponent(String(index));
 }
 function closeGrimoireEntry(){
   const detail=document.getElementById("grimoire-detail");
@@ -396,3 +381,62 @@ bindGrimoireCards();
 window.addEventListener("DOMContentLoaded",function(){if(document.getElementById("game-scene"))restoreEpisode();});
 
 window.addEventListener("DOMContentLoaded",function(){if(document.getElementById("episode02-scene")){episode02Start();}});
+
+
+/* FICHES IMMERSIVES DU GRIMOIRE */
+function renderGrimoireFiche(){
+  const root=document.getElementById("fiche-content");
+  if(!root)return;
+  const params=new URLSearchParams(location.search);
+  const index=Number(params.get("id"));
+  const item=Number.isInteger(index)?grimoireCatalog[index]:null;
+  const found=ffLoad().discoveries||[];
+  if(!item||!found.includes(item.name)){
+    root.innerHTML='<div class="fiche-unavailable"><div class="fiche-kicker">ARCHIVES FERMÉES</div><h1>Cette page demeure scellée</h1><p>Cette découverte n’a pas encore été inscrite dans ton Grimoire.</p><a class="fiche-back" href="grimoire.html">Retourner au Grimoire</a></div>';
+    return;
+  }
+  const imageFiles={
+    symbole:"01-symbole-decouvert.png",
+    registre:"02-registre-relique-decouvert.png",
+    fragment:"03-fragment-carte-decouvert.png",
+    enigme:"04-disque-enigme-decouvert.png",
+    veilleur:"05-veilleur-rencontre-decouvert.png",
+    hauterive:"06-chemin-hauterive-destination-decouvert.png",
+    temoin:"07-temoin-scelle.png",
+    personnage:"08-plume-copiste-personnage-scelle.png",
+    lieu:"09-salle-archives-lieu-scelle.png",
+    relique:"10-relique-sceau-bleu-scelle.png",
+    document:"11-document-parchemin-scelle.png",
+    motcle:"12-mot-cle-pierres-runiques-scelle.png",
+    destination:"13-destination-portail-scelle.png"
+  };
+  const image=imageFiles[item.art]||imageFiles.symbole;
+  const videoName=String(index+1).padStart(2,"0")+"-"+({
+    symbole:"symbole-decouvert",registre:"registre-relique-decouvert",
+    fragment:"fragment-carte-decouvert",enigme:"disque-enigme-decouvert",
+    veilleur:"veilleur-rencontre-decouvert",hauterive:"chemin-hauterive-destination-decouvert",
+    temoin:"temoin-scelle",personnage:"plume-copiste-personnage-scelle",
+    lieu:"salle-archives-lieu-scelle",relique:"relique-sceau-bleu-scelle",
+    document:"document-parchemin-scelle",motcle:"mot-cle-pierres-runiques-scelle",
+    destination:"destination-portail-scelle"
+  }[item.art]||"decouverte")+".mp4";
+  const videoPath="assets/videos/grimoire/"+videoName;
+  root.innerHTML=
+    '<a class="fiche-back" href="grimoire.html">← Retour au Grimoire</a>'+
+    '<div class="fiche-kicker">'+item.type+' · DÉCOUVERT</div>'+
+    '<h1 class="fiche-title">'+item.name+'</h1>'+
+    '<div class="fiche-hero"><img src="assets/grimoire/'+image+'" alt="'+item.name+'"></div>'+
+    '<section class="fiche-video-section"><div class="fiche-section-label">SÉQUENCE D’ARCHIVES</div>'+
+    '<video class="fiche-video" controls playsinline preload="metadata" poster="assets/grimoire/'+image+'">'+
+    '<source src="'+videoPath+'" type="video/mp4">'+
+    '</video><p class="fiche-video-note">La séquence animée de cette découverte sera ajoutée ici.</p></section>'+
+    '<section class="fiche-story"><div class="fiche-section-label">CE QUE LES ARCHIVES RÉVÈLENT</div>'+
+    '<p class="fiche-description">'+item.detail+'</p>'+
+    '<blockquote>'+item.note+'</blockquote>'+
+    '<p class="fiche-origin"><strong>Origine :</strong> '+item.origin+'</p></section>'+
+    '<a class="fiche-back fiche-back-bottom" href="grimoire.html">← Revenir aux découvertes</a>';
+  const video=root.querySelector(".fiche-video");
+  const note=root.querySelector(".fiche-video-note");
+  video.addEventListener("error",function(){video.hidden=true;note.textContent="La séquence vidéo de cette découverte sera ajoutée prochainement.";});
+}
+window.addEventListener("DOMContentLoaded",renderGrimoireFiche);
