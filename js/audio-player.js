@@ -1,131 +1,262 @@
 
-/* FEU FOLLET — Lecteur d'ambiance compact */
+/* =====================================================
+   FEU FOLLET — LES MURMURES DE LA TERRE ABSENTE
+   Lecteur audio intégré au décor du site
+   ===================================================== */
+
 (function () {
   "use strict";
 
   if (document.getElementById("ff-audio-player")) return;
 
-  const AUDIO_SRC = "/ignis-fatuus/assets/audio/Whispers-Beyond-Time.mp3";
+  const AUDIO_SRC =
+    "/ignis-fatuus/assets/audio/Whispers-Beyond-Time.mp3";
+
+  /* ---------- STYLE DU LECTEUR ---------- */
 
   const style = document.createElement("style");
+
   style.textContent = `
     #ff-audio-player {
-      position:fixed; z-index:99999; right:12px; bottom:12px;
-      width:205px; color:#ead9b5; background:#171914;
-      border:1px solid #9c7b45; border-radius:30px;
-      box-shadow:0 4px 18px #0009; font-family:Georgia,serif;
-      overflow:hidden;
+      position: relative;
+      display: block;
+      width: min(290px, calc(100% - 32px));
+      margin: 24px auto 30px;
+      padding: 12px 15px;
+      color: #e9d8b5;
+      background: linear-gradient(145deg, #24231c, #11130f);
+      border: 1px solid #927345;
+      border-radius: 12px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.35);
+      font-family: Georgia, serif;
+      box-sizing: border-box;
+      z-index: 2;
     }
-    #ff-audio-player * { box-sizing:border-box; }
-    #ff-audio-player .head {
-      display:flex; align-items:center; gap:9px; padding:7px 9px;
+
+    #ff-audio-player * {
+      box-sizing: border-box;
     }
-    #ff-audio-player .symbol {
-      color:#d6b36f; font-size:19px;
+
+    #ff-audio-player .ff-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    #ff-audio-player .name {
-      flex:1; min-width:0; font-size:11px;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+
+    #ff-audio-player .ff-emblem {
+      color: #d6b36f;
+      font-size: 23px;
+      line-height: 1;
     }
+
+    #ff-audio-player .ff-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    #ff-audio-player .ff-label {
+      color: #c6a36a;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    #ff-audio-player .ff-title {
+      color: #f0e4cb;
+      font-size: 12px;
+      line-height: 1.3;
+    }
+
     #ff-audio-player button {
-      border:0; cursor:pointer; font:inherit;
+      cursor: pointer;
+      font-family: inherit;
     }
-    #ff-audio-player .play {
-      width:32px; height:32px; border-radius:50%;
-      background:#c5a269; color:#171914; font-size:15px;
+
+    #ff-audio-player .ff-play {
+      flex: 0 0 36px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid #d1ad70;
+      border-radius: 50%;
+      color: #171610;
+      background: linear-gradient(145deg, #e0c184, #a77e42);
+      font-size: 15px;
     }
-    #ff-audio-player .expand {
-      background:transparent; color:#d6b36f; font-size:16px;
-      padding:5px;
+
+    #ff-audio-player .ff-play:hover {
+      filter: brightness(1.15);
     }
-    #ff-audio-player .details {
-      display:none; padding:0 13px 12px;
+
+    #ff-audio-player .ff-controls {
+      margin-top: 10px;
+      padding-top: 9px;
+      border-top: 1px solid rgba(190,155,95,.25);
+      display: flex;
+      align-items: center;
+      gap: 9px;
     }
-    #ff-audio-player.open { width:min(285px,calc(100vw - 24px)); border-radius:15px; }
-    #ff-audio-player.open .details { display:block; }
-    #ff-audio-player .title {
-      font-size:13px; color:#e4c58b; margin:3px 0 8px;
+
+    #ff-audio-player .ff-volume-label {
+      color: #b9a783;
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: 1px;
     }
-    #ff-audio-player .volume {
-      display:flex; align-items:center; gap:8px;
-      font:10px Arial,sans-serif; margin-top:9px;
+
+    #ff-audio-player .ff-volume {
+      flex: 1;
+      min-width: 0;
+      accent-color: #c5a269;
+      cursor: pointer;
     }
-    #ff-audio-player input { width:100%; accent-color:#c5a269; }
-    #ff-audio-player .status {
-      font:10px Arial,sans-serif; color:#b8aa8d;
-      margin-top:8px; line-height:1.4;
+
+    #ff-audio-player .ff-status {
+      margin-top: 8px;
+      color: #a99b7d;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      line-height: 1.4;
+      text-align: center;
     }
-    @media(max-width:400px) {
-      #ff-audio-player { right:8px; bottom:8px; }
+
+    @media (max-width: 480px) {
+      #ff-audio-player {
+        width: min(270px, calc(100% - 28px));
+        margin: 20px auto 25px;
+      }
     }
   `;
+
   document.head.appendChild(style);
 
-  const player = document.createElement("aside");
+  /* ---------- STRUCTURE DU LECTEUR ---------- */
+
+  const player = document.createElement("div");
   player.id = "ff-audio-player";
+
   player.innerHTML = `
-    <div class="head">
-      <span class="symbol">✦</span>
-      <span class="name">FEU FOLLET · Ambiance</span>
-      <button class="play" aria-label="Lire">▶</button>
-      <button class="expand" aria-label="Agrandir">＋</button>
-    </div>
-    <div class="details">
-      <div class="title">Les Murmures de la Terre absente</div>
-      <div class="volume">
-        <span>VOLUME</span>
-        <input class="vol" type="range" min="0" max="1" step="0.01" value="0.22">
+    <div class="ff-top">
+      <span class="ff-emblem">✦</span>
+
+      <div class="ff-info">
+        <div class="ff-label">Ambiance sonore</div>
+        <div class="ff-title">
+          Les Murmures de la Terre absente
+        </div>
       </div>
-      <div class="status">L'ambiance vous attend.</div>
+
+      <button class="ff-play" type="button"
+        aria-label="Lire la musique">▶</button>
+    </div>
+
+    <div class="ff-controls">
+      <span class="ff-volume-label">VOLUME</span>
+      <input class="ff-volume" type="range"
+        min="0" max="1" step="0.01" value="0.22"
+        aria-label="Volume">
+    </div>
+
+    <div class="ff-status" aria-live="polite">
+      Une présence murmure au loin…
     </div>
   `;
-  document.body.appendChild(player);
+
+  /* ---------- POSITION SUR LA PAGE ---------- */
+
+  const manifesto = document.querySelector(".manifesto");
+
+  if (manifesto && manifesto.parentNode) {
+    manifesto.parentNode.insertBefore(player, manifesto);
+  } else {
+    document.body.appendChild(player);
+  }
+
+  /* ---------- AUDIO ---------- */
 
   const audio = new Audio(AUDIO_SRC);
   audio.loop = true;
-  audio.preload = "auto";
+  audio.preload = "none";
   audio.volume = 0.22;
 
-  const play = player.querySelector(".play");
-  const expand = player.querySelector(".expand");
-  const status = player.querySelector(".status");
-  const volume = player.querySelector(".vol");
+  const playButton = player.querySelector(".ff-play");
+  const volumeSlider = player.querySelector(".ff-volume");
+  const status = player.querySelector(".ff-status");
 
-  play.addEventListener("click", async function () {
+  /* ---------- LECTURE / PAUSE ---------- */
+
+  playButton.addEventListener("click", async function () {
     if (audio.paused) {
-      status.textContent = "Chargement de l'ambiance…";
+      status.textContent = "Les murmures s'éveillent…";
+      playButton.disabled = true;
+
       try {
         await audio.play();
-        play.textContent = "Ⅱ";
-        play.setAttribute("aria-label", "Mettre en pause");
-        status.textContent = "L'ambiance accompagne votre voyage.";
+
+        playButton.textContent = "Ⅱ";
+        playButton.setAttribute(
+          "aria-label",
+          "Mettre en pause"
+        );
+
+        status.textContent =
+          "Les murmures accompagnent votre voyage.";
+
       } catch (error) {
-        status.textContent = "Lecture impossible. Vérifiez le fichier MP3.";
-        console.error("FEU FOLLET audio :", error);
+        console.error("FEU FOLLET - Erreur audio :", error);
+
+        status.textContent =
+          "Impossible de lire le fichier audio. Vérifiez son accès.";
+
+      } finally {
+        playButton.disabled = false;
       }
+
     } else {
       audio.pause();
-      play.textContent = "▶";
-      play.setAttribute("aria-label", "Lire");
-      status.textContent = "Ambiance en pause.";
+
+      playButton.textContent = "▶";
+      playButton.setAttribute(
+        "aria-label",
+        "Lire la musique"
+      );
+
+      status.textContent = "Les murmures sont en pause.";
     }
   });
 
-  expand.addEventListener("click", function () {
-    player.classList.toggle("open");
-    expand.textContent = player.classList.contains("open") ? "−" : "＋";
+  /* ---------- VOLUME ---------- */
+
+  volumeSlider.addEventListener("input", function () {
+    audio.volume = Number(volumeSlider.value);
   });
 
-  volume.addEventListener("input", function () {
-    audio.volume = Number(volume.value);
-  });
+  /* ---------- ERREURS ET ÉVÉNEMENTS ---------- */
 
   audio.addEventListener("error", function () {
-    status.textContent = "Fichier MP3 introuvable ou inaccessible.";
-    console.error("Impossible de charger :", AUDIO_SRC);
+    status.textContent =
+      "Fichier audio introuvable ou inaccessible.";
+
+    playButton.textContent = "▶";
+
+    console.error(
+      "FEU FOLLET - Fichier audio introuvable :",
+      AUDIO_SRC
+    );
   });
 
-  audio.addEventListener("ended", function () {
-    play.textContent = "▶";
+  audio.addEventListener("pause", function () {
+    if (audio.ended) return;
+
+    playButton.textContent = "▶";
+    playButton.setAttribute(
+      "aria-label",
+      "Lire la musique"
+    );
   });
+
+  audio.addEventListener("playing", function () {
+    playButton.textContent = "Ⅱ";
+  });
+
 })();
