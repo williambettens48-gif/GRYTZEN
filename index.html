@@ -10,7 +10,9 @@
 <style>
 :root{--night:#080d18;--gold:#c7a56a;--pale:#f2dfb8;--ice:#82dff1;--line:rgba(210,178,119,.25)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--night);color:#f4efe5;font-family:Manrope,Arial,sans-serif;line-height:1.65}
-.banner{width:100%;overflow:hidden;background:#050912;border-bottom:1px solid var(--line)}.banner img{width:100%;height:auto;display:block}
+
+
+
 
 
 :root{--ff-night:#080d18;--ff-panel:#111b2a;--ff-gold:#c7a56a;--ff-pale:#f2dfb8;--ff-ice:#82dff1;--ff-muted:#aeb8c6;--ff-line:rgba(210,178,119,.24)}
@@ -53,7 +55,16 @@ footer strong{display:block;margin-bottom:8px;color:var(--ff-gold);font:500 17px
 @media(max-width:760px){.home-atlas-menu{min-height:34px}.home-atlas-menu summary{min-height:34px;padding:0 9px;font-size:9px;letter-spacing:1px}}
 @media(max-width:390px){.home-atlas-menu summary{padding:0 7px;letter-spacing:.5px}}
 @media(max-width:600px){.home-inner{padding:62px 20px}.home-copy{font-size:14px}.home-actions a{width:100%}}
-</style></head><body><div class="banner"><img src="./assets/banniere-grytzen.png" alt="GRYTZEN — Un monde, six royaumes, une destinée" fetchpriority="high"></div><header class="site-header"><div class="nav"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><details class="home-atlas-menu"><summary>L'ATLAS <span>⌄</span></summary><div class="home-atlas-submenu"><a href="atlas.html?view=map">Carte et régions</a><a href="atlas.html?view=knowledge">Explorer les connaissances</a></div></details><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav></div></header>
+.banner{width:100%;height:auto;overflow:hidden;background:#050912;border-bottom:1px solid rgba(210,175,100,.25)}
+.banner img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;object-position:center}
+
+</style>
+/* Bannière GRYTZEN agrandie pour rendre le titre et la devise lisibles */
+
+
+
+
+</head><body><div class="banner"><img src="./assets/banniere-grytzen.png" alt="GRYTZEN — Un monde, six royaumes, une destinée" fetchpriority="high"></div><header class="site-header"><div class="nav"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><details class="home-atlas-menu"><summary>L'ATLAS <span>⌄</span></summary><div class="home-atlas-submenu"><a href="atlas.html?view=map">Carte et régions</a><a href="atlas.html?view=knowledge">Explorer les connaissances</a></div></details><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav></div></header>
 <main><section class="home-hero"><div class="home-inner">
 <div class="home-note">AVANCEZ À VOTRE RYTHME · CHAQUE DÉCOUVERTE COMPTE</div>
 <div class="home-eyebrow">UNE SAGA INTERACTIVE · UN MONDE À EXPLORER</div>
