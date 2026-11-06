@@ -1,102 +1,23 @@
-
-
 <!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080d18">
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d18"><meta name="feu-follet-version" content="multipages-v1">
 <title>FEU FOLLET — Le Grimoire</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-
-<div class="banner">
-<img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière FEU FOLLET">
-</div>
-
-<header>
-<div class="nav">
+<link rel="stylesheet" href="css/style.css"></head><body><div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale FEU FOLLET"></div><header><div class="nav">
 <a class="brand" href="index.html"><span>✦</span> FEU FOLLET</a>
-
-<nav aria-label="Navigation principale">
-<a href="jouer.html">JOUER</a>
-<a href="atlas.html">L'ATLAS</a>
-<a href="grimoire.html">GRIMOIRE</a>
-<a href="boutique.html">BOUTIQUE</a>
-</nav>
-
+<nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><a href="atlas.html">L'ATLAS</a><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav>
 <a class="nav-cta" href="jouer.html">DÉCOUVRIR</a>
-</div>
-</header>
-
-<main>
-<section class="grimoire-section" id="grimoire">
+</div></header><main><section class="grimoire-section" id="grimoire">
 <div class="grimoire-panel">
-
-<div class="grimoire-head">
-<div class="eyebrow">VOTRE MÉMOIRE DE VOYAGE</div>
-<h2>Le Grimoire</h2>
-<p>Chaque signe observé, chaque fragment retrouvé et chaque rencontre importante laisse une trace. Ce livre ne révèle que ce que vous avez réellement découvert.</p>
-</div>
-
-<div class="grimoire-stats">
-<div class="grimoire-stat">
-<strong id="grimoire-count">0</strong>
-<span>DÉCOUVERTES</span>
-</div>
-<div class="grimoire-stat">
-<strong id="grimoire-episode">0%</strong>
-<span>ÉPISODE 01</span>
-</div>
-<div class="grimoire-stat">
-<strong id="grimoire-destination">—</strong>
-<span>PROCHAINE PISTE</span>
-</div>
-</div>
-
-<div class="grimoire-progress">
-<span id="grimoire-progress-bar"></span>
-</div>
-
-<div class="grimoire-progress-caption">
-<span id="grimoire-progress-label">0 / 7 PAGES RÉVÉLÉES</span>
-<span>LES AUTRES RESTENT SCELLÉES</span>
-</div>
-
+<div class="grimoire-head"><div class="eyebrow">VOTRE MÉMOIRE DE VOYAGE</div><h2>Le Grimoire</h2><p>Chaque signe observé, chaque fragment retrouvé et chaque rencontre importante laisse une trace. Ce livre ne révèle que ce que vous avez réellement découvert.</p></div>
+<div class="grimoire-stats"><div class="grimoire-stat"><strong id="grimoire-count">0</strong><span>DÉCOUVERTES</span></div><div class="grimoire-stat"><strong id="grimoire-episode">0%</strong><span>ÉPISODE 01</span></div><div class="grimoire-stat"><strong id="grimoire-destination">—</strong><span>PROCHAINE PISTE</span></div></div>
+<div class="grimoire-progress"><span id="grimoire-progress-bar"></span></div>
+<div class="grimoire-progress-caption"><span id="grimoire-progress-label">0 / 7 PAGES RÉVÉLÉES</span><span>LES AUTRES RESTENT SCELLÉES</span></div>
 <div aria-live="polite" class="grimoire-grid" id="grimoire-entries"></div>
-
-<p class="grimoire-seal-note">
-Certaines pages ne sont pas simplement oubliées. Elles semblent attendre un événement précis pour accepter de s'ouvrir.
-</p>
-
+<p class="grimoire-seal-note">Certaines pages ne sont pas simplement oubliées. Elles semblent attendre un événement précis pour accepter de s'ouvrir.</p>
 <div aria-atomic="true" aria-live="polite" class="grimoire-detail" id="grimoire-detail"></div>
-
-<div class="grimoire-actions">
-<button class="game-btn gold" onclick="refreshGrimoire()">Actualiser le grimoire</button>
-<button class="game-btn" onclick="location.href='jouer.html#episode'">Reprendre l’aventure</button>
-</div>
-
-<p class="grimoire-foot">
-Votre progression est conservée dans le navigateur de cet appareil. Elle n'est pas encore synchronisée entre plusieurs appareils.
-</p>
-
-</div>
-</section>
-</main>
-
-<footer>
-<strong>✦ FEU FOLLET</strong>
-UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE
-</footer>
-
-<script src="js/app.js"></script>
-<script src="js/audio-player.js"></script>
-</body>
-</html>
+<div class="grimoire-actions"><button class="game-btn gold" onclick="refreshGrimoire()">Actualiser le grimoire</button><button class="game-btn" onclick="location.href='jouer.html#episode'">Reprendre l’aventure</button></div>
+<p class="grimoire-foot">Votre progression est conservée dans le navigateur de cet appareil. Elle n'est pas encore synchronisée entre plusieurs appareils.</p>
+</div></section></main><footer><strong>✦ FEU FOLLET</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer><script src="js/app.js"></script></body></html>
