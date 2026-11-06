@@ -57,6 +57,26 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 @media(max-width:760px){.region-cards{grid-template-columns:1fr 1fr}.region-dossier{grid-template-columns:1fr;padding:18px}.dossier-mark{min-height:130px}.atlas-explorer{padding:0 20px 75px}}
 @media(max-width:430px){.region-cards{grid-template-columns:1fr}.region-card{min-height:165px}.dossier-facts{grid-template-columns:1fr}}
 
+
+/* EPISODE JOUABLE — prototype */
+.game-section{max-width:1120px;margin:0 auto;padding:70px 26px 90px}
+.game-panel{border:1px solid rgba(130,223,241,.28);background:linear-gradient(145deg,rgba(18,34,49,.96),rgba(8,14,24,.98));padding:clamp(20px,4vw,42px);position:relative;overflow:hidden}
+.game-panel:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 10%,rgba(130,223,241,.11),transparent 35%);pointer-events:none}
+.game-topline{font-size:10px;letter-spacing:3px;color:var(--ice)}
+.game-panel h2{font:500 clamp(25px,4vw,38px) var(--serif);color:var(--pale);margin:12px 0}
+.game-panel p{color:#c1cad3;font-size:14px;max-width:760px}
+.game-scene{position:relative;border-left:2px solid var(--ice);padding:4px 0 4px 20px;margin:24px 0;min-height:80px}
+.game-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.game-btn{border:1px solid rgba(130,223,241,.45);background:rgba(130,223,241,.08);color:#e9f7fa;padding:12px 16px;font:600 11px var(--sans);letter-spacing:1px;cursor:pointer;transition:.2s}
+.game-btn:hover{background:rgba(130,223,241,.18);border-color:var(--ice)}
+.game-btn.gold{border-color:var(--gold);color:var(--pale);background:rgba(199,165,106,.1)}
+.game-status{font-size:10px!important;letter-spacing:1px;color:var(--gold)!important;margin-top:18px}
+.game-riddle{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.riddle-choice{padding:16px 10px;border:1px solid var(--line);background:#101c2a;color:var(--pale);cursor:pointer;font:500 12px var(--serif)}
+.riddle-choice:hover{border-color:var(--ice);background:#172b3d}
+.game-note{padding:14px 16px;border:1px solid var(--line);background:rgba(199,165,106,.06);font-size:12px;color:#d7c49d;margin-top:16px}
+@media(max-width:600px){.game-section{padding:48px 18px}.game-riddle{grid-template-columns:1fr}.game-actions .game-btn{width:100%}}
+
 </style>
 </head>
 <body>
@@ -79,9 +99,27 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 <section class="content" id="jouer">
 <div class="section-head"><div class="eyebrow">TROIS PORTES · UN SEUL UNIVERS</div><h2>Votre histoire commence ici</h2><p>Explorez, découvrez, collectionnez. Le monde de FEU FOLLET se dévoile à ceux qui prennent le temps de l'observer.</p></div>
 <div class="pillars">
-<article class="pillar"><div class="number">I</div><h3>Jouer</h3><p>Des récits à vivre, des énigmes à résoudre et des choix qui vous conduisent toujours plus loin.</p><a href="#atlas">DÉCOUVRIR L'AVENTURE ↗</a></article>
+<article class="pillar"><div class="number">I</div><h3>Jouer</h3><p>Des récits à vivre, des énigmes à résoudre et des choix qui vous conduisent toujours plus loin.</p><a href="#episode">COMMENCER L’AVENTURE ↗</a></article>
 <article class="pillar" id="grimoire"><div class="number">II</div><h3>Le grimoire</h3><p>Gardez la trace de vos trouvailles : symboles, reliques, fragments d'histoire et secrets révélés.</p><a href="#atlas">OUVRIR LE GRIMOIRE ↗</a></article>
 <article class="pillar" id="boutique"><div class="number">III</div><h3>La boutique</h3><p>Des créations inspirées des lieux, des personnages et des légendes découverts au fil de vos aventures.</p><a href="#boutique">LES COLLECTIONS ARRIVERONT ↗</a></article>
+</div>
+</section>
+<section class="game-section" id="episode">
+<div class="game-panel">
+<div class="game-topline">PREMIÈRE AVENTURE · ÉPISODE 01</div>
+<h2>Le Registre sans nom</h2>
+<p>La pluie tombe sur Valombre. Dans une ruelle du quartier des copistes, une pierre vient de tomber d'un vieux mur. Derrière elle, quelque chose attend depuis bien trop longtemps.</p>
+<div class="game-scene" id="game-scene" aria-live="polite">
+<p>Une cavité sombre apparaît entre deux blocs. À l'intérieur repose un paquet enveloppé dans une toile jaunie. Un cercle incomplet traversé par une ligne verticale est tracé sur le tissu.</p>
+<p><em>Que faites-vous ?</em></p>
+</div>
+<div id="game-controls" class="game-actions">
+<button class="game-btn gold" onclick="episodeChoice('prendre')">Prendre le paquet</button>
+<button class="game-btn" onclick="episodeChoice('examiner')">Examiner le symbole</button>
+<button class="game-btn" onclick="episodeChoice('appeler')">Appeler un archiviste</button>
+</div>
+<div class="game-note" id="game-feedback">Vos découvertes seront conservées dans le grimoire de ce navigateur. Le prototype ne nécessite aucun achat.</div>
+<p class="game-status" id="game-status">PROGRESSION : PREMIÈRE RENCONTRE</p>
 </div>
 </section>
 <div class="atlas-wrap" id="atlas"><section class="content atlas">
@@ -133,6 +171,72 @@ function selectRegion(name){
  set("dossier-reputation",r.reputation);set("dossier-mystery",r.mystery);
 }
 document.querySelectorAll("[data-region]").forEach(el=>el.addEventListener("click",()=>selectRegion(el.dataset.region)));
+
+const FF_SAVE_KEY="feufollet_grimoire_v1";
+function ffLoad(){
+ try{return JSON.parse(localStorage.getItem(FF_SAVE_KEY)||"{}")}catch(e){return {}}
+}
+function ffSave(data){
+ try{localStorage.setItem(FF_SAVE_KEY,JSON.stringify(data))}catch(e){}
+}
+function ffRecord(item){
+ const data=ffLoad();data.discoveries=data.discoveries||[];
+ if(!data.discoveries.includes(item))data.discoveries.push(item);
+ ffSave(data);
+}
+function ffScene(text,controls,status,feedback){
+ const scene=document.getElementById("game-scene");
+ const actions=document.getElementById("game-controls");
+ if(scene)scene.innerHTML=text;
+ if(actions)actions.innerHTML=controls;
+ const st=document.getElementById("game-status");if(st)st.textContent=status||"PROGRESSION ENREGISTRÉE";
+ const fb=document.getElementById("game-feedback");if(fb&&feedback)fb.textContent=feedback;
+}
+function episodeChoice(choice){
+ if(choice==="examiner"){
+  ffRecord("Le Signe sans royaume");
+  ffScene("<p>Tu approches la main du tissu. Le symbole n'est pas dessiné à l'encre : il semble avoir été pressé dans la fibre.</p><p>Au revers, trois mots presque effacés : <strong>règne · demeure · passe</strong>.</p><p>Le paquet est toujours là. Il semble attendre que tu l'ouvres.</p>",
+  '<button class="game-btn gold" onclick="episodeChoice(\'prendre\')">Ouvrir le paquet</button><button class="game-btn" onclick="episodeChoice(\'appeler\')">Appeler un archiviste</button>',
+  "DÉCOUVERTE : LE SYMBOLE OBSERVÉ","Le grimoire a enregistré le Signe sans royaume.");
+ }else if(choice==="appeler"){
+  ffScene("<p>Un vieux copiste entrouvre la porte voisine. À la vue du symbole, son visage se ferme.</p><p>« Ne prononcez pas ce nom ici. Prenez ce paquet, et ne le montrez à personne avant d'avoir compris ce qu'il contient. »</p>",
+  '<button class="game-btn gold" onclick="episodeChoice(\'prendre\')">Prendre le paquet</button><button class="game-btn" onclick="episodeChoice(\'examiner\')">Examiner le symbole</button>',
+  "RENCONTRE : LE COPISTE","Un témoin a reconnu le signe. Sa peur est désormais un indice.");
+ }else{
+  ffRecord("Registre sans nom");
+  ffScene("<p>La toile se défait. À l'intérieur, un registre sans titre, sans auteur et sans sceau. Plusieurs pages ont été arrachées avec une précision remarquable.</p><p><strong>« Les routes furent comptées. Les couronnes furent nommées. Les frontières furent tracées. Mais nul ne consigna le lieu qui manquait. »</strong></p><p>Dans la reliure, tu découvres un disque de cuivre à trois symboles : une couronne, une montagne et une vague.</p><p><em>Dans quel ordre faut-il les placer ?</em></p>",
+  '<div class="game-riddle"><button class="riddle-choice" onclick="episodeRiddle(\'couronne\')">Couronne</button><button class="riddle-choice" onclick="episodeRiddle(\'montagne\')">Montagne</button><button class="riddle-choice" onclick="episodeRiddle(\'vague\')">Vague</button></div>',
+  "ÉNIGME : LE DISQUE DE CUIVRE","Le registre est ajouté à votre grimoire.");
+ }
+}
+function episodeRiddle(first){
+ const promptText = first==="couronne" ? "La couronne vient en premier. Il reste à trouver ce qui demeure, puis ce qui passe." : "Le disque résiste. Relis les trois mots gravés sur la toile : règne, demeure, passe.";
+ ffScene("<p>"+promptText+"</p><p>Choisis maintenant l'ordre complet : <strong>Couronne → Montagne → Vague</strong>.</p>",
+ '<button class="game-btn gold" onclick="episodeSolve()">Valider l’ordre</button><button class="game-btn" onclick="episodeChoice(\'examiner\')">Revoir les indices</button>',
+ "ÉNIGME EN COURS","Indice : la couronne règne, la montagne demeure, la vague passe.");
+}
+function episodeSolve(){
+ ffRecord("Fragment de carte inconnu");
+ ffRecord("Énigme du disque résolue");
+ ffScene("<p>Le disque s'aligne. Un compartiment s'ouvre dans la reliure. Il contient un fragment de carte sans nom. Une côte y est dessinée, puis une ligne de points qui s'interrompt au milieu de la mer.</p><p>Au bout de la ruelle, une silhouette en manteau sombre apparaît. Une lueur bleue flotte près de son épaule.</p><p><strong>« Je ne garde pas la porte. Je garde le souvenir de ceux qui l'ont franchie. »</strong></p><p>Quand tu relèves les yeux, la silhouette a disparu. Sur la pierre, une phrase : <strong>Hauterive conserve ce que Valombre oublie.</strong></p>",
+ '<button class="game-btn gold" onclick="episodeFinish()">Inscrire la découverte au grimoire</button>',
+ "ÉPISODE 01 : PREMIÈRE PORTE OBSERVÉE","Bravo. Vous avez découvert le premier fragment de l'histoire.");
+}
+function episodeFinish(){
+ ffRecord("Première rencontre avec le Veilleur");
+ ffRecord("Piste vers Hauterive");
+ ffScene("<p>Le grimoire se referme. Une nouvelle destination y apparaît : <strong>Hauterive, la ville des archives</strong>.</p><p>Tu peux revenir plus tard. Le monde, lui, n'a pas fini de parler.</p>",
+ '<button class="game-btn gold" onclick="showGrimoire()">Consulter mon grimoire</button><button class="game-btn" onclick="location.hash=\'atlas\'">Explorer l’atlas</button>',
+ "ÉPISODE 01 TERMINÉ","Votre progression est enregistrée sur cet appareil.");
+}
+function showGrimoire(){
+ const data=ffLoad(),items=data.discoveries||[];
+ const list=items.length?items.map(x=>"<li>"+x+"</li>").join(""):"<li>Aucune découverte pour le moment.</li>";
+ ffScene("<p><strong>Vos découvertes</strong></p><ul>"+list+"</ul><p>Ce grimoire est enregistré localement dans ce navigateur.</p>",
+ '<button class="game-btn" onclick="location.hash=\'episode\'">Revenir à l’aventure</button>',
+ "GRIMOIRE PERSONNEL","La progression est conservée sur cet appareil.");
+}
+
 </script>
 </body>
 </html>
