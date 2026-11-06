@@ -5,7 +5,7 @@
 
   if (document.getElementById("ff-audio-player")) return;
 
-  const AUDIO_SRC = "/ignis-fatuus/assets/audio/whispers-beyond-time.mp3";
+  const AUDIO_SRC = "/ignis-fatuus/assets/audio/Whispers-beyond-time.mp3";
 
   const style = document.createElement("style");
   style.textContent = `
