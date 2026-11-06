@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="fr"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080d18"><meta name="feu-follet-version" content="atlas-eldoria-organise-v3">
+<meta name="theme-color" content="#080d18"><meta name="feu-follet-version" content="atlas-eldoria-v2">
 <title>FEU FOLLET — L'Atlas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,10 +26,15 @@
 </div></header><main><div class="atlas-wrap" id="atlas"><section class="content atlas">
 <div aria-label="Carte stylisée et mystérieuse des terres de FEU FOLLET" class="map-art" role="img"><div class="continent c1"></div><div class="continent c2"></div><div class="continent c3"></div><div class="island"></div><span class="map-label l1">AURENTH</span><span class="map-label l2">VARKHÖL</span><span class="map-label l3">ORVANE</span><button aria-label="Découvrir Aurenth" class="map-pin pin1" data-region="aurenth"></button><button aria-label="Découvrir Varkhöl" class="map-pin pin2" data-region="varkhol"></button><button aria-label="Découvrir Orvane" class="map-pin pin3" data-region="orvane"></button><div class="map-caption">ATLAS INCOMPLET · TERRES CONNUES</div></div>
 <div class="atlas-copy"><div class="eyebrow">L'ATLAS DES TERRES CONNUES</div><h2>Un monde immense.<br/>Des secrets sans fin.</h2><p>Six régions composent les premières pages de notre atlas. Certaines sont connues, d'autres cachent des civilisations dont l'existence même est contestée. La carte complète reste à découvrir.</p>
-<div class="region-list"><button class="region active" data-region="aurenth">AURENTH</button><button class="region" data-region="varkhol">VARKHÖL</button><button class="region" data-region="sylvara">SYLVARA</button><button class="region" data-region="drakem">DRAKEM</button><button class="region" data-region="orvane">ÎLES D'ORVANE</button><button class="region" data-region="nereth">NÉRÉTH</button></div><div aria-live="polite" class="region-detail" id="region-detail">Les terres des royaumes anciens. Plaines, cités fortifiées et dynasties dont les archives ne racontent pas toujours toute la vérité.</div></div>
+</div>
 </section>
-<section class="atlas-explorer">
-<div class="atlas-explorer-head"><div class="eyebrow">FEUILLETER L'ATLAS</div><h2>Six régions. Six visages du monde.</h2><p>Choisissez une région pour consulter sa première fiche. Les territoires inconnus et les secrets seront révélés au fil des aventures.</p></div>
+<section class="atlas-explorer atlas-explorer-compact">
+<details class="regions-accordion" id="regions-accordion">
+<summary class="regions-accordion-toggle">
+<span><span class="eyebrow">L'ATLAS D'ELDORIA</span><strong>Explorer les six régions</strong><small>Choisissez un territoire pour en découvrir la fiche.</small></span>
+<span class="accordion-symbol" aria-hidden="true">＋</span>
+</summary>
+<div class="regions-accordion-content">
 <div class="region-cards" id="region-cards">
 <button class="region-card selected" data-region="aurenth"><span class="index">01 · TERRES ROYALES</span><h3>AURENTH</h3><p>Des plaines fertiles, des cités fortifiées et des dynasties anciennes.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
 <button class="region-card" data-region="varkhol"><span class="index">02 · HAUTES TERRES</span><h3>VARKHÖL</h3><p>Des montagnes glacées et des forteresses taillées dans la pierre.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
@@ -47,9 +52,32 @@
 <div class="dossier-fact"><b>RÉPUTATION</b><span id="dossier-reputation">Pouvoirs anciens, alliances et rivalités</span></div>
 <div class="dossier-fact"><b>MYSTÈRE CONNU</b><span id="dossier-mystery">Des archives qui ne racontent pas toute l'histoire</span></div>
 </div></div></div>
+</div>
+</details>
 </section></div>
 
 <style>
+/* Atlas : explorateur compact, ouvert uniquement à la demande */
+.atlas-copy .region-list,
+.atlas-copy .region-detail{display:none!important}
+.atlas-explorer-compact{max-width:1050px;margin:24px auto 0;padding:0 26px}
+.regions-accordion{border:1px solid rgba(194,157,91,.32);border-radius:12px;background:rgba(19,31,48,.55);overflow:hidden}
+.regions-accordion-toggle{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;cursor:pointer}
+.regions-accordion-toggle::-webkit-details-marker{display:none}
+.regions-accordion-toggle>span:first-child{display:grid;gap:5px}
+.regions-accordion-toggle .eyebrow{color:var(--gold)}
+.regions-accordion-toggle strong{font:500 clamp(18px,2.5vw,23px) var(--serif);color:var(--pale)}
+.regions-accordion-toggle small{font:12px Manrope,sans-serif;color:var(--muted);line-height:1.5}
+.accordion-symbol{flex:0 0 34px;width:34px;height:34px;border:1px solid rgba(194,157,91,.4);border-radius:50%;display:grid;place-items:center;color:var(--gold);font:22px Manrope,sans-serif;transition:transform .2s}
+.regions-accordion[open] .accordion-symbol{transform:rotate(45deg)}
+.regions-accordion-content{padding:0 18px 20px;border-top:1px solid rgba(194,157,91,.16)}
+.regions-accordion-content .region-cards{margin-top:18px}
+@media(max-width:650px){
+ .atlas-explorer-compact{margin-top:16px;padding:0 14px}
+ .regions-accordion-toggle{padding:15px 14px}
+ .regions-accordion-content{padding:0 10px 14px}
+}
+
 .atlas-lore{max-width:1050px;margin:34px auto 0;padding:18px 26px 80px}
 .lore-heading{text-align:center;max-width:720px;margin:0 auto 24px}
 .lore-heading .eyebrow{color:var(--gold)}
@@ -196,32 +224,4 @@ header nav{position:relative;z-index:10000;overflow:visible}
   });
 })();
 </script>
-
-<style>
-/* Organisation visuelle de l'Atlas : carte, régions, puis archives */
-.atlas-wrap{padding-bottom:24px}
-.atlas-wrap>.content.atlas{padding-bottom:34px}
-.atlas-copy{align-self:center}
-.atlas-copy .region-list,
-.atlas-copy .region-detail{display:none!important}
-.atlas-explorer{padding-top:34px;border-top:1px solid rgba(210,178,119,.18)}
-.atlas-explorer-head{margin-bottom:26px}
-.atlas-explorer-head .eyebrow:before{content:"02 · ";color:var(--ice)}
-.region-cards{gap:16px}
-.region-card{min-height:190px;border-radius:10px}
-.region-dossier{border-radius:12px}
-.atlas-lore{border-top:1px solid rgba(210,178,119,.18);margin-top:0;padding-top:44px}
-.atlas-lore .lore-heading .eyebrow:before{content:"03 · ";color:var(--ice)}
-.atlas-lore .lore-picker{margin-top:24px}
-@media(max-width:760px){
-  .atlas-wrap>.content.atlas{padding-top:38px;padding-bottom:28px}
-  .atlas-explorer{padding:30px 18px 65px}
-  .region-cards{grid-template-columns:1fr}
-  .region-card{min-height:0;padding:20px}
-  .region-dossier{grid-template-columns:1fr;padding:18px;gap:16px}
-  .dossier-mark{min-height:110px}
-  .atlas-lore{padding-top:34px}
-}
-</style>
-
 </main><footer><strong>✦ FEU FOLLET</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer><script src="js/app.js"></script></body></html>
