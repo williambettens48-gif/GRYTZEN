@@ -98,6 +98,18 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 @media(max-width:600px){.grimoire-entry{padding-left:104px;min-height:136px}.entry-art{width:78px;height:104px}.detail-art{height:160px}}
 @media(max-width:600px){.grimoire-section{padding:55px 18px}.grimoire-stats{grid-template-columns:1fr 1fr}.grimoire-grid{grid-template-columns:1fr}.grimoire-actions .game-btn{width:100%}}
 
+
+/* Accueil épuré : les rubriques ne s'affichent qu'à la demande */
+[hidden]{display:none!important}
+.home-intro{max-width:650px;margin-top:34px;padding-top:22px;border-top:1px solid rgba(210,178,119,.22)}
+.home-intro .eyebrow{color:var(--gold);letter-spacing:3px}
+.home-intro h2{font:500 clamp(24px,3.6vw,36px)/1.25 var(--serif);color:var(--pale);margin:9px 0}
+.home-intro p{font-size:13px;line-height:1.75;color:var(--muted);margin:0}
+.home-intro .section-actions{justify-content:flex-start;margin:20px 0 0}
+.hero{min-height:690px}
+.hero-inner{padding-top:72px;padding-bottom:80px}
+@media(max-width:760px){.hero{min-height:0}.hero-inner{padding-top:48px;padding-bottom:58px}.home-intro{margin-top:28px;padding-top:18px}.home-intro .section-actions .button{width:auto}}
+
 </style>
 <!-- Illustrations du Grimoire : fichiers PNG dans assets/grimoire/ -->
 </head>
@@ -105,7 +117,7 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 <div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale FEU FOLLET"></div>
 <header><div class="nav">
 <a class="brand" href="#accueil"><span>✦</span> FEU FOLLET</a>
-<nav aria-label="Navigation principale"><a href="#jouer">JOUER</a><a href="#atlas">L'ATLAS</a><a href="#grimoire">GRIMOIRE</a><a href="#boutique">BOUTIQUE</a></nav>
+<nav aria-label="Navigation principale"><a href="#episode" data-open-view="episode">JOUER</a><a href="#atlas" data-open-view="atlas">L'ATLAS</a><a href="#grimoire" data-open-view="grimoire">GRIMOIRE</a><a href="#boutique">BOUTIQUE</a></nav>
 
 </div></header>
 <main id="accueil">
@@ -116,13 +128,15 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 <div class="eyebrow">UNE SAGA INTERACTIVE · UN MONDE À EXPLORER</div>
 <h1>La légende<br>ne fait que <em>commencer.</em></h1>
 <p>Des royaumes oubliés. Des peuples que nul ne connaît. Des secrets enfouis depuis des siècles. Ici, chaque découverte ouvre une porte. Et certaines portes auraient dû rester fermées.</p>
-
+<div class="home-intro">
+<div class="eyebrow">UN UNIVERS · MILLE DÉCOUVERTES</div>
+<h2>Votre histoire commence ici</h2>
+<p>Explorez, découvrez, collectionnez. Le monde de FEU FOLLET se dévoile à ceux qui prennent le temps de l'observer.</p>
+<div class="actions section-actions"><a class="button primary" href="#episode" data-open-view="episode">ENTRER DANS L'AVENTURE <span>↗</span></a></div>
+</div>
 </div></section>
-<section class="content" id="jouer">
-<div class="section-head"><div class="eyebrow">UN UNIVERS · MILLE DÉCOUVERTES</div><h2>Votre histoire commence ici</h2><p>Explorez, découvrez, collectionnez. Le monde de FEU FOLLET se dévoile à ceux qui prennent le temps de l'observer.</p></div>
-<div class="actions section-actions"><a class="button primary" href="#episode">ENTRER DANS L'AVENTURE <span>↗</span></a></div>
-</section>
-<section class="game-section" id="episode">
+
+<section class="game-section" id="episode" hidden>
 <div class="game-panel">
 <div class="game-topline">PREMIÈRE AVENTURE · ÉPISODE 01</div>
 <h2>Le Registre sans nom</h2>
@@ -140,7 +154,7 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 <p class="game-status" id="game-status">PROGRESSION : PREMIÈRE RENCONTRE</p>
 </div>
 </section>
-<section class="grimoire-section" id="grimoire">
+<section class="grimoire-section" id="grimoire" hidden>
 <div class="grimoire-panel">
 <div class="grimoire-head"><div class="eyebrow">VOTRE MÉMOIRE DE VOYAGE</div><h2>Le Grimoire</h2><p>Chaque signe observé, chaque fragment retrouvé et chaque rencontre importante laisse une trace. Ce livre ne révèle que ce que vous avez réellement découvert.</p></div>
 <div class="grimoire-stats"><div class="grimoire-stat"><strong id="grimoire-count">0</strong><span>DÉCOUVERTES</span></div><div class="grimoire-stat"><strong id="grimoire-episode">0%</strong><span>ÉPISODE 01</span></div><div class="grimoire-stat"><strong id="grimoire-destination">—</strong><span>PROCHAINE PISTE</span></div></div>
@@ -150,7 +164,7 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 <div class="grimoire-actions"><button class="game-btn gold" onclick="refreshGrimoire()">Actualiser le grimoire</button><button class="game-btn" onclick="location.hash='episode'">Reprendre l’aventure</button></div>
 <p class="grimoire-foot">Votre progression est conservée dans le navigateur de cet appareil. Elle n'est pas encore synchronisée entre plusieurs appareils.</p>
 </div></section>
-<div class="atlas-wrap" id="atlas"><section class="content atlas">
+<div class="atlas-wrap" id="atlas" hidden><section class="content atlas">
 <div class="map-art" role="img" aria-label="Carte stylisée et mystérieuse des terres de FEU FOLLET"><div class="continent c1"></div><div class="continent c2"></div><div class="continent c3"></div><div class="island"></div><span class="map-label l1">AURENTH</span><span class="map-label l2">VARKHÖL</span><span class="map-label l3">ORVANE</span><button class="map-pin pin1" aria-label="Découvrir Aurenth" data-region="aurenth"></button><button class="map-pin pin2" aria-label="Découvrir Varkhöl" data-region="varkhol"></button><button class="map-pin pin3" aria-label="Découvrir Orvane" data-region="orvane"></button><div class="map-caption">ATLAS INCOMPLET · TERRES CONNUES</div></div>
 <div class="atlas-copy"><div class="eyebrow">L'ATLAS DES TERRES CONNUES</div><h2>Un monde immense.<br>Des secrets sans fin.</h2><p>Six régions composent les premières pages de notre atlas. Certaines sont connues, d'autres cachent des civilisations dont l'existence même est contestée. La carte complète reste à découvrir.</p>
 <div class="region-list"><button class="region active" data-region="aurenth">AURENTH</button><button class="region" data-region="varkhol">VARKHÖL</button><button class="region" data-region="sylvara">SYLVARA</button><button class="region" data-region="drakem">DRAKEM</button><button class="region" data-region="orvane">ÎLES D'ORVANE</button><button class="region" data-region="nereth">NÉRÉTH</button></div><div class="region-detail" id="region-detail" aria-live="polite">Les terres des royaumes anciens. Plaines, cités fortifiées et dynasties dont les archives ne racontent pas toujours toute la vérité.</div></div>
@@ -362,5 +376,47 @@ window.addEventListener("DOMContentLoaded",function(){bindGrimoireCards();refres
 bindGrimoireCards();
 
 </script>
+
+<script>
+(function(){
+  const views = {
+    episode: document.getElementById('episode'),
+    grimoire: document.getElementById('grimoire'),
+    atlas: document.getElementById('atlas')
+  };
+  const homeHero = document.querySelector('.hero');
+
+  function showView(name){
+    Object.entries(views).forEach(([key, element])=>{
+      if(element) element.hidden = key !== name;
+    });
+    if(homeHero) homeHero.hidden = !!views[name];
+    if(name === 'grimoire' && typeof refreshGrimoire === 'function') refreshGrimoire();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  document.querySelectorAll('[data-open-view]').forEach(link=>{
+    link.addEventListener('click',function(event){
+      const name=this.getAttribute('data-open-view');
+      if(!views[name]) return;
+      event.preventDefault();
+      history.replaceState(null,'','#'+name);
+      showView(name);
+    });
+  });
+
+  const brand=document.querySelector('.brand');
+  if(brand){
+    brand.addEventListener('click',function(event){
+      event.preventDefault();
+      Object.values(views).forEach(element=>{if(element)element.hidden=true;});
+      if(homeHero)homeHero.hidden=false;
+      history.replaceState(null,'','#accueil');
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
