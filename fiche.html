@@ -29,13 +29,23 @@
 .fiche-unavailable p{color:#c3cad2;font:15px/1.7 Manrope,sans-serif}
 @media(max-width:600px){.fiche-page{margin:18px auto 42px}.fiche-shell{padding:18px}.fiche-title{margin-bottom:18px}.fiche-description{font-size:14px}}
 </style>
+
+<style>
+.site-header{position:sticky;top:0;z-index:100;background:rgba(7,12,22,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(210,178,119,.24)}
+.site-header .nav{max-width:1200px;margin:auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.site-header .brand{font:600 17px Cinzel,Georgia,serif;letter-spacing:3px;color:#f2dfb8;white-space:nowrap}
+.site-header nav{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap}
+.site-header nav a{display:flex;align-items:center;min-height:38px;padding:0 13px;color:#d9d4ca;font:700 10px Manrope,sans-serif;letter-spacing:1.6px}
+.site-header nav a:hover{color:#82dff1}
+@media(max-width:760px){.site-header .nav{padding:10px 12px;flex-direction:column;gap:7px}.site-header .brand{font-size:16px}.site-header nav{width:100%;gap:0;padding-top:5px}.site-header nav a{min-height:34px;padding:0 9px;font-size:9px;letter-spacing:1px}}
+</style>
 </head>
 <body>
 <div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière FEU FOLLET"></div>
-<header><div class="nav">
+<header class="site-header"><div class="nav">
 <a class="brand" href="index.html"><span>✦</span> FEU FOLLET</a>
 <nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><a href="atlas.html">L'ATLAS</a><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav>
-<a class="nav-cta" href="jouer.html">DÉCOUVRIR</a>
+
 </div></header>
 <main class="fiche-page"><article class="fiche-shell" id="fiche-content"><p>Ouverture des archives…</p></article></main>
 <footer><strong>✦ FEU FOLLET</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer>

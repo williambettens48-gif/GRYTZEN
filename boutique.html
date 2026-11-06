@@ -1,19 +1,47 @@
-<!doctype html>
-<html lang="fr"><head>
+<!doctype html><html lang="fr"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080d18"><meta name="feu-follet-version" content="multipages-v1">
-<title>FEU FOLLET — La boutique</title>
+<meta name="theme-color" content="#080d18">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css"></head><body><div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale FEU FOLLET"></div><header><div class="nav">
-<a class="brand" href="index.html"><span>✦</span> FEU FOLLET</a>
-<nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><a href="atlas.html">L'ATLAS</a><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav>
-<a class="nav-cta" href="jouer.html">DÉCOUVRIR</a>
-</div></header><main><section class="content">
-<div class="section-head"><div class="eyebrow">LES OBJETS DE LA LÉGENDE</div><h2>La boutique n'est qu'une autre porte.</h2>
-<p>Les créations FEU FOLLET prendront forme au fil des découvertes : symboles, lieux, personnages et fragments de cet univers.</p></div>
-<div class="pillars"><article class="pillar"><div class="number">I</div><h3>Les symboles</h3><p>Des signes et emblèmes rencontrés au cours des aventures.</p><span class="eyebrow">À VENIR</span></article>
-<article class="pillar"><div class="number">II</div><h3>Les reliques</h3><p>Des objets inspirés des récits et des lieux de la saga.</p><span class="eyebrow">À VENIR</span></article>
-<article class="pillar"><div class="number">III</div><h3>Les chroniques</h3><p>Des créations à collectionner, sans avantage dans le jeu.</p><span class="eyebrow">À VENIR</span></article></div>
-<p class="grimoire-seal-note">L'aventure restera accessible sans achat. Aucun objet ne donnera de points, d'avantage ou de raccourci dans le jeu.</p>
-</section></main><footer><strong>✦ FEU FOLLET</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer><script src="js/app.js"></script></body></html>
+<link rel="stylesheet" href="css/style.css">
+
+<title>FEU FOLLET — Les collections</title><meta name="description" content="Découvrez les futures collections inspirées du monde de FEU FOLLET.">
+<style>
+
+:root{--ff-night:#080d18;--ff-panel:#111b2a;--ff-gold:#c7a56a;--ff-pale:#f2dfb8;--ff-ice:#82dff1;--ff-muted:#aeb8c6;--ff-line:rgba(210,178,119,.24)}
+*{box-sizing:border-box}body{background:var(--ff-night);color:#f4efe5}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(7,12,22,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--ff-line)}
+.site-header .nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px 24px}
+.site-header .brand{font:600 17px Cinzel,Georgia,serif;letter-spacing:3px;color:var(--ff-pale);white-space:nowrap}.site-header .brand span{color:var(--ff-ice);margin-right:8px}
+.site-header nav{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap}
+.site-header nav a{display:flex;align-items:center;min-height:38px;padding:0 13px;color:#d9d4ca;font:700 10px Manrope,sans-serif;letter-spacing:1.6px}
+.site-header nav a:hover,.site-header nav a[aria-current=page]{color:var(--ff-ice)}
+footer{border-top:1px solid var(--ff-line);padding:32px 20px;text-align:center;color:#8996a5;font:10px Manrope,sans-serif;letter-spacing:1px}
+footer strong{display:block;margin-bottom:8px;color:var(--ff-gold);font:500 17px Cinzel,serif}
+.page-kicker{color:var(--ff-ice);font:700 10px Manrope,sans-serif;letter-spacing:3px;text-transform:uppercase}
+.page-title{font:500 clamp(32px,5vw,58px)/1.15 Cinzel,Georgia,serif;color:var(--ff-pale);margin:12px 0 16px}
+.page-lead{max-width:720px;color:#c2cbd4;font:14px/1.9 Manrope,sans-serif}
+@media(max-width:760px){.site-header .nav{padding:10px 12px;flex-direction:column;gap:7px}.site-header .brand{font-size:16px}.site-header nav{width:100%;gap:0;border-top:1px solid rgba(210,178,119,.12);padding-top:5px}.site-header nav a{min-height:34px;padding:0 9px;font-size:9px;letter-spacing:1px}}
+
+
+.shop-hero{max-width:1160px;margin:auto;padding:66px 26px 42px;text-align:center}.shop-hero .page-lead{margin:0 auto}
+.shop-divider{width:70px;height:1px;background:var(--ff-gold);margin:25px auto}
+.shop-note{max-width:850px;margin:0 auto 40px;padding:17px 22px;border:1px solid var(--ff-line);background:rgba(199,165,106,.06);color:#c8c1b5;font:12px/1.8 Manrope,sans-serif;text-align:center}
+.shop-collections{max-width:1160px;margin:auto;padding:0 26px 78px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.shop-card{min-height:290px;position:relative;overflow:hidden;padding:28px;border:1px solid var(--ff-line);background:linear-gradient(150deg,#1a2a3b,#0b1420 75%);display:flex;flex-direction:column;justify-content:flex-end}
+.shop-card:before{content:"";position:absolute;width:220px;height:220px;border:1px solid rgba(130,223,241,.14);border-radius:50%;right:-90px;top:-100px;box-shadow:0 0 0 22px rgba(130,223,241,.025),0 0 0 48px rgba(130,223,241,.02)}
+.shop-number{position:absolute;top:24px;left:28px;color:var(--ff-ice);font:12px Cinzel,serif;letter-spacing:2px}
+.shop-card h2{position:relative;color:var(--ff-pale);font:500 24px Cinzel,serif;margin:0 0 10px}.shop-card p{position:relative;color:#b8c2cd;font:12px/1.8 Manrope,sans-serif;margin:0}
+.shop-card small{position:relative;display:inline-block;margin-top:20px;color:var(--ff-gold);font:700 9px Manrope,sans-serif;letter-spacing:2px}
+.shop-principle{max-width:900px;margin:0 auto 76px;padding:0 24px;text-align:center}
+.shop-principle h2{color:var(--ff-pale);font:500 clamp(23px,3vw,34px) Cinzel,serif}.shop-principle p{color:var(--ff-muted);font-size:13px;line-height:1.9}
+.shop-link{display:inline-flex;margin-top:18px;padding:13px 19px;border:1px solid var(--ff-gold);color:var(--ff-pale);font-size:10px;letter-spacing:1.7px;font-weight:700}
+@media(max-width:760px){.shop-hero{padding:42px 20px 28px}.shop-collections{grid-template-columns:1fr;padding:0 16px 55px}.shop-card{min-height:220px}}
+</style></head><body><div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière FEU FOLLET"></div><header class="site-header"><div class="nav"><a class="brand" href="index.html"><span>✦</span> FEU FOLLET</a><nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><a href="atlas.html">L'ATLAS</a><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html" aria-current="page">BOUTIQUE</a></nav></div></header>
+<main><section class="shop-hero"><div class="page-kicker">LES OBJETS DE LA LÉGENDE</div><h1 class="page-title">La boutique FEU FOLLET</h1><p class="page-lead">Certaines découvertes méritent de quitter les pages pour prendre forme dans le monde réel. Les collections de FEU FOLLET prolongeront l'univers, ses symboles et ses récits.</p><div class="shop-divider"></div></section>
+<div class="shop-note">La boutique est en préparation. Les collections présentées ici sont des univers de création, pas des produits actuellement disponibles à l'achat.</div>
+<section class="shop-collections" aria-label="Les futures collections">
+<article class="shop-card"><span class="shop-number">COLLECTION 01</span><h2>Les emblèmes</h2><p>Signes, blasons et symboles découverts au fil des aventures. Des fragments visuels qui racontent une histoire.</p><small>COLLECTION EN PRÉPARATION</small></article>
+<article class="shop-card"><span class="shop-number">COLLECTION 02</span><h2>Les reliques</h2><p>Objets et accessoires inspirés des lieux, des peuples et des légendes d'Eldoria.</p><small>COLLECTION EN PRÉPARATION</small></article>
+<article class="shop-card"><span class="shop-number">COLLECTION 03</span><h2>Les chroniques</h2><p>Illustrations et créations à collectionner, pensées comme des souvenirs de votre propre parcours.</p><small>COLLECTION EN PRÉPARATION</small></article>
+</section><section class="shop-principle"><h2>L'aventure ne s'achète pas.</h2><p>Les achats ne donneront aucun avantage, point ou raccourci dans le jeu. L'histoire restera accessible à celles et ceux qui souhaitent simplement explorer.</p><a class="shop-link" href="jouer.html">DÉCOUVRIR L'AVENTURE ↗</a></section></main><footer><strong>✦ FEU FOLLET</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer></body></html>
