@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="fr"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080d18"><meta name="feu-follet-version" content="atlas-eldoria-v2">
+<meta name="theme-color" content="#080d18"><meta name="feu-follet-version" content="atlas-eldoria-organise-v3">
 <title>FEU FOLLET — L'Atlas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -196,4 +196,32 @@ header nav{position:relative;z-index:10000;overflow:visible}
   });
 })();
 </script>
+
+<style>
+/* Organisation visuelle de l'Atlas : carte, régions, puis archives */
+.atlas-wrap{padding-bottom:24px}
+.atlas-wrap>.content.atlas{padding-bottom:34px}
+.atlas-copy{align-self:center}
+.atlas-copy .region-list,
+.atlas-copy .region-detail{display:none!important}
+.atlas-explorer{padding-top:34px;border-top:1px solid rgba(210,178,119,.18)}
+.atlas-explorer-head{margin-bottom:26px}
+.atlas-explorer-head .eyebrow:before{content:"02 · ";color:var(--ice)}
+.region-cards{gap:16px}
+.region-card{min-height:190px;border-radius:10px}
+.region-dossier{border-radius:12px}
+.atlas-lore{border-top:1px solid rgba(210,178,119,.18);margin-top:0;padding-top:44px}
+.atlas-lore .lore-heading .eyebrow:before{content:"03 · ";color:var(--ice)}
+.atlas-lore .lore-picker{margin-top:24px}
+@media(max-width:760px){
+  .atlas-wrap>.content.atlas{padding-top:38px;padding-bottom:28px}
+  .atlas-explorer{padding:30px 18px 65px}
+  .region-cards{grid-template-columns:1fr}
+  .region-card{min-height:0;padding:20px}
+  .region-dossier{grid-template-columns:1fr;padding:18px;gap:16px}
+  .dossier-mark{min-height:110px}
+  .atlas-lore{padding-top:34px}
+}
+</style>
+
 </main><footer><strong>✦ FEU FOLLET</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer><script src="js/app.js"></script></body></html>
