@@ -4,125 +4,89 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101322">
-<title>FEU FOLLET — Le royaume s'éveille</title>
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="FEU FOLLET — un monde médiéval fantastique à explorer, des mystères à découvrir et des aventures à vivre.">
+<title>FEU FOLLET — Entrez dans la légende</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--night:#101322;--deep:#191a31;--gold:#c9a76a;--goldlight:#f0d9a2;--blue:#63d5ef;--violet:#9274c8;--cream:#f5ecd9;--muted:#c0bdc8;--line:rgba(201,167,106,.28)}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:75px}
-body{margin:0;background:radial-gradient(ellipse at 15% 15%,#20354a 0,transparent 38%),radial-gradient(ellipse at 85% 38%,#302344 0,transparent 40%),#101322;color:var(--cream);font-family:Raleway,Arial,sans-serif;line-height:1.65}
-a{color:inherit;text-decoration:none}button{font:inherit}
-.banner{width:100%;height:clamp(135px,25vw,280px);overflow:hidden;background:#080c16;border-bottom:1px solid var(--line)}
-.banner img{width:100%;height:100%;display:block;object-fit:cover;object-position:center}
-header{position:sticky;top:0;z-index:10;background:rgba(12,16,29,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{max-width:1100px;margin:auto;padding:11px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.logo{font:600 18px Cinzel,serif;letter-spacing:3px;color:var(--goldlight)}
-nav{display:flex;gap:7px}nav a{padding:9px 15px;font:600 11px Cinzel,serif;letter-spacing:1px;color:var(--cream);border-radius:3px;transition:.2s}
-nav a:hover{color:var(--blue);background:#63d5ef12}
-main{max-width:1050px;margin:auto;padding:0 20px}
-.hero{text-align:center;padding:60px 12px 55px}
-.kicker{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue)}
-h1,h2,h3{font-family:Cinzel,Georgia,serif;font-weight:500;line-height:1.25}
-h1{font-size:clamp(34px,6vw,60px);color:var(--goldlight);margin:13px 0;text-shadow:0 0 30px #63d5ef24}
-.hero p{max-width:650px;margin:auto;color:#d5d1d4;font-size:15px;line-height:1.85}
-.btn{display:inline-block;margin-top:23px;padding:13px 23px;border:1px solid var(--gold);border-radius:3px;background:linear-gradient(120deg,#c29b5d,#e4ce9b 52%,#9274c8);color:#171626;font:700 11px Cinzel,serif;letter-spacing:1px;cursor:pointer;transition:.2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px #63d5ef33}
-section{padding:43px 0;border-top:1px solid #c9a76a22;scroll-margin-top:75px}
-.heading{text-align:center;max-width:700px;margin:0 auto 24px}.heading h2{font-size:clamp(25px,4vw,36px);color:var(--goldlight);margin:8px 0}.heading p{font-size:13px;color:var(--muted);margin:0}
-.card{max-width:800px;margin:auto;padding:clamp(22px,4vw,36px);border:1px solid var(--line);border-radius:5px;background:linear-gradient(145deg,#263149eF,#191a30f5);box-shadow:0 15px 45px #0003;text-align:center}
-.sigil{font-size:38px;color:var(--blue);text-shadow:0 0 22px #63d5ef88}
-.card h3{font-size:25px;color:var(--goldlight);margin:7px 0 14px}.card p{max-width:670px;margin:10px auto;color:#ded9d9;font-size:14px;line-height:1.9}
-.quote{font:500 17px Cinzel,serif!important;color:var(--blue)!important;margin:20px auto!important}
-.game{max-width:800px;margin:auto;padding:26px;border:1px solid #63d5ef55;border-radius:5px;background:linear-gradient(140deg,#1b3042,#211b36);text-align:center}
-.game small{color:var(--blue);letter-spacing:2px;text-transform:uppercase}.game h3{color:var(--goldlight);font-size:23px;margin:9px 0}.game p{color:#ded9df;font-size:14px;line-height:1.8}
-input{width:min(270px,100%);padding:12px;background:#101322;border:1px solid #887653;color:white;border-radius:3px}
-.row{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:18px}
-.choice{padding:12px 15px;border:1px solid #a48758;background:#151b30;color:var(--cream);border-radius:3px;cursor:pointer}.choice:hover{border-color:var(--blue);background:#234056}
-#feedback{min-height:26px;margin-top:15px;color:var(--blue);font-size:13px}
-.grimoire{max-width:800px;margin:auto;display:flex;align-items:center;gap:18px;padding:22px;border:1px solid var(--line);border-radius:5px;background:#1b2035}
-.relic{font-size:45px;min-width:55px;text-align:center}.grimoire h3{font-size:20px;color:var(--goldlight);margin:0 0 4px}.grimoire p{font-size:13px;color:var(--muted);margin:0}
-.shop{max-width:800px;margin:auto;text-align:center;padding:25px;border:1px solid var(--line);border-radius:5px;background:#1b2035}
-.shop p{font-size:13px;color:var(--muted)}.types{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.types span{padding:8px 13px;border:1px solid #a4875855;border-radius:3px;color:var(--goldlight);font-size:12px}
-footer{text-align:center;padding:32px 15px;border-top:1px solid var(--line);color:#9da5b5;font-size:11px}footer strong{font:600 18px Cinzel,serif;letter-spacing:3px;color:var(--gold)}
-@media(max-width:600px){.nav{flex-direction:column;gap:4px;padding:9px 10px}.logo{font-size:16px}nav{width:100%;justify-content:center;gap:0}nav a{padding:9px 12px;font-size:10px}main{padding:0 14px}.hero{padding:42px 4px}.card,.game{padding:22px 16px}.grimoire{flex-direction:column;text-align:center}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+:root{--night:#0b1020;--deep:#121a2b;--panel:#172238;--gold:#c7a66a;--gold-light:#f0dcae;--blue:#76d9ed;--violet:#9a80c9;--cream:#f4eddf;--muted:#b9bdc9;--line:rgba(199,166,106,.28);--max:1120px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;color:var(--cream);background:radial-gradient(ellipse at 12% 28%,#17354a 0,transparent 35%),radial-gradient(ellipse at 88% 48%,#2a1e3d 0,transparent 34%),var(--night);font-family:Raleway,Arial,sans-serif;line-height:1.7}a{color:inherit;text-decoration:none}button{font:inherit}.banner{height:clamp(130px,24vw,285px);overflow:hidden;background:#070b14;border-bottom:1px solid var(--line)}.banner img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}header{position:sticky;top:0;z-index:20;background:rgba(9,14,27,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav{max-width:var(--max);margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font:600 18px Cinzel,Georgia,serif;letter-spacing:3px;color:var(--gold-light);white-space:nowrap}.brand span{color:var(--blue);margin-right:8px}nav{display:flex;align-items:center;gap:8px}nav a{font:600 11px Cinzel,Georgia,serif;letter-spacing:1.5px;padding:10px 15px;border:1px solid transparent;border-radius:3px;transition:.2s}nav a:hover,nav a:focus-visible{color:var(--blue);border-color:var(--line);background:#76d9ed0c}.menu-toggle{display:none;border:1px solid var(--line);background:transparent;color:var(--cream);padding:8px 11px;border-radius:3px}main{max-width:var(--max);margin:auto;padding:0 24px}.hero{min-height:440px;display:grid;place-items:center;text-align:center;padding:72px 16px 76px;position:relative}.hero:before{content:"";position:absolute;width:min(620px,90%);height:1px;bottom:28px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55}.eyebrow,.kicker{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue)}h1,h2,h3{font-family:Cinzel,Georgia,serif;font-weight:500;line-height:1.25}h1{font-size:clamp(38px,7vw,72px);color:var(--gold-light);margin:15px 0;text-shadow:0 0 35px #76d9ed24}.hero p{max-width:690px;color:#d5d3d7;font-size:15px;line-height:1.9;margin:0 auto}.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:28px}.btn{display:inline-flex;justify-content:center;align-items:center;padding:13px 22px;min-height:46px;border:1px solid var(--gold);border-radius:3px;color:var(--gold-light);background:#111a2a;font:700 11px Cinzel,Georgia,serif;letter-spacing:1.2px;cursor:pointer;transition:transform .2s,background .2s,border-color .2s}.btn.primary{color:#101522;background:linear-gradient(120deg,#b58d50,#f0dcae 65%,#b79bd9);border-color:transparent}.btn:hover{transform:translateY(-2px);border-color:var(--blue)}section{padding:54px 0;border-top:1px solid #c7a66a24;scroll-margin-top:82px}.section-head{text-align:center;max-width:740px;margin:0 auto 30px}.section-head h2{font-size:clamp(27px,4vw,40px);color:var(--gold-light);margin:9px 0 12px}.section-head p{font-size:14px;color:var(--muted);margin:0}.intro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.tile{min-height:190px;padding:25px 22px;border:1px solid var(--line);background:linear-gradient(145deg,#1a2a40eF,#151b2df5);border-radius:5px;position:relative;overflow:hidden}.tile:after{content:"✧";position:absolute;right:15px;top:4px;color:#76d9ed28;font:60px Cinzel,serif}.tile .symbol{font-size:25px;color:var(--blue)}.tile h3{font-size:19px;color:var(--gold-light);margin:10px 0 7px}.tile p{font-size:13px;color:var(--muted);margin:0}.atlas-panel{border:1px solid var(--line);border-radius:5px;background:linear-gradient(145deg,#192940,#171a2c);padding:clamp(22px,4vw,38px);text-align:center}.atlas-panel h3{color:var(--gold-light);font-size:24px;margin:6px 0 10px}.atlas-panel p{max-width:700px;margin:0 auto;color:var(--muted);font-size:14px}.atlas-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px;text-align:left}.region{padding:14px;border:1px solid #c7a66a35;background:#0c1423a8;border-radius:3px}.region strong{display:block;font:600 13px Cinzel,Georgia,serif;color:var(--gold-light);letter-spacing:1px}.region span{display:block;font-size:11px;color:var(--muted);margin-top:4px}.reveal{margin-top:22px}.grimoire{display:flex;align-items:center;gap:20px;max-width:850px;margin:auto;padding:24px;border:1px solid var(--line);background:#172238;border-radius:5px}.book-icon{font-size:42px;min-width:54px;text-align:center;color:var(--blue)}.grimoire h3{font-size:20px;color:var(--gold-light);margin:0 0 5px}.grimoire p{font-size:13px;color:var(--muted);margin:0}.shop{max-width:850px;margin:auto;text-align:center;padding:30px 22px;border:1px solid var(--line);border-radius:5px;background:#172238}.shop h3{font-size:22px;color:var(--gold-light);margin:8px 0}.shop p{font-size:13px;color:var(--muted);margin:0 auto 18px;max-width:620px}.tags{display:flex;justify-content:center;flex-wrap:wrap;gap:9px}.tags span{font-size:11px;color:var(--gold-light);border:1px solid #c7a66a55;padding:7px 12px;border-radius:3px}.note{text-align:center;color:#9fa8ba;font-size:11px;padding:25px 0 5px}footer{text-align:center;border-top:1px solid var(--line);padding:30px 15px;color:#9fa8ba;font-size:11px}footer strong{font:600 18px Cinzel,Georgia,serif;letter-spacing:3px;color:var(--gold)}[hidden]{display:none!important}:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+@media(max-width:760px){.nav{padding:10px 15px}.menu-toggle{display:block}nav{display:none;position:absolute;left:0;right:0;top:100%;padding:10px 14px 14px;background:rgba(9,14,27,.98);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch}nav.open{display:flex}nav a{text-align:center}.hero{min-height:390px;padding:58px 8px}.intro-grid{grid-template-columns:1fr}.tile{min-height:0}.atlas-list{grid-template-columns:1fr 1fr}main{padding:0 16px}}
+@media(max-width:420px){.brand{font-size:15px;letter-spacing:2px}.atlas-list{grid-template-columns:1fr}.actions{flex-direction:column;align-items:stretch}.btn{width:100%}.grimoire{flex-direction:column;text-align:center}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
 </style>
 </head>
 <body>
-<!-- Bannière seule : aucun texte n'est superposé à l'image. -->
-<div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale Feu Follet"></div>
-<header><div class="nav">
-<a class="logo" href="#top">✦ FEU FOLLET</a>
-<nav aria-label="Menu principal"><a href="#jouer">JOUER</a><a href="#grimoire">GRIMOIRE</a><a href="#boutique">BOUTIQUE</a></nav>
-</div></header>
-<main id="top">
-<div class="hero">
-<div class="kicker">Un royaume ancien · Une magie oubliée</div>
-<h1>Entrez dans la légende</h1>
-<p>Un monde à découvrir, une histoire à vivre. Avancez simplement, scène après scène. Chaque découverte vous rapproche du secret de FEU FOLLET.</p>
-<a class="btn" href="#jouer">ENTRER DANS L'AVENTURE</a>
-</div>
-<section id="jouer">
-<div class="heading"><div class="kicker">Tout commence ici</div><h2>Le Dernier Veilleur</h2><p>Découvrez l'histoire depuis son tout premier instant. Pas de résumé, pas de détour : vous êtes au commencement.</p></div>
-<article class="card" id="opening">
-<div class="sigil">✧</div><div class="kicker">Chapitre I · La nuit de Valombre</div>
-<h3>La cloche qui ne sonna pas</h3>
-<p>La pluie venait de cesser. Dans le village de Valombre, les lanternes s'éteignaient une à une. Derrière les volets clos, chacun s'apprêtait à dormir. Au sommet de la colline, pourtant, une lumière brillait encore dans la vieille chapelle.</p>
-<p>Une lueur bleue. Fine comme un fil, vive comme une étoile tombée sur la terre.</p>
-<p>Le veilleur s'arrêta au milieu du chemin. La cloche venait de sonner deux fois. À la troisième vibration, le silence fut total. Même le vent semblait retenir son souffle.</p>
-<p class="quote">Puis une voix, venue de la chapelle, prononça son nom.</p>
-<p>Il posa la main sur la poignée. De l'autre côté, quelqu'un attendait.</p>
-<button class="btn" id="begin" type="button">POUSSER LA PORTE</button>
-</article>
-<div class="game" id="game" hidden>
-<small id="step">La chapelle · Première découverte</small>
-<h3 id="question">Les marques sur le bois</h3>
-<p id="clue">Sur la porte, sept marques anciennes entourent une flamme gravée. Combien de marques vois-tu ?</p>
-<div class="row" id="answer-row"><input id="answer" type="text" placeholder="Ta réponse" aria-label="Ta réponse"><button class="btn" id="validate" type="button">OUVRIR</button></div>
-<div class="row" id="choices" hidden><button class="choice" data-way="flamme">Suivre la flamme bleue</button><button class="choice" data-way="voix">Écouter la voix</button><button class="choice" data-way="livre">Examiner le livre</button></div>
-<div id="feedback" aria-live="polite"></div>
-</div>
-</section>
-<section id="grimoire">
-<div class="heading"><div class="kicker">Vos traces dans le royaume</div><h2>Mon grimoire</h2><p>Une place pour vos découvertes. Votre progression de démonstration reste enregistrée sur cet appareil.</p></div>
-<div class="grimoire"><div class="relic" id="relic">📖</div><div><h3 id="relic-title">Les pages sont encore vierges</h3><p id="relic-text">Votre première découverte apparaîtra ici lorsque vous commencerez l'aventure.</p></div></div>
-</section>
-<section id="boutique">
-<div class="heading"><div class="kicker">Les trésors de la saga</div><h2>Boutique</h2><p>Les objets inspirés de l'histoire prendront vie au fil des découvertes.</p></div>
-<div class="shop"><div class="sigil">✦</div><h3>Les collections de FEU FOLLET arrivent</h3><p>Reliques, vêtements et objets illustrés par les légendes du royaume.</p><div class="types"><span>T-shirts</span><span>Mugs</span><span>Affiches</span><span>Objets de collection</span></div></div>
-</section>
+<!-- La bannière originale reste seule, sans texte superposé. -->
+<div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale FEU FOLLET"></div>
+<header>
+  <div class="nav">
+    <a class="brand" href="#accueil"><span>✦</span>FEU FOLLET</a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <nav id="mainNav" aria-label="Navigation principale">
+      <a href="#jouer">JOUER</a><a href="#grimoire">GRIMOIRE</a><a href="#boutique">BOUTIQUE</a>
+    </nav>
+  </div>
+</header>
+<main id="accueil">
+  <section class="hero" style="border-top:0">
+    <div>
+      <div class="eyebrow">UN MONDE IMMENSE · DES SECRETS ENFOUIS · UNE SAGA INTERACTIVE</div>
+      <h1>Tu ne viens pas acheter une légende.<br>Tu viens la découvrir.</h1>
+      <p>Franchis les frontières d'un monde ancien où les cartes se contredisent, où la magie demeure incomprise et où chaque découverte peut bouleverser ce que tu croyais savoir.</p>
+      <div class="actions"><a class="btn primary" href="#jouer">ENTRER DANS L'UNIVERS</a><a class="btn" href="#atlas">DÉCOUVRIR LE MONDE</a></div>
+    </div>
+  </section>
+
+  <section id="jouer">
+    <div class="section-head"><div class="kicker">L'aventure commence ici</div><h2>Un monde. Des choix. Des conséquences.</h2><p>Explore des lieux inconnus, observe les détails, rassemble des indices et avance dans des récits où tes décisions comptent.</p></div>
+    <div class="intro-grid">
+      <article class="tile"><div class="symbol">⌖</div><h3>Explorer</h3><p>Parcours des territoires, découvre des peuples et retrouve des lieux oubliés au fil de tes aventures.</p></article>
+      <article class="tile"><div class="symbol">✧</div><h3>Enquêter</h3><p>Déchiffre des signes, relie les témoignages et cherche ce que les récits ont laissé dans l'ombre.</p></article>
+      <article class="tile"><div class="symbol">⚜</div><h3>Choisir</h3><p>Prends des décisions, ouvre des chemins et découvre que chaque vérité peut avoir plusieurs visages.</p></article>
+    </div>
+    <p class="note">Les premières aventures sont en préparation. L'univers se construit avant leur mise en ligne.</p>
+  </section>
+
+  <section id="atlas">
+    <div class="section-head"><div class="kicker">Atlas du monde connu</div><h2>Tout n'est pas encore sur la carte.</h2><p>Six régions ont commencé à apparaître dans les récits. Leurs frontières, leurs secrets et même leur existence sont parfois contestés.</p></div>
+    <div class="atlas-panel">
+      <div class="symbol" style="font-size:30px;color:var(--blue)">✥</div>
+      <h3>Les premières terres de FEU FOLLET</h3>
+      <p>Les noms ci-dessous sont les premiers repères de notre atlas de travail. Le monde se dévoilera progressivement aux joueurs.</p>
+      <div class="atlas-list" id="atlasList" hidden>
+        <div class="region"><strong>AURENTH</strong><span>Royaumes anciens et grandes cités</span></div>
+        <div class="region"><strong>VARKHÖL</strong><span>Montagnes glacées et forteresses</span></div>
+        <div class="region"><strong>SYLVARA</strong><span>Forêts profondes et chemins mouvants</span></div>
+        <div class="region"><strong>DRAKEM</strong><span>Terres volcaniques et machines oubliées</span></div>
+        <div class="region"><strong>ORVANE</strong><span>Archipels et routes maritimes secrètes</span></div>
+        <div class="region"><strong>NÉRÉTH</strong><span>Profondeurs dont l'existence est incertaine</span></div>
+      </div>
+      <button class="btn reveal" id="atlasButton" type="button" aria-expanded="false">DÉVOILER LES PREMIÈRES RÉGIONS</button>
+    </div>
+  </section>
+
+  <section id="grimoire">
+    <div class="section-head"><div class="kicker">Tes traces dans le monde</div><h2>Le grimoire</h2><p>Un jour, il conservera les indices, les symboles, les objets et les fragments d'histoire découverts pendant tes aventures.</p></div>
+    <div class="grimoire"><div class="book-icon">📖</div><div><h3>Les pages attendent leur premier voyageur</h3><p>Le grimoire est présenté ici. La sauvegarde des découvertes et des comptes joueurs sera développée dans une prochaine étape.</p></div></div>
+  </section>
+
+  <section id="boutique">
+    <div class="section-head"><div class="kicker">Les objets issus de la légende</div><h2>La boutique</h2><p>Les créations FEU FOLLET prolongeront l'aventure dans le monde réel, sans donner d'avantage dans le jeu.</p></div>
+    <div class="shop"><div class="symbol" style="font-size:30px;color:var(--blue)">✦</div><h3>Les collections prendront forme ici</h3><p>Vêtements, affiches, objets et pièces à collectionner inspirés des peuples, des lieux et des découvertes de notre univers.</p><div class="tags"><span>Textiles</span><span>Affiches</span><span>Objets de collection</span><span>Créations originales</span></div></div>
+  </section>
 </main>
-<footer><strong>FEU FOLLET</strong><br>Entrez dans la légende · Médiéval & fantastique</footer>
+<footer><strong>FEU FOLLET</strong><br>Un monde à découvrir · Une légende à vivre</footer>
 <script>
-const $=id=>document.getElementById(id);
-const KEY='feufollet-simple-immersif';
-let saved={done:false,way:''};
-try{saved={...saved,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){}
-$('begin').addEventListener('click',()=>{
- $('game').hidden=false;
- $('game').scrollIntoView({behavior:'smooth',block:'center'});
-});
-$('validate').addEventListener('click',()=>{
- const v=$('answer').value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
- if(v==='7'||v==='sept'){
-  $('step').textContent='La serrure cède · Un choix vous attend';
-  $('question').textContent='La porte s’entrouvre';
-  $('clue').textContent='La lumière bleue glisse sur les dalles. Dans la chapelle, trois choses attirent votre regard. Par quoi commencez-vous ?';
-  $('answer-row').hidden=true;$('choices').hidden=false;
-  $('feedback').textContent='Un déclic résonne dans le vieux bois…';
- }else{$('feedback').textContent='Regardez les marques gravées autour de la flamme.'}
-});
-document.querySelectorAll('[data-way]').forEach(b=>b.addEventListener('click',()=>{
- saved.done=true;saved.way=b.dataset.way;
- try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}
- $('question').textContent='La première trace est trouvée';
- $('clue').textContent='Dans la pénombre, un signe bleu apparaît sur la pierre. Vous ne savez pas encore ce qu’il signifie, mais vous sentez qu’il vous guidera.';
- $('choices').hidden=true;
- $('feedback').textContent='Votre découverte a rejoint le grimoire.';
- $('relic').textContent='🔹';$('relic-title').textContent='La première lueur';$('relic-text').textContent='Vous avez découvert une première trace de la magie de Valombre.';
-}));
-if(saved.done){$('relic').textContent='🔹';$('relic-title').textContent='La première lueur';$('relic-text').textContent='Votre première découverte est conservée sur cet appareil.'}
+const menuToggle=document.getElementById('menuToggle');
+const mainNav=document.getElementById('mainNav');
+menuToggle.addEventListener('click',()=>{const opened=mainNav.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(opened));menuToggle.setAttribute('aria-label',opened?'Fermer le menu':'Ouvrir le menu');menuToggle.textContent=opened?'✕':'☰'});
+mainNav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{mainNav.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','Ouvrir le menu');menuToggle.textContent='☰'}));
+const atlasButton=document.getElementById('atlasButton');
+const atlasList=document.getElementById('atlasList');
+atlasButton.addEventListener('click',()=>{const shown=!atlasList.hidden;atlasList.hidden=shown;atlasButton.setAttribute('aria-expanded',String(!shown));atlasButton.textContent=shown?'DÉVOILER LES PREMIÈRES RÉGIONS':'REFERMER L’ATLAS'});
 </script>
 </body>
 </html>
