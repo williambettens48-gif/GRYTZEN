@@ -5,44 +5,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080d18">
-<meta name="feu-follet-version" content="multipages-v1">
-<title>FEU FOLLET — Les aventures</title>
-
+<meta name="feu-follet-version" content="episode-01-v2">
+<title>FEU FOLLET — Le Registre sans nom</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
-<div class="banner">
-<img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale FEU FOLLET">
-</div>
+<div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale FEU FOLLET"></div>
 
 <header>
 <div class="nav">
 <a class="brand" href="index.html"><span>✦</span> FEU FOLLET</a>
-
 <nav aria-label="Navigation principale">
 <a href="jouer.html">JOUER</a>
 <a href="atlas.html">L'ATLAS</a>
 <a href="grimoire.html">GRIMOIRE</a>
 <a href="boutique.html">BOUTIQUE</a>
 </nav>
-
 <a class="nav-cta" href="jouer.html">DÉCOUVRIR</a>
 </div>
 </header>
 
 <main>
 <section class="game-section" id="episode">
-
 <div class="game-panel">
 
-<div class="game-topline">PREMIÈRE AVENTURE · ÉPISODE 01</div>
-
+<div class="game-topline">PREMIÈRE AVENTURE · ÉPISODE 01 · VALOMBRE</div>
 <h2>Le Registre sans nom</h2>
 
 <p>
@@ -51,43 +41,41 @@ une pierre vient de tomber d'un vieux mur. Derrière elle,
 quelque chose attend depuis bien trop longtemps.
 </p>
 
+<div class="grimoire-progress-caption" style="margin:18px 0 8px">
+<span>VOTRE CHEMINEMENT</span>
+<span id="episode-progress">ÉTAPE 0 / 5</span>
+</div>
+
+<div class="game-note" style="margin:0 0 20px">
+Vos choix et vos découvertes sont conservés sur cet appareil.
+Vous pourrez quitter l'aventure et la reprendre plus tard dans ce navigateur.
+</div>
+
 <div aria-live="polite" class="game-scene" id="game-scene">
-
 <p>
-Une cavité sombre apparaît entre deux blocs.
-À l'intérieur repose un paquet enveloppé dans une toile jaunie.
-Un cercle incomplet traversé par une ligne verticale
-est tracé sur le tissu.
+Une cavité sombre apparaît entre deux blocs. À l'intérieur repose
+un paquet enveloppé dans une toile jaunie. Un cercle incomplet
+traversé par une ligne verticale est tracé sur le tissu.
 </p>
-
 <p><em>Que faites-vous ?</em></p>
-
 </div>
 
 <div class="game-actions" id="game-controls">
-
-<button class="game-btn gold" onclick="episodeChoice('prendre')">
-Prendre le paquet
-</button>
-
-<button class="game-btn" onclick="episodeChoice('examiner')">
-Examiner le symbole
-</button>
-
-<button class="game-btn" onclick="episodeChoice('appeler')">
-Appeler un archiviste
-</button>
-
+<button class="game-btn gold" onclick="episodeChoice('prendre')">Prendre le paquet</button>
+<button class="game-btn" onclick="episodeChoice('examiner')">Examiner le symbole</button>
+<button class="game-btn" onclick="episodeChoice('appeler')">Appeler un archiviste</button>
 </div>
 
 <div class="game-note" id="game-feedback">
-Vos découvertes seront conservées dans le grimoire de ce navigateur.
-Le prototype ne nécessite aucun achat.
+Chaque choix peut révéler un détail différent. Observez avant d'agir.
 </div>
 
-<p class="game-status" id="game-status">
-PROGRESSION : PREMIÈRE RENCONTRE
-</p>
+<p class="game-status" id="game-status">PROGRESSION : PREMIÈRE RENCONTRE</p>
+
+<div class="game-actions">
+<button class="game-btn" onclick="resetEpisode()">Recommencer l'épisode</button>
+<a class="game-btn" href="grimoire.html">Ouvrir le Grimoire</a>
+</div>
 
 </div>
 </section>
@@ -99,6 +87,5 @@ UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE
 </footer>
 
 <script src="js/app.js"></script>
-
 </body>
 </html>
