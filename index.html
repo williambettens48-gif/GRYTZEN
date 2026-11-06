@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080d18">
-<meta name="feu-follet-version" content="grimoire-personnel-v1">
+<meta name="feu-follet-version" content="grimoire-personnel-v1-navigation-fix">
 <title>FEU FOLLET — Entrez dans la légende</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,7 +93,7 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 <div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale FEU FOLLET"></div>
 <header><div class="nav">
 <a class="brand" href="#accueil"><span>✦</span> FEU FOLLET</a>
-<nav aria-label="Navigation principale"><a href="#jouer">JOUER</a><a href="#atlas">L'ATLAS</a><a href="#grimoire">GRIMOIRE</a><a href="#boutique">BOUTIQUE</a></nav>
+<nav aria-label="Navigation principale"><a href="#jouer">JOUER</a><a href="#atlas">L'ATLAS</a><a href="#grimoire" onclick="openGrimoire(event)">GRIMOIRE</a><a href="#boutique">BOUTIQUE</a></nav>
 <a class="nav-cta" href="#jouer">DÉCOUVRIR</a>
 </div></header>
 <main id="accueil">
@@ -110,7 +110,7 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 <div class="section-head"><div class="eyebrow">TROIS PORTES · UN SEUL UNIVERS</div><h2>Votre histoire commence ici</h2><p>Explorez, découvrez, collectionnez. Le monde de FEU FOLLET se dévoile à ceux qui prennent le temps de l'observer.</p></div>
 <div class="pillars">
 <article class="pillar"><div class="number">I</div><h3>Jouer</h3><p>Des récits à vivre, des énigmes à résoudre et des choix qui vous conduisent toujours plus loin.</p><a href="#episode">COMMENCER L’AVENTURE ↗</a></article>
-<article class="pillar"><div class="number">II</div><h3>Le grimoire</h3><p>Gardez la trace de vos trouvailles : symboles, reliques, fragments d'histoire et secrets révélés.</p><a href="#grimoire">OUVRIR LE GRIMOIRE ↗</a></article>
+<article class="pillar"><div class="number">II</div><h3>Le grimoire</h3><p>Gardez la trace de vos trouvailles : symboles, reliques, fragments d'histoire et secrets révélés.</p><a href="#grimoire" onclick="openGrimoire(event)">OUVRIR LE GRIMOIRE ↗</a></article>
 <article class="pillar" id="boutique"><div class="number">III</div><h3>La boutique</h3><p>Des créations inspirées des lieux, des personnages et des légendes découverts au fil de vos aventures.</p><a href="#boutique">LES COLLECTIONS ARRIVERONT ↗</a></article>
 </div>
 </section>
@@ -310,7 +310,14 @@ function refreshGrimoire(){
  const bar=document.getElementById("grimoire-progress-bar");if(bar)bar.style.width=pct+"%";
  container.innerHTML=grimoireCatalog.map(item=>{const yes=found.includes(item.name);return '<article class="grimoire-entry '+(yes?'found':'locked')+'"><div class="entry-type">'+item.type+' · '+(yes?'DÉCOUVERT':'NON DÉCOUVERT')+'</div><h3>'+(yes?item.name:'Découverte inconnue')+'</h3><p>'+(yes?item.desc:'Cette page attend que vous trouviez sa trace au cours de l’aventure.')+'</p></article>';}).join("");
 }
-function showGrimoire(){location.hash="grimoire";refreshGrimoire();}
+function openGrimoire(event){
+ if(event)event.preventDefault();
+ history.replaceState(null,"", "#grimoire");
+ refreshGrimoire();
+ const section=document.getElementById("grimoire");
+ if(section){section.scrollIntoView({behavior:"smooth",block:"start"});}
+}
+function showGrimoire(){openGrimoire();}
 window.addEventListener("hashchange",()=>{if(location.hash==="#grimoire")refreshGrimoire();});
 window.addEventListener("DOMContentLoaded",refreshGrimoire);
 
