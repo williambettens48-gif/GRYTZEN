@@ -1,5 +1,5 @@
 
-/* FEU FOLLET — app.js complet — V3.1
+/* GRYTZEN — app.js complet — V3.1
    Corrections : illustration distincte pour le témoin de Valombre ; lien Episode-02.html avec E majuscule. */
 const regions={
 aurenth:{number:"01",symbol:"A",title:"AURENTH — Les terres des couronnes",description:"Au cœur des terres connues s'étendent les royaumes d'Aurenth. Des routes anciennes relient les cités fortifiées, les marchés et les domaines des grandes maisons. Les chroniques y sont nombreuses, mais certaines pages semblent avoir été volontairement arrachées.",landscape:"Plaines, forêts tempérées, collines et citadelles",people:"Les Auréans",reputation:"Pouvoirs anciens, alliances et rivalités",mystery:"Des archives qui ne racontent pas toute l'histoire"},
@@ -261,53 +261,25 @@ function resetEpisode02(){
 }
 
 const grimoireCatalog=[
- {name:"Le Signe sans royaume",art:"symbole",type:"SYMBOLE",desc:"Un cercle incomplet traversé par une ligne verticale.",detail:"Le signe a été pressé dans la fibre d'une toile ancienne. Il ne porte le blason d'aucune dynastie connue. Pourtant, certains témoins le reconnaissent et préfèrent se taire.",note:"Un signe sans royaume… ou le souvenir d'un royaume que les cartes ont effacé ?",origin:"Valombre · Première observation",lockHint:'Une marque que personne ne revendique. Pourtant, elle est reconnue.'},
- {name:"Le Registre sans nom",art:"registre",type:"RELIQUE",desc:"Un registre ancien dont plusieurs pages ont été arrachées.",detail:"La reliure est usée par l'humidité et le temps. Les pages manquantes ont été retirées avec soin, comme si quelqu'un avait voulu effacer non pas un récit, mais les preuves de son existence.",note:"Nul ne consigna le lieu qui manquait.",origin:"Valombre · La ruelle des copistes",lockHint:'Un livre mutilé. Quelqu’un a voulu faire disparaître une trace.'},
- {name:"Fragment de carte inconnu",art:"fragment",type:"FRAGMENT",desc:"Une côte dessinée, puis une ligne de points qui s'interrompt en mer.",detail:"Le fragment ne porte ni nom de port ni indication de latitude. La ligne de points s'arrête au milieu de l'eau, sans rejoindre aucune terre répertoriée. Le papier semble plus ancien que les frontières actuelles.",note:"Une route peut-elle conduire à un lieu qui n'apparaît sur aucune carte ?",origin:"Découvert dans la reliure du registre",lockHint:'Une route s’interrompt là où aucune terre ne devrait manquer.'},
- {name:"Énigme du disque résolue",art:"enigme",type:"ÉNIGME",desc:"Le disque de cuivre a révélé son mécanisme.",detail:"Trois symboles étaient gravés sur le disque : une couronne, une montagne et une vague. Leur ordre a libéré un compartiment dissimulé dans la reliure. Le mécanisme n'était pas un verrou ordinaire : il répondait à une suite de sens.",note:"Règne · demeure · passe.",origin:"Valombre · Le Registre sans nom",lockHint:'Trois signes, un ordre. Le mécanisme attend encore son témoin.'},
- {name:"Première rencontre avec le Veilleur",art:"veilleur",type:"RENCONTRE",desc:"Une silhouette au manteau sombre et une lueur bleue.",detail:"Au bout de la ruelle, une silhouette immobile apparaît. Son visage demeure caché. Une faible lueur bleue flotte près de son épaule. Lorsque le regard se détourne un instant, il n'y a déjà plus personne.",note:"Je ne garde pas la porte. Je garde le souvenir de ceux qui l'ont franchie.",origin:"Valombre · Après l'ouverture du disque",lockHint:'Une silhouette apparaît parfois là où les souvenirs se dérobent.'},
- {name:"Piste vers Hauterive",art:"hauterive",type:"DESTINATION",desc:"Hauterive conserve ce que Valombre oublie.",detail:"La phrase laissée sur la pierre désigne Hauterive, ville d'archives et de copistes. Si quelqu'un a conservé la trace du lieu absent, ce pourrait être dans ses dépôts, ses registres ou ses marges oubliées.",note:"Hauterive conserve ce que Valombre oublie.",origin:"Indice laissé à Valombre",lockHint:'Une phrase désigne une ville où les archives ont de longues mémoires.'},
- {name:"Le copiste de Valombre",art:"temoin",type:"TÉMOIN",desc:"Un témoin a reconnu le symbole et en connaît la crainte.",detail:"Le vieux copiste n'a pas expliqué ce qu'il savait. À la vue du signe, son visage s'est fermé. Il a conseillé de prendre le paquet et de ne le montrer à personne avant d'en comprendre le contenu.",note:"Ne prononcez pas ce nom ici.",origin:"Valombre · La porte voisine",lockHint:'Un témoin s’est tu devant un symbole qu’il connaissait.'},
- {name:"Maëlan, copiste des marges",art:"personnage",type:"PERSONNAGE",desc:"Un copiste prudent qui conserve les pages retirées des archives.",detail:"Maëlan travaille dans une salle secondaire de Hauterive. Il préfère les documents abîmés aux manuscrits prestigieux et possède une mémoire remarquable des textes. Il ne croit pas aux légendes, mais sait reconnaître une falsification.",note:"Les archives ne mentent pas toujours. Mais elles savent très bien se taire.",origin:"Hauterive · Salle des copistes",lockHint:'Un homme préfère les pages que les archives ont rejetées.'},
- {name:"La Salle des Dépôts Incomplets",art:"lieu",type:"LIEU",desc:"Une salle fermée depuis plusieurs années, absente des parcours officiels.",detail:"Des étagères portent des numéros sans titres. Certaines boîtes sont vides, mais la poussière indique qu'elles ont été déplacées récemment. Un souffle froid traverse la pièce alors que toutes les fenêtres sont condamnées.",note:"Les absents ont parfois une place réservée.",origin:"Hauterive · Archives secondaires",lockHint:'Une salle fermée, des boîtes déplacées et un courant d’air sans fenêtre.'},
- {name:"L’empreinte de cire bleue",art:"relique",type:"RELIQUE",desc:"Une empreinte marquée du Signe sans royaume.",detail:"Le tiroir sans poignée s'est ouvert après la résolution du catalogue. Il ne contenait aucun livre, seulement une empreinte de cire bleue portant le cercle incomplet traversé d'une ligne. Maëlan affirme avoir déjà vu cette cire sur un document bien plus récent.",note:"La même marque traverse des dates qui ne devraient pas se rencontrer.",origin:"Hauterive · Le tiroir sans poignée",lockHint:'Une cire bleue porte le signe aperçu à Valombre.'},
- {name:"La référence à l’île absente",art:"document",type:"DOCUMENT",desc:"Un registre de navigation mentionne une île après sa disparition officielle.",detail:"Une copie d'un registre maritime d'Orvane décrit une traversée depuis une île qui n'apparaît sur aucune carte actuelle. La date du voyage est postérieure à celle où cette île aurait été déclarée inexistante. Maëlan hésite entre falsification et chronologie erronée.",note:"Soit quelqu'un a falsifié ces dates. Soit nous avons classé les événements dans le mauvais ordre.",origin:"Hauterive · Registre de navigation d’Orvane",lockHint:'Un document parle d’une île après la date de sa disparition.'},
- {name:"Le mot SEUIL",art:"motcle",type:"MOT-CLEF",desc:"Cinq lettres révélées par le classement des feuillets.",detail:"Les trois fragments, replacés dans leur ordre chronologique, ont révélé des marques au revers. Réunies, elles forment le mot SEUIL. Le tiroir sans poignée a répondu à ce mot, comme s'il attendait depuis longtemps qu'on le prononce.",note:"La porte ne fut pas détruite. Elle fut retirée des itinéraires.",origin:"Hauterive · Catalogue des absents",lockHint:'Trois fragments, plusieurs dates et un mot à reconstituer.'},
- {name:"Piste vers les Îles d’Orvane",art:"destination",type:"DESTINATION",desc:"Les cartes de navigation pourraient conserver la trace de l’île absente.",detail:"Maëlan propose de consulter les cartes de navigation conservées à Orvane. Les Ligues n'aiment pas qu'on pose des questions sur les îles absentes. Dans le Grimoire, le fragment de Valombre semble brièvement se superposer au tracé d'une carte maritime.",note:"Une terre peut disparaître d'une carte. Mais qui peut faire disparaître le souvenir d'une terre ?",origin:"Hauterive · Fin de l’épisode 02",lockHint:'Une route maritime attend au-delà des archives.'}
+ {name:"Le Signe sans royaume",art:"sigil",type:"SYMBOLE",desc:"Un cercle incomplet traversé par une ligne verticale.",detail:"Le signe a été pressé dans la fibre d'une toile ancienne. Il ne porte le blason d'aucune dynastie connue. Pourtant, certains témoins le reconnaissent et préfèrent se taire.",note:"Un signe sans royaume… ou le souvenir d'un royaume que les cartes ont effacé ?",origin:"Valombre · Première observation",lockHint:'Une marque que personne ne revendique. Pourtant, elle est reconnue.'},
+ {name:"Le Registre sans nom",art:"book",type:"RELIQUE",desc:"Un registre ancien dont plusieurs pages ont été arrachées.",detail:"La reliure est usée par l'humidité et le temps. Les pages manquantes ont été retirées avec soin, comme si quelqu'un avait voulu effacer non pas un récit, mais les preuves de son existence.",note:"Nul ne consigna le lieu qui manquait.",origin:"Valombre · La ruelle des copistes",lockHint:'Un livre mutilé. Quelqu’un a voulu faire disparaître une trace.'},
+ {name:"Fragment de carte inconnu",art:"map",type:"FRAGMENT",desc:"Une côte dessinée, puis une ligne de points qui s'interrompt en mer.",detail:"Le fragment ne porte ni nom de port ni indication de latitude. La ligne de points s'arrête au milieu de l'eau, sans rejoindre aucune terre répertoriée. Le papier semble plus ancien que les frontières actuelles.",note:"Une route peut-elle conduire à un lieu qui n'apparaît sur aucune carte ?",origin:"Découvert dans la reliure du registre",lockHint:'Une route s’interrompt là où aucune terre ne devrait manquer.'},
+ {name:"Énigme du disque résolue",art:"disk",type:"ÉNIGME",desc:"Le disque de cuivre a révélé son mécanisme.",detail:"Trois symboles étaient gravés sur le disque : une couronne, une montagne et une vague. Leur ordre a libéré un compartiment dissimulé dans la reliure. Le mécanisme n'était pas un verrou ordinaire : il répondait à une suite de sens.",note:"Règne · demeure · passe.",origin:"Valombre · Le Registre sans nom",lockHint:'Trois signes, un ordre. Le mécanisme attend encore son témoin.'},
+ {name:"Première rencontre avec le Veilleur",art:"watcher",type:"RENCONTRE",desc:"Une silhouette au manteau sombre et une lueur bleue.",detail:"Au bout de la ruelle, une silhouette immobile apparaît. Son visage demeure caché. Une faible lueur bleue flotte près de son épaule. Lorsque le regard se détourne un instant, il n'y a déjà plus personne.",note:"Je ne garde pas la porte. Je garde le souvenir de ceux qui l'ont franchie.",origin:"Valombre · Après l'ouverture du disque",lockHint:'Une silhouette apparaît parfois là où les souvenirs se dérobent.'},
+ {name:"Piste vers Hauterive",art:"path",type:"DESTINATION",desc:"Hauterive conserve ce que Valombre oublie.",detail:"La phrase laissée sur la pierre désigne Hauterive, ville d'archives et de copistes. Si quelqu'un a conservé la trace du lieu absent, ce pourrait être dans ses dépôts, ses registres ou ses marges oubliées.",note:"Hauterive conserve ce que Valombre oublie.",origin:"Indice laissé à Valombre",lockHint:'Une phrase désigne une ville où les archives ont de longues mémoires.'},
+ {name:"Le copiste de Valombre",art:"watcher",type:"TÉMOIN",desc:"Un témoin a reconnu le symbole et en connaît la crainte.",detail:"Le vieux copiste n'a pas expliqué ce qu'il savait. À la vue du signe, son visage s'est fermé. Il a conseillé de prendre le paquet et de ne le montrer à personne avant d'en comprendre le contenu.",note:"Ne prononcez pas ce nom ici.",origin:"Valombre · La porte voisine",lockHint:'Un témoin s’est tu devant un symbole qu’il connaissait.'},
+ {name:"Maëlan, copiste des marges",art:"quill",type:"PERSONNAGE",desc:"Un copiste prudent qui conserve les pages retirées des archives.",detail:"Maëlan travaille dans une salle secondaire de Hauterive. Il préfère les documents abîmés aux manuscrits prestigieux et possède une mémoire remarquable des textes. Il ne croit pas aux légendes, mais sait reconnaître une falsification.",note:"Les archives ne mentent pas toujours. Mais elles savent très bien se taire.",origin:"Hauterive · Salle des copistes",lockHint:'Un homme préfère les pages que les archives ont rejetées.'},
+ {name:"La Salle des Dépôts Incomplets",art:"path",type:"LIEU",desc:"Une salle fermée depuis plusieurs années, absente des parcours officiels.",detail:"Des étagères portent des numéros sans titres. Certaines boîtes sont vides, mais la poussière indique qu'elles ont été déplacées récemment. Un souffle froid traverse la pièce alors que toutes les fenêtres sont condamnées.",note:"Les absents ont parfois une place réservée.",origin:"Hauterive · Archives secondaires",lockHint:'Une salle fermée, des boîtes déplacées et un courant d’air sans fenêtre.'},
+ {name:"L’empreinte de cire bleue",art:"disk",type:"RELIQUE",desc:"Une empreinte marquée du Signe sans royaume.",detail:"Le tiroir sans poignée s'est ouvert après la résolution du catalogue. Il ne contenait aucun livre, seulement une empreinte de cire bleue portant le cercle incomplet traversé d'une ligne. Maëlan affirme avoir déjà vu cette cire sur un document bien plus récent.",note:"La même marque traverse des dates qui ne devraient pas se rencontrer.",origin:"Hauterive · Le tiroir sans poignée",lockHint:'Une cire bleue porte le signe aperçu à Valombre.'},
+ {name:"La référence à l’île absente",art:"map",type:"DOCUMENT",desc:"Un registre de navigation mentionne une île après sa disparition officielle.",detail:"Une copie d'un registre maritime d'Orvane décrit une traversée depuis une île qui n'apparaît sur aucune carte actuelle. La date du voyage est postérieure à celle où cette île aurait été déclarée inexistante. Maëlan hésite entre falsification et chronologie erronée.",note:"Soit quelqu'un a falsifié ces dates. Soit nous avons classé les événements dans le mauvais ordre.",origin:"Hauterive · Registre de navigation d’Orvane",lockHint:'Un document parle d’une île après la date de sa disparition.'},
+ {name:"Le mot SEUIL",art:"sigil",type:"MOT-CLEF",desc:"Cinq lettres révélées par le classement des feuillets.",detail:"Les trois fragments, replacés dans leur ordre chronologique, ont révélé des marques au revers. Réunies, elles forment le mot SEUIL. Le tiroir sans poignée a répondu à ce mot, comme s'il attendait depuis longtemps qu'on le prononce.",note:"La porte ne fut pas détruite. Elle fut retirée des itinéraires.",origin:"Hauterive · Catalogue des absents",lockHint:'Trois fragments, plusieurs dates et un mot à reconstituer.'},
+ {name:"Piste vers les Îles d’Orvane",art:"path",type:"DESTINATION",desc:"Les cartes de navigation pourraient conserver la trace de l’île absente.",detail:"Maëlan propose de consulter les cartes de navigation conservées à Orvane. Les Ligues n'aiment pas qu'on pose des questions sur les îles absentes. Dans le Grimoire, le fragment de Valombre semble brièvement se superposer au tracé d'une carte maritime.",note:"Une terre peut disparaître d'une carte. Mais qui peut faire disparaître le souvenir d'une terre ?",origin:"Hauterive · Fin de l’épisode 02",lockHint:'Une route maritime attend au-delà des archives.'}
 ];
 function grimoireArt(kind,large=false){
-  const images={
-    symbole:"01-symbole-decouvert.png",
-    registre:"02-registre-relique-decouvert.png",
-    fragment:"03-fragment-carte-decouvert.png",
-    enigme:"04-disque-enigme-decouvert.png",
-    veilleur:"05-veilleur-rencontre-decouvert.png",
-    hauterive:"06-chemin-hauterive-destination-decouvert.png",
-    temoin:"07-temoin-scelle.png",
-    personnage:"08-plume-copiste-personnage-scelle.png",
-    lieu:"09-salle-archives-lieu-scelle.png",
-    relique:"10-relique-sceau-bleu-scelle.png",
-    document:"11-document-parchemin-scelle.png",
-    motcle:"12-mot-cle-pierres-runiques-scelle.png",
-    destination:"13-destination-portail-scelle.png"
-  };
-  const labels={
-    symbole:"Le Signe sans royaume",
-    registre:"Le Registre sans nom",
-    fragment:"Fragment de carte",
-    enigme:"Disque de cuivre",
-    veilleur:"Le Veilleur du Seuil",
-    hauterive:"Chemin vers Hauterive",
-    temoin:"Le copiste de Valombre",
-    personnage:"Maëlan, copiste des marges",
-    lieu:"La Salle des Dépôts Incomplets",
-    relique:"L’empreinte de cire bleue",
-    document:"La référence à l’île absente",
-    motcle:"Le mot SEUIL",
-    destination:"Piste vers les Îles d’Orvane"
-  };
-  const file=images[kind]||images.symbole;
-  return '<div class="'+(large?'detail-art':'entry-art')+'"><img src="assets/grimoire/'+file+'" alt="'+(labels[kind]||'Illustration du Grimoire')+'" loading="lazy"></div>';
+ const images={sigil:"signe-sans-royaume.png",book:"registre-sans-nom.png",map:"fragment-carte.png",disk:"disque-cuivre.png",watcher:"veilleur-seuil.png",path:"chemin-hauterive.png",quill:"plume-copiste.png"};
+ const labels={sigil:"Le Signe sans royaume",book:"Le Registre sans nom",map:"Fragment de carte",disk:"Disque de cuivre",watcher:"Le Veilleur du Seuil",path:"Chemin vers Hauterive",quill:"La plume du copiste"};
+ const file=images[kind]||images.sigil;
+ return '<div class="'+(large?'detail-art':'entry-art')+'"><img src="assets/grimoire/'+file+'" alt="'+(labels[kind]||'Illustration du Grimoire')+'" loading="lazy"></div>';
 }
 function refreshGrimoire(){
  const data=ffLoad(),found=data.discoveries||[],container=document.getElementById("grimoire-entries");
@@ -335,8 +307,22 @@ function refreshGrimoire(){
 function openGrimoireEntry(index){
   const item=grimoireCatalog[index];
   const found=ffLoad().discoveries||[];
-  if(!item||!found.includes(item.name))return;
-  location.href="fiche.html?id="+encodeURIComponent(String(index));
+  const detail=document.getElementById("grimoire-detail");
+  if(!item||!found.includes(item.name)||!detail)return;
+
+  detail.innerHTML=
+    grimoireArt(item.art,true)+
+    '<div class="detail-type">'+item.type+' · ARCHIVES DU GRIMOIRE</div>'+
+    '<h3>'+item.name+'</h3>'+
+    '<p>'+item.detail+'</p>'+
+    '<div class="detail-note">'+item.note+'</div>'+
+    '<p><strong>Origine :</strong> '+item.origin+'</p>'+
+    '<button type="button" class="detail-close" onclick="closeGrimoireEntry()">Refermer cette page</button>';
+
+  detail.classList.remove("open");
+  void detail.offsetWidth;
+  detail.classList.add("open");
+  detail.scrollIntoView({behavior:"smooth",block:"start"});
 }
 function closeGrimoireEntry(){
   const detail=document.getElementById("grimoire-detail");
@@ -381,62 +367,3 @@ bindGrimoireCards();
 window.addEventListener("DOMContentLoaded",function(){if(document.getElementById("game-scene"))restoreEpisode();});
 
 window.addEventListener("DOMContentLoaded",function(){if(document.getElementById("episode02-scene")){episode02Start();}});
-
-
-/* FICHES IMMERSIVES DU GRIMOIRE */
-function renderGrimoireFiche(){
-  const root=document.getElementById("fiche-content");
-  if(!root)return;
-  const params=new URLSearchParams(location.search);
-  const index=Number(params.get("id"));
-  const item=Number.isInteger(index)?grimoireCatalog[index]:null;
-  const found=ffLoad().discoveries||[];
-  if(!item||!found.includes(item.name)){
-    root.innerHTML='<div class="fiche-unavailable"><div class="fiche-kicker">ARCHIVES FERMÉES</div><h1>Cette page demeure scellée</h1><p>Cette découverte n’a pas encore été inscrite dans ton Grimoire.</p><a class="fiche-back" href="grimoire.html">Retourner au Grimoire</a></div>';
-    return;
-  }
-  const imageFiles={
-    symbole:"01-symbole-decouvert.png",
-    registre:"02-registre-relique-decouvert.png",
-    fragment:"03-fragment-carte-decouvert.png",
-    enigme:"04-disque-enigme-decouvert.png",
-    veilleur:"05-veilleur-rencontre-decouvert.png",
-    hauterive:"06-chemin-hauterive-destination-decouvert.png",
-    temoin:"07-temoin-scelle.png",
-    personnage:"08-plume-copiste-personnage-scelle.png",
-    lieu:"09-salle-archives-lieu-scelle.png",
-    relique:"10-relique-sceau-bleu-scelle.png",
-    document:"11-document-parchemin-scelle.png",
-    motcle:"12-mot-cle-pierres-runiques-scelle.png",
-    destination:"13-destination-portail-scelle.png"
-  };
-  const image=imageFiles[item.art]||imageFiles.symbole;
-  const videoName=String(index+1).padStart(2,"0")+"-"+({
-    symbole:"symbole-decouvert",registre:"registre-relique-decouvert",
-    fragment:"fragment-carte-decouvert",enigme:"disque-enigme-decouvert",
-    veilleur:"veilleur-rencontre-decouvert",hauterive:"chemin-hauterive-destination-decouvert",
-    temoin:"temoin-scelle",personnage:"plume-copiste-personnage-scelle",
-    lieu:"salle-archives-lieu-scelle",relique:"relique-sceau-bleu-scelle",
-    document:"document-parchemin-scelle",motcle:"mot-cle-pierres-runiques-scelle",
-    destination:"destination-portail-scelle"
-  }[item.art]||"decouverte")+".mp4";
-  const videoPath="assets/videos/grimoire/"+videoName;
-  root.innerHTML=
-    '<a class="fiche-back" href="grimoire.html">← Retour au Grimoire</a>'+
-    '<div class="fiche-kicker">'+item.type+' · DÉCOUVERT</div>'+
-    '<h1 class="fiche-title">'+item.name+'</h1>'+
-    '<div class="fiche-hero"><img src="assets/grimoire/'+image+'" alt="'+item.name+'"></div>'+
-    '<section class="fiche-video-section"><div class="fiche-section-label">SÉQUENCE D’ARCHIVES</div>'+
-    '<video class="fiche-video" controls playsinline preload="metadata" poster="assets/grimoire/'+image+'">'+
-    '<source src="'+videoPath+'" type="video/mp4">'+
-    '</video><p class="fiche-video-note">La séquence animée de cette découverte sera ajoutée ici.</p></section>'+
-    '<section class="fiche-story"><div class="fiche-section-label">CE QUE LES ARCHIVES RÉVÈLENT</div>'+
-    '<p class="fiche-description">'+item.detail+'</p>'+
-    '<blockquote>'+item.note+'</blockquote>'+
-    '<p class="fiche-origin"><strong>Origine :</strong> '+item.origin+'</p></section>'+
-    '<a class="fiche-back fiche-back-bottom" href="grimoire.html">← Revenir aux découvertes</a>';
-  const video=root.querySelector(".fiche-video");
-  const note=root.querySelector(".fiche-video-note");
-  video.addEventListener("error",function(){video.hidden=true;note.textContent="La séquence vidéo de cette découverte sera ajoutée prochainement.";});
-}
-window.addEventListener("DOMContentLoaded",renderGrimoireFiche);
