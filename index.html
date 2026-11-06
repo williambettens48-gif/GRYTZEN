@@ -5,6 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080d18">
+<meta name="feu-follet-version" content="grimoire-personnel-v1">
 <title>FEU FOLLET — Entrez dans la légende</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,6 +78,15 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 .game-note{padding:14px 16px;border:1px solid var(--line);background:rgba(199,165,106,.06);font-size:12px;color:#d7c49d;margin-top:16px}
 @media(max-width:600px){.game-section{padding:48px 18px}.game-riddle{grid-template-columns:1fr}.game-actions .game-btn{width:100%}}
 
+
+/* GRIMOIRE PERSONNEL */
+.grimoire-section{max-width:1120px;margin:0 auto;padding:78px 26px 90px;scroll-margin-top:90px}
+.grimoire-panel{border:1px solid rgba(199,165,106,.3);background:linear-gradient(145deg,#121d2b,#090f1a);padding:clamp(20px,4vw,40px);position:relative;overflow:hidden}
+.grimoire-head{text-align:center;max-width:700px;margin:0 auto 30px}.grimoire-head .eyebrow{color:var(--gold)}.grimoire-head h2{font:500 clamp(27px,4vw,40px) var(--serif);color:var(--pale);margin:12px 0}.grimoire-head p{color:var(--muted);font-size:13px}
+.grimoire-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:25px 0}.grimoire-stat{padding:17px 12px;text-align:center;border:1px solid var(--line);background:rgba(5,12,21,.55)}.grimoire-stat strong{display:block;font:26px var(--serif);color:var(--ice)}.grimoire-stat span{font-size:9px;letter-spacing:1.5px;color:var(--muted)}
+.grimoire-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.grimoire-entry{padding:18px;border:1px solid var(--line);background:rgba(6,13,22,.62);min-height:118px}.grimoire-entry.found{border-color:rgba(130,223,241,.42)}.grimoire-entry .entry-type{font-size:9px;letter-spacing:2px;color:var(--gold)}.grimoire-entry h3{font:500 16px var(--serif);color:var(--pale);margin:8px 0 5px}.grimoire-entry p{font-size:11px;color:var(--muted);margin:0}.grimoire-entry.locked{opacity:.58}.grimoire-entry.locked h3{color:#aab3bf}.grimoire-progress{height:5px;background:#263243;margin-top:18px;overflow:hidden}.grimoire-progress span{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--ice));width:0;transition:width .3s}.grimoire-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:25px}.grimoire-foot{font-size:11px;color:#9ba9b7;text-align:center;margin:18px auto 0;max-width:650px}
+@media(max-width:600px){.grimoire-section{padding:55px 18px}.grimoire-stats{grid-template-columns:1fr 1fr}.grimoire-grid{grid-template-columns:1fr}.grimoire-actions .game-btn{width:100%}}
+
 </style>
 </head>
 <body>
@@ -100,7 +110,7 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 <div class="section-head"><div class="eyebrow">TROIS PORTES · UN SEUL UNIVERS</div><h2>Votre histoire commence ici</h2><p>Explorez, découvrez, collectionnez. Le monde de FEU FOLLET se dévoile à ceux qui prennent le temps de l'observer.</p></div>
 <div class="pillars">
 <article class="pillar"><div class="number">I</div><h3>Jouer</h3><p>Des récits à vivre, des énigmes à résoudre et des choix qui vous conduisent toujours plus loin.</p><a href="#episode">COMMENCER L’AVENTURE ↗</a></article>
-<article class="pillar" id="grimoire"><div class="number">II</div><h3>Le grimoire</h3><p>Gardez la trace de vos trouvailles : symboles, reliques, fragments d'histoire et secrets révélés.</p><a href="#atlas">OUVRIR LE GRIMOIRE ↗</a></article>
+<article class="pillar"><div class="number">II</div><h3>Le grimoire</h3><p>Gardez la trace de vos trouvailles : symboles, reliques, fragments d'histoire et secrets révélés.</p><a href="#grimoire">OUVRIR LE GRIMOIRE ↗</a></article>
 <article class="pillar" id="boutique"><div class="number">III</div><h3>La boutique</h3><p>Des créations inspirées des lieux, des personnages et des légendes découverts au fil de vos aventures.</p><a href="#boutique">LES COLLECTIONS ARRIVERONT ↗</a></article>
 </div>
 </section>
@@ -122,6 +132,15 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 <p class="game-status" id="game-status">PROGRESSION : PREMIÈRE RENCONTRE</p>
 </div>
 </section>
+<section class="grimoire-section" id="grimoire">
+<div class="grimoire-panel">
+<div class="grimoire-head"><div class="eyebrow">VOTRE MÉMOIRE DE VOYAGE</div><h2>Le Grimoire</h2><p>Chaque signe observé, chaque fragment retrouvé et chaque rencontre importante laisse une trace. Ce livre ne révèle que ce que vous avez réellement découvert.</p></div>
+<div class="grimoire-stats"><div class="grimoire-stat"><strong id="grimoire-count">0</strong><span>DÉCOUVERTES</span></div><div class="grimoire-stat"><strong id="grimoire-episode">0%</strong><span>ÉPISODE 01</span></div><div class="grimoire-stat"><strong id="grimoire-destination">—</strong><span>PROCHAINE PISTE</span></div></div>
+<div class="grimoire-progress"><span id="grimoire-progress-bar"></span></div>
+<div class="grimoire-grid" id="grimoire-entries" aria-live="polite"></div>
+<div class="grimoire-actions"><button class="game-btn gold" onclick="refreshGrimoire()">Actualiser le grimoire</button><button class="game-btn" onclick="location.hash='episode'">Reprendre l’aventure</button></div>
+<p class="grimoire-foot">Votre progression est conservée dans le navigateur de cet appareil. Elle n'est pas encore synchronisée entre plusieurs appareils.</p>
+</div></section>
 <div class="atlas-wrap" id="atlas"><section class="content atlas">
 <div class="map-art" role="img" aria-label="Carte stylisée et mystérieuse des terres de FEU FOLLET"><div class="continent c1"></div><div class="continent c2"></div><div class="continent c3"></div><div class="island"></div><span class="map-label l1">AURENTH</span><span class="map-label l2">VARKHÖL</span><span class="map-label l3">ORVANE</span><button class="map-pin pin1" aria-label="Découvrir Aurenth" data-region="aurenth"></button><button class="map-pin pin2" aria-label="Découvrir Varkhöl" data-region="varkhol"></button><button class="map-pin pin3" aria-label="Découvrir Orvane" data-region="orvane"></button><div class="map-caption">ATLAS INCOMPLET · TERRES CONNUES</div></div>
 <div class="atlas-copy"><div class="eyebrow">L'ATLAS DES TERRES CONNUES</div><h2>Un monde immense.<br>Des secrets sans fin.</h2><p>Six régions composent les premières pages de notre atlas. Certaines sont connues, d'autres cachent des civilisations dont l'existence même est contestée. La carte complète reste à découvrir.</p>
@@ -183,6 +202,7 @@ function ffRecord(item){
  const data=ffLoad();data.discoveries=data.discoveries||[];
  if(!data.discoveries.includes(item))data.discoveries.push(item);
  ffSave(data);
+ if(document.getElementById("grimoire-entries"))refreshGrimoire();
 }
 function ffScene(text,controls,status,feedback){
  const scene=document.getElementById("game-scene");
@@ -271,13 +291,29 @@ function episodeFinish(){
  '<button class="game-btn gold" onclick="showGrimoire()">Consulter mon grimoire</button><button class="game-btn" onclick="location.hash=\'atlas\'">Explorer l’atlas</button>',
  "ÉPISODE 01 TERMINÉ","Votre progression est enregistrée sur cet appareil.");
 }
-function showGrimoire(){
- const data=ffLoad(),items=data.discoveries||[];
- const list=items.length?items.map(x=>"<li>"+x+"</li>").join(""):"<li>Aucune découverte pour le moment.</li>";
- ffScene("<p><strong>Vos découvertes</strong></p><ul>"+list+"</ul><p>Ce grimoire est enregistré localement dans ce navigateur.</p>",
- '<button class="game-btn" onclick="location.hash=\'episode\'">Revenir à l’aventure</button>',
- "GRIMOIRE PERSONNEL","La progression est conservée sur cet appareil.");
+const grimoireCatalog=[
+ {name:"Le Signe sans royaume",type:"SYMBOLE",desc:"Un cercle incomplet traversé par une ligne verticale."},
+ {name:"Le Registre sans nom",type:"RELIQUE",desc:"Un registre ancien dont plusieurs pages ont été arrachées."},
+ {name:"Fragment de carte inconnu",type:"FRAGMENT",desc:"Une côte dessinée, puis une ligne de points qui s'interrompt en mer."},
+ {name:"Énigme du disque résolue",type:"ÉNIGME",desc:"Le disque de cuivre a révélé son mécanisme."},
+ {name:"Première rencontre avec le Veilleur",type:"RENCONTRE",desc:"Une silhouette au manteau sombre et une lueur bleue."},
+ {name:"Piste vers Hauterive",type:"DESTINATION",desc:"Hauterive conserve ce que Valombre oublie."},
+ {name:"Le copiste de Valombre",type:"TÉMOIN",desc:"Un témoin a reconnu le symbole et en connaît la crainte."}
+];
+function refreshGrimoire(){
+ const data=ffLoad(),found=data.discoveries||[],container=document.getElementById("grimoire-entries");
+ if(!container)return;
+ const count=grimoireCatalog.filter(x=>found.includes(x.name)).length;
+ const countEl=document.getElementById("grimoire-count");if(countEl)countEl.textContent=found.length;
+ const pct=Math.round(count/grimoireCatalog.length*100);const ep=document.getElementById("grimoire-episode");if(ep)ep.textContent=pct+"%";
+ const dest=document.getElementById("grimoire-destination");if(dest)dest.textContent=found.includes("Piste vers Hauterive")?"HAUTERIVE":"À DÉCOUVRIR";
+ const bar=document.getElementById("grimoire-progress-bar");if(bar)bar.style.width=pct+"%";
+ container.innerHTML=grimoireCatalog.map(item=>{const yes=found.includes(item.name);return '<article class="grimoire-entry '+(yes?'found':'locked')+'"><div class="entry-type">'+item.type+' · '+(yes?'DÉCOUVERT':'NON DÉCOUVERT')+'</div><h3>'+(yes?item.name:'Découverte inconnue')+'</h3><p>'+(yes?item.desc:'Cette page attend que vous trouviez sa trace au cours de l’aventure.')+'</p></article>';}).join("");
 }
+function showGrimoire(){location.hash="grimoire";refreshGrimoire();}
+window.addEventListener("hashchange",()=>{if(location.hash==="#grimoire")refreshGrimoire();});
+window.addEventListener("DOMContentLoaded",refreshGrimoire);
+
 </script>
 </body>
 </html>
