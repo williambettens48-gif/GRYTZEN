@@ -37,105 +37,115 @@
 </section></div>
 
 <style>
-.atlas-lore{max-width:1120px;margin:0 auto;padding:18px 26px 90px}
-.lore-heading{text-align:center;max-width:760px;margin:0 auto 30px}
+.atlas-lore{max-width:1050px;margin:34px auto 0;padding:18px 26px 80px}
+.lore-heading{text-align:center;max-width:720px;margin:0 auto 24px}
 .lore-heading .eyebrow{color:var(--gold)}
-.lore-heading h2{font:500 clamp(27px,4vw,40px) var(--serif);color:var(--pale);margin:12px 0}
-.lore-heading p{color:var(--muted);line-height:1.8;font-size:14px}
-.lore-section{margin:52px 0;padding:30px;border:1px solid rgba(194,157,91,.25);border-radius:15px;background:linear-gradient(145deg,rgba(19,31,48,.78),rgba(7,13,24,.88))}
-.lore-section h3{font:500 clamp(22px,3vw,30px) var(--serif);color:var(--pale);margin:8px 0 12px}
-.lore-section>p{color:var(--muted);line-height:1.8;font-size:14px}
-.lore-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:22px}
-.lore-card{padding:19px;border:1px solid rgba(194,157,91,.2);border-radius:10px;background:rgba(255,255,255,.025)}
-.lore-card h4{font:500 17px var(--serif);color:#e8d4aa;margin:0 0 9px}
-.lore-card p{font-size:13px;line-height:1.75;color:#b9c3ce;margin:0}
-.lore-tag{display:inline-block;color:#8fc8d7;font-size:10px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:9px}
-.lore-note{margin-top:20px;padding:16px 18px;border-left:2px solid var(--gold);background:rgba(194,157,91,.07);color:#d9c9a7;font-size:13px;line-height:1.8}
-.lore-table{width:100%;border-collapse:collapse;margin-top:18px;font-size:13px}
-.lore-table th,.lore-table td{text-align:left;padding:12px;border-bottom:1px solid rgba(194,157,91,.17);vertical-align:top}
-.lore-table th{color:#d8bd85;font-weight:600}
-.lore-table td{color:#c1cad3;line-height:1.6}
-.lore-unknown{color:#8fc8d7;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
-@media(max-width:650px){.atlas-lore{padding:10px 16px 60px}.lore-section{padding:21px 17px;margin:35px 0}.lore-grid{grid-template-columns:1fr}.lore-table{font-size:12px}.lore-table th,.lore-table td{padding:9px 7px}}
+.lore-heading h2{font:500 clamp(27px,4vw,38px) var(--serif);color:var(--pale);margin:10px 0}
+.lore-heading p{color:var(--muted);line-height:1.75;font-size:14px}
+.lore-picker{max-width:560px;margin:0 auto 24px;padding:18px;border:1px solid rgba(194,157,91,.25);border-radius:12px;background:rgba(19,31,48,.65)}
+.lore-picker label{display:block;color:#d8bd85;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.lore-picker select{width:100%;padding:14px 42px 14px 14px;border:1px solid rgba(194,157,91,.35);border-radius:8px;background:#101a29;color:#f1e5cf;font:500 15px Manrope, sans-serif;}
+.lore-picker select:focus{outline:2px solid #c29d5b;outline-offset:2px}
+.lore-panel{padding:26px;border:1px solid rgba(194,157,91,.22);border-radius:13px;background:linear-gradient(145deg,rgba(19,31,48,.78),rgba(7,13,24,.88))}
+.lore-panel[hidden]{display:none}
+.lore-panel h3{font:500 clamp(22px,3vw,29px) var(--serif);color:var(--pale);margin:8px 0 12px}
+.lore-panel>p{color:var(--muted);line-height:1.8;font-size:14px}
+.lore-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:20px}
+.lore-card{padding:17px;border:1px solid rgba(194,157,91,.18);border-radius:9px;background:rgba(255,255,255,.025)}
+.lore-card h4{font:500 16px var(--serif);color:#e8d4aa;margin:0 0 8px}
+.lore-card p{font-size:13px;line-height:1.7;color:#b9c3ce;margin:0}
+.lore-tag{display:inline-block;color:#8fc8d7;font-size:10px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:8px}
+.lore-note{margin-top:18px;padding:15px 17px;border-left:2px solid var(--gold);background:rgba(194,157,91,.07);color:#d9c9a7;font-size:13px;line-height:1.8}
+.lore-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:13px}
+.lore-table th,.lore-table td{text-align:left;padding:11px;border-bottom:1px solid rgba(194,157,91,.17);vertical-align:top}
+.lore-table th{color:#d8bd85;font-weight:600}.lore-table td{color:#c1cad3;line-height:1.6}
+.lore-unknown{color:#8fc8d7;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-top:15px}
+@media(max-width:650px){.atlas-lore{padding:12px 16px 55px}.lore-picker{padding:14px}.lore-panel{padding:20px 16px}.lore-grid{grid-template-columns:1fr}.lore-table{font-size:12px}.lore-table th,.lore-table td{padding:9px 7px}}
 </style>
 <section class="atlas-lore" aria-label="Connaissances générales sur Eldoria">
   <header class="lore-heading">
-    <div class="eyebrow">LES CHRONIQUES DU MONDE</div>
-    <h2>Ce que l'on sait d'Eldoria</h2>
-    <p>Un atlas n'est jamais la vérité entière. Il rassemble les connaissances, les récits, les hypothèses et parfois les erreurs de ceux qui ont osé explorer le monde.</p>
+    <div class="eyebrow">LES ARCHIVES DU MONDE</div>
+    <h2>Explorer les connaissances d'Eldoria</h2>
+    <p>Choisissez un sujet pour consulter les récits, les connaissances et les mystères consignés dans l'Atlas.</p>
   </header>
-
-  <section class="lore-section" id="temps">
-    <span class="lore-tag">Chronologie · Calendriers</span>
-    <h3>Le temps n'a pas la même origine pour tous</h3>
-    <p>Les peuples d'Eldoria ne partagent pas une chronologie universelle. Chaque civilisation compte les années à partir d'événements qu'elle juge fondateurs. Deux dates différentes peuvent donc désigner le même événement, sans qu'aucune puisse être facilement vérifiée.</p>
-    <div class="lore-grid">
-      <article class="lore-card"><h4>Le Calendrier des Couronnes</h4><p><b>Aurenth.</b> Les années sont comptées depuis la fondation du premier royaume reconnu par les chroniqueurs auréans.</p></article>
-      <article class="lore-card"><h4>Le Compte des Pierres</h4><p><b>Varkhöl.</b> La mémoire du temps se transmet par des générations et des événements gravés dans la roche.</p></article>
-      <article class="lore-card"><h4>Le Cycle des Racines</h4><p><b>Sylvara.</b> Les cycles sont associés aux transformations de la forêt. Leur commencement ne fait pas toujours consensus.</p></article>
-      <article class="lore-card"><h4>Le Décompte des Cendres</h4><p><b>Drakem.</b> Les chronologies prennent pour repères des bouleversements, des éruptions et des chutes anciennes.</p></article>
-      <article class="lore-card"><h4>Le Calendrier des Marées</h4><p><b>Orvane.</b> Les navigateurs datent leurs voyages selon les marées, les cycles lunaires et les observations du ciel.</p></article>
-      <article class="lore-card"><h4>Les profondeurs de Néréth</h4><p><b>Néréth.</b> Aucun calendrier fiable ne peut être attribué à ce monde dont l'existence reste contestée.</p></article>
-    </div>
-    <div class="lore-note"><b>Le calendrier dit commun :</b> une année de référence compte 360 jours, répartis en douze mois de trente jours. Quatre saisons sont largement reconnues : L'Éveil, le Haut-Soleil, le Déclin et le Long-Givre. Le Voile revient, mais sa durée et sa place dans l'année sont disputées. Certains le comptent comme une cinquième saison, d'autres comme une période extérieure au calendrier. La manière de concilier ces comptes reste inconnue.</div>
-  </section>
-
-  <section class="lore-section" id="langues">
-    <span class="lore-tag">Peuples · Langues</span>
-    <h3>Des langues qui se croisent et se répondent</h3>
-    <p>Les langues vivantes ont évolué au fil des migrations, des échanges et des conflits. Des dialectes locaux coexistent avec une langue commune dont l'origine demeure mystérieuse.</p>
-    <table class="lore-table">
-      <thead><tr><th>Région</th><th>Langue principale</th><th>Traits connus</th></tr></thead>
-      <tbody>
-        <tr><td>Aurenth</td><td>Auréen</td><td>Langue des cours, des marchés et des archives royales.</td></tr>
-        <tr><td>Varkhöl</td><td>Varkhan</td><td>Tradition orale forte et inscriptions gravées.</td></tr>
-        <tr><td>Sylvara</td><td>Sylvain</td><td>Nombreuses nuances et expressions difficiles à traduire.</td></tr>
-        <tr><td>Drakem</td><td>Drakéen</td><td>Écriture ancienne associée aux ateliers et aux inscriptions de pierre.</td></tr>
-        <tr><td>Orvane</td><td>Orvanien</td><td>Vocabulaire riche lié aux vents, aux courants et à la navigation.</td></tr>
-      </tbody>
-    </table>
-    <div class="lore-note"><b>La Langue commune :</b> elle circule entre les peuples, mais nul ne sait qui l'a créée. Des mots semblables apparaissent dans des inscriptions très anciennes, parfois attribuées à des civilisations qui auraient précédé les royaumes connus. Certains chercheurs évoquent la Terre absente.</div>
-    <p class="lore-unknown">Fragments non traduits · Langues premières · Origines disputées</p>
-  </section>
-
-  <section class="lore-section" id="croyances">
-    <span class="lore-tag">Religions · Mythes</span>
-    <h3>Les dieux dont personne ne connaît la vérité</h3>
-    <p>Les croyances d'Eldoria sont multiples et contradictoires. Aucune preuve ne permet de confirmer l'existence des dieux, des esprits ou des puissances invoquées par les peuples.</p>
-    <div class="lore-grid">
-      <article class="lore-card"><h4>Les Célestes</h4><p>Ils prient les astres et cherchent dans le ciel les signes du destin.</p></article>
-      <article class="lore-card"><h4>Les Anciens</h4><p>Ils honorent des entités dont les noms se sont effacés des archives.</p></article>
-      <article class="lore-card"><h4>Les Vivants</h4><p>Ils considèrent les forêts, les fleuves, les montagnes et les océans comme des forces sacrées.</p></article>
-      <article class="lore-card"><h4>Les Veilleurs</h4><p>Ils pensent qu'une présence observe Eldoria depuis un lieu ou un temps inconnu.</p></article>
-      <article class="lore-card"><h4>Les Sans-Temple</h4><p>Ils refusent les religions et voient dans les dieux des créations des peuples.</p></article>
-    </div>
-    <div class="lore-note">Des statues sans visage ont été retrouvées dans plusieurs régions. Certaines semblent antérieures aux plus anciennes civilisations connues. Leur identité et leur fonction restent inconnues.</div>
-  </section>
-
-  <section class="lore-section" id="magie">
-    <span class="lore-tag">Arts occultes · Phénomènes</span>
-    <h3>La magie n'a pas une seule origine</h3>
-    <p>Les érudits distinguent plusieurs formes de magie. Ces catégories sont des outils de classement : elles ne prouvent pas que les phénomènes étudiés partagent une même nature.</p>
-    <div class="lore-grid">
-      <article class="lore-card"><h4>La magie primordiale</h4><p>Associée à des forces qui auraient précédé les peuples et les civilisations.</p></article>
-      <article class="lore-card"><h4>La magie naturelle</h4><p>Liée au vivant, aux éléments et aux lieux où le monde semble réagir.</p></article>
-      <article class="lore-card"><h4>La magie des arcanes</h4><p>Étudiée au moyen de signes, de formules, de symboles et de rituels.</p></article>
-      <article class="lore-card"><h4>La magie des reliques</h4><p>Associée à des objets anciens dont les propriétés ne peuvent être reproduites.</p></article>
-      <article class="lore-card"><h4>La magie du Voile</h4><p>Nom donné à des phénomènes inexpliqués parfois observés pendant le Voile.</p></article>
-      <article class="lore-card"><h4>La sixième forme</h4><p>Évoquée dans quelques textes dont le nom a été effacé. Son existence même est incertaine.</p></article>
-    </div>
-    <div class="lore-note"><b>Qui peut pratiquer la magie ?</b> Cela dépendrait de sa forme. Certaines pratiques s'apprennent, d'autres semblent liées à une lignée, à un lieu, à une relique ou à un choix incompréhensible. Toute utilisation peut entraîner un prix : mémoire altérée, dette, transformation ou conséquence imprévisible. Ces règles restent à documenter.</div>
-  </section>
-
-  <section class="lore-section" id="terre-absente">
-    <span class="lore-tag">Mystère majeur · Cartes interdites</span>
-    <h3>La Terre absente</h3>
-    <p>Des cartes anciennes, des récits et des fragments de textes mentionnent une terre qui ne figure sur aucune carte fiable. Certains la placent au-delà des océans, d'autres sous le monde connu, ou dans un lieu qui ne peut être atteint par les routes ordinaires.</p>
-    <div class="lore-note">Aucune expédition reconnue n'a confirmé son existence. Pourtant, son nom revient dans des documents issus de régions qui n'auraient jamais dû communiquer entre elles.</div>
-  </section>
+  <div class="lore-picker">
+    <label for="lore-choice">Que souhaitez-vous découvrir ?</label>
+    <select id="lore-choice" aria-controls="lore-panels">
+      <option value="temps">Le temps et les calendriers</option>
+      <option value="langues">Les peuples et les langues</option>
+      <option value="croyances">Les croyances et les mythes</option>
+      <option value="magie">La magie</option>
+      <option value="terre-absente">La Terre absente</option>
+    </select>
+  </div>
+  <div id="lore-panels" aria-live="polite">
+    <section class="lore-panel" id="lore-temps">
+      <span class="lore-tag">Chronologie · Calendriers</span>
+      <h3>Le temps n'a pas la même origine pour tous</h3>
+      <p>Les peuples d'Eldoria ne partagent pas une chronologie universelle. Chaque civilisation compte les années à partir d'événements qu'elle juge fondateurs. Deux dates différentes peuvent donc désigner le même événement, sans qu'aucune puisse être facilement vérifiée.</p>
+      <div class="lore-grid">
+        <article class="lore-card"><h4>Le Calendrier des Couronnes</h4><p><b>Aurenth.</b> Les années sont comptées depuis la fondation du premier royaume reconnu par les chroniqueurs auréans.</p></article>
+        <article class="lore-card"><h4>Le Compte des Pierres</h4><p><b>Varkhöl.</b> La mémoire du temps se transmet par des générations et des événements gravés dans la roche.</p></article>
+        <article class="lore-card"><h4>Le Cycle des Racines</h4><p><b>Sylvara.</b> Les cycles sont associés aux transformations de la forêt. Leur commencement ne fait pas toujours consensus.</p></article>
+        <article class="lore-card"><h4>Le Décompte des Cendres</h4><p><b>Drakem.</b> Les chronologies prennent pour repères des bouleversements, des éruptions et des chutes anciennes.</p></article>
+        <article class="lore-card"><h4>Le Calendrier des Marées</h4><p><b>Orvane.</b> Les navigateurs datent leurs voyages selon les marées, les cycles lunaires et les observations du ciel.</p></article>
+        <article class="lore-card"><h4>Les profondeurs de Néréth</h4><p><b>Néréth.</b> Aucun calendrier fiable ne peut être attribué à ce monde dont l'existence reste contestée.</p></article>
+      </div>
+      <div class="lore-note"><b>Le calendrier dit commun :</b> une année de référence compte 360 jours, répartis en douze mois de trente jours. Quatre saisons sont largement reconnues : L'Éveil, le Haut-Soleil, le Déclin et le Long-Givre. Le Voile revient, mais sa durée et sa place dans l'année sont disputées. Certains le comptent comme une cinquième saison, d'autres comme une période extérieure au calendrier. La manière de concilier ces comptes reste inconnue.</div>
+    </section>
+    <section class="lore-panel" id="lore-langues" hidden>
+      <span class="lore-tag">Peuples · Langues</span>
+      <h3>Des peuples qui se croisent et des langues qui se répondent</h3>
+      <p>Les langues vivantes ont évolué au fil des migrations, des échanges et des conflits. Des dialectes locaux coexistent avec une langue commune dont l'origine demeure mystérieuse.</p>
+      <table class="lore-table"><thead><tr><th>Région</th><th>Peuple</th><th>Langue principale</th></tr></thead><tbody>
+        <tr><td>Aurenth</td><td>Auréans</td><td>Auréen</td></tr><tr><td>Varkhöl</td><td>Varkhans</td><td>Varkhan</td></tr><tr><td>Sylvara</td><td>Sylvari</td><td>Sylvain</td></tr><tr><td>Drakem</td><td>Drakéens</td><td>Drakéen</td></tr><tr><td>Orvane</td><td>Orvaniens</td><td>Orvanien</td></tr>
+      </tbody></table>
+      <div class="lore-note"><b>La Langue commune :</b> elle circule entre les peuples, mais nul ne sait qui l'a créée. Des mots semblables apparaissent dans des inscriptions très anciennes, parfois attribuées à des civilisations qui auraient précédé les royaumes connus. Certains chercheurs évoquent la Terre absente.</div>
+      <p class="lore-unknown">Fragments non traduits · Langues premières · Origines disputées</p>
+    </section>
+    <section class="lore-panel" id="lore-croyances" hidden>
+      <span class="lore-tag">Religions · Mythes</span><h3>Les dieux dont personne ne connaît la vérité</h3>
+      <p>Les croyances d'Eldoria sont multiples et contradictoires. Aucune preuve ne permet de confirmer l'existence des dieux, des esprits ou des puissances invoquées par les peuples.</p>
+      <div class="lore-grid">
+        <article class="lore-card"><h4>Les Célestes</h4><p>Ils prient les astres et cherchent dans le ciel les signes du destin.</p></article>
+        <article class="lore-card"><h4>Les Anciens</h4><p>Ils honorent des entités dont les noms se sont effacés des archives.</p></article>
+        <article class="lore-card"><h4>Les Vivants</h4><p>Ils considèrent les forêts, les fleuves, les montagnes et les océans comme des forces sacrées.</p></article>
+        <article class="lore-card"><h4>Les Veilleurs</h4><p>Ils pensent qu'une présence observe Eldoria depuis un lieu ou un temps inconnu.</p></article>
+        <article class="lore-card"><h4>Les Sans-Temple</h4><p>Ils refusent les religions et voient dans les dieux des créations des peuples.</p></article>
+      </div>
+      <div class="lore-note">Des statues sans visage ont été retrouvées dans plusieurs régions. Certaines semblent antérieures aux plus anciennes civilisations connues. Leur identité et leur fonction restent inconnues.</div>
+    </section>
+    <section class="lore-panel" id="lore-magie" hidden>
+      <span class="lore-tag">Arts occultes · Phénomènes</span><h3>La magie n'a pas une seule origine</h3>
+      <p>Les érudits distinguent plusieurs formes de magie. Ces catégories sont des outils de classement : elles ne prouvent pas que les phénomènes étudiés partagent une même nature.</p>
+      <div class="lore-grid">
+        <article class="lore-card"><h4>La magie primordiale</h4><p>Associée à des forces qui auraient précédé les peuples et les civilisations.</p></article>
+        <article class="lore-card"><h4>La magie naturelle</h4><p>Liée au vivant, aux éléments et aux lieux où le monde semble réagir.</p></article>
+        <article class="lore-card"><h4>La magie des arcanes</h4><p>Étudiée au moyen de signes, de formules, de symboles et de rituels.</p></article>
+        <article class="lore-card"><h4>La magie des reliques</h4><p>Associée à des objets anciens dont les propriétés ne peuvent être reproduites.</p></article>
+        <article class="lore-card"><h4>La magie du Voile</h4><p>Nom donné à des phénomènes inexpliqués parfois observés pendant le Voile.</p></article>
+        <article class="lore-card"><h4>La sixième forme</h4><p>Évoquée dans quelques textes dont le nom a été effacé. Son existence même est incertaine.</p></article>
+      </div>
+      <div class="lore-note"><b>Qui peut pratiquer la magie ?</b> Cela dépendrait de sa forme. Certaines pratiques s'apprennent, d'autres semblent liées à une lignée, à un lieu, à une relique ou à un choix incompréhensible. Toute utilisation peut entraîner un prix : mémoire altérée, dette, transformation ou conséquence imprévisible. Ces règles restent à documenter.</div>
+    </section>
+    <section class="lore-panel" id="lore-terre-absente" hidden>
+      <span class="lore-tag">Mystère majeur · Cartes interdites</span><h3>La Terre absente</h3>
+      <p>Des cartes anciennes, des récits et des fragments de textes mentionnent une terre qui ne figure sur aucune carte fiable. Certains la placent au-delà des océans, d'autres sous le monde connu, ou dans un lieu qui ne peut être atteint par les routes ordinaires.</p>
+      <div class="lore-note">Aucune expédition reconnue n'a confirmé son existence. Pourtant, son nom revient dans des documents issus de régions qui n'auraient jamais dû communiquer entre elles.</div>
+    </section>
+  </div>
 </section>
-</main><footer><strong>✦ FEU FOLLET</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer>
-  <script src="js/app.js">
-  </script>
-</body>
-</html>
+<script>
+(function(){
+  const chooser=document.getElementById('lore-choice');
+  if(!chooser)return;
+  const panels=Array.from(document.querySelectorAll('.lore-panel'));
+  function showLore(){
+    const selected=chooser.value;
+    panels.forEach(panel=>{panel.hidden=panel.id!=='lore-'+selected;});
+  }
+  chooser.addEventListener('change',showLore);
+  showLore();
+})();
+</script>
+</main><footer><strong>✦ FEU FOLLET</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer><script src="js/app.js"></script></body></html>
