@@ -1,452 +1,158 @@
 
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080d18">
-<meta name="feu-follet-version" content="grimoire-v6-pages-anciennes">
+<meta name="feu-follet-version" content="multipages-v1">
+
 <title>FEU FOLLET — Entrez dans la légende</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--night:#080d18;--panel:#111a29;--gold:#c7a56a;--pale:#f2dfb8;--ice:#82dff1;--muted:#aeb8c6;--line:rgba(210,178,119,.25);--serif:"Cinzel",Georgia,serif;--sans:"Manrope",Arial,sans-serif}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--night);color:#f4efe5;font-family:var(--sans);line-height:1.65}a{color:inherit;text-decoration:none}button{font:inherit}
-.banner{height:clamp(112px,20vw,220px);background:#050912;overflow:hidden;border-bottom:1px solid var(--line)}.banner img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-header{position:sticky;top:0;z-index:20;background:rgba(7,12,22,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{max-width:1200px;margin:auto;padding:13px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font:600 17px var(--serif);letter-spacing:3px;color:var(--pale);white-space:nowrap}.brand span{color:var(--ice);margin-right:9px}nav{display:flex;gap:8px}nav a{font-size:10px;letter-spacing:2px;font-weight:700;padding:10px 14px;color:#d9d4ca;transition:.25s}nav a:hover{color:var(--ice)}.nav-cta{border:1px solid var(--gold);color:var(--pale);padding:9px 14px;font-size:10px;letter-spacing:1.5px}
-.hero{min-height:690px;position:relative;overflow:hidden;display:flex;align-items:center;isolation:isolate;background:radial-gradient(ellipse at 75% 47%,rgba(22,97,132,.22),transparent 32%),linear-gradient(90deg,#080d18 0%,rgba(8,13,24,.94) 32%,rgba(8,13,24,.25) 100%),linear-gradient(0deg,#080d18 0%,transparent 28%),#101a2a}
-.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:
-radial-gradient(ellipse at 72% 72%,rgba(64,175,210,.15),transparent 24%),
-linear-gradient(180deg,transparent 60%,#080d18 100%),
-url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='s' x2='0' y2='1'%3E%3Cstop stop-color='%231c3448'/%3E%3Cstop offset='1' stop-color='%23070d18'/%3E%3C/linearGradient%3E%3CradialGradient id='m'%3E%3Cstop stop-color='%2373dff2' stop-opacity='.9'/%3E%3Cstop offset='.25' stop-color='%232e8eb0' stop-opacity='.3'/%3E%3Cstop offset='1' stop-color='%23070d18' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='1600' height='900' fill='url(%23s)'/%3E%3Ccircle cx='1120' cy='470' r='340' fill='url(%23m)'/%3E%3Cpath d='M0 620L170 400 300 560 460 300 600 550 770 250 900 570 1080 340 1220 560 1390 310 1600 590V900H0Z' fill='%230b1421'/%3E%3Cpath d='M0 700L210 560 350 670 560 470 740 700 930 500 1110 690 1300 480 1600 700V900H0Z' fill='%23070d18'/%3E%3Cpath d='M1030 690V530L1080 530V470L1120 470V420L1160 420V470H1200V530H1240V690Z' fill='%23081019' stroke='%2378d8eb' stroke-opacity='.35' stroke-width='3'/%3E%3Cpath d='M1110 690V590Q1135 550 1160 590V690' fill='%2348c9e6' fill-opacity='.18'/%3E%3Cpath d='M0 780Q300 700 600 790T1200 770T1600 790V900H0Z' fill='%23050a12'/%3E%3C/svg%3E");background-size:cover;background-position:center}
-.hero:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.28;background-image:radial-gradient(1px 1px at 15% 22%,#fff 99%,transparent),radial-gradient(1px 1px at 66% 18%,#bdeeff 99%,transparent),radial-gradient(2px 2px at 83% 35%,#fff 99%,transparent),radial-gradient(1px 1px at 52% 60%,#fff 99%,transparent),radial-gradient(1px 1px at 92% 75%,#bdeeff 99%,transparent);background-size:310px 230px}
-.hero-inner{max-width:1200px;width:100%;margin:auto;padding:100px 26px 130px}.eyebrow{font-size:10px;letter-spacing:4px;color:var(--ice);text-transform:uppercase}.hero h1{font:500 clamp(42px,6.5vw,82px)/1.12 var(--serif);color:var(--pale);max-width:720px;margin:20px 0;text-shadow:0 8px 40px #000}.hero h1 em{font-style:normal;color:var(--ice)}.hero p{max-width:570px;color:#d1d6dc;font-size:15px;line-height:1.9}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}.button{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:15px 22px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:.25s;cursor:pointer}.button.primary{background:linear-gradient(120deg,#d3b47b,#9b7845);color:#10131b;border:1px solid #e4c990}.button.secondary{border:1px solid rgba(210,178,119,.6);color:var(--pale);background:rgba(5,10,18,.35)}.button:hover{transform:translateY(-3px);filter:brightness(1.12)}.hero-note{margin-top:48px;display:flex;align-items:center;gap:13px;color:#aab7c3;font-size:10px;letter-spacing:1.5px}.hero-note:before{content:"";width:38px;height:1px;background:var(--ice)}
-.flame-orb{position:absolute;right:17%;top:31%;width:180px;height:220px;pointer-events:none;filter:drop-shadow(0 0 28px rgba(85,212,244,.5));animation:float 5s ease-in-out infinite}.flame-orb svg{width:100%;height:100%}@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-13px) rotate(2deg)}}
-section.content{max-width:1200px;margin:auto;padding:100px 26px}.section-head{text-align:center;max-width:720px;margin:0 auto 48px}.section-head .eyebrow{color:var(--gold)}.section-head h2{font:500 clamp(28px,4vw,44px)/1.25 var(--serif);color:var(--pale);margin:13px 0}.section-head p{color:var(--muted);font-size:14px}
-.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.pillar{position:relative;min-height:240px;padding:30px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(25,40,57,.88),rgba(10,16,27,.94));overflow:hidden;transition:.3s}.pillar:hover{transform:translateY(-5px);border-color:rgba(130,223,241,.55)}.pillar .number{font:24px var(--serif);color:var(--ice);opacity:.8}.pillar h3{font:500 21px var(--serif);color:var(--pale);margin:18px 0 8px}.pillar p{font-size:13px;color:var(--muted);margin:0 0 22px}.pillar a{font-size:10px;letter-spacing:2px;color:var(--ice)}
-.atlas-wrap{background:linear-gradient(180deg,#0a111d,#101b2a 48%,#0a111d);border-top:1px solid rgba(130,223,241,.12);border-bottom:1px solid rgba(130,223,241,.12)}.atlas{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}.map-art{min-height:420px;position:relative;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 50%,rgba(62,139,161,.18),transparent 60%),#0a1421;overflow:hidden}.map-art:before{content:"";position:absolute;inset:18px;border:1px solid rgba(199,165,106,.2);background:repeating-radial-gradient(ellipse at 50% 50%,transparent 0 35px,rgba(199,165,106,.08) 36px 37px)}.continent{position:absolute;background:linear-gradient(145deg,#9b8c6b,#425c58 58%,#273e48);opacity:.78;filter:drop-shadow(0 12px 10px #000);border:1px solid #c7a56a66}.c1{width:35%;height:32%;left:13%;top:23%;border-radius:45% 55% 60% 35%;transform:rotate(-24deg)}.c2{width:28%;height:39%;right:13%;top:15%;border-radius:38% 55% 30% 65%;transform:rotate(22deg)}.c3{width:25%;height:20%;left:38%;bottom:12%;border-radius:55% 30% 60% 40%;transform:rotate(10deg)}.island{position:absolute;width:12%;height:7%;border-radius:50%;background:#9a8b69;right:12%;bottom:20%;transform:rotate(-22deg)}.map-label{position:absolute;font:10px var(--serif);letter-spacing:2px;color:#e4d2a8;text-shadow:0 2px 6px #000}.l1{left:19%;top:34%}.l2{right:17%;top:31%}.l3{left:44%;bottom:18%}.map-pin{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--ice);box-shadow:0 0 0 7px #82dff122,0 0 20px #82dff1;cursor:pointer}.pin1{left:32%;top:39%}.pin2{right:28%;top:38%}.pin3{left:52%;bottom:25%}.map-caption{position:absolute;bottom:18px;left:22px;font-size:9px;letter-spacing:2px;color:#b8c4ce}.atlas-copy h2{font:500 clamp(28px,4vw,42px) var(--serif);color:var(--pale);margin:12px 0}.atlas-copy p{color:var(--muted);font-size:14px}.region-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:25px}.region{border:1px solid var(--line);background:#0a111c;color:#e8ddc8;text-align:left;padding:12px 14px;cursor:pointer;font-size:11px;letter-spacing:1px;transition:.2s}.region:hover,.region.active{border-color:var(--ice);color:var(--ice);background:#102332}.region-detail{min-height:52px;margin-top:14px;color:#c5d0d9;font-size:12px}
-.manifesto{max-width:850px;margin:auto;text-align:center;padding:75px 26px}.manifesto .quote{font:italic clamp(22px,3vw,34px)/1.5 var(--serif);color:var(--pale)}.manifesto small{display:block;margin-top:22px;color:var(--ice);letter-spacing:3px;font-size:9px}
-footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;color:#8996a5;font-size:10px;letter-spacing:1px}footer strong{font:500 17px var(--serif);color:var(--gold);display:block;margin-bottom:8px}
-@media(max-width:760px){.nav{padding:12px 16px;flex-wrap:wrap}.brand{font-size:14px}nav{order:3;width:100%;justify-content:center;border-top:1px solid rgba(210,178,119,.12);padding-top:5px}nav a{padding:9px 10px;font-size:9px}.nav-cta{font-size:9px}.hero{min-height:620px}.hero-inner{padding:75px 22px 100px}.flame-orb{right:4%;top:24%;width:105px;height:140px;opacity:.72}.hero h1{max-width:530px;font-size:clamp(40px,11vw,62px)}.hero p{max-width:470px;font-size:14px}.pillars{grid-template-columns:1fr}.pillar{min-height:190px}.atlas{grid-template-columns:1fr;gap:28px}.map-art{min-height:330px}.region-list{grid-template-columns:1fr 1fr}section.content{padding:75px 20px}}
-@media(max-width:390px){nav a{letter-spacing:1px;padding:8px 7px}.actions .button{width:100%}.region-list{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 
-.atlas-explorer{max-width:1200px;margin:0 auto;padding:0 26px 100px}
-.atlas-explorer-head{text-align:center;margin:0 auto 32px;max-width:700px}
-.atlas-explorer-head .eyebrow{color:var(--gold)}
-.atlas-explorer-head h2{font:500 clamp(26px,4vw,38px) var(--serif);color:var(--pale);margin:12px 0}
-.atlas-explorer-head p{color:var(--muted);font-size:13px}
-.region-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.region-card{position:relative;text-align:left;min-height:210px;padding:23px;border:1px solid var(--line);background:linear-gradient(145deg,#172536,#0b1420);color:#eee7d9;cursor:pointer;overflow:hidden;transition:.25s}
-.region-card:before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-70px;top:-75px;background:radial-gradient(circle,rgba(130,223,241,.16),transparent 70%)}
-.region-card:hover,.region-card.selected{transform:translateY(-4px);border-color:var(--ice);background:linear-gradient(145deg,#1b3042,#0b1420)}
-.region-card .index{font:12px var(--serif);color:var(--ice);letter-spacing:2px}
-.region-card h3{font:500 19px var(--serif);color:var(--pale);margin:14px 0 7px}
-.region-card p{font-size:12px;color:#b8c2cd;margin:0;max-width:300px}
-.region-card .discover{display:block;margin-top:17px;font-size:9px;letter-spacing:2px;color:var(--ice)}
-.region-dossier{display:grid;grid-template-columns:.75fr 1.25fr;gap:28px;margin-top:22px;padding:28px;border:1px solid rgba(130,223,241,.28);background:linear-gradient(120deg,rgba(22,45,61,.72),rgba(10,17,29,.95));}
-.dossier-mark{min-height:210px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);background:radial-gradient(circle,rgba(87,188,212,.16),transparent 60%),#0a1420}
-.dossier-mark span{font:500 clamp(38px,6vw,65px) var(--serif);color:rgba(130,223,241,.72);text-shadow:0 0 30px rgba(130,223,241,.3)}
-.dossier-copy .eyebrow{color:var(--ice)}
-.dossier-copy h3{font:500 clamp(23px,3vw,34px) var(--serif);color:var(--pale);margin:9px 0}
-.dossier-copy p{font-size:13px;color:#c3ccd5}
-.dossier-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
-.dossier-fact{border-top:1px solid var(--line);padding-top:10px}
-.dossier-fact b{display:block;font-size:9px;letter-spacing:2px;color:var(--gold);margin-bottom:4px}
-.dossier-fact span{font-size:11px;color:#d5dce2}
-@media(max-width:760px){.region-cards{grid-template-columns:1fr 1fr}.region-dossier{grid-template-columns:1fr;padding:18px}.dossier-mark{min-height:130px}.atlas-explorer{padding:0 20px 75px}}
-@media(max-width:430px){.region-cards{grid-template-columns:1fr}.region-card{min-height:165px}.dossier-facts{grid-template-columns:1fr}}
-
-
-/* EPISODE JOUABLE — prototype */
-.game-section{max-width:1120px;margin:0 auto;padding:70px 26px 90px}
-.game-panel{border:1px solid rgba(130,223,241,.28);background:linear-gradient(145deg,rgba(18,34,49,.96),rgba(8,14,24,.98));padding:clamp(20px,4vw,42px);position:relative;overflow:hidden}
-.game-panel:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 10%,rgba(130,223,241,.11),transparent 35%);pointer-events:none}
-.game-topline{font-size:10px;letter-spacing:3px;color:var(--ice)}
-.game-panel h2{font:500 clamp(25px,4vw,38px) var(--serif);color:var(--pale);margin:12px 0}
-.game-panel p{color:#c1cad3;font-size:14px;max-width:760px}
-.game-scene{position:relative;border-left:2px solid var(--ice);padding:4px 0 4px 20px;margin:24px 0;min-height:80px}
-.game-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-.game-btn{border:1px solid rgba(130,223,241,.45);background:rgba(130,223,241,.08);color:#e9f7fa;padding:12px 16px;font:600 11px var(--sans);letter-spacing:1px;cursor:pointer;transition:.2s}
-.game-btn:hover{background:rgba(130,223,241,.18);border-color:var(--ice)}
-.game-btn.gold{border-color:var(--gold);color:var(--pale);background:rgba(199,165,106,.1)}
-.game-status{font-size:10px!important;letter-spacing:1px;color:var(--gold)!important;margin-top:18px}
-.game-riddle{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
-.riddle-choice{padding:16px 10px;border:1px solid var(--line);background:#101c2a;color:var(--pale);cursor:pointer;font:500 12px var(--serif)}
-.riddle-choice:hover{border-color:var(--ice);background:#172b3d}
-.game-note{padding:14px 16px;border:1px solid var(--line);background:rgba(199,165,106,.06);font-size:12px;color:#d7c49d;margin-top:16px}
-@media(max-width:600px){.game-section{padding:48px 18px}.game-riddle{grid-template-columns:1fr}.game-actions .game-btn{width:100%}}
-
-
-/* GRIMOIRE PERSONNEL */
-.grimoire-section{max-width:1120px;margin:0 auto;padding:78px 26px 90px;scroll-margin-top:90px}
-.grimoire-panel{border:1px solid rgba(199,165,106,.3);background:linear-gradient(145deg,#121d2b,#090f1a);padding:clamp(20px,4vw,40px);position:relative;overflow:hidden}
-.grimoire-head{text-align:center;max-width:700px;margin:0 auto 30px}.grimoire-head .eyebrow{color:var(--gold)}.grimoire-head h2{font:500 clamp(27px,4vw,40px) var(--serif);color:var(--pale);margin:12px 0}.grimoire-head p{color:var(--muted);font-size:13px}
-.grimoire-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:25px 0}.grimoire-stat{padding:17px 12px;text-align:center;border:1px solid var(--line);background:rgba(5,12,21,.55)}.grimoire-stat strong{display:block;font:26px var(--serif);color:var(--ice)}.grimoire-stat span{font-size:9px;letter-spacing:1.5px;color:var(--muted)}
-.grimoire-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.grimoire-entry{display:block;width:100%;text-align:left;padding:18px;border:1px solid var(--line);background:rgba(6,13,22,.62);min-height:132px;color:inherit;cursor:pointer;transition:border-color .2s,background .2s}.grimoire-entry.found{border-color:rgba(130,223,241,.42);cursor:pointer;pointer-events:auto;position:relative;z-index:1}.grimoire-entry.found:hover{border-color:var(--ice);background:rgba(22,43,61,.8)}.grimoire-entry .entry-type{font-size:9px;letter-spacing:2px;color:var(--gold)}.grimoire-entry h3{font:500 16px var(--serif);color:var(--pale);margin:8px 0 5px}.grimoire-entry p{font-size:11px;color:var(--muted);margin:0}.grimoire-entry.locked{opacity:.58;cursor:not-allowed;pointer-events:none}.grimoire-entry.locked h3{color:#aab3bf}.entry-open{display:block;margin-top:12px;color:var(--ice);font-size:9px;letter-spacing:1.5px}.grimoire-detail{display:none;margin-top:18px;padding:22px;border:1px solid rgba(130,223,241,.45);background:linear-gradient(135deg,rgba(19,39,55,.96),rgba(7,14,24,.98));}.grimoire-detail.open{display:block}.grimoire-detail .detail-type{font-size:9px;letter-spacing:2px;color:var(--gold)}.grimoire-detail h3{font:500 25px var(--serif);color:var(--pale);margin:10px 0}.grimoire-detail p{font-size:13px;line-height:1.8;color:#c5d0d9}.grimoire-detail .detail-note{padding:12px;border-left:2px solid var(--gold);background:rgba(199,165,106,.07);color:#e0d1b2;font:italic 14px var(--serif);margin:16px 0}.grimoire-progress{height:5px;background:#263243;margin-top:18px;overflow:hidden}.grimoire-progress span{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--ice));width:0;transition:width .3s}.grimoire-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:25px}.grimoire-foot{font-size:11px;color:#9ba9b7;text-align:center;margin:18px auto 0;max-width:650px}
-/* ILLUSTRATIONS ORIGINALES DU GRIMOIRE */
-.grimoire-entry{position:relative;overflow:hidden;padding:16px 16px 17px 112px;min-height:142px}
-.entry-art{position:absolute;left:12px;top:13px;width:88px;height:112px;border:1px solid rgba(199,165,106,.32);background:radial-gradient(ellipse at 50% 45%,rgba(76,151,174,.22),rgba(7,14,24,.92) 72%);display:grid;place-items:center;overflow:hidden}
-.entry-art img{width:100%;height:100%;object-fit:cover;display:block}
-.grimoire-entry.locked .entry-art{filter:grayscale(.85);opacity:.48}
-.grimoire-detail{position:relative;overflow:hidden;padding:clamp(18px,3vw,30px)}
-.detail-art{width:100%;height:190px;margin:0 0 22px;border:1px solid rgba(199,165,106,.3);background:radial-gradient(ellipse at 50% 45%,rgba(76,151,174,.2),rgba(7,14,24,.95) 72%);display:grid;place-items:center;overflow:hidden}
-.detail-art img{height:100%;width:100%;object-fit:contain;display:block}
-.grimoire-entry .entry-type{display:block;margin-bottom:5px}
-@media(max-width:600px){.grimoire-entry{padding-left:104px;min-height:136px}.entry-art{width:78px;height:104px}.detail-art{height:160px}}
-@media(max-width:600px){.grimoire-section{padding:55px 18px}.grimoire-stats{grid-template-columns:1fr 1fr}.grimoire-grid{grid-template-columns:1fr}.grimoire-actions .game-btn{width:100%}}
-
-
-/* GRIMOIRE V6 — pages anciennes et ouverture immersive */
-.grimoire-detail.open{
-  display:block;position:relative;isolation:isolate;margin-top:24px;
-  padding:clamp(22px,4vw,42px);color:#2b2117;
-  border:8px double #9b7543;outline:1px solid rgba(226,190,126,.35);outline-offset:5px;
-  background:
-    radial-gradient(ellipse at 12% 8%,rgba(255,255,255,.48),transparent 38%),
-    radial-gradient(ellipse at 88% 92%,rgba(123,75,35,.16),transparent 42%),
-    repeating-linear-gradient(0deg,rgba(91,59,30,.025) 0 1px,transparent 1px 5px),
-    linear-gradient(135deg,#ead9b4,#d7bd8d 48%,#ead9b4);
-  box-shadow:0 22px 55px rgba(0,0,0,.48),inset 0 0 35px rgba(93,58,27,.22);
-  animation:grimoirePageOpen .55s cubic-bezier(.2,.8,.2,1) both;
-}
-.grimoire-detail.open:before,.grimoire-detail.open:after{
-  content:"✦";position:absolute;z-index:2;color:#8d642f;font:24px Georgia,serif;
-  text-shadow:0 1px 0 #f7e8c7;pointer-events:none
-}
-.grimoire-detail.open:before{top:10px;left:13px}
-.grimoire-detail.open:after{right:13px;bottom:8px}
-.grimoire-detail .detail-art{
-  height:clamp(210px,38vw,390px);margin:0 0 25px;
-  border:5px double #9b7543;background:#171b20;
-  box-shadow:0 8px 22px rgba(57,35,16,.28)
-}
-.grimoire-detail .detail-art img{width:100%;height:100%;object-fit:cover;display:block}
-.grimoire-detail .detail-type{
-  color:#795629;font-size:10px;font-weight:800;letter-spacing:3px;text-align:center
-}
-.grimoire-detail h3{
-  color:#332315;font:600 clamp(25px,4vw,38px)/1.25 Georgia,serif;
-  text-align:center;margin:12px 0 20px;text-shadow:0 1px 0 rgba(255,255,255,.45)
-}
-.grimoire-detail p{
-  max-width:760px;margin:14px auto;color:#392b1d;font:16px/1.85 Georgia,serif
-}
-.grimoire-detail .detail-note{
-  max-width:760px;margin:24px auto;padding:18px 20px;
-  border:1px solid rgba(119,81,39,.42);border-left:4px solid #9b7543;
-  background:rgba(255,248,226,.48);color:#50391f;font:italic 17px/1.6 Georgia,serif
-}
-.grimoire-detail .detail-close{
-  display:flex;width:max-content;margin:26px auto 0;border:1px solid #795629;
-  background:#332719;color:#f1dfba;padding:12px 20px;
-  font:700 10px var(--sans);letter-spacing:2px;text-transform:uppercase;cursor:pointer
-}
-.grimoire-detail .detail-close:hover{background:#594127;border-color:#b28b50}
-@keyframes grimoirePageOpen{
-  from{opacity:0;transform:translateY(18px) scale(.985);filter:blur(3px)}
-  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
-}
-@media(prefers-reduced-motion:reduce){.grimoire-detail.open{animation:none}}
-@media(max-width:600px){
-  .grimoire-detail.open{padding:20px 15px;border-width:5px}
-  .grimoire-detail .detail-art{height:220px}
-  .grimoire-detail p{font-size:14px}
-  .grimoire-detail .detail-note{font-size:15px;padding:14px}
-}
-
-</style>
-<!-- Illustrations du Grimoire : fichiers PNG dans assets/grimoire/ -->
+<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-<div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale FEU FOLLET"></div>
-<header><div class="nav">
-<a class="brand" href="#accueil"><span>✦</span> FEU FOLLET</a>
-<nav aria-label="Navigation principale"><a href="#jouer">JOUER</a><a href="#atlas">L'ATLAS</a><a href="#grimoire">GRIMOIRE</a><a href="#boutique">BOUTIQUE</a></nav>
-<a class="nav-cta" href="#jouer">DÉCOUVRIR</a>
-</div></header>
-<main id="accueil">
+
+<div class="banner">
+<img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière FEU FOLLET">
+</div>
+
+<header>
+<div class="nav">
+
+<a class="brand" href="index.html">
+<span>✦</span> FEU FOLLET
+</a>
+
+<nav aria-label="Navigation principale">
+<a href="jouer.html">JOUER</a>
+<a href="atlas.html">L'ATLAS</a>
+<a href="grimoire.html">GRIMOIRE</a>
+<a href="boutique.html">BOUTIQUE</a>
+</nav>
+
+<a class="nav-cta" href="jouer.html">DÉCOUVRIR</a>
+
+</div>
+</header>
+
+<main>
+
 <section class="hero">
-<div class="flame-orb" aria-hidden="true"><svg viewBox="0 0 180 220" fill="none"><path d="M91 8C103 47 148 61 140 112C135 147 113 184 88 202C59 181 35 153 38 119C41 89 62 68 66 43C80 58 82 72 82 83C103 61 101 34 91 8Z" fill="#62DDF4" fill-opacity=".18" stroke="#9AEFFF" stroke-width="2"/><path d="M91 69C100 94 119 107 111 137C106 158 94 175 83 183C67 166 58 147 65 128C69 116 79 106 79 91C91 105 91 116 91 121C102 105 99 87 91 69Z" fill="#A7F3FF" fill-opacity=".55"/><path d="M89 116C99 132 94 151 82 165C76 153 76 140 89 116Z" fill="#F4FFFF"/></svg></div>
+
+<div class="flame-orb" aria-hidden="true">
+<svg fill="none" viewBox="0 0 180 220">
+<path d="M91 8C103 47 148 61 140 112C135 147 113 184 88 202C59 181 35 153 38 119C41 89 62 68 66 43C80 58 82 72 82 83C103 61 101 34 91 8Z" fill="#62DDF4" fill-opacity=".18" stroke="#9AEFFF" stroke-width="2"/>
+<path d="M91 69C100 94 119 107 111 137C106 158 94 175 83 183C67 166 58 147 65 128C69 116 79 106 79 91C91 105 91 116 91 121C102 105 99 87 91 69Z" fill="#A7F3FF" fill-opacity=".55"/>
+<path d="M89 116C99 132 94 151 82 165C76 153 76 140 89 116Z" fill="#F4FFFF"/>
+</svg>
+</div>
+
 <div class="hero-inner">
-<div class="eyebrow">UNE SAGA INTERACTIVE · UN MONDE À EXPLORER</div>
-<h1>La légende<br>ne fait que <em>commencer.</em></h1>
-<p>Des royaumes oubliés. Des peuples que nul ne connaît. Des secrets enfouis depuis des siècles. Ici, chaque découverte ouvre une porte. Et certaines portes auraient dû rester fermées.</p>
-<div class="actions"><a class="button primary" href="#jouer">ENTRER DANS L'AVENTURE <span>↗</span></a><a class="button secondary" href="#atlas">EXPLORER LE MONDE</a></div>
-<div class="hero-note">AVANCEZ À VOTRE RYTHME · CHAQUE DÉCOUVERTE COMPTE</div>
-</div></section>
+
+<div class="eyebrow">
+UNE SAGA INTERACTIVE · UN MONDE À EXPLORER
+</div>
+
+<h1>
+La légende<br>
+ne fait que <em>commencer.</em>
+</h1>
+
+<p>
+Des royaumes oubliés. Des peuples que nul ne connaît.
+Des secrets enfouis depuis des siècles.
+Ici, chaque découverte ouvre une porte.
+Et certaines portes auraient dû rester fermées.
+</p>
+
+<div class="actions">
+<a class="button primary" href="jouer.html">
+ENTRER DANS L'AVENTURE <span>↗</span>
+</a>
+
+<a class="button secondary" href="atlas.html">
+EXPLORER LE MONDE
+</a>
+</div>
+
+<div class="hero-note">
+AVANCEZ À VOTRE RYTHME · CHAQUE DÉCOUVERTE COMPTE
+</div>
+
+</div>
+</section>
+
 <section class="content" id="jouer">
-<div class="section-head"><div class="eyebrow">TROIS PORTES · UN SEUL UNIVERS</div><h2>Votre histoire commence ici</h2><p>Explorez, découvrez, collectionnez. Le monde de FEU FOLLET se dévoile à ceux qui prennent le temps de l'observer.</p></div>
+
+<div class="section-head">
+<div class="eyebrow">TROIS PORTES · UN SEUL UNIVERS</div>
+<h2>Votre histoire commence ici</h2>
+<p>
+Explorez, découvrez, collectionnez.
+Le monde de FEU FOLLET se dévoile à ceux
+qui prennent le temps de l'observer.
+</p>
+</div>
+
 <div class="pillars">
-<article class="pillar"><div class="number">I</div><h3>Jouer</h3><p>Des récits à vivre, des énigmes à résoudre et des choix qui vous conduisent toujours plus loin.</p><a href="#episode">COMMENCER L’AVENTURE ↗</a></article>
-<article class="pillar"><div class="number">II</div><h3>Le grimoire</h3><p>Gardez la trace de vos trouvailles : symboles, reliques, fragments d'histoire et secrets révélés.</p><a href="#grimoire">OUVRIR LE GRIMOIRE ↗</a></article>
-<article class="pillar" id="boutique"><div class="number">III</div><h3>La boutique</h3><p>Des créations inspirées des lieux, des personnages et des légendes découverts au fil de vos aventures.</p><a href="#boutique">LES COLLECTIONS ARRIVERONT ↗</a></article>
+
+<article class="pillar">
+<div class="number">I</div>
+<h3>Jouer</h3>
+<p>
+Des récits à vivre, des énigmes à résoudre
+et des choix qui vous conduisent toujours plus loin.
+</p>
+<a href="jouer.html">COMMENCER L’AVENTURE ↗</a>
+</article>
+
+<article class="pillar">
+<div class="number">II</div>
+<h3>Le grimoire</h3>
+<p>
+Gardez la trace de vos trouvailles :
+symboles, reliques, fragments d'histoire
+et secrets révélés.
+</p>
+<a href="grimoire.html">OUVRIR LE GRIMOIRE ↗</a>
+</article>
+
+<article class="pillar" id="boutique">
+<div class="number">III</div>
+<h3>La boutique</h3>
+<p>
+Des créations inspirées des lieux,
+des personnages et des légendes
+découverts au fil de vos aventures.
+</p>
+<a href="boutique.html">LES COLLECTIONS ARRIVERONT ↗</a>
+</article>
+
 </div>
 </section>
-<section class="game-section" id="episode">
-<div class="game-panel">
-<div class="game-topline">PREMIÈRE AVENTURE · ÉPISODE 01</div>
-<h2>Le Registre sans nom</h2>
-<p>La pluie tombe sur Valombre. Dans une ruelle du quartier des copistes, une pierre vient de tomber d'un vieux mur. Derrière elle, quelque chose attend depuis bien trop longtemps.</p>
-<div class="game-scene" id="game-scene" aria-live="polite">
-<p>Une cavité sombre apparaît entre deux blocs. À l'intérieur repose un paquet enveloppé dans une toile jaunie. Un cercle incomplet traversé par une ligne verticale est tracé sur le tissu.</p>
-<p><em>Que faites-vous ?</em></p>
+
+<div class="manifesto">
+<div class="quote">
+« Tu ne viens pas acheter une légende.<br>
+Tu viens la découvrir. »
 </div>
-<div id="game-controls" class="game-actions">
-<button class="game-btn gold" onclick="episodeChoice('prendre')">Prendre le paquet</button>
-<button class="game-btn" onclick="episodeChoice('examiner')">Examiner le symbole</button>
-<button class="game-btn" onclick="episodeChoice('appeler')">Appeler un archiviste</button>
+<small>FEU FOLLET · LA SAGA COMMENCE</small>
 </div>
-<div class="game-note" id="game-feedback">Vos découvertes seront conservées dans le grimoire de ce navigateur. Le prototype ne nécessite aucun achat.</div>
-<p class="game-status" id="game-status">PROGRESSION : PREMIÈRE RENCONTRE</p>
-</div>
-</section>
-<section class="grimoire-section" id="grimoire">
-<div class="grimoire-panel">
-<div class="grimoire-head"><div class="eyebrow">VOTRE MÉMOIRE DE VOYAGE</div><h2>Le Grimoire</h2><p>Chaque signe observé, chaque fragment retrouvé et chaque rencontre importante laisse une trace. Ce livre ne révèle que ce que vous avez réellement découvert.</p></div>
-<div class="grimoire-stats"><div class="grimoire-stat"><strong id="grimoire-count">0</strong><span>DÉCOUVERTES</span></div><div class="grimoire-stat"><strong id="grimoire-episode">0%</strong><span>ÉPISODE 01</span></div><div class="grimoire-stat"><strong id="grimoire-destination">—</strong><span>PROCHAINE PISTE</span></div></div>
-<div class="grimoire-progress"><span id="grimoire-progress-bar"></span></div>
-<div class="grimoire-grid" id="grimoire-entries" aria-live="polite"></div>
-<div class="grimoire-detail" id="grimoire-detail" aria-live="polite" aria-atomic="true"></div>
-<div class="grimoire-actions"><button class="game-btn gold" onclick="refreshGrimoire()">Actualiser le grimoire</button><button class="game-btn" onclick="location.hash='episode'">Reprendre l’aventure</button></div>
-<p class="grimoire-foot">Votre progression est conservée dans le navigateur de cet appareil. Elle n'est pas encore synchronisée entre plusieurs appareils.</p>
-</div></section>
-<div class="atlas-wrap" id="atlas"><section class="content atlas">
-<div class="map-art" role="img" aria-label="Carte stylisée et mystérieuse des terres de FEU FOLLET"><div class="continent c1"></div><div class="continent c2"></div><div class="continent c3"></div><div class="island"></div><span class="map-label l1">AURENTH</span><span class="map-label l2">VARKHÖL</span><span class="map-label l3">ORVANE</span><button class="map-pin pin1" aria-label="Découvrir Aurenth" data-region="aurenth"></button><button class="map-pin pin2" aria-label="Découvrir Varkhöl" data-region="varkhol"></button><button class="map-pin pin3" aria-label="Découvrir Orvane" data-region="orvane"></button><div class="map-caption">ATLAS INCOMPLET · TERRES CONNUES</div></div>
-<div class="atlas-copy"><div class="eyebrow">L'ATLAS DES TERRES CONNUES</div><h2>Un monde immense.<br>Des secrets sans fin.</h2><p>Six régions composent les premières pages de notre atlas. Certaines sont connues, d'autres cachent des civilisations dont l'existence même est contestée. La carte complète reste à découvrir.</p>
-<div class="region-list"><button class="region active" data-region="aurenth">AURENTH</button><button class="region" data-region="varkhol">VARKHÖL</button><button class="region" data-region="sylvara">SYLVARA</button><button class="region" data-region="drakem">DRAKEM</button><button class="region" data-region="orvane">ÎLES D'ORVANE</button><button class="region" data-region="nereth">NÉRÉTH</button></div><div class="region-detail" id="region-detail" aria-live="polite">Les terres des royaumes anciens. Plaines, cités fortifiées et dynasties dont les archives ne racontent pas toujours toute la vérité.</div></div>
-</section>
-<section class="atlas-explorer">
-<div class="atlas-explorer-head"><div class="eyebrow">FEUILLETER L'ATLAS</div><h2>Six régions. Six visages du monde.</h2><p>Choisissez une région pour consulter sa première fiche. Les territoires inconnus et les secrets seront révélés au fil des aventures.</p></div>
-<div class="region-cards" id="region-cards">
-<button class="region-card selected" data-region="aurenth"><span class="index">01 · TERRES ROYALES</span><h3>AURENTH</h3><p>Des plaines fertiles, des cités fortifiées et des dynasties anciennes.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
-<button class="region-card" data-region="varkhol"><span class="index">02 · HAUTES TERRES</span><h3>VARKHÖL</h3><p>Des montagnes glacées et des forteresses taillées dans la pierre.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
-<button class="region-card" data-region="sylvara"><span class="index">03 · TERRES VIVANTES</span><h3>SYLVARA</h3><p>Une forêt immense où les chemins semblent se déplacer.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
-<button class="region-card" data-region="drakem"><span class="index">04 · TERRES ARDENTES</span><h3>DRAKEM</h3><p>Des volcans, des cités de roche noire et des machines oubliées.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
-<button class="region-card" data-region="orvane"><span class="index">05 · ARCHIPEL</span><h3>ÎLES D'ORVANE</h3><p>Des cités portuaires et des routes maritimes incertaines.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
-<button class="region-card" data-region="nereth"><span class="index">06 · MONDE SOUTERRAIN</span><h3>NÉRÉTH</h3><p>Des profondeurs dont l'existence même reste contestée.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
-</div>
-<div class="region-dossier" aria-live="polite">
-<div class="dossier-mark"><span id="dossier-symbol">A</span></div>
-<div class="dossier-copy"><div class="eyebrow" id="dossier-kicker">FICHE DE RÉGION · 01</div><h3 id="dossier-title">AURENTH — Les terres des couronnes</h3><p id="dossier-description">Au cœur des terres connues s'étendent les royaumes d'Aurenth. Des routes anciennes relient les cités fortifiées, les marchés et les domaines des grandes maisons. Les chroniques y sont nombreuses, mais certaines pages semblent avoir été volontairement arrachées.</p>
-<div class="dossier-facts">
-<div class="dossier-fact"><b>PAYSAGES</b><span id="dossier-landscape">Plaines, forêts tempérées, collines et citadelles</span></div>
-<div class="dossier-fact"><b>PEUPLE ASSOCIÉ</b><span id="dossier-people">Les Auréans</span></div>
-<div class="dossier-fact"><b>RÉPUTATION</b><span id="dossier-reputation">Pouvoirs anciens, alliances et rivalités</span></div>
-<div class="dossier-fact"><b>MYSTÈRE CONNU</b><span id="dossier-mystery">Des archives qui ne racontent pas toute l'histoire</span></div>
-</div></div></div>
-</section></div>
-<div class="manifesto"><div class="quote">« Tu ne viens pas acheter une légende.<br>Tu viens la découvrir. »</div><small>FEU FOLLET · LA SAGA COMMENCE</small></div>
+
 </main>
-<footer><strong>✦ FEU FOLLET</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer>
-<script>
-const regions={
-aurenth:{number:"01",symbol:"A",title:"AURENTH — Les terres des couronnes",description:"Au cœur des terres connues s'étendent les royaumes d'Aurenth. Des routes anciennes relient les cités fortifiées, les marchés et les domaines des grandes maisons. Les chroniques y sont nombreuses, mais certaines pages semblent avoir été volontairement arrachées.",landscape:"Plaines, forêts tempérées, collines et citadelles",people:"Les Auréans",reputation:"Pouvoirs anciens, alliances et rivalités",mystery:"Des archives qui ne racontent pas toute l'histoire"},
-varkhol:{number:"02",symbol:"V",title:"VARKHÖL — Les montagnes qui murmurent",description:"Au nord, les chaînes de Varkhöl dressent leurs sommets au-dessus des brumes et des glaces. Des bastions sont creusés dans la montagne. Les voyageurs racontent que, certaines nuits, la roche résonne comme si quelque chose bougeait très loin sous leurs pieds.",landscape:"Glaciers, cols étroits, vallées gelées et cavernes",people:"Les Varkhans",reputation:"Endurance, mémoire orale et forteresses",mystery:"Des sons inexpliqués dans les profondeurs"},
-sylvara:{number:"03",symbol:"S",title:"SYLVARA — La forêt aux chemins mouvants",description:"Sylvara est une étendue de forêts anciennes, de clairières brumeuses et d'eaux silencieuses. Les sentiers ne conduisent pas toujours au même endroit. Ceux qui y vivent semblent connaître des passages que les cartes ne peuvent retenir.",landscape:"Forêts monumentales, marais, rivières et clairières",people:"Les Sylvari",reputation:"Savoir des plantes, discrétion et traditions mouvantes",mystery:"Des chemins qui changent lorsque nul ne les regarde"},
-drakem:{number:"04",symbol:"D",title:"DRAKEM — Les terres ardentes",description:"Autour des volcans de Drakem s'élèvent des cités de roche sombre et des ateliers où l'on travaille des alliages rares. Des machines anciennes y fonctionnent encore. Leurs gardiens savent les entretenir, mais ignorent qui les a conçues.",landscape:"Volcans, champs de cendres, falaises et coulées pétrifiées",people:"Les Drakéens",reputation:"Forge, savoir-faire technique et secrets industriels",mystery:"Des machines dont personne ne connaît l'origine"},
-orvane:{number:"05",symbol:"O",title:"ORVANE — Les îles des routes changeantes",description:"Les îles d'Orvane sont dispersées sur une mer parcourue de courants puissants. Les navigateurs y échangent des marchandises, des récits et des cartes. Certaines routes ne seraient praticables qu'à des périodes précises, comme si la mer ouvrait et refermait ses passages.",landscape:"Falaises, ports, récifs, plages sombres et îlots isolés",people:"Les Orvaniens",reputation:"Navigation, commerce et exploration",mystery:"Des îles absentes de certaines cartes"},
-nereth:{number:"06",symbol:"N",title:"NÉRÉTH — Les profondeurs contestées",description:"Néréth n'apparaît sur aucune carte officielle. Pourtant, des récits évoquent des lacs souterrains, des galeries immenses et des cités éclairées par des cristaux. Aucun témoignage n'a encore permis de prouver que ce monde existe.",landscape:"Cavernes, lacs souterrains, failles et galeries profondes",people:"Les Néréthiens — existence non confirmée",reputation:"Légende, silence et savoirs inconnus",mystery:"Une civilisation qui pourrait vivre sous le monde"}
-};
-function selectRegion(name){
- const r=regions[name]; if(!r)return;
- document.querySelectorAll(".region").forEach(b=>b.classList.toggle("active",b.dataset.region===name));
- document.querySelectorAll(".region-card").forEach(b=>b.classList.toggle("selected",b.dataset.region===name));
- const set=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value};
- set("region-detail",r.description);
- set("dossier-symbol",r.symbol);set("dossier-kicker","FICHE DE RÉGION · "+r.number);
- set("dossier-title",r.title);set("dossier-description",r.description);
- set("dossier-landscape",r.landscape);set("dossier-people",r.people);
- set("dossier-reputation",r.reputation);set("dossier-mystery",r.mystery);
-}
-document.querySelectorAll("[data-region]").forEach(el=>el.addEventListener("click",()=>selectRegion(el.dataset.region)));
 
-const FF_SAVE_KEY="feufollet_grimoire_v1";
-function ffLoad(){
- try{return JSON.parse(localStorage.getItem(FF_SAVE_KEY)||"{}")}catch(e){return {}}
-}
-function ffSave(data){
- try{localStorage.setItem(FF_SAVE_KEY,JSON.stringify(data))}catch(e){}
-}
-function ffRecord(item){
- const data=ffLoad();data.discoveries=data.discoveries||[];
- if(!data.discoveries.includes(item))data.discoveries.push(item);
- ffSave(data);
- if(document.getElementById("grimoire-entries"))refreshGrimoire();
-}
-function ffScene(text,controls,status,feedback){
- const scene=document.getElementById("game-scene");
- const actions=document.getElementById("game-controls");
- if(scene)scene.innerHTML=text;
- if(actions)actions.innerHTML=controls;
- const st=document.getElementById("game-status");if(st)st.textContent=status||"PROGRESSION ENREGISTRÉE";
- const fb=document.getElementById("game-feedback");if(fb&&feedback)fb.textContent=feedback;
-}
-function episodeChoice(choice){
- if(choice==="examiner"){
-  ffRecord("Le Signe sans royaume");
-  ffScene("<p>Tu approches la main du tissu. Le symbole n'est pas dessiné à l'encre : il semble avoir été pressé dans la fibre.</p><p>Au revers, trois mots presque effacés : <strong>règne · demeure · passe</strong>.</p><p>Le paquet est toujours là. Il semble attendre que tu l'ouvres.</p>",
-  '<button class="game-btn gold" onclick="episodeChoice(\'prendre\')">Ouvrir le paquet</button><button class="game-btn" onclick="episodeChoice(\'appeler\')">Appeler un archiviste</button>',
-  "DÉCOUVERTE : LE SYMBOLE OBSERVÉ","Le grimoire a enregistré le Signe sans royaume.");
- }else if(choice==="appeler"){
-  ffScene("<p>Un vieux copiste entrouvre la porte voisine. À la vue du symbole, son visage se ferme.</p><p>« Ne prononcez pas ce nom ici. Prenez ce paquet, et ne le montrez à personne avant d'avoir compris ce qu'il contient. »</p>",
-  '<button class="game-btn gold" onclick="episodeChoice(\'prendre\')">Prendre le paquet</button><button class="game-btn" onclick="episodeChoice(\'examiner\')">Examiner le symbole</button>',
-  "RENCONTRE : LE COPISTE","Un témoin a reconnu le signe. Sa peur est désormais un indice.");
- }else{
-  ffRecord("Le Registre sans nom");
-  ffScene("<p>La toile se défait. À l'intérieur, un registre sans titre, sans auteur et sans sceau. Plusieurs pages ont été arrachées avec une précision remarquable.</p><p><strong>« Les routes furent comptées. Les couronnes furent nommées. Les frontières furent tracées. Mais nul ne consigna le lieu qui manquait. »</strong></p><p>Dans la reliure, tu découvres un disque de cuivre à trois symboles : une couronne, une montagne et une vague.</p><p><em>Dans quel ordre faut-il les placer ?</em></p>",
-  '<button class="game-btn gold" onclick="episodeRiddleStart()">Composer l’ordre des trois symboles</button>',
-  "ÉNIGME : LE DISQUE DE CUIVRE","Le registre est ajouté à votre grimoire.");
- }
-}
-let riddleSequence=[];
-function episodeRiddle(first){
- riddleSequence=[first];
- const labels={couronne:"Couronne",montagne:"Montagne",vague:"Vague"};
- ffScene(
-  "<p>Le disque réagit au premier symbole. Les trois mots gravés sur la toile semblent indiquer une action pour chaque signe : <strong>règne · demeure · passe</strong>.</p><p>Compose maintenant l'ordre complet en touchant les trois symboles, un par un.</p><p><strong>Ordre choisi :</strong> <span id=\"riddle-sequence\">"+labels[first]+"</span></p>",
-  '<div class="game-riddle"><button class="riddle-choice" onclick="riddleAdd(\'couronne\')">Couronne</button><button class="riddle-choice" onclick="riddleAdd(\'montagne\')">Montagne</button><button class="riddle-choice" onclick="riddleAdd(\'vague\')">Vague</button></div><div class="game-actions"><button class="game-btn gold" onclick="episodeCheckRiddle()">Vérifier l’ordre</button><button class="game-btn" onclick="riddleReset()">Recommencer</button></div>',
-  "ÉNIGME : LE DISQUE DE CUIVRE",
-  "Indice : règne, demeure, passe. Chaque mot correspond à un symbole."
- );
-}
-function riddleAdd(symbol){
- if(riddleSequence.length>=3)return;
- riddleSequence.push(symbol);
- const labels={couronne:"Couronne",montagne:"Montagne",vague:"Vague"};
- const display=document.getElementById("riddle-sequence");
- if(display)display.textContent=riddleSequence.map(x=>labels[x]).join(" → ");
- const status=document.getElementById("game-status");
- if(status)status.textContent="SYMBOLES SÉLECTIONNÉS : "+riddleSequence.length+"/3";
-}
-function riddleReset(){
- riddleSequence=[];
- episodeRiddleStart();
-}
-function episodeRiddleStart(){
- ffScene(
-  "<p>Les trois mots gravés sur la toile semblent indiquer une action pour chaque signe : <strong>règne · demeure · passe</strong>.</p><p>Compose l'ordre complet en touchant les trois symboles, un par un.</p><p><strong>Ordre choisi :</strong> <span id=\"riddle-sequence\">Aucun symbole</span></p>",
-  '<div class="game-riddle"><button class="riddle-choice" onclick="riddleAdd(\'couronne\')">Couronne</button><button class="riddle-choice" onclick="riddleAdd(\'montagne\')">Montagne</button><button class="riddle-choice" onclick="riddleAdd(\'vague\')">Vague</button></div><div class="game-actions"><button class="game-btn gold" onclick="episodeCheckRiddle()">Vérifier l’ordre</button><button class="game-btn" onclick="riddleReset()">Recommencer</button></div>',
-  "ÉNIGME : LE DISQUE DE CUIVRE",
-  "Indice : règne, demeure, passe. Chaque mot correspond à un symbole."
- );
-}
-function episodeCheckRiddle(){
- if(riddleSequence.length!==3){
-  const fb=document.getElementById("game-feedback");
-  if(fb)fb.textContent="Il faut choisir les trois symboles avant de vérifier.";
-  return;
- }
- const answer=["couronne","montagne","vague"];
- if(riddleSequence.every((v,i)=>v===answer[i])){
-  episodeSolve();
- }else{
-  const fb=document.getElementById("game-feedback");
-  if(fb)fb.textContent="Le disque tremble puis se bloque. L'ordre n'est pas le bon. Relis les mots : règne · demeure · passe, puis recommence.";
-  const st=document.getElementById("game-status");
-  if(st)st.textContent="ORDRE INCORRECT · NOUVEL ESSAI POSSIBLE";
- }
-}
-function episodeSolve(){
- ffRecord("Fragment de carte inconnu");
- ffRecord("Énigme du disque résolue");
- ffScene("<p>Le disque s'aligne. Un compartiment s'ouvre dans la reliure. Il contient un fragment de carte sans nom. Une côte y est dessinée, puis une ligne de points qui s'interrompt au milieu de la mer.</p><p>Au bout de la ruelle, une silhouette en manteau sombre apparaît. Une lueur bleue flotte près de son épaule.</p><p><strong>« Je ne garde pas la porte. Je garde le souvenir de ceux qui l'ont franchie. »</strong></p><p>Quand tu relèves les yeux, la silhouette a disparu. Sur la pierre, une phrase : <strong>Hauterive conserve ce que Valombre oublie.</strong></p>",
- '<button class="game-btn gold" onclick="episodeFinish()">Inscrire la découverte au grimoire</button>',
- "ÉPISODE 01 : PREMIÈRE PORTE OBSERVÉE","Bravo. Vous avez découvert le premier fragment de l'histoire.");
-}
-function episodeFinish(){
- ffRecord("Première rencontre avec le Veilleur");
- ffRecord("Piste vers Hauterive");
- ffScene("<p>Le grimoire se referme. Une nouvelle destination y apparaît : <strong>Hauterive, la ville des archives</strong>.</p><p>Tu peux revenir plus tard. Le monde, lui, n'a pas fini de parler.</p>",
- '<button class="game-btn gold" onclick="showGrimoire()">Consulter mon grimoire</button><button class="game-btn" onclick="location.hash=\'atlas\'">Explorer l’atlas</button>',
- "ÉPISODE 01 TERMINÉ","Votre progression est enregistrée sur cet appareil.");
-}
-const grimoireCatalog=[
- {name:"Le Signe sans royaume",art:"sigil",type:"SYMBOLE",desc:"Un cercle incomplet traversé par une ligne verticale.",detail:"Le signe a été pressé dans la fibre d'une toile ancienne. Il ne porte le blason d'aucune dynastie connue. Pourtant, certains témoins le reconnaissent et préfèrent se taire.",note:"Un signe sans royaume… ou le souvenir d'un royaume que les cartes ont effacé ?",origin:"Valombre · Première observation"},
- {name:"Le Registre sans nom",art:"book",type:"RELIQUE",desc:"Un registre ancien dont plusieurs pages ont été arrachées.",detail:"La reliure est usée par l'humidité et le temps. Les pages manquantes ont été retirées avec soin, comme si quelqu'un avait voulu effacer non pas un récit, mais les preuves de son existence.",note:"Nul ne consigna le lieu qui manquait.",origin:"Valombre · La ruelle des copistes"},
- {name:"Fragment de carte inconnu",art:"map",type:"FRAGMENT",desc:"Une côte dessinée, puis une ligne de points qui s'interrompt en mer.",detail:"Le fragment ne porte ni nom de port ni indication de latitude. La ligne de points s'arrête au milieu de l'eau, sans rejoindre aucune terre répertoriée. Le papier semble plus ancien que les frontières actuelles.",note:"Une route peut-elle conduire à un lieu qui n'apparaît sur aucune carte ?",origin:"Découvert dans la reliure du registre"},
- {name:"Énigme du disque résolue",art:"disk",type:"ÉNIGME",desc:"Le disque de cuivre a révélé son mécanisme.",detail:"Trois symboles étaient gravés sur le disque : une couronne, une montagne et une vague. Leur ordre a libéré un compartiment dissimulé dans la reliure. Le mécanisme n'était pas un verrou ordinaire : il répondait à une suite de sens.",note:"Règne · demeure · passe.",origin:"Valombre · Le Registre sans nom"},
- {name:"Première rencontre avec le Veilleur",art:"watcher",type:"RENCONTRE",desc:"Une silhouette au manteau sombre et une lueur bleue.",detail:"Au bout de la ruelle, une silhouette immobile apparaît. Son visage demeure caché. Une faible lueur bleue flotte près de son épaule. Lorsque le regard se détourne un instant, il n'y a déjà plus personne.",note:"Je ne garde pas la porte. Je garde le souvenir de ceux qui l'ont franchie.",origin:"Valombre · Après l'ouverture du disque"},
- {name:"Piste vers Hauterive",art:"path",type:"DESTINATION",desc:"Hauterive conserve ce que Valombre oublie.",detail:"La phrase laissée sur la pierre désigne Hauterive, ville d'archives et de copistes. Si quelqu'un a conservé la trace du lieu absent, ce pourrait être dans ses dépôts, ses registres ou ses marges oubliées.",note:"Hauterive conserve ce que Valombre oublie.",origin:"Indice laissé à Valombre"},
- {name:"Le copiste de Valombre",art:"quill",type:"TÉMOIN",desc:"Un témoin a reconnu le symbole et en connaît la crainte.",detail:"Le vieux copiste n'a pas expliqué ce qu'il savait. À la vue du signe, son visage s'est fermé. Il a conseillé de prendre le paquet et de ne le montrer à personne avant d'en comprendre le contenu.",note:"Ne prononcez pas ce nom ici.",origin:"Valombre · La porte voisine"}
-];
-function grimoireArt(kind,large=false){
- const images={sigil:"signe-sans-royaume.png",book:"registre-sans-nom.png",map:"fragment-carte.png",disk:"disque-cuivre.png",watcher:"veilleur-seuil.png",path:"chemin-hauterive.png",quill:"plume-copiste.png"};
- const labels={sigil:"Le Signe sans royaume",book:"Le Registre sans nom",map:"Fragment de carte",disk:"Disque de cuivre",watcher:"Le Veilleur du Seuil",path:"Chemin vers Hauterive",quill:"La plume du copiste"};
- const file=images[kind]||images.sigil;
- return '<div class="'+(large?'detail-art':'entry-art')+'"><img src="assets/grimoire/'+file+'" alt="'+(labels[kind]||'Illustration du Grimoire')+'" loading="lazy"></div>';
-}
-function refreshGrimoire(){
- const data=ffLoad(),found=data.discoveries||[],container=document.getElementById("grimoire-entries");
- if(!container)return;
- const count=grimoireCatalog.filter(x=>found.includes(x.name)).length;
- const countEl=document.getElementById("grimoire-count");if(countEl)countEl.textContent=found.length;
- const pct=Math.round(count/grimoireCatalog.length*100);const ep=document.getElementById("grimoire-episode");if(ep)ep.textContent=pct+"%";
- const dest=document.getElementById("grimoire-destination");if(dest)dest.textContent=found.includes("Piste vers Hauterive")?"HAUTERIVE":"À DÉCOUVRIR";
- const bar=document.getElementById("grimoire-progress-bar");if(bar)bar.style.width=pct+"%";
- container.innerHTML=grimoireCatalog.map((item,index)=>{const yes=found.includes(item.name);return '<button type="button" class="grimoire-entry '+(yes?'found':'locked')+'" data-entry-index="'+index+'" '+(yes?'aria-label="Ouvrir la fiche : '+item.name+'"':'disabled aria-disabled="true"')+'>'+grimoireArt(item.art,false)+'<span class="entry-type">'+item.type+' · '+(yes?'DÉCOUVERT':'NON DÉCOUVERT')+'</span><h3>'+(yes?item.name:'Découverte inconnue')+'</h3><p>'+(yes?item.desc:'Cette page attend que vous trouviez sa trace au cours de l’aventure.')+'</p>'+(yes?'<span class="entry-open">OUVRIR LA FICHE ↗</span>':'')+'</button>';}).join("");
- const detail=document.getElementById("grimoire-detail");if(detail&&!detail.classList.contains("open"))detail.innerHTML="";
-}
-function openGrimoireEntry(index){
-  const item=grimoireCatalog[index];
-  const found=ffLoad().discoveries||[];
-  const detail=document.getElementById("grimoire-detail");
-  if(!item||!found.includes(item.name)||!detail)return;
+<footer>
+<strong>✦ FEU FOLLET</strong>
+UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE
+</footer>
 
-  detail.innerHTML=
-    grimoireArt(item.art,true)+
-    '<div class="detail-type">'+item.type+' · ARCHIVES DU GRIMOIRE</div>'+
-    '<h3>'+item.name+'</h3>'+
-    '<p>'+item.detail+'</p>'+
-    '<div class="detail-note">'+item.note+'</div>'+
-    '<p><strong>Origine :</strong> '+item.origin+'</p>'+
-    '<button type="button" class="detail-close" onclick="closeGrimoireEntry()">Refermer le grimoire</button>';
+<script src="js/app.js"></script>
 
-  detail.classList.remove("open");
-  void detail.offsetWidth;
-  detail.classList.add("open");
-  detail.scrollIntoView({behavior:"smooth",block:"start"});
-}
-function closeGrimoireEntry(){
-  const detail=document.getElementById("grimoire-detail");
-  if(!detail)return;
-  detail.classList.remove("open");
-  detail.innerHTML="";
-  document.getElementById("grimoire-entries")?.scrollIntoView({
-    behavior:"smooth",
-    block:"nearest"
-  });
-}
-
-function showGrimoire(){
- const section=document.getElementById("grimoire");
- refreshGrimoire();
- if(section){
-  location.hash="grimoire";
-  section.scrollIntoView({behavior:"smooth",block:"start"});
- }
-}
-window.addEventListener("hashchange",()=>{
- if(location.hash==="#grimoire")refreshGrimoire();
-});
-// Gestion des cartes par délégation : fonctionne aussi après chaque reconstruction de la grille.
-function bindGrimoireCards(){
- const container=document.getElementById("grimoire-entries");
- if(!container||container.dataset.clickBound==="true")return;
- container.dataset.clickBound="true";
- container.addEventListener("click",function(event){
-  const card=event.target.closest("button.grimoire-entry[data-entry-index]");
-  if(!card||card.disabled)return;
-  const index=Number(card.dataset.entryIndex);
-  if(Number.isInteger(index))openGrimoireEntry(index);
- });
-}
-window.addEventListener("DOMContentLoaded",function(){bindGrimoireCards();refreshGrimoire();});
-// Le script est placé en fin de page : le conteneur existe déjà au moment de l'exécution.
-bindGrimoireCards();
-
-</script>
 </body>
 </html>
