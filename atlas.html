@@ -213,7 +213,7 @@ header nav{position:relative;z-index:10000;overflow:visible}
 .nav-dropdown>summary::-webkit-details-marker{display:none}
 .nav-chevron{font-size:14px;color:var(--gold,#c29d5b);transition:transform .2s}
 .nav-dropdown[open] .nav-chevron{transform:rotate(180deg)}
-.nav-submenu{position:absolute;z-index:10002;top:calc(100% + 13px);left:50%;transform:translateX(-50%);width:230px;padding:8px;border:1px solid rgba(194,157,91,.35);border-radius:10px;background:#101a29;box-shadow:0 14px 35px rgba(0,0,0,.45);display:grid;gap:2px}
+.nav-dropdown:not([open])>.nav-submenu{display:none!important}\n.nav-submenu{position:absolute;z-index:10002;top:calc(100% + 13px);left:50%;transform:translateX(-50%);width:230px;padding:8px;border:1px solid rgba(194,157,91,.35);border-radius:10px;background:#101a29;box-shadow:0 14px 35px rgba(0,0,0,.45);display:grid;gap:2px}
 .nav-submenu a{display:block;padding:10px 12px;border-radius:6px;color:#e8dfcf;text-decoration:none;font-size:12px;letter-spacing:.04em;white-space:normal}
 .nav-submenu a:hover,.nav-submenu a:focus{background:rgba(194,157,91,.13);color:#e6c98e}
 .atlas-lore[hidden]{display:none}
@@ -245,11 +245,33 @@ header nav{position:relative;z-index:10000;overflow:visible}
     window.scrollTo({top:0,behavior:'smooth'});
   }
   chooser.addEventListener('change',showLore);
-  document.querySelectorAll('[data-atlas-action]').forEach(link=>{
+
+  // Le menu ne doit jamais rester ouvert au-dessus des textes de l'Atlas.
+  document.addEventListener('click',function(event){
+    if(dropdown && dropdown.open && !dropdown.contains(event.target)){
+      dropdown.open=false;
+    }
+  });
+  document.addEventListener('touchstart',function(event){
+    if(dropdown && dropdown.open && !dropdown.contains(event.target)){
+      dropdown.open=false;
+    }
+  },{passive:true});
+  window.addEventListener('scroll',function(){
+    if(dropdown && dropdown.open)dropdown.open=false;
+  },{passive:true});
+  document.addEventListener('keydown',function(event){
+    if(event.key==='Escape' && dropdown)dropdown.open=false;
+  });
+
+  document.querySelectorAll('.nav-dropdown .nav-submenu a[data-atlas-action]').forEach(link=>{
     link.addEventListener('click',function(event){
       event.preventDefault();
-      openView(this.getAttribute('data-atlas-action'));
-    });
+      const destination=this.getAttribute('data-atlas-action');
+      // Ferme immédiatement le menu principal L'ATLAS avant d'afficher le contenu.
+      if(dropdown)dropdown.open=false;
+      openView(destination);
+    },true);
   });
 })();
 </script>
