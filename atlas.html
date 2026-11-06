@@ -8,7 +8,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css"></head><body><div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale FEU FOLLET"></div><header><div class="nav">
 <a class="brand" href="index.html"><span>✦</span> FEU FOLLET</a>
-<nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><a href="atlas.html">L'ATLAS</a><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav>
+<nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a>
+<details class="nav-dropdown">
+  <summary aria-haspopup="true">L'ATLAS <span class="nav-chevron">⌄</span></summary>
+  <div class="nav-submenu">
+    <a href="#atlas" data-atlas-action="map">Carte et régions</a>
+    <a href="#atlas-lore" data-atlas-action="temps">Explorer les connaissances</a>
+    <a href="#atlas-lore" data-atlas-action="temps">Calendriers</a>
+    <a href="#atlas-lore" data-atlas-action="langues">Peuples et langues</a>
+    <a href="#atlas-lore" data-atlas-action="croyances">Croyances et mythes</a>
+    <a href="#atlas-lore" data-atlas-action="magie">Magie</a>
+    <a href="#atlas-lore" data-atlas-action="terre-absente">La Terre absente</a>
+  </div>
+</details>
+<a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav>
 <a class="nav-cta" href="jouer.html">DÉCOUVRIR</a>
 </div></header><main><div class="atlas-wrap" id="atlas"><section class="content atlas">
 <div aria-label="Carte stylisée et mystérieuse des terres de FEU FOLLET" class="map-art" role="img"><div class="continent c1"></div><div class="continent c2"></div><div class="continent c3"></div><div class="island"></div><span class="map-label l1">AURENTH</span><span class="map-label l2">VARKHÖL</span><span class="map-label l3">ORVANE</span><button aria-label="Découvrir Aurenth" class="map-pin pin1" data-region="aurenth"></button><button aria-label="Découvrir Varkhöl" class="map-pin pin2" data-region="varkhol"></button><button aria-label="Découvrir Orvane" class="map-pin pin3" data-region="orvane"></button><div class="map-caption">ATLAS INCOMPLET · TERRES CONNUES</div></div>
@@ -62,7 +75,7 @@
 .lore-unknown{color:#8fc8d7;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-top:15px}
 @media(max-width:650px){.atlas-lore{padding:12px 16px 55px}.lore-picker{padding:14px}.lore-panel{padding:20px 16px}.lore-grid{grid-template-columns:1fr}.lore-table{font-size:12px}.lore-table th,.lore-table td{padding:9px 7px}}
 </style>
-<section class="atlas-lore" aria-label="Connaissances générales sur Eldoria">
+<section class="atlas-lore" id="atlas-lore" aria-label="Connaissances générales sur Eldoria" hidden>
   <header class="lore-heading">
     <div class="eyebrow">LES ARCHIVES DU MONDE</div>
     <h2>Explorer les connaissances d'Eldoria</h2>
@@ -135,17 +148,46 @@
     </section>
   </div>
 </section>
+<style>
+/* Menu déroulant de l'Atlas : intégré à la barre de navigation */
+.nav-dropdown{position:relative;display:inline-block;color:inherit}
+.nav-dropdown>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px}
+.nav-dropdown>summary::-webkit-details-marker{display:none}
+.nav-chevron{font-size:14px;color:var(--gold,#c29d5b);transition:transform .2s}
+.nav-dropdown[open] .nav-chevron{transform:rotate(180deg)}
+.nav-submenu{position:absolute;z-index:1000;top:calc(100% + 13px);left:50%;transform:translateX(-50%);width:230px;padding:8px;border:1px solid rgba(194,157,91,.35);border-radius:10px;background:#101a29;box-shadow:0 14px 35px rgba(0,0,0,.45);display:grid;gap:2px}
+.nav-submenu a{display:block;padding:10px 12px;border-radius:6px;color:#e8dfcf;text-decoration:none;font-size:12px;letter-spacing:.04em;white-space:normal}
+.nav-submenu a:hover,.nav-submenu a:focus{background:rgba(194,157,91,.13);color:#e6c98e}
+.atlas-lore[hidden]{display:none}
+@media(max-width:650px){.nav-submenu{left:auto;right:-65px;transform:none;width:min(250px,80vw)}.nav-dropdown>summary{font-size:inherit}}
+</style>
 <script>
 (function(){
   const chooser=document.getElementById('lore-choice');
-  if(!chooser)return;
+  const lore=document.getElementById('atlas-lore');
   const panels=Array.from(document.querySelectorAll('.lore-panel'));
+  const dropdown=document.querySelector('.nav-dropdown');
+  if(!chooser||!lore)return;
   function showLore(){
     const selected=chooser.value;
     panels.forEach(panel=>{panel.hidden=panel.id!=='lore-'+selected;});
   }
   chooser.addEventListener('change',showLore);
-  showLore();
+  document.querySelectorAll('[data-atlas-action]').forEach(link=>{
+    link.addEventListener('click',function(event){
+      const action=this.getAttribute('data-atlas-action');
+      if(action==='map'){
+        lore.hidden=true;
+        return;
+      }
+      event.preventDefault();
+      chooser.value=action;
+      showLore();
+      lore.hidden=false;
+      if(dropdown)dropdown.open=false;
+      lore.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
 })();
 </script>
 </main><footer><strong>✦ FEU FOLLET</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer><script src="js/app.js"></script></body></html>
