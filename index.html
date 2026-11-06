@@ -1,11 +1,12 @@
 
+
 <!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080d18">
-<meta name="feu-follet-version" content="grimoire-collection-v5-images-assets">
+<meta name="feu-follet-version" content="grimoire-v6-pages-anciennes">
 <title>FEU FOLLET — Entrez dans la légende</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,6 +97,65 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 .grimoire-entry .entry-type{display:block;margin-bottom:5px}
 @media(max-width:600px){.grimoire-entry{padding-left:104px;min-height:136px}.entry-art{width:78px;height:104px}.detail-art{height:160px}}
 @media(max-width:600px){.grimoire-section{padding:55px 18px}.grimoire-stats{grid-template-columns:1fr 1fr}.grimoire-grid{grid-template-columns:1fr}.grimoire-actions .game-btn{width:100%}}
+
+
+/* GRIMOIRE V6 — pages anciennes et ouverture immersive */
+.grimoire-detail.open{
+  display:block;position:relative;isolation:isolate;margin-top:24px;
+  padding:clamp(22px,4vw,42px);color:#2b2117;
+  border:8px double #9b7543;outline:1px solid rgba(226,190,126,.35);outline-offset:5px;
+  background:
+    radial-gradient(ellipse at 12% 8%,rgba(255,255,255,.48),transparent 38%),
+    radial-gradient(ellipse at 88% 92%,rgba(123,75,35,.16),transparent 42%),
+    repeating-linear-gradient(0deg,rgba(91,59,30,.025) 0 1px,transparent 1px 5px),
+    linear-gradient(135deg,#ead9b4,#d7bd8d 48%,#ead9b4);
+  box-shadow:0 22px 55px rgba(0,0,0,.48),inset 0 0 35px rgba(93,58,27,.22);
+  animation:grimoirePageOpen .55s cubic-bezier(.2,.8,.2,1) both;
+}
+.grimoire-detail.open:before,.grimoire-detail.open:after{
+  content:"✦";position:absolute;z-index:2;color:#8d642f;font:24px Georgia,serif;
+  text-shadow:0 1px 0 #f7e8c7;pointer-events:none
+}
+.grimoire-detail.open:before{top:10px;left:13px}
+.grimoire-detail.open:after{right:13px;bottom:8px}
+.grimoire-detail .detail-art{
+  height:clamp(210px,38vw,390px);margin:0 0 25px;
+  border:5px double #9b7543;background:#171b20;
+  box-shadow:0 8px 22px rgba(57,35,16,.28)
+}
+.grimoire-detail .detail-art img{width:100%;height:100%;object-fit:cover;display:block}
+.grimoire-detail .detail-type{
+  color:#795629;font-size:10px;font-weight:800;letter-spacing:3px;text-align:center
+}
+.grimoire-detail h3{
+  color:#332315;font:600 clamp(25px,4vw,38px)/1.25 Georgia,serif;
+  text-align:center;margin:12px 0 20px;text-shadow:0 1px 0 rgba(255,255,255,.45)
+}
+.grimoire-detail p{
+  max-width:760px;margin:14px auto;color:#392b1d;font:16px/1.85 Georgia,serif
+}
+.grimoire-detail .detail-note{
+  max-width:760px;margin:24px auto;padding:18px 20px;
+  border:1px solid rgba(119,81,39,.42);border-left:4px solid #9b7543;
+  background:rgba(255,248,226,.48);color:#50391f;font:italic 17px/1.6 Georgia,serif
+}
+.grimoire-detail .detail-close{
+  display:flex;width:max-content;margin:26px auto 0;border:1px solid #795629;
+  background:#332719;color:#f1dfba;padding:12px 20px;
+  font:700 10px var(--sans);letter-spacing:2px;text-transform:uppercase;cursor:pointer
+}
+.grimoire-detail .detail-close:hover{background:#594127;border-color:#b28b50}
+@keyframes grimoirePageOpen{
+  from{opacity:0;transform:translateY(18px) scale(.985);filter:blur(3px)}
+  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+}
+@media(prefers-reduced-motion:reduce){.grimoire-detail.open{animation:none}}
+@media(max-width:600px){
+  .grimoire-detail.open{padding:20px 15px;border-width:5px}
+  .grimoire-detail .detail-art{height:220px}
+  .grimoire-detail p{font-size:14px}
+  .grimoire-detail .detail-note{font-size:15px;padding:14px}
+}
 
 </style>
 <!-- Illustrations du Grimoire : fichiers PNG dans assets/grimoire/ -->
@@ -330,12 +390,35 @@ function refreshGrimoire(){
  const detail=document.getElementById("grimoire-detail");if(detail&&!detail.classList.contains("open"))detail.innerHTML="";
 }
 function openGrimoireEntry(index){
- const item=grimoireCatalog[index],found=ffLoad().discoveries||[],detail=document.getElementById("grimoire-detail");
- if(!item||!found.includes(item.name)||!detail)return;
- detail.innerHTML=grimoireArt(item.art,true)+'<div class="detail-type">'+item.type+' · PAGE DU GRIMOIRE</div><h3>'+item.name+'</h3><p>'+item.detail+'</p><div class="detail-note">'+item.note+'</div><p><strong>Origine :</strong> '+item.origin+'</p><button type="button" class="game-btn" onclick="closeGrimoireEntry()">Refermer cette page</button>';
- detail.classList.add("open");detail.scrollIntoView({behavior:"smooth",block:"nearest"});
+  const item=grimoireCatalog[index];
+  const found=ffLoad().discoveries||[];
+  const detail=document.getElementById("grimoire-detail");
+  if(!item||!found.includes(item.name)||!detail)return;
+
+  detail.innerHTML=
+    grimoireArt(item.art,true)+
+    '<div class="detail-type">'+item.type+' · ARCHIVES DU GRIMOIRE</div>'+
+    '<h3>'+item.name+'</h3>'+
+    '<p>'+item.detail+'</p>'+
+    '<div class="detail-note">'+item.note+'</div>'+
+    '<p><strong>Origine :</strong> '+item.origin+'</p>'+
+    '<button type="button" class="detail-close" onclick="closeGrimoireEntry()">Refermer le grimoire</button>';
+
+  detail.classList.remove("open");
+  void detail.offsetWidth;
+  detail.classList.add("open");
+  detail.scrollIntoView({behavior:"smooth",block:"start"});
 }
-function closeGrimoireEntry(){const detail=document.getElementById("grimoire-detail");if(detail){detail.classList.remove("open");detail.innerHTML="";}}
+function closeGrimoireEntry(){
+  const detail=document.getElementById("grimoire-detail");
+  if(!detail)return;
+  detail.classList.remove("open");
+  detail.innerHTML="";
+  document.getElementById("grimoire-entries")?.scrollIntoView({
+    behavior:"smooth",
+    block:"nearest"
+  });
+}
 
 function showGrimoire(){
  const section=document.getElementById("grimoire");
