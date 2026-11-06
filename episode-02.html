@@ -1,1 +1,51 @@
 
+
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d18">
+<meta name="feu-follet-version" content="episode-02-v1">
+<title>FEU FOLLET — Les archives qui respirent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.episode-intro{max-width:850px;margin:0 auto 24px;padding:20px;border:1px solid rgba(199,165,106,.25);background:rgba(199,165,106,.055);color:#c8c0b1;font-size:13px;line-height:1.8}
+.archive-riddle{grid-template-columns:1fr;}
+.archive-riddle .riddle-choice{text-align:left;line-height:1.6;min-height:76px}
+.archive-riddle .riddle-choice small{display:inline-block;margin-top:5px;color:#a9c4cf;font:11px Manrope,sans-serif}
+#episode02-scene{scroll-margin-top:90px}
+@media(min-width:700px){.archive-riddle{grid-template-columns:repeat(3,1fr)}.archive-riddle .riddle-choice{min-height:150px}}
+</style>
+</head>
+<body>
+<div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière FEU FOLLET"></div>
+<header><div class="nav">
+<a class="brand" href="index.html"><span>✦</span> FEU FOLLET</a>
+<nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><a href="atlas.html">L'ATLAS</a><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav>
+<a class="nav-cta" href="jouer.html">ÉPISODE 01</a>
+</div></header>
+<main>
+<section class="game-section" id="episode02-scene">
+<div class="game-panel">
+<div class="game-topline">DEUXIÈME AVENTURE · ÉPISODE 02 · HAUTERIVE</div>
+<h2>Les archives qui respirent</h2>
+<p>Le fragment trouvé à Valombre t'a conduit jusqu'à Hauterive, ville des copistes et des archives. Tu croyais chercher une réponse dans les documents. Tu vas découvrir que certains documents semblent, eux aussi, chercher quelqu'un.</p>
+<div class="episode-intro"><strong>Précédemment, à Valombre…</strong><br>Le disque de cuivre s'est ouvert. Un fragment de carte sans nom a révélé une côte et une route interrompue au milieu de la mer. Sur une pierre, une phrase désignait la prochaine étape : <em>Hauterive conserve ce que Valombre oublie.</em></div>
+<div class="grimoire-progress-caption" style="margin:18px 0 8px"><span>VOTRE CHEMINEMENT</span><span id="episode02-progress">ÉTAPE 0 / 9</span></div>
+<div class="game-note" style="margin:0 0 20px">Vos découvertes et votre progression sont conservées dans le navigateur de cet appareil. Aucun achat n'est nécessaire pour avancer.</div>
+<div aria-live="polite" class="game-scene" id="game-scene"><p>Les passerelles de Hauterive apparaissent au-dessus du Fleuve d'Aube…</p></div>
+<div class="game-actions" id="game-controls"></div>
+<div class="game-note" id="game-feedback">Observe les lieux. Les archives ont parfois plus d'une manière de garder le silence.</div>
+<p class="game-status" id="game-status">ARRIVÉE À HAUTERIVE</p>
+<div class="game-actions"><button class="game-btn" onclick="resetEpisode02()">Recommencer l'épisode 02</button><a class="game-btn" href="grimoire.html">Ouvrir le Grimoire</a><a class="game-btn" href="jouer.html">Retour à l'épisode 01</a></div>
+</div>
+</section>
+</main>
+<footer><strong>✦ FEU FOLLET</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer>
+<script src="js/app.js"></script>
+</body>
+</html>
