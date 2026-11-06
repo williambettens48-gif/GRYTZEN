@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080d18">
-<meta name="feu-follet-version" content="grimoire-collection-v4-illustrations-originales">
+<meta name="feu-follet-version" content="grimoire-collection-v5-images-assets">
 <title>FEU FOLLET — Entrez dans la légende</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,16 +88,17 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 /* ILLUSTRATIONS ORIGINALES DU GRIMOIRE */
 .grimoire-entry{position:relative;overflow:hidden;padding:16px 16px 17px 112px;min-height:142px}
 .entry-art{position:absolute;left:12px;top:13px;width:88px;height:112px;border:1px solid rgba(199,165,106,.32);background:radial-gradient(ellipse at 50% 45%,rgba(76,151,174,.22),rgba(7,14,24,.92) 72%);display:grid;place-items:center;overflow:hidden}
-.entry-art svg{width:100%;height:100%;display:block;filter:drop-shadow(0 0 9px rgba(111,207,225,.18))}
+.entry-art img{width:100%;height:100%;object-fit:cover;display:block}
 .grimoire-entry.locked .entry-art{filter:grayscale(.85);opacity:.48}
 .grimoire-detail{position:relative;overflow:hidden;padding:clamp(18px,3vw,30px)}
 .detail-art{width:100%;height:190px;margin:0 0 22px;border:1px solid rgba(199,165,106,.3);background:radial-gradient(ellipse at 50% 45%,rgba(76,151,174,.2),rgba(7,14,24,.95) 72%);display:grid;place-items:center;overflow:hidden}
-.detail-art svg{height:100%;width:min(100%,460px);display:block;filter:drop-shadow(0 0 18px rgba(111,207,225,.2))}
+.detail-art img{height:100%;width:100%;object-fit:contain;display:block}
 .grimoire-entry .entry-type{display:block;margin-bottom:5px}
 @media(max-width:600px){.grimoire-entry{padding-left:104px;min-height:136px}.entry-art{width:78px;height:104px}.detail-art{height:160px}}
 @media(max-width:600px){.grimoire-section{padding:55px 18px}.grimoire-stats{grid-template-columns:1fr 1fr}.grimoire-grid{grid-template-columns:1fr}.grimoire-actions .game-btn{width:100%}}
 
 </style>
+<!-- Illustrations du Grimoire : fichiers PNG dans assets/grimoire/ -->
 </head>
 <body>
 <div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale FEU FOLLET"></div>
@@ -312,19 +313,10 @@ const grimoireCatalog=[
  {name:"Le copiste de Valombre",art:"quill",type:"TÉMOIN",desc:"Un témoin a reconnu le symbole et en connaît la crainte.",detail:"Le vieux copiste n'a pas expliqué ce qu'il savait. À la vue du signe, son visage s'est fermé. Il a conseillé de prendre le paquet et de ne le montrer à personne avant d'en comprendre le contenu.",note:"Ne prononcez pas ce nom ici.",origin:"Valombre · La porte voisine"}
 ];
 function grimoireArt(kind,large=false){
- const common='fill="none" stroke="#d6bd8a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"';
- const glow='stroke="#86e4f4"';
- const drawings={
- sigil:'<circle cx="90" cy="90" r="54" '+common+' stroke-dasharray="235 105" transform="rotate(-35 90 90)"/><path d="M90 27V153" '+glow+' stroke-width="3"/><circle cx="90" cy="90" r="7" fill="#86e4f4" fill-opacity=".7"/><path d="M44 133L136 47" '+common+' opacity=".35"/>',
- book:'<path d="M34 48Q61 34 89 51V139Q60 122 34 137Z" '+common+'/><path d="M90 51Q119 34 146 48V137Q119 122 90 139Z" '+common+'/><path d="M90 51V139" '+glow+'/><path d="M47 65Q65 60 77 68M47 80Q65 75 77 83M103 68Q119 60 134 65M103 83Q119 75 134 80" '+common+' opacity=".65"/><path d="M73 29L90 17L107 29" '+glow+'/>',
- map:'<path d="M28 45L73 31L111 45L151 30V137L111 151L73 137L28 151Z" '+common+'/><path d="M73 31V137M111 45V151" '+glow+'/><path d="M42 112Q60 83 83 96T126 78" '+common+' stroke-dasharray="4 7"/><circle cx="126" cy="78" r="6" fill="#86e4f4"/><path d="M126 78L139 62" '+glow+'/>',
- disk:'<circle cx="90" cy="90" r="59" '+common+'/><circle cx="90" cy="90" r="43" '+glow+'/><circle cx="90" cy="90" r="7" fill="#d6bd8a"/><path d="M90 34V58M90 122V146M34 90H58M122 90H146" '+common+'/><path d="M90 51L98 75L123 90L98 105L90 129L82 105L57 90L82 75Z" '+common+'/>',
- watcher:'<path d="M90 28Q55 53 51 100L42 148Q90 168 138 148L129 100Q125 53 90 28Z" fill="#111d2b" stroke="#d6bd8a" stroke-width="2"/><path d="M90 53Q67 70 70 105L90 129L110 105Q113 70 90 53Z" fill="#050b14" stroke="#6c8d9c" stroke-width="1.5"/><circle cx="112" cy="89" r="7" fill="#86e4f4"/><path d="M111 89L139 72" '+glow+'/><path d="M48 144Q90 126 132 144" '+common+'/>',
- path:'<path d="M24 142Q57 105 76 114T117 79T157 38" '+common+' stroke-dasharray="5 7"/><path d="M128 39L157 38L155 67" '+glow+'/><path d="M32 45L49 29L66 45M32 45V69H66V45" '+common+'/><circle cx="117" cy="79" r="7" fill="#86e4f4"/>',
- quill:'<path d="M47 139Q56 85 127 30Q145 18 149 34Q145 92 77 135Z" '+common+'/><path d="M47 139Q91 83 143 31M82 111L72 83M100 93L94 66M118 73L116 51" '+glow+'/><path d="M38 151L78 133M35 157L52 150" '+common+'/>'
- };
- const svg='<svg viewBox="0 0 180 180" role="img" aria-label="Illustration : '+kind+'" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="ff-art-glow"><stop stop-color="#5dc9e5" stop-opacity=".18"/><stop offset="1" stop-color="#08111d" stop-opacity="0"/></radialGradient></defs><rect width="180" height="180" fill="url(#ff-art-glow)"/><g opacity=".95">'+(drawings[kind]||drawings.sigil)+'</g><circle cx="90" cy="90" r="78" stroke="#c7a56a" stroke-opacity=".18" fill="none"/><path d="M90 5V14M90 166V175M5 90H14M166 90H175" stroke="#c7a56a" stroke-opacity=".55"/></svg>';
- return '<div class="'+(large?'detail-art':'entry-art')+'">'+svg+'</div>';
+ const images={sigil:"signe-sans-royaume.png",book:"registre-sans-nom.png",map:"fragment-carte.png",disk:"disque-cuivre.png",watcher:"veilleur-seuil.png",path:"chemin-hauterive.png",quill:"plume-copiste.png"};
+ const labels={sigil:"Le Signe sans royaume",book:"Le Registre sans nom",map:"Fragment de carte",disk:"Disque de cuivre",watcher:"Le Veilleur du Seuil",path:"Chemin vers Hauterive",quill:"La plume du copiste"};
+ const file=images[kind]||images.sigil;
+ return '<div class="'+(large?'detail-art':'entry-art')+'"><img src="assets/grimoire/'+file+'" alt="'+(labels[kind]||'Illustration du Grimoire')+'" loading="lazy"></div>';
 }
 function refreshGrimoire(){
  const data=ffLoad(),found=data.discoveries||[],container=document.getElementById("grimoire-entries");
