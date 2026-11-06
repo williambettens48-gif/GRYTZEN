@@ -1,152 +1,141 @@
 
 <!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080d18">
-<meta name="feu-follet-version" content="multipages-v1">
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d18"><meta name="feu-follet-version" content="atlas-eldoria-v2">
 <title>FEU FOLLET — L'Atlas</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<div class="banner">
-<img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale FEU FOLLET">
-</div>
-
-<header>
-<div class="nav">
+<link rel="stylesheet" href="css/style.css"></head><body><div class="banner"><img src="https://raw.githubusercontent.com/williambettens48-gif/ignis-fatuus/main/assets/banni%C3%A8re-feu-follet.png" alt="Bannière originale FEU FOLLET"></div><header><div class="nav">
 <a class="brand" href="index.html"><span>✦</span> FEU FOLLET</a>
-<nav aria-label="Navigation principale">
-<a href="jouer.html">JOUER</a>
-<a href="atlas.html">L'ATLAS</a>
-<a href="grimoire.html">GRIMOIRE</a>
-<a href="boutique.html">BOUTIQUE</a>
-</nav>
+<nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><a href="atlas.html">L'ATLAS</a><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav>
 <a class="nav-cta" href="jouer.html">DÉCOUVRIR</a>
-</div>
-</header>
-
-<main>
-<div class="atlas-wrap" id="atlas">
-
-<section class="content atlas">
-<div aria-label="Carte stylisée et mystérieuse des terres de FEU FOLLET" class="map-art" role="img">
-<div class="continent c1"></div>
-<div class="continent c2"></div>
-<div class="continent c3"></div>
-<div class="island"></div>
-<span class="map-label l1">AURENTH</span>
-<span class="map-label l2">VARKHÖL</span>
-<span class="map-label l3">ORVANE</span>
-<button aria-label="Découvrir Aurenth" class="map-pin pin1" data-region="aurenth"></button>
-<button aria-label="Découvrir Varkhöl" class="map-pin pin2" data-region="varkhol"></button>
-<button aria-label="Découvrir Orvane" class="map-pin pin3" data-region="orvane"></button>
-<div class="map-caption">ATLAS INCOMPLET · TERRES CONNUES</div>
-</div>
-
-<div class="atlas-copy">
-<div class="eyebrow">L'ATLAS DES TERRES CONNUES</div>
-<h2>Un monde immense.<br>Des secrets sans fin.</h2>
-<p>Six régions composent les premières pages de notre atlas. Certaines sont connues, d'autres cachent des civilisations dont l'existence même est contestée. La carte complète reste à découvrir.</p>
-
-<div class="region-list">
-<button class="region active" data-region="aurenth">AURENTH</button>
-<button class="region" data-region="varkhol">VARKHÖL</button>
-<button class="region" data-region="sylvara">SYLVARA</button>
-<button class="region" data-region="drakem">DRAKEM</button>
-<button class="region" data-region="orvane">ÎLES D'ORVANE</button>
-<button class="region" data-region="nereth">NÉRÉTH</button>
-</div>
-
-<div aria-live="polite" class="region-detail" id="region-detail">
-Les terres des royaumes anciens. Plaines, cités fortifiées et dynasties dont les archives ne racontent pas toujours toute la vérité.
-</div>
-</div>
+</div></header><main><div class="atlas-wrap" id="atlas"><section class="content atlas">
+<div aria-label="Carte stylisée et mystérieuse des terres de FEU FOLLET" class="map-art" role="img"><div class="continent c1"></div><div class="continent c2"></div><div class="continent c3"></div><div class="island"></div><span class="map-label l1">AURENTH</span><span class="map-label l2">VARKHÖL</span><span class="map-label l3">ORVANE</span><button aria-label="Découvrir Aurenth" class="map-pin pin1" data-region="aurenth"></button><button aria-label="Découvrir Varkhöl" class="map-pin pin2" data-region="varkhol"></button><button aria-label="Découvrir Orvane" class="map-pin pin3" data-region="orvane"></button><div class="map-caption">ATLAS INCOMPLET · TERRES CONNUES</div></div>
+<div class="atlas-copy"><div class="eyebrow">L'ATLAS DES TERRES CONNUES</div><h2>Un monde immense.<br/>Des secrets sans fin.</h2><p>Six régions composent les premières pages de notre atlas. Certaines sont connues, d'autres cachent des civilisations dont l'existence même est contestée. La carte complète reste à découvrir.</p>
+<div class="region-list"><button class="region active" data-region="aurenth">AURENTH</button><button class="region" data-region="varkhol">VARKHÖL</button><button class="region" data-region="sylvara">SYLVARA</button><button class="region" data-region="drakem">DRAKEM</button><button class="region" data-region="orvane">ÎLES D'ORVANE</button><button class="region" data-region="nereth">NÉRÉTH</button></div><div aria-live="polite" class="region-detail" id="region-detail">Les terres des royaumes anciens. Plaines, cités fortifiées et dynasties dont les archives ne racontent pas toujours toute la vérité.</div></div>
 </section>
-
 <section class="atlas-explorer">
-<div class="atlas-explorer-head">
-<div class="eyebrow">FEUILLETER L'ATLAS</div>
-<h2>Six régions. Six visages du monde.</h2>
-<p>Choisissez une région pour consulter sa première fiche. Les territoires inconnus et les secrets seront révélés au fil des aventures.</p>
-</div>
-
+<div class="atlas-explorer-head"><div class="eyebrow">FEUILLETER L'ATLAS</div><h2>Six régions. Six visages du monde.</h2><p>Choisissez une région pour consulter sa première fiche. Les territoires inconnus et les secrets seront révélés au fil des aventures.</p></div>
 <div class="region-cards" id="region-cards">
-<button class="region-card selected" data-region="aurenth">
-<span class="index">01 · TERRES ROYALES</span>
-<h3>AURENTH</h3>
-<p>Des plaines fertiles, des cités fortifiées et des dynasties anciennes.</p>
-<span class="discover">CONSULTER LA FICHE ↗</span>
-</button>
-
-<button class="region-card" data-region="varkhol">
-<span class="index">02 · HAUTES TERRES</span>
-<h3>VARKHÖL</h3>
-<p>Des montagnes glacées et des forteresses taillées dans la pierre.</p>
-<span class="discover">CONSULTER LA FICHE ↗</span>
-</button>
-
-<button class="region-card" data-region="sylvara">
-<span class="index">03 · TERRES VIVANTES</span>
-<h3>SYLVARA</h3>
-<p>Une forêt immense où les chemins semblent se déplacer.</p>
-<span class="discover">CONSULTER LA FICHE ↗</span>
-</button>
-
-<button class="region-card" data-region="drakem">
-<span class="index">04 · TERRES ARDENTES</span>
-<h3>DRAKEM</h3>
-<p>Des volcans, des cités de roche noire et des machines oubliées.</p>
-<span class="discover">CONSULTER LA FICHE ↗</span>
-</button>
-
-<button class="region-card" data-region="orvane">
-<span class="index">05 · ARCHIPEL</span>
-<h3>ÎLES D'ORVANE</h3>
-<p>Des cités portuaires et des routes maritimes incertaines.</p>
-<span class="discover">CONSULTER LA FICHE ↗</span>
-</button>
-
-<button class="region-card" data-region="nereth">
-<span class="index">06 · MONDE SOUTERRAIN</span>
-<h3>NÉRÉTH</h3>
-<p>Des profondeurs dont l'existence même reste contestée.</p>
-<span class="discover">CONSULTER LA FICHE ↗</span>
-</button>
+<button class="region-card selected" data-region="aurenth"><span class="index">01 · TERRES ROYALES</span><h3>AURENTH</h3><p>Des plaines fertiles, des cités fortifiées et des dynasties anciennes.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
+<button class="region-card" data-region="varkhol"><span class="index">02 · HAUTES TERRES</span><h3>VARKHÖL</h3><p>Des montagnes glacées et des forteresses taillées dans la pierre.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
+<button class="region-card" data-region="sylvara"><span class="index">03 · TERRES VIVANTES</span><h3>SYLVARA</h3><p>Une forêt immense où les chemins semblent se déplacer.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
+<button class="region-card" data-region="drakem"><span class="index">04 · TERRES ARDENTES</span><h3>DRAKEM</h3><p>Des volcans, des cités de roche noire et des machines oubliées.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
+<button class="region-card" data-region="orvane"><span class="index">05 · ARCHIPEL</span><h3>ÎLES D'ORVANE</h3><p>Des cités portuaires et des routes maritimes incertaines.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
+<button class="region-card" data-region="nereth"><span class="index">06 · MONDE SOUTERRAIN</span><h3>NÉRÉTH</h3><p>Des profondeurs dont l'existence même reste contestée.</p><span class="discover">CONSULTER LA FICHE ↗</span></button>
 </div>
-
 <div aria-live="polite" class="region-dossier">
 <div class="dossier-mark"><span id="dossier-symbol">A</span></div>
-<div class="dossier-copy">
-<div class="eyebrow" id="dossier-kicker">FICHE DE RÉGION · 01</div>
-<h3 id="dossier-title">AURENTH — Les terres des couronnes</h3>
-<p id="dossier-description">Au cœur des terres connues s'étendent les royaumes d'Aurenth. Des routes anciennes relient les cités fortifiées, les marchés et les domaines des grandes maisons. Les chroniques y sont nombreuses, mais certaines pages semblent avoir été volontairement arrachées.</p>
-
+<div class="dossier-copy"><div class="eyebrow" id="dossier-kicker">FICHE DE RÉGION · 01</div><h3 id="dossier-title">AURENTH — Les terres des couronnes</h3><p id="dossier-description">Au cœur des terres connues s'étendent les royaumes d'Aurenth. Des routes anciennes relient les cités fortifiées, les marchés et les domaines des grandes maisons. Les chroniques y sont nombreuses, mais certaines pages semblent avoir été volontairement arrachées.</p>
 <div class="dossier-facts">
 <div class="dossier-fact"><b>PAYSAGES</b><span id="dossier-landscape">Plaines, forêts tempérées, collines et citadelles</span></div>
 <div class="dossier-fact"><b>PEUPLE ASSOCIÉ</b><span id="dossier-people">Les Auréans</span></div>
 <div class="dossier-fact"><b>RÉPUTATION</b><span id="dossier-reputation">Pouvoirs anciens, alliances et rivalités</span></div>
 <div class="dossier-fact"><b>MYSTÈRE CONNU</b><span id="dossier-mystery">Des archives qui ne racontent pas toute l'histoire</span></div>
-</div>
-</div>
-</div>
+</div></div></div>
+</section></div>
+
+<style>
+.atlas-lore{max-width:1120px;margin:0 auto;padding:18px 26px 90px}
+.lore-heading{text-align:center;max-width:760px;margin:0 auto 30px}
+.lore-heading .eyebrow{color:var(--gold)}
+.lore-heading h2{font:500 clamp(27px,4vw,40px) var(--serif);color:var(--pale);margin:12px 0}
+.lore-heading p{color:var(--muted);line-height:1.8;font-size:14px}
+.lore-section{margin:52px 0;padding:30px;border:1px solid rgba(194,157,91,.25);border-radius:15px;background:linear-gradient(145deg,rgba(19,31,48,.78),rgba(7,13,24,.88))}
+.lore-section h3{font:500 clamp(22px,3vw,30px) var(--serif);color:var(--pale);margin:8px 0 12px}
+.lore-section>p{color:var(--muted);line-height:1.8;font-size:14px}
+.lore-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:22px}
+.lore-card{padding:19px;border:1px solid rgba(194,157,91,.2);border-radius:10px;background:rgba(255,255,255,.025)}
+.lore-card h4{font:500 17px var(--serif);color:#e8d4aa;margin:0 0 9px}
+.lore-card p{font-size:13px;line-height:1.75;color:#b9c3ce;margin:0}
+.lore-tag{display:inline-block;color:#8fc8d7;font-size:10px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:9px}
+.lore-note{margin-top:20px;padding:16px 18px;border-left:2px solid var(--gold);background:rgba(194,157,91,.07);color:#d9c9a7;font-size:13px;line-height:1.8}
+.lore-table{width:100%;border-collapse:collapse;margin-top:18px;font-size:13px}
+.lore-table th,.lore-table td{text-align:left;padding:12px;border-bottom:1px solid rgba(194,157,91,.17);vertical-align:top}
+.lore-table th{color:#d8bd85;font-weight:600}
+.lore-table td{color:#c1cad3;line-height:1.6}
+.lore-unknown{color:#8fc8d7;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:650px){.atlas-lore{padding:10px 16px 60px}.lore-section{padding:21px 17px;margin:35px 0}.lore-grid{grid-template-columns:1fr}.lore-table{font-size:12px}.lore-table th,.lore-table td{padding:9px 7px}}
+</style>
+<section class="atlas-lore" aria-label="Connaissances générales sur Eldoria">
+  <header class="lore-heading">
+    <div class="eyebrow">LES CHRONIQUES DU MONDE</div>
+    <h2>Ce que l'on sait d'Eldoria</h2>
+    <p>Un atlas n'est jamais la vérité entière. Il rassemble les connaissances, les récits, les hypothèses et parfois les erreurs de ceux qui ont osé explorer le monde.</p>
+  </header>
+
+  <section class="lore-section" id="temps">
+    <span class="lore-tag">Chronologie · Calendriers</span>
+    <h3>Le temps n'a pas la même origine pour tous</h3>
+    <p>Les peuples d'Eldoria ne partagent pas une chronologie universelle. Chaque civilisation compte les années à partir d'événements qu'elle juge fondateurs. Deux dates différentes peuvent donc désigner le même événement, sans qu'aucune puisse être facilement vérifiée.</p>
+    <div class="lore-grid">
+      <article class="lore-card"><h4>Le Calendrier des Couronnes</h4><p><b>Aurenth.</b> Les années sont comptées depuis la fondation du premier royaume reconnu par les chroniqueurs auréans.</p></article>
+      <article class="lore-card"><h4>Le Compte des Pierres</h4><p><b>Varkhöl.</b> La mémoire du temps se transmet par des générations et des événements gravés dans la roche.</p></article>
+      <article class="lore-card"><h4>Le Cycle des Racines</h4><p><b>Sylvara.</b> Les cycles sont associés aux transformations de la forêt. Leur commencement ne fait pas toujours consensus.</p></article>
+      <article class="lore-card"><h4>Le Décompte des Cendres</h4><p><b>Drakem.</b> Les chronologies prennent pour repères des bouleversements, des éruptions et des chutes anciennes.</p></article>
+      <article class="lore-card"><h4>Le Calendrier des Marées</h4><p><b>Orvane.</b> Les navigateurs datent leurs voyages selon les marées, les cycles lunaires et les observations du ciel.</p></article>
+      <article class="lore-card"><h4>Les profondeurs de Néréth</h4><p><b>Néréth.</b> Aucun calendrier fiable ne peut être attribué à ce monde dont l'existence reste contestée.</p></article>
+    </div>
+    <div class="lore-note"><b>Le calendrier dit commun :</b> une année de référence compte 360 jours, répartis en douze mois de trente jours. Quatre saisons sont largement reconnues : L'Éveil, le Haut-Soleil, le Déclin et le Long-Givre. Le Voile revient, mais sa durée et sa place dans l'année sont disputées. Certains le comptent comme une cinquième saison, d'autres comme une période extérieure au calendrier. La manière de concilier ces comptes reste inconnue.</div>
+  </section>
+
+  <section class="lore-section" id="langues">
+    <span class="lore-tag">Peuples · Langues</span>
+    <h3>Des langues qui se croisent et se répondent</h3>
+    <p>Les langues vivantes ont évolué au fil des migrations, des échanges et des conflits. Des dialectes locaux coexistent avec une langue commune dont l'origine demeure mystérieuse.</p>
+    <table class="lore-table">
+      <thead><tr><th>Région</th><th>Langue principale</th><th>Traits connus</th></tr></thead>
+      <tbody>
+        <tr><td>Aurenth</td><td>Auréen</td><td>Langue des cours, des marchés et des archives royales.</td></tr>
+        <tr><td>Varkhöl</td><td>Varkhan</td><td>Tradition orale forte et inscriptions gravées.</td></tr>
+        <tr><td>Sylvara</td><td>Sylvain</td><td>Nombreuses nuances et expressions difficiles à traduire.</td></tr>
+        <tr><td>Drakem</td><td>Drakéen</td><td>Écriture ancienne associée aux ateliers et aux inscriptions de pierre.</td></tr>
+        <tr><td>Orvane</td><td>Orvanien</td><td>Vocabulaire riche lié aux vents, aux courants et à la navigation.</td></tr>
+      </tbody>
+    </table>
+    <div class="lore-note"><b>La Langue commune :</b> elle circule entre les peuples, mais nul ne sait qui l'a créée. Des mots semblables apparaissent dans des inscriptions très anciennes, parfois attribuées à des civilisations qui auraient précédé les royaumes connus. Certains chercheurs évoquent la Terre absente.</div>
+    <p class="lore-unknown">Fragments non traduits · Langues premières · Origines disputées</p>
+  </section>
+
+  <section class="lore-section" id="croyances">
+    <span class="lore-tag">Religions · Mythes</span>
+    <h3>Les dieux dont personne ne connaît la vérité</h3>
+    <p>Les croyances d'Eldoria sont multiples et contradictoires. Aucune preuve ne permet de confirmer l'existence des dieux, des esprits ou des puissances invoquées par les peuples.</p>
+    <div class="lore-grid">
+      <article class="lore-card"><h4>Les Célestes</h4><p>Ils prient les astres et cherchent dans le ciel les signes du destin.</p></article>
+      <article class="lore-card"><h4>Les Anciens</h4><p>Ils honorent des entités dont les noms se sont effacés des archives.</p></article>
+      <article class="lore-card"><h4>Les Vivants</h4><p>Ils considèrent les forêts, les fleuves, les montagnes et les océans comme des forces sacrées.</p></article>
+      <article class="lore-card"><h4>Les Veilleurs</h4><p>Ils pensent qu'une présence observe Eldoria depuis un lieu ou un temps inconnu.</p></article>
+      <article class="lore-card"><h4>Les Sans-Temple</h4><p>Ils refusent les religions et voient dans les dieux des créations des peuples.</p></article>
+    </div>
+    <div class="lore-note">Des statues sans visage ont été retrouvées dans plusieurs régions. Certaines semblent antérieures aux plus anciennes civilisations connues. Leur identité et leur fonction restent inconnues.</div>
+  </section>
+
+  <section class="lore-section" id="magie">
+    <span class="lore-tag">Arts occultes · Phénomènes</span>
+    <h3>La magie n'a pas une seule origine</h3>
+    <p>Les érudits distinguent plusieurs formes de magie. Ces catégories sont des outils de classement : elles ne prouvent pas que les phénomènes étudiés partagent une même nature.</p>
+    <div class="lore-grid">
+      <article class="lore-card"><h4>La magie primordiale</h4><p>Associée à des forces qui auraient précédé les peuples et les civilisations.</p></article>
+      <article class="lore-card"><h4>La magie naturelle</h4><p>Liée au vivant, aux éléments et aux lieux où le monde semble réagir.</p></article>
+      <article class="lore-card"><h4>La magie des arcanes</h4><p>Étudiée au moyen de signes, de formules, de symboles et de rituels.</p></article>
+      <article class="lore-card"><h4>La magie des reliques</h4><p>Associée à des objets anciens dont les propriétés ne peuvent être reproduites.</p></article>
+      <article class="lore-card"><h4>La magie du Voile</h4><p>Nom donné à des phénomènes inexpliqués parfois observés pendant le Voile.</p></article>
+      <article class="lore-card"><h4>La sixième forme</h4><p>Évoquée dans quelques textes dont le nom a été effacé. Son existence même est incertaine.</p></article>
+    </div>
+    <div class="lore-note"><b>Qui peut pratiquer la magie ?</b> Cela dépendrait de sa forme. Certaines pratiques s'apprennent, d'autres semblent liées à une lignée, à un lieu, à une relique ou à un choix incompréhensible. Toute utilisation peut entraîner un prix : mémoire altérée, dette, transformation ou conséquence imprévisible. Ces règles restent à documenter.</div>
+  </section>
+
+  <section class="lore-section" id="terre-absente">
+    <span class="lore-tag">Mystère majeur · Cartes interdites</span>
+    <h3>La Terre absente</h3>
+    <p>Des cartes anciennes, des récits et des fragments de textes mentionnent une terre qui ne figure sur aucune carte fiable. Certains la placent au-delà des océans, d'autres sous le monde connu, ou dans un lieu qui ne peut être atteint par les routes ordinaires.</p>
+    <div class="lore-note">Aucune expédition reconnue n'a confirmé son existence. Pourtant, son nom revient dans des documents issus de régions qui n'auraient jamais dû communiquer entre elles.</div>
+  </section>
 </section>
-
-</div>
-</main>
-
-<footer>
-<strong>✦ FEU FOLLET</strong>
-UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE
-</footer>
-
-<script src="js/app.js"></script>
-<script src="js/audio-player.js"></script>
+</main><footer><strong>✦ FEU FOLLET</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer>
+  <script src="js/app.js">
+  </script>
 </body>
 </html>
-
