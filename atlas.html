@@ -212,6 +212,7 @@ header nav{position:relative;z-index:10000;overflow:visible}
       const action=this.getAttribute('data-atlas-action');
       if(action==='map'){
         lore.hidden=true;
+        if(dropdown)dropdown.open=false;
         return;
       }
       event.preventDefault();
