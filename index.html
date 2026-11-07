@@ -10,9 +10,7 @@
 <style>
 :root{--night:#080d18;--gold:#c7a56a;--pale:#f2dfb8;--ice:#82dff1;--line:rgba(210,178,119,.25)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--night);color:#f4efe5;font-family:Manrope,Arial,sans-serif;line-height:1.65}
-
-
-
+.banner{width:100%;overflow:hidden;background:#050912;border-bottom:1px solid var(--line)}.banner img{width:100%;height:auto;display:block}
 
 
 :root{--ff-night:#080d18;--ff-panel:#111b2a;--ff-gold:#c7a56a;--ff-pale:#f2dfb8;--ff-ice:#82dff1;--ff-muted:#aeb8c6;--ff-line:rgba(210,178,119,.24)}
@@ -55,16 +53,52 @@ footer strong{display:block;margin-bottom:8px;color:var(--ff-gold);font:500 17px
 @media(max-width:760px){.home-atlas-menu{min-height:34px}.home-atlas-menu summary{min-height:34px;padding:0 9px;font-size:9px;letter-spacing:1px}}
 @media(max-width:390px){.home-atlas-menu summary{padding:0 7px;letter-spacing:.5px}}
 @media(max-width:600px){.home-inner{padding:62px 20px}.home-copy{font-size:14px}.home-actions a{width:100%}}
-.banner{width:100%;height:auto;overflow:hidden;background:#050912;border-bottom:1px solid rgba(210,175,100,.25)}
-.banner img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;object-position:center}
 
-</style>
-</head><body><div class="banner"><img src="./assets/banniere-grytzen.png" alt="GRYTZEN — Un monde, six royaumes, une destinée" fetchpriority="high"></div><header class="site-header"><div class="nav"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><details class="home-atlas-menu"><summary>L'ATLAS <span>⌄</span></summary><div class="home-atlas-submenu"><a href="atlas.html?view=map">Carte et régions</a><a href="atlas.html?view=knowledge">Explorer les connaissances</a></div></details><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav></div></header>
+/* Accès rapide au médaillon musical — accueil */
+.site-header .nav{justify-content:flex-start}
+.site-header .home-medallion-link{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:32px;padding:0 11px;margin-left:2px;
+  border:1px solid rgba(199,165,106,.42);border-radius:3px;
+  color:#d8bd86;background:linear-gradient(180deg,rgba(199,165,106,.09),rgba(8,13,24,.35));
+  font:700 9px Manrope,sans-serif;letter-spacing:1.15px;text-decoration:none;
+  white-space:nowrap;transition:border-color .2s,background .2s,color .2s;
+}
+.site-header .home-medallion-link:hover{
+  color:#f2dfb8;border-color:#c7a56a;background:rgba(199,165,106,.16)
+}
+.home-medallion-icon{font:17px Georgia,serif;color:#c7a56a;line-height:1}
+@media(max-width:760px){
+  .site-header .nav{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:9px}
+  .site-header .brand{font-size:15px}
+  .site-header .home-medallion-link{min-height:30px;padding:0 9px;font-size:8px;letter-spacing:.8px}
+  .site-header nav{width:100%;order:3}
+}
+
+</style></head><body><div class="banner"><img src="./assets/banniere-grytzen.png" alt="GRYTZEN — Un monde, six royaumes, une destinée" fetchpriority="high"></div><header class="site-header"><div class="nav"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><a class="home-medallion-link" href="#medaillon-musical" aria-label="Accéder au médaillon musical">
+<span class="home-medallion-icon" aria-hidden="true">♫</span>
+<span>MÉDAILLON MUSICAL</span>
+</a><nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><details class="home-atlas-menu"><summary>L'ATLAS <span>⌄</span></summary><div class="home-atlas-submenu"><a href="atlas.html?view=map">Carte et régions</a><a href="atlas.html?view=knowledge">Explorer les connaissances</a></div></details><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav></div></header>
 <main><section class="home-hero"><div class="home-inner">
 <div class="home-note">AVANCEZ À VOTRE RYTHME · CHAQUE DÉCOUVERTE COMPTE</div>
 <div class="home-eyebrow">UNE SAGA INTERACTIVE · UN MONDE À EXPLORER</div>
 <h1 class="home-title">La légende<br>ne fait que <em>commencer.</em></h1>
 <p class="home-copy">Des royaumes oubliés. Des peuples que nul ne connaît. Des secrets enfouis depuis des siècles. Ici, chaque découverte ouvre une porte. Et certaines portes auraient dû rester fermées.</p>
 
-</div></section><section class="home-manifesto"><blockquote>« Tu ne viens pas acheter une légende.<br>Tu viens la découvrir. »</blockquote><p>GRYTZEN · LA SAGA COMMENCE</p></section></main><footer><strong>✦ GRYTZEN</strong>UN MONDE · SIX ROYAUMES · UNE DESTINÉE</footer><script src="js/audio-player.js"></script>
+</div></section><section class="home-manifesto"><blockquote>« Tu ne viens pas acheter une légende.<br>Tu viens la découvrir. »</blockquote><p>GRYTZEN · LA SAGA COMMENCE</p></section></main><footer><strong>✦ GRYTZEN</strong>UN MONDE · SIX ROYAUMES · UNE DESTINÉE</footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const shortcut = document.querySelector(".home-medallion-link");
+  if (!shortcut) return;
+  shortcut.addEventListener("click", function (event) {
+    const target = document.getElementById("medaillon-musical");
+    if (target) return;
+    event.preventDefault();
+    const player = document.getElementById("ff-audio-player");
+    if (player) player.scrollIntoView({behavior:"smooth", block:"center"});
+    else document.querySelector(".home-manifesto")?.scrollIntoView({behavior:"smooth", block:"center"});
+  });
+});
+</script>
+
 </body></html>
