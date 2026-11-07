@@ -20,7 +20,15 @@ function selectRegion(name){
  set("dossier-landscape",r.landscape);set("dossier-people",r.people);
  set("dossier-reputation",r.reputation);set("dossier-mystery",r.mystery);
 }
-document.querySelectorAll("[data-region]").forEach(el=>el.addEventListener("click",()=>selectRegion(el.dataset.region)));
+function bindRegionButtons(){
+ document.querySelectorAll("[data-region]").forEach(el=>{
+  if(el.dataset.regionBound==="true")return;
+  el.dataset.regionBound="true";
+  el.addEventListener("click",()=>selectRegion(el.dataset.region));
+ });
+}
+bindRegionButtons();
+window.addEventListener("gry-page-ready",bindRegionButtons);
 
 const FF_SAVE_KEY="feufollet_grimoire_v1";
 function ffLoad(){
@@ -150,12 +158,13 @@ function episode02FindMaelan(){
  "RENCONTRE : MAËLAN","Maëlan, copiste des marges, est ajouté à ton Grimoire.");
 }
 function episode02ShowFragment(){
- ffSetEpisode02State("maelan");
+ ffSetEpisode02State("fragment");
  ffEpisode02Scene("<p>Maëlan approche le fragment d’une lampe. Il suit du doigt la ligne de points qui s’interrompt au milieu de la mer.</p><p>« Ce tracé ne ressemble pas à une route commerciale ordinaire. Mais je ne vais pas prétendre savoir où il mène. Venez. Il existe une salle dont les documents ne figurent plus dans le catalogue public. »</p><p>Il prend une petite clef et attend que tu le suives.</p>",
  '<button class="game-btn gold" onclick="episode02EnterArchives()">Le suivre aux archives</button>',
  "LE FRAGMENT EXAMINÉ","Maëlan accepte de t’aider, sans prétendre connaître la réponse.");
 }
 function episode02AskArchives(){
+ ffSetEpisode02State("archives-info");
  ffEpisode02Scene("<p>« Je conserve des copies de pages retirées des archives officielles. Je les ai trouvées dans des lots de papier destinés au recyclage. Du moins, c’est ce que je peux prouver. »</p><p>Il hésite, puis ajoute : « Si votre registre a été amputé, nous trouverons peut-être son écho dans la Salle des Dépôts Incomplets. »</p>",
  '<button class="game-btn gold" onclick="episode02EnterArchives()">Entrer dans la salle interdite</button>',
  "UN COPISTE DES MARGES","Maëlan garde des copies de documents retirés.");
@@ -172,8 +181,10 @@ const ffArchiveFragments=[
  {id:"depart",title:"Le Départ des Navigateurs",date:"19e jour du mois des Marées · année 311",detail:"Des navigateurs quittent le port sans destination inscrite."}
 ];
 let ffArchiveOrder=[];
-function episode02OpenCatalogue(){
- ffSetEpisode02State("catalogue",{order:[],hints:0});ffArchiveOrder=[];
+function episode02OpenCatalogue(preserve=false){
+ const previous=ffEpisode02State();
+ ffArchiveOrder=preserve?(previous.order||[]):[];
+ ffSetEpisode02State("catalogue",{order:ffArchiveOrder,hints:preserve?(previous.hints||0):0});
  const cards=ffArchiveFragments.map((f,i)=>'<button class="riddle-choice" type="button" onclick="episode02ChooseFragment(\''+f.id+'\')"><strong>'+f.title+'</strong><br><small>'+f.date+'</small></button>').join("");
  ffEpisode02Scene("<p>Maëlan pose les trois feuillets sur une table.</p><figure class=\"clue-illustration\"><img src=\"assets/enigmes/trois-feuillets-hauterive.svg\" alt=\"Trois feuillets d’archives : Serment des Couronnes année 214, Fermeture du Col année 267, Départ des Navigateurs année 311\"><figcaption>Les trois documents retrouvés dans les dépôts — leurs revers ne pourront être lus qu’une fois le classement correct.</figcaption></figure><p>« Les catalogues rangent ce qui est connu. Les absents ne peuvent être classés qu’à partir de leurs témoins. »</p><p>Les dates sont inscrites au bas des feuillets. Replace les événements du plus ancien au plus récent. Les marques au revers ne pourront être lues que dans le bon ordre.</p><p><strong>Ordre choisi :</strong> <span id=\"archive-order\">Aucun feuillet</span></p>",
  '<div class="game-riddle archive-riddle">'+cards+'</div><div class="game-actions"><button class="game-btn gold" onclick="episode02CheckOrder()">Vérifier le classement</button><button class="game-btn" onclick="episode02ResetOrder()">Recommencer</button><button class="game-btn" onclick="episode02Hint()">Demander un indice</button></div>',
@@ -198,11 +209,15 @@ function episode02CheckOrder(){
  if(ffArchiveOrder.every((v,i)=>v===correct[i])){
   ffSetEpisode02State("keyword",{order:ffArchiveOrder,hints:ffEpisode02State().hints||0});
   ffEpisode02Scene("<p>Les dates s’alignent. Au revers des feuillets, des fragments de lettres apparaissent : <strong>S</strong>, puis <strong>EU</strong>, puis <strong>IL</strong>.</p><p>Réunis dans le bon ordre, ils forment un mot de cinq lettres. Maëlan regarde le tiroir sans poignée.</p><p><em>Quel mot faut-il prononcer ?</em></p><label for=\"episode02-word\">Mot découvert</label><input id=\"episode02-word\" type=\"text\" maxlength=\"12\" autocomplete=\"off\" placeholder=\"Écrire le mot\" style=\"display:block;max-width:320px;width:100%;padding:13px;margin:12px 0;background:#101c2a;border:1px solid rgba(130,223,241,.45);color:#fff;font:600 16px Georgia,serif;\">",
-  '<button class="game-btn gold" onclick="episode02CheckWord()">Prononcer le mot</button><button class="game-btn" onclick="episode02Hint()">Relire un indice</button>',
+  '<button class="game-btn gold" onclick="episode02CheckWord()">Prononcer le mot</button><button class="game-btn" onclick="episode02WordHint()">Relire un indice</button>',
   "CLASSEMENT CORRECT : UN MOT APPARAÎT","Les fragments ont révélé les lettres S · EU · IL.");
  }else{
   const fb=document.getElementById("game-feedback");if(fb)fb.textContent="Les tiroirs restent immobiles. Les dates ne sont pas encore dans le bon ordre. Tu peux recommencer ou demander un indice.";
  }
+}
+function episode02WordHint(){
+ const fb=document.getElementById("game-feedback");
+ if(fb)fb.textContent="Lis les fragments dans l’ordre des feuillets : S, puis EU, puis IL. Assemble-les sans espace.";
 }
 function episode02CheckWord(){
  const input=document.getElementById("episode02-word"),word=(input?.value||"").trim().normalize("NFD").replace(/[\u0300-\u036f]/g,"").toUpperCase();
@@ -239,8 +254,10 @@ function restoreEpisode02(){
  switch(s.stage){
   case "plaque":episode02InspectPlaque();break;
   case "maelan":episode02FindMaelan();break;
+  case "fragment":episode02ShowFragment();break;
+  case "archives-info":episode02AskArchives();break;
   case "archives":episode02EnterArchives();break;
-  case "catalogue":episode02OpenCatalogue();if(ffArchiveOrder.length){const names={serment:"Serment des Couronnes",fermeture:"Fermeture du Col",depart:"Départ des Navigateurs"};const el=document.getElementById("archive-order");if(el)el.textContent=ffArchiveOrder.map(x=>names[x]).join(" → ");}break;
+  case "catalogue":episode02OpenCatalogue(true);if(ffArchiveOrder.length){const names={serment:"Serment des Couronnes",fermeture:"Fermeture du Col",depart:"Départ des Navigateurs"};const el=document.getElementById("archive-order");if(el)el.textContent=ffArchiveOrder.map(x=>names[x]).join(" → ");}break;
   case "keyword":episode02CheckOrderAfterRestore();break;
   case "opened":episode02OpenDrawer();break;
   case "document":episode02ReadDocument();break;
@@ -252,7 +269,7 @@ function restoreEpisode02(){
 function episode02CheckOrderAfterRestore(){
  ffArchiveOrder=ffEpisode02State().order||[];
  ffEpisode02Scene("<p>Les dates sont classées. Au revers des feuillets, les fragments de lettres apparaissent : <strong>S · EU · IL</strong>.</p><p>Quel mot de cinq lettres forment-ils ?</p><label for=\"episode02-word\">Mot découvert</label><input id=\"episode02-word\" type=\"text\" maxlength=\"12\" placeholder=\"Écrire le mot\" style=\"display:block;max-width:320px;width:100%;padding:13px;margin:12px 0;background:#101c2a;border:1px solid rgba(130,223,241,.45);color:#fff;font:600 16px Georgia,serif;\">",
- '<button class="game-btn gold" onclick="episode02CheckWord()">Prononcer le mot</button>',
+ '<button class="game-btn gold" onclick="episode02CheckWord()">Prononcer le mot</button><button class="game-btn" onclick="episode02WordHint()">Relire un indice</button>',
  "LE MOT ATTEND DERRIÈRE LES LETTRES","Tu peux reprendre ici sans perdre le classement.");
 }
 function resetEpisode02(){

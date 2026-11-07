@@ -4,7 +4,11 @@
   if (window.__GRYTZEN_PERSISTENT_NAV__) return;
   window.__GRYTZEN_PERSISTENT_NAV__ = true;
 
-  let appLoaded = !!document.querySelector('script[src$="js/app.js"]');
+  // Suivre tous les scripts déjà chargés : une navigation interne doit aussi
+  // charger les scripts propres à la page (ex. episode01-long.js).
+  const loadedPageScripts = new Set(
+    [...document.querySelectorAll('script[src]')].map(script => new URL(script.src, location.href).pathname)
+  );
   let navigating = false;
 
   function persistentNodes() {
@@ -46,17 +50,37 @@
     document.body.className = nextBodyClass;
   }
 
-  async function loadAppIfNeeded(nextDoc) {
-    const needsApp = !!nextDoc.querySelector('script[src$="js/app.js"]');
-    if (!needsApp || appLoaded) return;
-    appLoaded = true;
-    await new Promise((resolve, reject) => {
-      const script = document.createElement("script");
-      script.src = "js/app.js";
-      script.onload = resolve;
-      script.onerror = reject;
-      document.body.appendChild(script);
-    });
+  async function loadPageScripts(nextDoc) {
+    const scripts = [...nextDoc.querySelectorAll('script')];
+    for (const source of scripts) {
+      const src = source.getAttribute('src');
+      if (src) {
+        const url = new URL(src, location.href);
+        if (url.origin !== location.origin) continue;
+        const path = url.pathname;
+        if (loadedPageScripts.has(path)) continue;
+        loadedPageScripts.add(path);
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.async = false;
+          script.src = url.href;
+          script.onload = resolve;
+          script.onerror = () => {
+            loadedPageScripts.delete(path);
+            reject(new Error('Impossible de charger le script : ' + path));
+          };
+          document.body.appendChild(script);
+        });
+      } else if (source.textContent.trim()) {
+        // Les pages peuvent aussi avoir un petit script inline (ex. l'Atlas).
+        // Il doit être rejoué après chaque reconstruction PJAX du contenu.
+        const script = document.createElement('script');
+        if (source.type) script.type = source.type;
+        script.textContent = source.textContent;
+        document.body.appendChild(script);
+        script.remove();
+      }
+    }
   }
 
   function announcePageReady() {
@@ -82,7 +106,7 @@
       document.body.innerHTML = nextDoc.body.innerHTML;
       keep.forEach(node => document.body.appendChild(node));
 
-      await loadAppIfNeeded(nextDoc);
+      await loadPageScripts(nextDoc);
       attachControls();
       announcePageReady();
       if (pushState) history.pushState({ grytzen: true }, "", url);

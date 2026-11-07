@@ -42,14 +42,14 @@ case"letter":show("Celui qui reçoit l'inconnu",`<div class="chapter-label">CHAP
 <p>Aucun sceau royal. Aucun nom d'expéditeur. Seulement ton nom, écrit à l'encre noire.</p>
 <p>À l'intérieur : une feuille jaunie portant une adresse, une petite pièce métallique frappée d'un symbole inconnu et un billet.</p><blockquote>« Si tu souhaites connaître la vérité, ne demande jamais ton chemin à quelqu'un qui connaît déjà la destination. »</blockquote>
 <p>L'adresse indiquait une ancienne boutique de reliure, fermée depuis des décennies. Au bas de la feuille, une date avait été grattée. On distinguait encore la trace de six chiffres, mais aucun n'était entier.</p><p>Tu retournes le billet. Une seconde phrase apparaît sous la lumière : <strong>« Le souvenir précède le nom. »</strong></p>`,
-btn("Examiner la pièce","longNext('coin')")+btn("Suivre l'adresse","longNext('arrival')",false),"INDICE : UNE ADRESSE ET UNE PIÈCE","Le billet contient deux avertissements. L'un concerne les noms, l'autre les chemins.");break;
+btn("Examiner la pièce","longNext('coin')")+btn("Suivre l'adresse","longNext('coin','address')",false),"INDICE : UNE ADRESSE ET UNE PIÈCE","Le billet contient deux avertissements. L'un concerne les noms, l'autre les chemins.");break;
 case"coin":show("La pièce aux six cercles",`<div class="chapter-label">OBJET À EXAMINER · OBSERVATION</div>
 <p>La pièce est plus lourde qu'elle n'en a l'air. Sur une face, un arbre sans feuilles. Sur l'autre, six petits cercles entourent un cercle central. Aucun chiffre, aucune devise, aucun profil de souverain.</p><figure class="clue-illustration"><img src="assets/enigmes/piece-six-cercles.svg" alt="Croquis des deux faces de la pièce : arbre sans feuilles et six cercles autour d’un point central"><figcaption>Pièce retrouvée dans la lettre — observe les deux faces et la disposition des cercles.</figcaption></figure>
 <p>Tu la fais pivoter près de la fenêtre. Une inscription apparaît sur la tranche : <strong>« Le souvenir précède le nom. »</strong></p>
 <p>Tu remarques que les six cercles extérieurs ne sont pas identiques : l'un est légèrement plus profond que les autres. Le cercle central porte une petite entaille tournée vers le bord le plus marqué. La pièce semble être un mécanisme, pas une monnaie.</p>`,
 btn("Chercher comment activer la pièce","longNext('riddle1')")+btn("Revenir à la lettre","longNext('letter')",false),"OBSERVATION : SIX CERCLES ET UN CENTRE","Retiens la disposition : six marques autour d'un point central.");break;
 case"riddle1":show("Première épreuve — Le souvenir avant le nom",`<div class="chapter-label">ÉNIGME 01 · RÉPONSE À SAISIR</div>
-<figure class="clue-illustration"><img src="assets/enigmes/piece-six-cercles.svg" alt="Détail de la pièce aux six cercles entourant un cercle central"><figcaption>Le croquis du mécanisme — le point central est le seul élément entouré par les six marques.</figcaption></figure><p>Tu poses la pièce sur la lettre. Les six cercles s'alignent avec les six chiffres grattés au bas de l'adresse. Le cercle central recouvre exactement l'emplacement d'un mot qui a été effacé.</p>
+<figure class="clue-illustration"><img src="assets/enigmes/piece-six-cercles.svg" alt="Détail de la pièce aux six cercles entourant un cercle central"><figcaption>Le croquis du mécanisme — le point central est le seul élément entouré par les six marques.</figcaption></figure><p>Tu poses la pièce sur la lettre. Les six cercles extérieurs se superposent aux six marques grattées au bas de l'adresse. Le cercle central recouvre exactement l'emplacement d'un mot qui a été effacé.</p>
 <p>Le billet disait : « Le souvenir précède le nom. » Le cercle central est le seul qui ne représente ni une direction ni un lieu. C'est le point à partir duquel les six autres marques semblent avoir été disposées.</p>
 <p><strong>Question :</strong> quel élément faut-il consulter en premier pour retrouver le nom effacé ? Saisis le mot qui désigne ce point de départ.</p>${input("long-answer-1","Écrire le mot…")}<p class="game-note">Indice disponible : le mot désigne le milieu d'un ensemble.</p>`,
 btn("Valider ma réponse","longCheck1()")+btn("Demander l'indice","longHint(1)",false),"ÉNIGME : LE POINT DE DÉPART","Il faut interpréter la disposition, pas deviner un nom de royaume.");break;
@@ -58,7 +58,7 @@ case"arrival":show("La boutique aux volets clos",`<div class="chapter-label">SC�
 <p>Au bout, une boutique aux volets clos se tient entre un atelier de serrurerie et une maison condamnée. Derrière la vitrine poussiéreuse, des reliures sont empilées par taille, toutes tournées de façon à cacher leur tranche.</p>
 <p>Tu frappes. Aucun bruit. Pourtant, une lueur se déplace derrière le volet du haut.</p>
 <p>Sur la porte, trois marques : une couronne, une montagne et une vague. Sous elles : <strong>« Ce qui règne n'est pas toujours ce qui demeure. »</strong></p>`,
-btn("Examiner les trois marques","longNext('door')")+btn("Contourner la boutique","longNext('workshop')",false),"LIEU REPÉRÉ : RUELLE DES RELIEURS","La boutique est bien réelle. Quelqu'un semble pourtant savoir que tu arrives.");break;
+btn("Examiner les trois marques","longNext('door')")+btn("Observer les marques depuis la ruelle","longNext('door','observe_from_side')",false),"LIEU REPÉRÉ : RUELLE DES RELIEURS","La boutique est bien réelle. Quelqu'un semble pourtant savoir que tu arrives.");break;
 case"door":show("La porte aux trois marques",`<div class="chapter-label">OBSERVATION · LES TRACES DU SERRURIER</div>
 <p>La couronne est polie au centre, comme si elle avait été touchée des milliers de fois. La montagne porte trois entailles parallèles. La vague est intacte, mais une fine poussière bleue s'est logée dans son creux.</p><figure class="clue-illustration"><img src="assets/enigmes/trois-marques.svg" alt="Trois plaques : couronne polie, montagne aux trois entailles et vague contenant une poussière bleue"><figcaption>Les trois marques de la porte — chaque détail correspond à la description du relieur.</figcaption></figure>
 <p>La poignée n'est pas usée. En revanche, le seuil est profondément marqué du côté intérieur, comme si des caisses lourdes avaient été traînées vers la rue.</p><blockquote>« Si tu viens pour le registre, tu arrives trop tôt. Si tu viens pour la pièce, tu arrives trop tard. »</blockquote>
@@ -102,7 +102,7 @@ case"ending":show("Fin du chapitre I — Le premier seuil",`<div class="chapter-
 <p>Tu comprends que Valombre n'est pas simplement un village oublié. Quelqu'un a effacé son accès, ses noms et jusqu'au souvenir de son existence. Les six cercles de la pièce ne désignent peut-être pas six lieux, mais six absences.</p>
 <blockquote>« Le premier nom a été rendu. Il en reste six. »</blockquote>
 <p>La première enquête s'achève. La suivante commence dans les archives d'une ville qui prétend n'avoir jamais entendu parler de Valombre.</p>`,
-btn("Ouvrir le Grimoire","location.href='grimoire.html'")+btn("Revoir la révélation","longNext('revelation')",false),"CHAPITRE I TERMINÉ · PISTE VERS HAUTERIVE","Ton parcours et tes découvertes sont sauvegardés. Le volet II pourra reprendre cette piste.");break;
+btn("Poursuivre vers Hauterive","location.href='Episode-02.html'")+btn("Ouvrir le Grimoire","location.href='grimoire.html'")+btn("Revoir la révélation","longNext('revelation')",false),"CHAPITRE I TERMINÉ · PISTE VERS HAUTERIVE","Ton parcours et tes découvertes sont sauvegardés. Le volet II pourra reprendre cette piste.");break;
 default:next("prologue");
 }}
 window.longCheck1=function(){let v=norm($("long-answer-1")?.value);if(["centre","central","le centre"].includes(v)){record("Le Signe sans royaume");next("arrival")}else $("game-feedback").textContent="Ce n'est pas le bon point de départ. Observe la géométrie : les six marques entourent un élément unique."};
@@ -115,6 +115,8 @@ window.longEpisodeReset=function(){if(!confirm("Recommencer le volet I ? Les dé
 window.restoreEpisode=function(){render()};
 window.episodeChoice=function(){render()};
 window.episodeRiddleStart=function(){next("riddle1")};
-window.addEventListener("DOMContentLoaded",()=>{if($("game-scene"))render()});
-if($("game-scene"))render();
+// Le volet I ne doit jamais reprendre la main sur le panneau du volet II.
+function isEpisode01Page(){return !!$("episode") && !!$("game-scene");}
+window.addEventListener("DOMContentLoaded",()=>{if(isEpisode01Page())render()});
+if(isEpisode01Page())render();
 })();
