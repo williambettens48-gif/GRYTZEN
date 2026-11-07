@@ -210,3 +210,50 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
   .clue-illustration { max-width: 100%; }
   .clue-illustration img { max-width: 100%; }
 }
+
+
+/* =========================================================
+   GRYTZEN — bannière responsive : image entière sur tous écrans
+   ========================================================= */
+.banner {
+  display: block;
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: hidden;
+  background: #050912;
+  border-bottom: 1px solid var(--line);
+}
+.banner img {
+  display: block;
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+/* Petits écrans : aucune hauteur forcée, pas de découpe */
+@media (max-width: 700px) {
+  .banner {
+    height: auto !important;
+    overflow: hidden;
+  }
+  .banner img {
+    width: 100%;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+}
+
+/* Très grands écrans : la bannière reste centrée et conserve ses proportions */
+@media (min-width: 1600px) {
+  .banner img {
+    width: 100%;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+}
+
