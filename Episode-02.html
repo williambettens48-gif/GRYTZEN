@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080d18">
-<meta name="gryzten-version" content="episode-02-v1">
+<meta name="gryzten-version" content="episode-02-v2-expanded">
 <title>GRYTZEN — Les archives qui respirent</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@
 <div class="banner"><img src="assets/banniere-grytzen.png" alt="Bannière GRYTZEN"></div>
 <header class="site-header"><div class="nav">
 <div class="gry-brand-group"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><button class="gry-header-control" type="button" aria-label="Lire ou mettre en pause la musique">♫ MÉDAILLON SONORE</button></div>
-<nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><a href="atlas.html">L'ATLAS</a><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav>
+<nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><details class="nav-dropdown"><summary aria-haspopup="true">L'ATLAS <span class="nav-chevron">⌄</span></summary><div class="nav-submenu"><a href="atlas.html?view=map" data-atlas-action="map">Carte et régions</a><a href="atlas.html?view=knowledge" data-atlas-action="knowledge">Explorer les connaissances</a></div></details><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav>
 
 </div></header>
 <main>
@@ -43,7 +43,7 @@
 <h2>Les archives qui respirent</h2>
 <p>Le fragment trouvé à Valombre t'a conduit jusqu'à Hauterive, ville des copistes et des archives. Tu croyais chercher une réponse dans les documents. Tu vas découvrir que certains documents semblent, eux aussi, chercher quelqu'un.</p>
 <div class="episode-intro"><strong>Précédemment, à Valombre…</strong><br>Le disque de cuivre s'est ouvert. Un fragment de carte sans nom a révélé une côte et une route interrompue au milieu de la mer. Sur une pierre, une phrase désignait la prochaine étape : <em>Hauterive conserve ce que Valombre oublie.</em></div>
-<div class="grimoire-progress-caption" style="margin:18px 0 8px"><span>VOTRE CHEMINEMENT</span><span id="episode02-progress">ÉTAPE 0 / 9</span></div>
+<div class="grimoire-progress-caption" style="margin:18px 0 8px"><span>VOTRE CHEMINEMENT</span><span id="episode02-progress">ÉTAPE 0 / 13</span></div>
 <div class="game-note" style="margin:0 0 20px">Vos découvertes et votre progression sont conservées dans le navigateur de cet appareil. Aucun achat n'est nécessaire pour avancer.</div>
 <div aria-live="polite" class="game-scene" id="game-scene"><p>Les passerelles de Hauterive apparaissent au-dessus du Fleuve d'Aube…</p></div>
 <div class="game-actions" id="game-controls"></div>
@@ -55,6 +55,7 @@
 </main>
 <footer><strong>✦ GRYTZEN</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer>
 <script src="js/app.js"></script>
+<script src="js/episode02-expanded.js"></script>
 
 <style id="grytzen-pjax-style">
 .site-header .nav, header .nav {display:flex;align-items:center;gap:18px;flex-wrap:nowrap}
