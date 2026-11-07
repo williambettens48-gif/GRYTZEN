@@ -228,6 +228,9 @@ header nav{position:relative;z-index:10000;overflow:visible}
 </style>
 <script>
 (function(){
+  if(window.__GRYTZEN_ATLAS_CLEANUP__)window.__GRYTZEN_ATLAS_CLEANUP__();
+  const lifecycle=new AbortController();
+  window.__GRYTZEN_ATLAS_CLEANUP__=()=>lifecycle.abort();
   const chooser=document.getElementById('lore-choice');
   const lore=document.getElementById('atlas-lore');
   const map=document.getElementById('atlas');
@@ -258,18 +261,18 @@ header nav{position:relative;z-index:10000;overflow:visible}
     if(dropdown && dropdown.open && !dropdown.contains(event.target)){
       dropdown.open=false;
     }
-  });
+  },{signal:lifecycle.signal});
   document.addEventListener('touchstart',function(event){
     if(dropdown && dropdown.open && !dropdown.contains(event.target)){
       dropdown.open=false;
     }
-  },{passive:true});
+  },{passive:true,signal:lifecycle.signal});
   window.addEventListener('scroll',function(){
     if(dropdown && dropdown.open)dropdown.open=false;
-  },{passive:true});
+  },{passive:true,signal:lifecycle.signal});
   document.addEventListener('keydown',function(event){
     if(event.key==='Escape' && dropdown)dropdown.open=false;
-  });
+  },{signal:lifecycle.signal});
 
   document.querySelectorAll('.nav-dropdown .nav-submenu a[data-atlas-action]').forEach(link=>{
     link.addEventListener('click',function(event){

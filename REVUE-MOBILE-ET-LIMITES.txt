@@ -1,0 +1,16 @@
+GRYTZEN — REVUE MOBILE ET LIMITES DE TEST
+Version candidate — 7 novembre 2026
+
+Adaptations mobiles conservées :
+- Boutons et choix tactiles avec hauteur minimale de 44 px.
+- Champ de réponse plein largeur avec police 16 px pour éviter le zoom automatique iOS.
+- Choix des symboles en une colonne sous 600 px.
+- Illustrations SVG adaptatives et légendes lisibles.
+- Actions principales empilées sur téléphone.
+
+Contrôles réalisés :
+- Les ressources locales et les médias ont été contrôlés.
+- Les scripts passent le contrôle de syntaxe.
+- Les parcours et sauvegardes des deux volets ont été simulés.
+
+Limite : le navigateur graphique Chromium de l'environnement est neutralisé par une politique système qui bloque toutes les URL. Il n'a donc pas été possible de vérifier le rendu pixel par pixel ni de simuler les vrais gestes tactiles. Un essai final sur téléphone réel reste nécessaire avant publication publique.

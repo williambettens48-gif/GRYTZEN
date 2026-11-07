@@ -1,0 +1,39 @@
+GRYTZEN — RAPPORT DE VÉRIFICATION TECHNIQUE
+Version candidate de publication — 7 novembre 2026
+
+CORRECTIONS INTÉGRÉES
+- Navigation persistante : les scripts propres à chaque page sont désormais chargés dans l'ordre, y compris episode01-long.js. Les scripts inline des pages sont également exécutés après une navigation interne.
+- Volet I : le script long ne réinitialise plus le panneau du Volet II lorsqu'on navigue entre les pages sans rechargement complet.
+- Volet II : les choix « examiner le fragment » et « demander ce que Maëlan sait des archives » sont conservés à la reprise.
+- Volet II : l'indice du mot SEUIL ne fait plus revenir le joueur à l'étape de classement. L'indice reste disponible après rechargement.
+- Fin du Volet I : ajout d'un accès explicite vers Episode-02.html.
+- Atlas : les écouteurs globaux sont nettoyés lors d'une nouvelle initialisation après navigation interne.
+- Confort mobile : zones tactiles de 44 px minimum, champ de réponse lisible, choix en colonne sur petit écran et illustrations adaptatives.
+
+CONTRÔLES STATIQUES
+- 7 pages HTML analysées.
+- 4 fichiers JavaScript : contrôle de syntaxe Node.js réussi.
+- Script inline de l'Atlas : contrôle de syntaxe réussi.
+- 3 illustrations SVG : XML valide.
+- 23 images raster : décodage et intégrité vérifiés.
+- Fichier audio MP3 : conteneur lisible, durée détectée 269,6 secondes.
+- Références locales HTML, CSS, images et scripts : aucune ressource manquante détectée.
+- Identifiants HTML dupliqués : aucun détecté.
+- Lien de fin du Volet I vers Episode-02.html : vérifié (respect de la casse du nom de fichier).
+
+TESTS DE LOGIQUE SIMULÉS
+- Volet I : progression prologue → lettre → pièce → énigme CENTRE → boutique → porte → atelier → ordre des symboles → compartiment → choix → révélation → fin.
+- Volet I : mauvaise réponse à CENTRE, mauvaise séquence de symboles, remise à zéro, bonne séquence et reprise après rechargement.
+- Volet II : parcours jusqu'aux archives, mauvais classement, remise à zéro, bon classement chronologique, indice du mot, reprise après rechargement, validation de SEUIL, ouverture du tiroir et fin.
+- Volet II : l'indice SEUIL ne fait plus régresser l'étape sauvegardée.
+
+LIMITE AVANT PUBLICATION
+Le test graphique réel dans Chromium n'a pas pu être exécuté dans l'environnement de vérification : une stratégie système bloque toutes les URL (URLBlocklist « * ») et désactive les outils de développement. Les tests de logique ci-dessus sont des simulations JavaScript avec stockage local simulé, pas un essai tactile dans un vrai navigateur.
+
+Cette archive est une candidate de publication techniquement vérifiée, mais pas une certification visuelle finale. Avant une annonce publique, ouvrir le site sur un téléphone réel et vérifier au minimum :
+1. JOUER → aller jusqu'à la fin du Volet I et utiliser « Poursuivre vers Hauterive ».
+2. Dans le Volet II, classer les feuillets, demander l'indice SEUIL, recharger la page et vérifier que le classement reste présent.
+3. Tester les boutons, les images et l'absence de débordement horizontal à 360–390 px de largeur.
+4. Tester le médaillon sonore sur une interaction volontaire (les navigateurs mobiles bloquent l'autoplay).
+
+La clé de stockage historique « feufollet_grimoire_v1 » est conservée volontairement pour préserver les sauvegardes déjà enregistrées dans les navigateurs des joueurs.
