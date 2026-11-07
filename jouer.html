@@ -1,66 +1,65 @@
-<!doctype html><html lang="fr"><head>
+<!doctype html>
+<html lang="fr">
+<head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080d18">
+<meta name="description" content="Le Registre sans nom — première grande aventure interactive de GRYTZEN.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-
-<title>GRYTZEN — Le Registre sans nom</title><meta name="description" content="Vivez le premier épisode de la saga GRYTZEN.">
+<title>GRYTZEN — Le Registre sans nom</title>
 <style>
-
-:root{--ff-night:#080d18;--ff-panel:#111b2a;--ff-gold:#c7a56a;--ff-pale:#f2dfb8;--ff-ice:#82dff1;--ff-muted:#aeb8c6;--ff-line:rgba(210,178,119,.24)}
-*{box-sizing:border-box}body{background:var(--ff-night);color:#f4efe5}
-.site-header{position:sticky;top:0;z-index:100;background:rgba(7,12,22,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--ff-line)}
+:root{--night:#080d18;--panel:#111b2a;--gold:#c7a56a;--pale:#f2dfb8;--ice:#82dff1;--muted:#aeb8c6;--line:rgba(210,178,119,.24)}
+*{box-sizing:border-box}body{background:var(--night);color:#f4efe5}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(7,12,22,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .site-header .nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px 24px}
-.site-header .brand{font:600 17px Cinzel,Georgia,serif;letter-spacing:3px;color:var(--ff-pale);white-space:nowrap}.site-header .brand span{color:var(--ff-ice);margin-right:8px}
-.site-header nav{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap}
-.site-header nav a{display:flex;align-items:center;min-height:38px;padding:0 13px;color:#d9d4ca;font:700 10px Manrope,sans-serif;letter-spacing:1.6px}
-.site-header nav a:hover,.site-header nav a[aria-current=page]{color:var(--ff-ice)}
-footer{border-top:1px solid var(--ff-line);padding:32px 20px;text-align:center;color:#8996a5;font:10px Manrope,sans-serif;letter-spacing:1px}
-footer strong{display:block;margin-bottom:8px;color:var(--ff-gold);font:500 17px Cinzel,serif}
-.page-kicker{color:var(--ff-ice);font:700 10px Manrope,sans-serif;letter-spacing:3px;text-transform:uppercase}
-.page-title{font:500 clamp(32px,5vw,58px)/1.15 Cinzel,Georgia,serif;color:var(--ff-pale);margin:12px 0 16px}
-.page-lead{max-width:720px;color:#c2cbd4;font:14px/1.9 Manrope,sans-serif}
-@media(max-width:760px){.site-header .nav{padding:10px 12px;flex-direction:column;gap:7px}.site-header .brand{font-size:16px}.site-header nav{width:100%;gap:0;border-top:1px solid rgba(210,178,119,.12);padding-top:5px}.site-header nav a{min-height:34px;padding:0 9px;font-size:9px;letter-spacing:1px}}
-
-
+.site-header .brand{font:600 17px Cinzel,Georgia,serif;letter-spacing:3px;color:var(--pale);white-space:nowrap}.site-header .brand span{color:var(--ice);margin-right:8px}
+.site-header nav{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap}.site-header nav a{display:flex;align-items:center;min-height:38px;padding:0 13px;color:#d9d4ca;font:700 10px Manrope,sans-serif;letter-spacing:1.6px}.site-header nav a:hover,.site-header nav a[aria-current=page]{color:var(--ice)}
+footer{border-top:1px solid var(--line);padding:32px 20px;text-align:center;color:#8996a5;font:10px Manrope,sans-serif;letter-spacing:1px}footer strong{display:block;margin-bottom:8px;color:var(--gold);font:500 17px Cinzel,serif}
+.page-kicker{color:var(--ice);font:700 10px Manrope,sans-serif;letter-spacing:3px;text-transform:uppercase}
+.page-title{font:500 clamp(32px,5vw,58px)/1.15 Cinzel,Georgia,serif;color:var(--pale);margin:12px 0 16px}
+.page-lead{max-width:760px;color:#c2cbd4;font:14px/1.9 Manrope,sans-serif}
 .adventure-intro{max-width:1160px;margin:auto;padding:58px 26px 28px;display:grid;grid-template-columns:1fr .72fr;gap:32px;align-items:end}
-.adventure-stamp{border:1px solid var(--ff-line);padding:20px;background:linear-gradient(145deg,rgba(23,39,56,.85),rgba(8,14,24,.92));color:#b9c5cf;font:11px/1.8 Manrope,sans-serif}
-.adventure-stamp strong{display:block;color:var(--ff-gold);font:500 16px Cinzel,serif;margin-bottom:5px}
+.adventure-stamp{border:1px solid var(--line);padding:20px;background:linear-gradient(145deg,rgba(23,39,56,.85),rgba(8,14,24,.92));color:#b9c5cf;font:11px/1.8 Manrope,sans-serif}
+.adventure-stamp strong{display:block;color:var(--gold);font:500 16px Cinzel,serif;margin-bottom:5px}
 .game-section{max-width:1160px;margin:0 auto;padding:10px 26px 90px}
 .game-panel{border:1px solid rgba(130,223,241,.28);background:linear-gradient(145deg,rgba(18,34,49,.98),rgba(8,14,24,.99));padding:clamp(22px,4vw,48px);position:relative;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.28)}
 .game-panel:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 88% 0%,rgba(130,223,241,.12),transparent 35%)}
-.game-topline{position:relative;color:var(--ff-ice);font-size:10px;letter-spacing:3px}
-.game-panel h2{position:relative;font:500 clamp(27px,4vw,42px) Cinzel,serif;color:var(--ff-pale);margin:12px 0}
-.game-panel>p{position:relative;color:#c1cad3;font-size:14px;max-width:780px}
-.game-note{position:relative;color:#9eacba;font-size:11px;line-height:1.7;margin:12px 0}
-.grimoire-progress-caption{display:flex;justify-content:space-between;gap:12px;color:#b8c5cf;font-size:9px;letter-spacing:1.5px;margin:22px 0 9px}
-.game-scene{position:relative;border:1px solid rgba(199,165,106,.25);border-left:3px solid var(--ff-ice);background:rgba(3,9,16,.42);padding:22px 24px;margin:18px 0;min-height:125px;color:#e2e4e3;line-height:1.9}
-.game-scene p{margin:0 0 10px}.game-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.game-btn{border:1px solid rgba(130,223,241,.45);background:rgba(130,223,241,.08);color:#e9f7fa;padding:13px 17px;font:700 10px Manrope,sans-serif;letter-spacing:1px;cursor:pointer}
-.game-btn:hover{background:rgba(130,223,241,.18)}.game-btn.gold{border-color:var(--ff-gold);color:var(--ff-pale);background:rgba(199,165,106,.12)}
-.game-status{font-size:10px!important;letter-spacing:1.5px;color:var(--ff-gold)!important;margin-top:22px}
-@media(max-width:760px){.adventure-intro{grid-template-columns:1fr;padding:38px 20px 22px;gap:18px}.game-section{padding:8px 14px 58px}.grimoire-progress-caption{font-size:8px}.game-actions .game-btn{width:100%;text-align:center}}
-.banner{width:100%;height:auto;overflow:hidden;background:#050912;border-bottom:1px solid rgba(210,175,100,.25)}
-.banner img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;object-position:center}
-
+.game-topline{position:relative;color:var(--ice);font:700 10px Manrope,sans-serif;letter-spacing:3px}
+.game-panel h2{position:relative;font:500 clamp(27px,4vw,42px) Cinzel,serif;color:var(--pale);margin:12px 0}
+.game-panel>p{position:relative;color:#c1cad3;font:14px/1.85 Manrope,sans-serif;max-width:850px}
+.progress-caption{display:flex;justify-content:space-between;gap:12px;color:#b8c5cf;font:700 9px Manrope,sans-serif;letter-spacing:1.5px;margin:25px 0 9px}
+.progress-track{height:5px;background:#1c2937;overflow:hidden}.progress-track span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--ice));transition:width .35s}
+.game-note{position:relative;color:#9eacba;font:11px/1.7 Manrope,sans-serif;margin:12px 0}
+.game-scene{position:relative;border:1px solid rgba(199,165,106,.25);border-left:3px solid var(--ice);background:rgba(3,9,16,.48);padding:clamp(20px,3vw,30px);margin:18px 0;min-height:180px;color:#e2e4e3;font:14px/2 Manrope,sans-serif}
+.game-scene p{margin:0 0 15px}.game-scene p:last-child{margin-bottom:0}.game-scene h3{font:500 20px Cinzel,serif;color:var(--gold);margin:4px 0 16px}.game-scene blockquote{border-left:2px solid var(--gold);padding:8px 18px;color:#e6d4ad;margin:18px 0;background:rgba(199,165,106,.06)}
+.game-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;position:relative}
+.game-btn{border:1px solid rgba(130,223,241,.45);background:rgba(130,223,241,.08);color:#e9f7fa;padding:13px 17px;font:700 10px Manrope,sans-serif;letter-spacing:1px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px}
+.game-btn:hover{background:rgba(130,223,241,.18)}.game-btn.gold{border-color:var(--gold);color:var(--pale);background:rgba(199,165,106,.12)}
+.game-btn:focus-visible,input:focus-visible{outline:2px solid var(--ice);outline-offset:3px}
+.game-status{font:700 10px Manrope,sans-serif;letter-spacing:1.5px;color:var(--gold);margin-top:22px;position:relative}
+.game-feedback{font:12px/1.7 Manrope,sans-serif;color:#a9dce5;min-height:24px;position:relative}
+.puzzle-input{display:block;width:min(100%,420px);padding:14px 15px;margin:14px 0;background:#101c2a;border:1px solid rgba(130,223,241,.45);color:#fff;font:600 16px Georgia,serif}
+.choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}.choice-grid .game-btn{width:100%;min-height:65px}
+.chapter-label{color:var(--gold);font:700 9px Manrope,sans-serif;letter-spacing:2px;margin-bottom:12px}
+@media(max-width:760px){.site-header .nav{padding:10px 12px;flex-direction:column;gap:7px}.site-header .brand{font-size:16px}.site-header nav{width:100%;gap:0;border-top:1px solid rgba(210,178,119,.12);padding-top:5px}.site-header nav a{min-height:34px;padding:0 9px;font-size:9px;letter-spacing:1px}.adventure-intro{grid-template-columns:1fr;padding:38px 20px 22px;gap:18px}.game-section{padding:8px 14px 58px}.choice-grid{grid-template-columns:1fr}.game-actions .game-btn{width:100%}.progress-caption{font-size:8px}}
 </style>
-
-
-
-
-
-</head><body><div class="banner"><img src="assets/banniere-grytzen.png" alt="Bannière GRYTZEN"></div><header class="site-header"><div class="nav"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><nav aria-label="Navigation principale"><a href="jouer.html" aria-current="page">JOUER</a><a href="atlas.html">L'ATLAS</a><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav></div></header>
-<main><section class="adventure-intro"><div><div class="page-kicker">LES CHRONIQUES · ÉPISODE 01</div><h1 class="page-title">Le Registre sans nom</h1><p class="page-lead">Une première trace. Un symbole incomplet. Une décision qui semble insignifiante — jusqu'à ce qu'elle ne le soit plus. L'aventure commence dans les ruelles de Valombre.</p></div>
-<aside class="adventure-stamp"><strong>VALOMBRE · PREMIÈRE RENCONTRE</strong>Vos choix et vos découvertes sont conservés sur cet appareil. Vous pourrez quitter l'aventure et la reprendre plus tard dans ce navigateur.</aside></section>
+</head>
+<body>
+<div class="banner"><img src="assets/banniere-grytzen.png" alt="Bannière GRYTZEN"></div>
+<header class="site-header"><div class="nav"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><nav aria-label="Navigation principale"><a href="jouer.html" aria-current="page">JOUER</a><a href="atlas.html">L'ATLAS</a><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav></div></header>
+<main>
+<section class="adventure-intro"><div><div class="page-kicker">LES CHRONIQUES · VOLET I · CHAPITRE I</div><h1 class="page-title">Le Registre sans nom</h1><p class="page-lead">Une lettre sans expéditeur. Une pièce gravée d'un signe inconnu. Un village dont personne ne devrait se souvenir. Votre enquête commence avant même que vous sachiez ce que vous cherchez.</p></div><aside class="adventure-stamp"><strong>GRYTZEN · ARCHIVES DE L'INEXPLIQUÉ</strong>Votre progression, vos choix et vos découvertes sont conservés sur cet appareil. Vous pouvez quitter l'aventure et la reprendre plus tard dans ce navigateur. Les pages du Grimoire ne se débloquent qu'au fil de vos découvertes.</aside></section>
 <section class="game-section" id="episode"><div class="game-panel">
-<div class="game-topline">PREMIÈRE AVENTURE · ÉPISODE 01 · VALOMBRE</div><h2>Le Registre sans nom</h2>
-<p>La pluie tombe sur Valombre. Dans une ruelle du quartier des copistes, une pierre vient de tomber d'un vieux mur. Derrière elle, quelque chose attend depuis bien trop longtemps.</p>
-<div class="grimoire-progress-caption"><span>VOTRE CHEMINEMENT</span><span id="episode-progress">ÉTAPE 0 / 5</span></div>
-<div class="game-note">La progression de cet épisode est enregistrée localement dans le navigateur.</div>
-<div aria-live="polite" class="game-scene" id="game-scene"><p>Une cavité sombre apparaît entre deux blocs. À l'intérieur repose un paquet enveloppé dans une toile jaunie. Un cercle incomplet traversé par une ligne verticale est tracé sur le tissu.</p><p><em>Que faites-vous ?</em></p></div>
-<div class="game-actions" id="game-controls"><button class="game-btn gold" onclick="episodeChoice('prendre')">Prendre le paquet</button><button class="game-btn" onclick="episodeChoice('examiner')">Examiner le symbole</button><button class="game-btn" onclick="episodeChoice('appeler')">Appeler un archiviste</button></div>
-<div class="game-note" id="game-feedback">Chaque choix peut révéler un détail différent. Observez avant d'agir.</div>
-<p class="game-status" id="game-status">PROGRESSION : PREMIÈRE RENCONTRE</p>
-<div class="game-actions"><button class="game-btn" onclick="resetEpisode()">Recommencer l'épisode</button><a class="game-btn" href="grimoire.html">Ouvrir le Grimoire</a></div>
-</div></section></main><footer><strong>✦ GRYTZEN</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer><script src="js/app.js"></script></body></html>
+<div class="game-topline">PREMIÈRE GRANDE AVENTURE · VALOMBRE</div><h2 id="scene-title">Le Registre sans nom</h2>
+<div class="progress-caption"><span>VOTRE CHEMINEMENT</span><span id="episode-progress">PROLOGUE · 0%</span></div><div class="progress-track"><span id="episode-progress-bar"></span></div>
+<div class="game-note">Prenez le temps de lire. Certains détails ne seront utiles que plusieurs scènes plus tard.</div>
+<div class="game-scene" id="game-scene" aria-live="polite"></div>
+<div class="game-actions" id="game-controls"></div>
+<p class="game-feedback" id="game-feedback" aria-live="polite">Chaque détail peut compter. Rien n'est placé ici par hasard.</p>
+<p class="game-status" id="game-status">PROGRESSION : EN ATTENTE</p>
+<div class="game-actions"><button class="game-btn" type="button" onclick="longEpisodeReset()">Recommencer le volet</button><a class="game-btn" href="grimoire.html">Consulter le Grimoire</a></div>
+</div></section></main>
+<footer><strong>✦ GRYTZEN</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer>
+<script src="js/app.js"></script><script src="js/episode01-long.js"></script>
+</body></html>
