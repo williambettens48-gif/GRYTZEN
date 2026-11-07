@@ -1,4 +1,3 @@
-
 /* =========================================================
    GRYTZEN — RELIQUAIRE SONORE / MÉDAILLON MÉDIÉVAL V2
    Médaillon en forme d'écu ancien, reliefs, gravures et sceau.
@@ -19,18 +18,18 @@
     #ff-audio-player {
       --g1:#fff0bd; --g2:#d9b66f; --g3:#9a6d35; --g4:#422b17;
       position:relative; isolation:isolate; z-index:5;
-      width:min(310px, calc(100% - 28px)); height:382px;
+      width:min(310px, calc(100% - 28px)); height:402px;
       margin:26px auto 34px; color:#f1dfb5; text-align:center;
       font-family:Georgia,serif; filter:drop-shadow(0 16px 15px rgba(0,0,0,.62));
     }
     #ff-audio-player .ff-chain {
-      position:absolute; z-index:0; top:0; left:50%; transform:translateX(-50%);
+      position:absolute; z-index:0; top:22px; left:50%; transform:translateX(-50%);
       width:8px; height:38px; border-left:2px solid #e3c27b; border-right:2px solid #6b4927;
       background:repeating-linear-gradient(180deg,#f4dfa3 0 4px,#76532d 4px 7px);
       box-shadow:0 0 0 2px #24190f,0 0 8px #d5b16b;
     }
     #ff-audio-player .ff-ring {
-      position:absolute; z-index:3; top:13px; left:50%; transform:translateX(-50%);
+      position:absolute; z-index:3; top:35px; left:50%; transform:translateX(-50%);
       width:47px; height:47px; border-radius:50%;
       border:7px ridge #c49a55;
       background:radial-gradient(circle at 32% 25%,#fff0b7,#a7793e 52%,#392516 78%);
@@ -41,12 +40,12 @@
       border-radius:50%; box-shadow:inset 0 0 0 2px #e5c47e;
     }
     #ff-audio-player .ff-body {
-      position:absolute; z-index:1; left:50%; top:45px; transform:translateX(-50%);
+      position:absolute; z-index:1; left:50%; top:67px; transform:translateX(-50%);
       width:292px; height:300px; overflow:visible;
     }
     #ff-audio-player .ff-frame { width:100%; height:100%; overflow:visible; }
     #ff-audio-player .ff-inner {
-      position:absolute; left:50%; top:72px; transform:translateX(-50%);
+      position:absolute; left:50%; top:94px; transform:translateX(-50%);
       width:194px; height:206px; display:flex; flex-direction:column;
       align-items:center; justify-content:center; gap:5px; z-index:4;
       padding:12px 10px 17px;
@@ -86,7 +85,7 @@
       min-height:13px; max-width:170px; color:#a9dce5;
       font:8px/1.25 Arial,sans-serif; text-shadow:0 1px 3px #000;
     }
-    #ff-audio-player .ff-nameplate {
+    #ff-audio-player .ff-heading {\n      position:absolute; z-index:7; top:2px; left:50%; transform:translateX(-50%);\n      width:100%; color:#f4dfaa; font:700 10px/1.2 Arial,sans-serif;\n      letter-spacing:3px; text-shadow:0 2px 4px #000,0 0 7px rgba(217,182,111,.35);\n    }\n    #ff-audio-player .ff-nameplate {
       position:absolute; z-index:6; left:50%; bottom:2px; transform:translateX(-50%);
       width:190px; min-height:29px; padding:7px 8px 5px;
       border:3px ridge #d9b66f; border-radius:3px;
@@ -116,7 +115,7 @@
   player.id = "ff-audio-player";
   player.setAttribute("aria-label", "Médaillon sonore de Grytzen");
   player.innerHTML = `
-    <div class="ff-chain" aria-hidden="true"></div>
+    <div class="ff-heading">RELIQUE SONORE</div>\n    <div class="ff-chain" aria-hidden="true"></div>
     <div class="ff-ring" aria-hidden="true"></div>
     <div class="ff-body" aria-hidden="true">
       <svg class="ff-frame" viewBox="0 0 300 310" xmlns="http://www.w3.org/2000/svg">
@@ -192,7 +191,7 @@
       <div class="ff-volume-row"><span class="ff-volume-label">VOL.</span><input class="ff-volume" type="range" min="0" max="1" step="0.01" value="0.22" aria-label="Volume"></div>
       <div class="ff-status" aria-live="polite">Le sceau garde son secret…</div>
     </div>
-    <div class="ff-nameplate">GRYTZEN · RELIQUE ANCIENNE</div>
+    <div class="ff-nameplate">GRYTZEN</div>
   `;
 
   // Insertion dans la section d'accueil prévue ; sinon juste avant le footer.
