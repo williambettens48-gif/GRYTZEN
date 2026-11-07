@@ -1,6 +1,6 @@
 
 /* =====================================================
-   FEU FOLLET — LES MURMURES DE LA TERRE ABSENTE
+   GRYTZEN — LES MURMURES DE LA TERRE ABSENTE
    Lecteur audio intégré au décor du site
    ===================================================== */
 
@@ -10,7 +10,7 @@
   if (document.getElementById("ff-audio-player")) return;
 
   const AUDIO_SRC =
-    "/ignis-fatuus/assets/audio/Whispers-Beyond-Time.mp3";
+    "assets/audio/Whispers-Beyond-Time.mp3";
 
   /* ---------- STYLE DU LECTEUR ---------- */
 
@@ -18,114 +18,30 @@
 
   style.textContent = `
     #ff-audio-player {
-      position: relative;
-      display: block;
-      width: min(290px, calc(100% - 32px));
-      margin: 24px auto 30px;
-      padding: 12px 15px;
-      color: #e9d8b5;
-      background: linear-gradient(145deg, #24231c, #11130f);
-      border: 1px solid #927345;
-      border-radius: 12px;
-      box-shadow: 0 5px 18px rgba(0,0,0,.35);
-      font-family: Georgia, serif;
-      box-sizing: border-box;
-      z-index: 2;
+      width: min(250px, calc(100% - 36px)); aspect-ratio: 1 / 1;
+      margin: 28px auto 34px; padding: 17px; position: relative;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+      color: #f2dfb8; border-radius: 50%; border: 3px double #c7a56a;
+      background: radial-gradient(circle at 50% 42%,rgba(74,151,174,.28),transparent 43%),
+        radial-gradient(circle,#1b2a3c 0%,#0c1421 66%,#070b13 100%);
+      box-shadow: 0 0 0 5px #111a28,0 0 0 7px rgba(199,165,106,.65),
+        0 12px 38px rgba(0,0,0,.55),inset 0 0 28px rgba(0,0,0,.8);
+      font-family: Georgia,serif; box-sizing: border-box; z-index: 2; text-align: center;
     }
-
-    #ff-audio-player * {
-      box-sizing: border-box;
-    }
-
-    #ff-audio-player .ff-top {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    #ff-audio-player .ff-emblem {
-      color: #d6b36f;
-      font-size: 23px;
-      line-height: 1;
-    }
-
-    #ff-audio-player .ff-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    #ff-audio-player .ff-label {
-      color: #c6a36a;
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    #ff-audio-player .ff-title {
-      color: #f0e4cb;
-      font-size: 12px;
-      line-height: 1.3;
-    }
-
-    #ff-audio-player button {
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    #ff-audio-player .ff-play {
-      flex: 0 0 36px;
-      width: 36px;
-      height: 36px;
-      border: 1px solid #d1ad70;
-      border-radius: 50%;
-      color: #171610;
-      background: linear-gradient(145deg, #e0c184, #a77e42);
-      font-size: 15px;
-    }
-
-    #ff-audio-player .ff-play:hover {
-      filter: brightness(1.15);
-    }
-
-    #ff-audio-player .ff-controls {
-      margin-top: 10px;
-      padding-top: 9px;
-      border-top: 1px solid rgba(190,155,95,.25);
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-
-    #ff-audio-player .ff-volume-label {
-      color: #b9a783;
-      font-family: Arial, sans-serif;
-      font-size: 9px;
-      letter-spacing: 1px;
-    }
-
-    #ff-audio-player .ff-volume {
-      flex: 1;
-      min-width: 0;
-      accent-color: #c5a269;
-      cursor: pointer;
-    }
-
-    #ff-audio-player .ff-status {
-      margin-top: 8px;
-      color: #a99b7d;
-      font-family: Arial, sans-serif;
-      font-size: 10px;
-      line-height: 1.4;
-      text-align: center;
-    }
-
-    @media (max-width: 480px) {
-      #ff-audio-player {
-        width: min(270px, calc(100% - 28px));
-        margin: 20px auto 25px;
-      }
-    }
+    #ff-audio-player:before,#ff-audio-player:after{content:"✦";position:absolute;color:#82dff1;font-size:17px;text-shadow:0 0 12px #55c9ee}
+    #ff-audio-player:before{top:13px}#ff-audio-player:after{bottom:12px}
+    #ff-audio-player *{box-sizing:border-box}
+    #ff-audio-player .ff-label{color:#c7a56a;font:700 9px Manrope,Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;margin-top:8px}
+    #ff-audio-player .ff-title{max-width:175px;color:#f2dfb8;font:12px/1.35 Cinzel,Georgia,serif;letter-spacing:.5px}
+    #ff-audio-player button{cursor:pointer;font-family:inherit}
+    #ff-audio-player .ff-play{width:62px;height:62px;flex:0 0 62px;border:2px solid #e4c681;border-radius:50%;color:#07111d;
+      background:radial-gradient(circle at 35% 25%,#fff0bd,#c7a56a 62%,#795a31);box-shadow:0 0 0 5px rgba(199,165,106,.16),0 0 24px rgba(85,201,238,.28);font-size:23px}
+    #ff-audio-player .ff-play:hover{filter:brightness(1.15);transform:scale(1.04)}
+    #ff-audio-player .ff-controls{width:78%;display:flex;align-items:center;gap:7px;margin-top:3px}
+    #ff-audio-player .ff-volume-label{color:#b9c7d4;font:700 8px Manrope,Arial,sans-serif;letter-spacing:1px}
+    #ff-audio-player .ff-volume{flex:1;min-width:0;accent-color:#82dff1;cursor:pointer}
+    #ff-audio-player .ff-status{max-width:180px;color:#aeb8c6;font:9px/1.35 Manrope,Arial,sans-serif}
+    @media(max-width:480px){#ff-audio-player{width:224px;margin:24px auto 30px}}
   `;
 
   document.head.appendChild(style);
@@ -136,38 +52,21 @@
   player.id = "ff-audio-player";
 
   player.innerHTML = `
-    <div class="ff-top">
-      <span class="ff-emblem">✦</span>
-
-      <div class="ff-info">
-        <div class="ff-label">Ambiance sonore</div>
-        <div class="ff-title">
-          Les Murmures de la Terre absente
-        </div>
-      </div>
-
-      <button class="ff-play" type="button"
-        aria-label="Lire la musique">▶</button>
+    <div class="ff-label">RELIQUE SONORE</div>
+    <div class="ff-title">Les Murmures de la Terre absente</div>
+    <button class="ff-play" type="button" aria-label="Lire la musique">▶</button>
+    <div class="ff-controls"><span class="ff-volume-label">VOL.</span>
+      <input class="ff-volume" type="range" min="0" max="1" step="0.01" value="0.22" aria-label="Volume">
     </div>
-
-    <div class="ff-controls">
-      <span class="ff-volume-label">VOLUME</span>
-      <input class="ff-volume" type="range"
-        min="0" max="1" step="0.01" value="0.22"
-        aria-label="Volume">
-    </div>
-
-    <div class="ff-status" aria-live="polite">
-      Une présence murmure au loin…
-    </div>
+    <div class="ff-status" aria-live="polite">Une présence murmure au loin…</div>
   `;
 
   /* ---------- POSITION SUR LA PAGE ---------- */
 
-  const manifesto = document.querySelector(".manifesto");
+  const manifesto = document.querySelector(".home-manifesto");
 
   if (manifesto && manifesto.parentNode) {
-    manifesto.parentNode.insertBefore(player, manifesto);
+    manifesto.insertBefore(player, manifesto.firstChild);
   } else {
     document.body.appendChild(player);
   }
@@ -203,7 +102,7 @@
           "Les murmures accompagnent votre voyage.";
 
       } catch (error) {
-        console.error("FEU FOLLET - Erreur audio :", error);
+        console.error("GRYTZEN - Erreur audio :", error);
 
         status.textContent =
           "Impossible de lire le fichier audio. Vérifiez son accès.";
@@ -240,7 +139,7 @@
     playButton.textContent = "▶";
 
     console.error(
-      "FEU FOLLET - Fichier audio introuvable :",
+      "GRYTZEN - Fichier audio introuvable :",
       AUDIO_SRC
     );
   });
