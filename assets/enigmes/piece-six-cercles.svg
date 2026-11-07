@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="t d">
+<title id="t">Croquis de la pièce aux six cercles</title><desc id="d">Deux faces d'une pièce ancienne. Une face porte un arbre sans feuilles. L'autre montre six cercles autour d'un cercle central. Un cercle extérieur est plus profond et une entaille au centre pointe vers lui.</desc>
+<defs><linearGradient id="paper" x2="0" y2="1"><stop stop-color="#e7d6ad"/><stop offset="1" stop-color="#b99b68"/></linearGradient><radialGradient id="bronze"><stop stop-color="#d6b777"/><stop offset=".72" stop-color="#8c6637"/><stop offset="1" stop-color="#49331f"/></radialGradient><filter id="shadow"><feGaussianBlur stdDeviation="9"/></filter></defs>
+<rect x="8" y="8" width="1184" height="544" rx="24" fill="#101a25" stroke="#b9975b" stroke-width="3"/>
+<path d="M35 45h1130M35 515h1130" stroke="#b9975b" opacity=".55"/>
+<text x="300" y="72" text-anchor="middle" fill="#e8d6ae" font-family="Georgia,serif" font-size="27" letter-spacing="4">FACE DE L'ARBRE</text>
+<text x="875" y="72" text-anchor="middle" fill="#e8d6ae" font-family="Georgia,serif" font-size="27" letter-spacing="4">FACE AUX SIX CERCLES</text>
+<ellipse cx="300" cy="300" rx="188" ry="188" fill="#000" opacity=".35" filter="url(#shadow)"/>
+<circle cx="300" cy="285" r="174" fill="url(#bronze)" stroke="#e2c486" stroke-width="8"/><circle cx="300" cy="285" r="153" fill="none" stroke="#4a351f" stroke-width="3"/><circle cx="300" cy="285" r="143" fill="none" stroke="#e0c18a" stroke-width="2" stroke-dasharray="3 9"/>
+<g stroke="#49341f" stroke-width="10" stroke-linecap="round" fill="none"><path d="M300 405V215M300 266L240 215M300 290L365 229M300 330L238 300M300 350L365 322M300 235L276 190M300 245L329 185"/><path d="M300 215L300 176M240 215L220 184M365 229L390 201M238 300L195 294M365 322L405 334" stroke-width="7"/></g>
+<g fill="#49341f"><circle cx="220" cy="184" r="13"/><circle cx="390" cy="201" r="12"/><circle cx="195" cy="294" r="12"/><circle cx="405" cy="334" r="12"/><circle cx="276" cy="190" r="11"/><circle cx="329" cy="185" r="11"/></g>
+<ellipse cx="875" cy="300" rx="188" ry="188" fill="#000" opacity=".35" filter="url(#shadow)"/>
+<circle cx="875" cy="285" r="174" fill="url(#bronze)" stroke="#e2c486" stroke-width="8"/><circle cx="875" cy="285" r="153" fill="none" stroke="#4a351f" stroke-width="3"/><circle cx="875" cy="285" r="143" fill="none" stroke="#e0c18a" stroke-width="2" stroke-dasharray="3 9"/>
+<g fill="#b58c50" stroke="#4c351e" stroke-width="7"><circle cx="875" cy="160" r="30"/><circle cx="983" cy="222" r="30"/><circle cx="983" cy="347" r="30"/><circle cx="875" cy="410" r="30"/><circle cx="767" cy="347" r="30"/><circle cx="767" cy="222" r="30"/></g>
+<circle cx="767" cy="222" r="30" fill="#4b301b" stroke="#e7c888" stroke-width="7"/><circle cx="875" cy="285" r="39" fill="#d6b777" stroke="#4c351e" stroke-width="8"/>
+<path d="M875 285L792 237" stroke="#402b18" stroke-width="12" stroke-linecap="round"/><path d="M792 237l24 2-12 20" fill="none" stroke="#402b18" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="#f1dfb9" font-family="Georgia,serif" font-size="19"><text x="875" y="492" text-anchor="middle">Six marques entourent un seul point central.</text></g>
+</svg>
