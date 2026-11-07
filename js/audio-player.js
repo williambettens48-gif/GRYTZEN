@@ -10,6 +10,9 @@
 
   // Chemin relatif au site : ne dépend pas du nom du dépôt GitHub.
   const AUDIO_SRC = "assets/audio/Whispers-Beyond-Time.mp3";
+  const PLAY_KEY = "grytzen_music_wanted";
+  const TIME_KEY = "grytzen_music_position";
+  const VOLUME_KEY = "grytzen_music_volume";
 
   const style = document.createElement("style");
   style.id = "grytzen-medallion-style";
@@ -172,7 +175,6 @@
       </svg>
     </div>
     <div class="ff-inner">
-      <div class="ff-kicker">RELIQUE SONORE</div>
       <svg class="ff-sigil" viewBox="0 0 100 100" role="img" aria-label="Sceau du dragon de Grytzen">
         <defs>
           <linearGradient id="gryDragonGold" x1="0" y1="0" x2="1" y2="1">
@@ -194,62 +196,132 @@
     <div class="ff-nameplate">GRYTZEN</div>
   `;
 
-  // Insertion dans la section d'accueil prévue ; sinon juste avant le footer.
-  const anchor = document.querySelector(".home-manifesto") || document.querySelector("main") || document.body;
-  if (anchor.classList && anchor.classList.contains("home-manifesto")) {
+  // Le médaillon complet reste sur l'accueil ; les autres pages ont le contrôle discret.
+  const isHome = !!document.querySelector(".home-manifesto");
+  if (isHome) {
+    const anchor = document.querySelector(".home-manifesto");
     anchor.insertBefore(player, anchor.firstChild);
-  } else if (anchor !== document.body && anchor.parentNode) {
-    anchor.parentNode.insertBefore(player, anchor.nextSibling);
-  } else {
-    document.body.appendChild(player);
   }
 
   const audio = new Audio(AUDIO_SRC);
   audio.loop = true;
   audio.preload = "none";
-  audio.volume = 0.22;
-
+  audio.volume = Number(sessionStorage.getItem(VOLUME_KEY) || "0.22");
+  const savedTime = Number(sessionStorage.getItem(TIME_KEY) || "0");
+  const wantsMusic = sessionStorage.getItem(PLAY_KEY) === "yes";
   const playButton = player.querySelector(".ff-play");
   const volumeSlider = player.querySelector(".ff-volume");
   const status = player.querySelector(".ff-status");
 
-  playButton.addEventListener("click", async function () {
-    if (audio.paused) {
-      status.textContent = "Le sceau s'éveille…";
-      playButton.disabled = true;
-      try {
-        await audio.play();
-        playButton.textContent = "Ⅱ";
-        playButton.setAttribute("aria-label", "Mettre en pause");
-        status.textContent = "Les murmures accompagnent votre voyage.";
-      } catch (error) {
-        console.error("GRYTZEN — Erreur audio :", error);
-        status.textContent = "Audio inaccessible : vérifiez le fichier MP3.";
-      } finally {
-        playButton.disabled = false;
+  const compact = document.createElement("button");
+  compact.type = "button";
+  compact.id = "grytzen-silence-toggle";
+  compact.textContent = "♫ Garder le silence";
+  compact.setAttribute("aria-label", "Couper la musique");
+  compact.title = "Couper ou rétablir la musique";
+  document.body.appendChild(compact);
+
+  const compactStyle = document.createElement("style");
+  compactStyle.textContent = `
+    #grytzen-silence-toggle {
+      position:fixed; z-index:9999; right:14px; bottom:14px;
+      max-width:calc(100vw - 28px); padding:10px 14px;
+      border:1px solid rgba(217,182,111,.85); border-radius:3px;
+      color:#f3dfb5; background:linear-gradient(180deg,rgba(35,43,51,.97),rgba(9,15,24,.98));
+      box-shadow:0 5px 18px rgba(0,0,0,.48),inset 0 0 0 1px rgba(255,235,190,.08);
+      font:600 11px Georgia,serif; letter-spacing:.5px; cursor:pointer;
+      backdrop-filter:blur(8px);
+    }
+    #grytzen-silence-toggle:hover { color:#fff0c8; border-color:#f4d995; }
+    @media(max-width:480px) {
+      #grytzen-silence-toggle { right:9px; bottom:9px; padding:9px 11px; font-size:10px; }
+    }`;
+  document.head.appendChild(compactStyle);
+
+  function updateControls(playing) {
+    compact.textContent = playing ? "♫ Garder le silence" : "♫ Rétablir la mélodie";
+    compact.setAttribute("aria-label", playing ? "Couper la musique" : "Rétablir la musique");
+    if (playButton) {
+      playButton.textContent = playing ? "Ⅱ" : "▶";
+      playButton.setAttribute("aria-label", playing ? "Mettre en pause" : "Lire la musique");
+    }
+    if (status) status.textContent = playing
+      ? "Les murmures accompagnent votre voyage."
+      : "Le médaillon sommeille.";
+  }
+
+  async function startMusic() {
+    try {
+      if (savedTime > 0 && Number.isFinite(savedTime)) {
+        audio.addEventListener("loadedmetadata", function restorePosition() {
+          if (audio.currentTime === 0) audio.currentTime = savedTime;
+        }, { once:true });
       }
+      await audio.play();
+      sessionStorage.setItem(PLAY_KEY, "yes");
+      updateControls(true);
+      return true;
+    } catch (error) {
+      updateControls(false);
+      if (status) status.textContent = "Touchez la relique pour reprendre la mélodie.";
+      return false;
+    }
+  }
+
+  compact.addEventListener("click", async function () {
+    if (audio.paused) {
+      await startMusic();
     } else {
       audio.pause();
-      playButton.textContent = "▶";
-      playButton.setAttribute("aria-label", "Lire la musique");
-      status.textContent = "Le médaillon sommeille.";
+      sessionStorage.setItem(PLAY_KEY, "no");
+      sessionStorage.setItem(TIME_KEY, String(audio.currentTime || 0));
+      updateControls(false);
     }
   });
 
-  volumeSlider.addEventListener("input", function () {
-    audio.volume = Number(volumeSlider.value);
+  audio.addEventListener("timeupdate", function () {
+    if (!audio.paused) sessionStorage.setItem(TIME_KEY, String(audio.currentTime || 0));
   });
-  audio.addEventListener("error", function () {
-    status.textContent = "Fichier audio introuvable ou inaccessible.";
-    playButton.textContent = "▶";
-    console.error("GRYTZEN — Fichier audio introuvable :", AUDIO_SRC);
+  audio.addEventListener("play", function () {
+    sessionStorage.setItem(PLAY_KEY, "yes");
+    updateControls(true);
   });
   audio.addEventListener("pause", function () {
-    if (audio.ended) return;
-    playButton.textContent = "▶";
-    playButton.setAttribute("aria-label", "Lire la musique");
+    if (!audio.ended) {
+      sessionStorage.setItem(TIME_KEY, String(audio.currentTime || 0));
+      updateControls(false);
+    }
   });
-  audio.addEventListener("playing", function () {
-    playButton.textContent = "Ⅱ";
+
+  if (volumeSlider) {
+    volumeSlider.value = String(audio.volume);
+    volumeSlider.addEventListener("input", function () {
+      audio.volume = Number(volumeSlider.value);
+      sessionStorage.setItem(VOLUME_KEY, String(audio.volume));
+    });
+  }
+
+  if (wantsMusic) {
+    startMusic();
+  } else {
+    updateControls(false);
+  }
+
+  if (playButton) {
+    playButton.addEventListener("click", async function () {
+      if (audio.paused) {
+        await startMusic();
+      } else {
+        audio.pause();
+        sessionStorage.setItem(PLAY_KEY, "no");
+        updateControls(false);
+      }
+    });
+  }
+
+  audio.addEventListener("error", function () {
+    if (status) status.textContent = "Fichier audio introuvable ou inaccessible.";
+    updateControls(false);
+    console.error("GRYTZEN — Fichier audio introuvable :", AUDIO_SRC);
   });
 })();
