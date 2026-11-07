@@ -210,3 +210,20 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
   .clue-illustration { max-width: 100%; }
   .clue-illustration img { max-width: 100%; }
 }
+
+
+/* GRYTZEN — bannière entière sur toutes les pages */
+.banner {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+.banner img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
