@@ -54,37 +54,19 @@ footer strong{display:block;margin-bottom:8px;color:var(--ff-gold);font:500 17px
 @media(max-width:390px){.home-atlas-menu summary{padding:0 7px;letter-spacing:.5px}}
 @media(max-width:600px){.home-inner{padding:62px 20px}.home-copy{font-size:14px}.home-actions a{width:100%}}
 
-</style><style id="grytzen-responsive-banner-fix">
-/* GRYTZEN — bannière complète et accueil compact, tous écrans */
-.banner{
-  height:clamp(190px, 34vh, 360px) !important;
-  min-height:0 !important;
-  overflow:hidden !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  background:#050912 !important;
-}
-.banner img{
-  display:block !important;
-  width:100% !important;
-  height:100% !important;
-  max-width:100% !important;
-  object-fit:contain !important;
-  object-position:center center !important;
-}
-@media(max-width:760px){
-  .banner{height:auto !important; min-height:0 !important;}
-  .banner img{width:100% !important;height:auto !important;object-fit:contain !important;}
-}
-/* Sur l'accueil, le texte commence directement sous la navigation. */
-.home-hero{min-height:0 !important; align-items:start !important;}
-.home-inner{padding:clamp(24px,4vh,42px) 26px 42px !important;}
-@media(max-width:760px){
-  .home-inner{padding:34px 20px 42px !important;}
-}
 </style>
-</head><body><div class="banner"><img src="./assets/banniere-grytzen.png" alt="GRYTZEN — Un monde, six royaumes, une destinée" fetchpriority="high"></div><header class="site-header"><div class="nav"><div class="gry-brand-group"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><button class="gry-header-control" type="button" aria-label="Lire ou mettre en pause la musique">♫ MÉDAILLON SONORE</button></div><nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><details class="nav-dropdown"><summary aria-haspopup="true">L'ATLAS <span class="nav-chevron">⌄</span></summary><div class="nav-submenu"><a href="atlas.html?view=map" data-atlas-action="map">Carte et régions</a><a href="atlas.html?view=knowledge" data-atlas-action="knowledge">Explorer les connaissances</a></div></details><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav></div></header>
+</head><body><div class="banner"><img src="./assets/banniere-grytzen.png" alt="GRYTZEN — Un monde, six royaumes, une destinée" fetchpriority="high"></div><header class="site-header"><div class="nav"><div class="gry-brand-group"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><button class="gry-header-control" type="button" aria-label="Lire ou mettre en pause la musique">♫ MÉDAILLON SONORE</button></div><nav aria-label="Navigation principale">
+<a href="jouer.html">JOUER</a>
+<details class="nav-dropdown">
+  <summary aria-haspopup="true">ATLAS <span class="nav-chevron" aria-hidden="true">⌄</span></summary>
+  <div class="nav-submenu">
+    <a href="atlas.html?view=map" data-atlas-action="map">Carte et régions</a>
+    <a href="atlas.html?view=knowledge" data-atlas-action="knowledge">Explorer les connaissances</a>
+  </div>
+</details>
+<a href="grimoire.html">GRIMOIRE</a>
+<a href="boutique.html">BOUTIQUE</a>
+</nav></div></header>
 <main><section class="home-hero"><div class="home-inner">
 <div class="home-note">AVANCEZ À VOTRE RYTHME · CHAQUE DÉCOUVERTE COMPTE</div>
 <div class="home-eyebrow">UNE SAGA INTERACTIVE · UN MONDE À EXPLORER</div>
