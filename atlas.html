@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html lang="fr"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,44 +23,107 @@ header nav>a:hover{color:#82dff1}
 @media(max-width:760px){header nav>a{min-height:34px;padding:0 9px;font-size:9px;letter-spacing:1px}.atlas-return-home{margin:16px 14px 0;font-size:10px}.atlas-lore>.atlas-return-home{margin:0 0 18px}}
 </style>
 <style id="atlas-side-navigation">
-/* Menu permanent des rubriques : visible sur Carte et sur Connaissances */
-.atlas-side-nav{
-  position:fixed;left:14px;top:50%;transform:translateY(-50%);z-index:8000;
-  display:flex;flex-direction:column;gap:7px;width:142px;padding:9px;
-  border:1px solid rgba(194,157,91,.38);border-radius:11px;
-  background:rgba(8,15,26,.96);box-shadow:0 12px 34px rgba(0,0,0,.42);
-  backdrop-filter:blur(10px)
+/* Navigation latérale persistante dans les deux vues de l’Atlas */
+.atlas-side-nav{position:fixed;left:12px;top:50%;transform:translateY(-50%);z-index:9000;display:flex;flex-direction:column;gap:7px;width:132px;padding:9px;border:1px solid rgba(194,157,91,.34);border-radius:10px;background:rgba(8,15,26,.94);box-shadow:0 12px 34px rgba(0,0,0,.4);backdrop-filter:blur(10px)}
+.atlas-side-nav a{display:flex;align-items:center;justify-content:center;min-height:38px;padding:8px 7px;border:1px solid rgba(194,157,91,.17);border-radius:6px;color:#e4d8c2;text-decoration:none;text-align:center;font:700 9px/1.35 Manrope,sans-serif;letter-spacing:1px;white-space:normal;transition:background .2s,border-color .2s,color .2s}
+.atlas-side-nav a:hover,.atlas-side-nav a:focus{background:rgba(194,157,91,.15);border-color:#c29d5b;color:#f5dfb5}
+.atlas-side-nav .atlas-side-current{color:#d8bd85;border-color:rgba(194,157,91,.4)}
+@media(min-width:761px){.atlas-wrap,.atlas-lore{padding-left:145px!important}}
+@media(max-width:760px){.atlas-side-nav{position:sticky;top:8px;left:auto;transform:none;width:auto;max-width:100%;margin:10px 12px 16px;flex-direction:row;justify-content:center;gap:5px;padding:6px}.atlas-side-nav a{flex:1;min-width:0;min-height:36px;padding:6px 3px;font-size:8px;letter-spacing:.4px}.atlas-return-home{display:none!important}}
+</style>
+
+<style id="grytzen-atlas-navigation-fix">
+/* Harmonisation du bouton L'ATLAS avec les autres liens du menu */
+header nav > details.nav-dropdown {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
 }
-.atlas-side-nav a{
-  display:flex;align-items:center;justify-content:center;min-height:40px;
-  padding:8px 7px;border:1px solid rgba(194,157,91,.2);border-radius:6px;
-  color:#e4d8c2;text-decoration:none;text-align:center;
-  font:700 9px/1.35 Manrope,Arial,sans-serif;letter-spacing:.8px;
-  white-space:normal;transition:background .2s,border-color .2s,color .2s
+header nav > details.nav-dropdown > summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  margin: 0;
+  padding: 0 13px;
+  list-style: none;
+  cursor: pointer;
+  color: #d9d4ca;
+  font: 700 10px/1.2 Manrope, Arial, sans-serif !important;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
-.atlas-side-nav a:hover,.atlas-side-nav a:focus-visible{
-  background:rgba(194,157,91,.16);border-color:#c29d5b;color:#fff0cf;outline:none
+header nav > details.nav-dropdown > summary::-webkit-details-marker {
+  display: none;
 }
-.atlas-side-nav a[data-atlas-home]{
-  color:#e8c98e;border-color:rgba(194,157,91,.48);background:rgba(194,157,91,.08)
+header nav > details.nav-dropdown > summary:hover,
+header nav > details.nav-dropdown[open] > summary {
+  color: var(--ff-ice, var(--ice, #e6c98e));
 }
-@media(min-width:761px){
-  .atlas-wrap,.atlas-lore{padding-left:170px!important}
+header nav > details.nav-dropdown .nav-chevron {
+  display: inline-block;
+  font: inherit;
+  transition: transform .2s ease;
 }
-@media(max-width:760px){
-  .atlas-side-nav{
-    position:sticky;top:5px;left:auto;transform:none;width:auto;max-width:none;
-    margin:10px 12px 18px;padding:6px;flex-direction:row;gap:5px;
-    border-radius:8px
+header nav > details.nav-dropdown[open] .nav-chevron {
+  transform: rotate(180deg);
+}
+header nav > details.nav-dropdown:not([open]) > .nav-submenu {
+  display: none !important;
+}
+header nav > details.nav-dropdown > .nav-submenu {
+  position: absolute;
+  z-index: 10002;
+  top: calc(100% + 7px);
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: 230px;
+  display: grid;
+  gap: 2px;
+  padding: 8px;
+  border: 1px solid rgba(194,157,91,.35);
+  border-radius: 10px;
+  background: #101a29;
+  box-shadow: 0 14px 35px rgba(0,0,0,.45);
+}
+header nav > details.nav-dropdown > .nav-submenu a {
+  display: block;
+  min-height: 0;
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: #e8dfcf;
+  font: 500 12px/1.4 Manrope, Arial, sans-serif;
+  letter-spacing: .04em;
+  text-transform: none;
+  white-space: normal;
+}
+header nav > details.nav-dropdown > .nav-submenu a:hover,
+header nav > details.nav-dropdown > .nav-submenu a:focus {
+  background: rgba(194,157,91,.13);
+  color: #e6c98e;
+}
+@media (max-width: 760px) {
+  header nav > details.nav-dropdown > summary {
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 9px !important;
   }
-  .atlas-side-nav a{flex:1;min-width:0;min-height:38px;padding:6px 3px;font-size:8px;letter-spacing:.2px}
-  .atlas-wrap,.atlas-lore{padding-left:0!important}
-}
-@media(max-width:380px){
-  .atlas-side-nav{gap:3px;margin-left:8px;margin-right:8px}
-  .atlas-side-nav a{font-size:7px;padding:5px 2px;letter-spacing:0}
+  header nav > details.nav-dropdown > .nav-submenu {
+    left: auto;
+    right: -45px;
+    transform: none;
+    width: min(230px, 80vw);
+  }
 }
 </style>
+
 </head><body><div class="banner"><img src="assets/banniere-grytzen.png" alt="Bannière GRYTZEN"></div><header><div class="nav">
 <div class="gry-brand-group"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><button class="gry-header-control" type="button" aria-label="Lire ou mettre en pause la musique">♫ MÉDAILLON SONORE</button></div>
 <nav aria-label="Navigation principale">
@@ -90,9 +152,10 @@ header nav>a:hover{color:#82dff1}
   </div>
 </section>
 <div class="atlas-wrap" id="atlas" hidden>
+<a class="atlas-return-home" href="atlas.html">← Retour à l'accueil de l'Atlas</a>
 <nav class="atlas-side-nav" aria-label="Navigation rapide de l’Atlas">
   <a href="jouer.html">JOUER</a>
-  <a href="atlas.html" class="atlas-side-current" data-atlas-home>← ACCUEIL ATLAS</a>
+  <a href="atlas.html" class="atlas-side-current" aria-current="page">← RETOUR ATLAS</a>
   <a href="grimoire.html">GRIMOIRE</a>
   <a href="boutique.html">BOUTIQUE</a>
 </nav>
@@ -195,9 +258,10 @@ header nav>a:hover{color:#82dff1}
 @media(max-width:650px){.atlas-lore{padding:12px 16px 55px}.lore-picker{padding:14px}.lore-panel{padding:20px 16px}.lore-grid{grid-template-columns:1fr}.lore-table{font-size:12px}.lore-table th,.lore-table td{padding:9px 7px}}
 </style>
 <section class="atlas-lore" id="atlas-lore" aria-label="Connaissances générales sur Grytzen" hidden>
-    <nav class="atlas-side-nav" aria-label="Navigation rapide de l’Atlas">
+  <a class="atlas-return-home" href="atlas.html">← Retour à l'accueil de l'Atlas</a>
+  <nav class="atlas-side-nav" aria-label="Navigation rapide de l’Atlas">
   <a href="jouer.html">JOUER</a>
-  <a href="atlas.html" class="atlas-side-current" data-atlas-home>← ACCUEIL ATLAS</a>
+  <a href="atlas.html" class="atlas-side-current" aria-current="page">← RETOUR ATLAS</a>
   <a href="grimoire.html">GRIMOIRE</a>
   <a href="boutique.html">BOUTIQUE</a>
 </nav>
@@ -279,13 +343,13 @@ header{position:sticky;top:0;z-index:9999;overflow:visible}
 header .nav{position:relative;z-index:10000;overflow:visible}
 header nav{position:relative;z-index:10000;overflow:visible}
 .nav-dropdown{position:relative;z-index:10001;display:inline-block;color:inherit}
-.nav-dropdown>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:Manrope,Arial,sans-serif;font-size:9px;letter-spacing:1.4px;font-weight:700;padding:10px 13px;color:#d9d4ca;line-height:normal;transition:.25s}
+.nav-dropdown>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:var(--sans);font-size:10px;letter-spacing:2px;font-weight:700;padding:10px 14px;color:#d9d4ca;line-height:normal;transition:.25s}
 .nav-dropdown>summary:hover,.nav-dropdown[open]>summary{color:var(--ice)}
 .nav-dropdown>summary::-webkit-details-marker{display:none}
 .nav-chevron{font-size:14px;color:var(--gold,#c29d5b);transition:transform .2s}
 .nav-dropdown[open] .nav-chevron{transform:rotate(180deg)}
-.nav-dropdown:not([open])>.nav-submenu{display:none!important}.nav-submenu{position:absolute;z-index:10002;top:calc(100% + 13px);left:50%;transform:translateX(-50%);width:230px;padding:8px;border:1px solid rgba(194,157,91,.35);border-radius:10px;background:#101a29;box-shadow:0 14px 35px rgba(0,0,0,.45);display:grid;gap:2px}
-.nav-submenu a{display:block;padding:10px 12px;border-radius:6px;color:#e8dfcf;text-decoration:none;font:500 11px/1.45 Manrope,Arial,sans-serif;letter-spacing:.02em;white-space:normal}
+.nav-dropdown:not([open])>.nav-submenu{display:none!important}\n.nav-submenu{position:absolute;z-index:10002;top:calc(100% + 13px);left:50%;transform:translateX(-50%);width:230px;padding:8px;border:1px solid rgba(194,157,91,.35);border-radius:10px;background:#101a29;box-shadow:0 14px 35px rgba(0,0,0,.45);display:grid;gap:2px}
+.nav-submenu a{display:block;padding:10px 12px;border-radius:6px;color:#e8dfcf;text-decoration:none;font-size:12px;letter-spacing:.04em;white-space:normal}
 .nav-submenu a:hover,.nav-submenu a:focus{background:rgba(194,157,91,.13);color:#e6c98e}
 .atlas-lore[hidden]{display:none}
 @media(max-width:760px){.nav-dropdown>summary{font-size:9px;padding:9px 10px;letter-spacing:2px}}
@@ -310,14 +374,6 @@ header nav{position:relative;z-index:10000;overflow:visible}
     const selected=chooser.value;
     panels.forEach(panel=>{panel.hidden=panel.id!=='lore-'+selected;});
   }
-  function openHome(){
-    home.hidden=false;
-    map.hidden=true;
-    lore.hidden=true;
-    closeMenu();
-    if(window.location.search)history.pushState({atlasHome:true},'',window.location.pathname);
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
   function openView(view){
     home.hidden=true;
     map.hidden=view!=='map';
@@ -326,20 +382,9 @@ header nav{position:relative;z-index:10000;overflow:visible}
     if(view==='knowledge')showLore();
     window.scrollTo({top:0,behavior:'smooth'});
   }
-  document.querySelectorAll('[data-atlas-home]').forEach(link=>{
-    link.addEventListener('click',function(event){
-      event.preventDefault();
-      openHome();
-    });
-  });
   chooser.addEventListener('change',showLore);
   const requestedView=new URLSearchParams(window.location.search).get('view');
   if(requestedView==='knowledge' || requestedView==='map'){openView(requestedView);}
-  window.addEventListener('popstate',function(){
-    const view=new URLSearchParams(window.location.search).get('view');
-    if(view==='knowledge' || view==='map')openView(view);
-    else openHome();
-  },{signal:lifecycle.signal});
 
   // Le menu ne doit jamais rester ouvert au-dessus des textes de l'Atlas.
   document.addEventListener('click',function(event){
