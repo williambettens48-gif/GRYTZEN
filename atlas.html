@@ -22,15 +22,7 @@ header nav>a:hover{color:#82dff1}
 .atlas-lore>.atlas-return-home{margin:0 0 22px}
 @media(max-width:760px){header nav>a{min-height:34px;padding:0 9px;font-size:9px;letter-spacing:1px}.atlas-return-home{margin:16px 14px 0;font-size:10px}.atlas-lore>.atlas-return-home{margin:0 0 18px}}
 </style>
-<style id="atlas-side-navigation">
-/* Navigation latérale persistante dans les deux vues de l’Atlas */
-.atlas-side-nav{position:fixed;left:12px;top:50%;transform:translateY(-50%);z-index:9000;display:flex;flex-direction:column;gap:7px;width:132px;padding:9px;border:1px solid rgba(194,157,91,.34);border-radius:10px;background:rgba(8,15,26,.94);box-shadow:0 12px 34px rgba(0,0,0,.4);backdrop-filter:blur(10px)}
-.atlas-side-nav a{display:flex;align-items:center;justify-content:center;min-height:38px;padding:8px 7px;border:1px solid rgba(194,157,91,.17);border-radius:6px;color:#e4d8c2;text-decoration:none;text-align:center;font:700 9px/1.35 Manrope,sans-serif;letter-spacing:1px;white-space:normal;transition:background .2s,border-color .2s,color .2s}
-.atlas-side-nav a:hover,.atlas-side-nav a:focus{background:rgba(194,157,91,.15);border-color:#c29d5b;color:#f5dfb5}
-.atlas-side-nav .atlas-side-current{color:#d8bd85;border-color:rgba(194,157,91,.4)}
-@media(min-width:761px){.atlas-wrap,.atlas-lore{padding-left:145px!important}}
-@media(max-width:760px){.atlas-side-nav{position:sticky;top:8px;left:auto;transform:none;width:auto;max-width:100%;margin:10px 12px 16px;flex-direction:row;justify-content:center;gap:5px;padding:6px}.atlas-side-nav a{flex:1;min-width:0;min-height:36px;padding:6px 3px;font-size:8px;letter-spacing:.4px}.atlas-return-home{display:none!important}}
-</style>
+
 
 <style id="grytzen-atlas-navigation-fix">
 /* Harmonisation du bouton L'ATLAS avec les autres liens du menu */
@@ -127,6 +119,7 @@ header nav > details.nav-dropdown > .nav-submenu a:focus {
 </head><body><div class="banner"><img src="assets/banniere-grytzen.png" alt="Bannière GRYTZEN"></div><header><div class="nav">
 <div class="gry-brand-group"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><button class="gry-header-control" type="button" aria-label="Lire ou mettre en pause la musique">♫ MÉDAILLON SONORE</button></div>
 <nav aria-label="Navigation principale">
+<a class="atlas-view-back" href="atlas.html" aria-label="Retour au menu de l’Atlas">← MENU DE L’ATLAS</a>
 <a href="jouer.html">JOUER</a>
 <details class="nav-dropdown">
   <summary aria-haspopup="true">L'ATLAS <span class="nav-chevron">⌄</span></summary>
@@ -153,12 +146,7 @@ header nav > details.nav-dropdown > .nav-submenu a:focus {
 </section>
 <div class="atlas-wrap" id="atlas" hidden>
 <a class="atlas-return-home" href="atlas.html">← Retour à l'accueil de l'Atlas</a>
-<nav class="atlas-side-nav" aria-label="Navigation rapide de l’Atlas">
-  <a href="jouer.html">JOUER</a>
-  <a href="atlas.html" class="atlas-side-current" aria-current="page">← RETOUR ATLAS</a>
-  <a href="grimoire.html">GRIMOIRE</a>
-  <a href="boutique.html">BOUTIQUE</a>
-</nav>
+
 <section class="content atlas">
 <div aria-label="Carte stylisée et mystérieuse des terres de GRYTZEN" class="map-art" role="img"><div class="continent c1"></div><div class="continent c2"></div><div class="continent c3"></div><div class="island"></div><span class="map-label l1">AURENTH</span><span class="map-label l2">VARKHÖL</span><span class="map-label l3">ORVANE</span><button aria-label="Découvrir Aurenth" class="map-pin pin1" data-region="aurenth"></button><button aria-label="Découvrir Varkhöl" class="map-pin pin2" data-region="varkhol"></button><button aria-label="Découvrir Orvane" class="map-pin pin3" data-region="orvane"></button><div class="map-caption">ATLAS INCOMPLET · TERRES CONNUES</div></div>
 <div class="atlas-copy"><div class="eyebrow">L'ATLAS DES TERRES CONNUES</div><h2>Un monde immense.<br/>Des secrets sans fin.</h2><p>Six régions composent les premières pages de notre atlas. Certaines sont connues, d'autres cachent des civilisations dont l'existence même est contestée. La carte complète reste à découvrir.</p>
@@ -259,12 +247,7 @@ header nav > details.nav-dropdown > .nav-submenu a:focus {
 </style>
 <section class="atlas-lore" id="atlas-lore" aria-label="Connaissances générales sur Grytzen" hidden>
   <a class="atlas-return-home" href="atlas.html">← Retour à l'accueil de l'Atlas</a>
-  <nav class="atlas-side-nav" aria-label="Navigation rapide de l’Atlas">
-  <a href="jouer.html">JOUER</a>
-  <a href="atlas.html" class="atlas-side-current" aria-current="page">← RETOUR ATLAS</a>
-  <a href="grimoire.html">GRIMOIRE</a>
-  <a href="boutique.html">BOUTIQUE</a>
-</nav>
+  
   <header class="lore-heading">
     <div class="eyebrow">LES ARCHIVES DU MONDE</div>
     <h2>Explorer les connaissances d'Grytzen</h2>
@@ -375,6 +358,7 @@ header nav{position:relative;z-index:10000;overflow:visible}
     panels.forEach(panel=>{panel.hidden=panel.id!=='lore-'+selected;});
   }
   function openView(view){
+    document.body.classList.add('atlas-subview');
     home.hidden=true;
     map.hidden=view!=='map';
     lore.hidden=view!=='knowledge';
@@ -384,7 +368,7 @@ header nav{position:relative;z-index:10000;overflow:visible}
   }
   chooser.addEventListener('change',showLore);
   const requestedView=new URLSearchParams(window.location.search).get('view');
-  if(requestedView==='knowledge' || requestedView==='map'){openView(requestedView);}
+  if(requestedView==='knowledge' || requestedView==='map'){openView(requestedView);} else {document.body.classList.remove('atlas-subview');}
 
   // Le menu ne doit jamais rester ouvert au-dessus des textes de l'Atlas.
   document.addEventListener('click',function(event){
@@ -431,5 +415,128 @@ header nav{position:relative;z-index:10000;overflow:visible}
 </style>
 <script src="js/audio-player.js"></script>
 <script src="js/grytzen-persistent-nav.js"></script>
+
+
+<style id="grytzen-rounded-main-navigation">
+/* Barre principale : quatre boutons arrondis cohérents */
+.site-header nav, header nav {
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:9px !important;
+  flex-wrap:wrap !important;
+}
+.site-header nav > a,
+header nav > a,
+.site-header nav > details.nav-dropdown > summary,
+header nav > details.nav-dropdown > summary {
+  box-sizing:border-box !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:40px !important;
+  padding:0 17px !important;
+  border:1px solid rgba(194,157,91,.42) !important;
+  border-radius:999px !important;
+  background:rgba(194,157,91,.075) !important;
+  color:#e4d6bd !important;
+  font:700 10px/1.2 Manrope,Arial,sans-serif !important;
+  letter-spacing:1.45px !important;
+  text-decoration:none !important;
+  text-transform:uppercase !important;
+  white-space:nowrap !important;
+  transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease !important;
+}
+.site-header nav > a:hover,
+header nav > a:hover,
+.site-header nav > a[aria-current="page"],
+header nav > a[aria-current="page"],
+.site-header nav > details.nav-dropdown > summary:hover,
+header nav > details.nav-dropdown > summary:hover,
+.site-header nav > details.nav-dropdown[open] > summary,
+header nav > details.nav-dropdown[open] > summary {
+  border-color:rgba(225,190,123,.85) !important;
+  background:rgba(194,157,91,.19) !important;
+  color:#f1d59c !important;
+}
+.site-header nav > details.nav-dropdown,
+header nav > details.nav-dropdown {
+  position:relative !important;
+  display:inline-block !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+.site-header nav > details.nav-dropdown > summary,
+header nav > details.nav-dropdown > summary { cursor:pointer !important; list-style:none !important; }
+.site-header nav > details.nav-dropdown > summary::-webkit-details-marker,
+header nav > details.nav-dropdown > summary::-webkit-details-marker { display:none !important; }
+.site-header nav > details.nav-dropdown .nav-chevron,
+header nav > details.nav-dropdown .nav-chevron { margin-left:3px; }
+.site-header nav > details.nav-dropdown > .nav-submenu,
+header nav > details.nav-dropdown > .nav-submenu {
+  position:absolute !important;
+  z-index:10020 !important;
+  top:calc(100% + 9px) !important;
+  left:50% !important;
+  right:auto !important;
+  transform:translateX(-50%) !important;
+  width:245px !important;
+  display:grid !important;
+  gap:4px !important;
+  padding:9px !important;
+  border:1px solid rgba(194,157,91,.4) !important;
+  border-radius:14px !important;
+  background:#101a29 !important;
+  box-shadow:0 14px 35px rgba(0,0,0,.45) !important;
+}
+.site-header nav > details.nav-dropdown:not([open]) > .nav-submenu,
+header nav > details.nav-dropdown:not([open]) > .nav-submenu { display:none !important; }
+.site-header nav > details.nav-dropdown > .nav-submenu a,
+header nav > details.nav-dropdown > .nav-submenu a {
+  display:block !important;
+  min-height:0 !important;
+  padding:11px 13px !important;
+  border:0 !important;
+  border-radius:8px !important;
+  background:transparent !important;
+  color:#e8dfcf !important;
+  font:500 12px/1.4 Manrope,Arial,sans-serif !important;
+  letter-spacing:.03em !important;
+  text-transform:none !important;
+  white-space:normal !important;
+}
+.site-header nav > details.nav-dropdown > .nav-submenu a:hover,
+header nav > details.nav-dropdown > .nav-submenu a:hover {
+  background:rgba(194,157,91,.14) !important;
+  color:#f1d59c !important;
+}
+.atlas-view-back { display:none !important; }
+body.atlas-subview .site-header nav > a,
+body.atlas-subview .site-header nav > details,
+body.atlas-subview header nav > a,
+body.atlas-subview header nav > details { display:none !important; }
+body.atlas-subview .site-header nav > .atlas-view-back,
+body.atlas-subview header nav > .atlas-view-back {
+  display:inline-flex !important;
+}
+@media(max-width:760px) {
+  .site-header nav, header nav { gap:7px !important; }
+  .site-header nav > a, header nav > a,
+  .site-header nav > details.nav-dropdown > summary,
+  header nav > details.nav-dropdown > summary {
+    min-height:36px !important;
+    padding:0 12px !important;
+    font-size:9px !important;
+    letter-spacing:1px !important;
+  }
+  .site-header nav > details.nav-dropdown > .nav-submenu,
+  header nav > details.nav-dropdown > .nav-submenu {
+    left:auto !important;
+    right:-48px !important;
+    transform:none !important;
+    width:min(245px,82vw) !important;
+  }
+}
+</style>
 
 </body></html>
