@@ -8,34 +8,27 @@
   let navigating = false;
 
   function persistentNodes() {
-    return [
-      document.getElementById("ff-audio-player"),
-      document.getElementById("grytzen-silence-toggle")
-    ].filter(Boolean);
+    const host = document.getElementById("gry-audio-host");
+    const anchor = document.getElementById("medaillon-musical");
+    // Avant de remplacer la page, ranger le grand médaillon dans son hôte invisible.
+    if (host && anchor && anchor.parentElement !== host) host.appendChild(anchor);
+    if (host) {
+      host.hidden = true;
+      host.style.display = "none";
+      host.setAttribute("aria-hidden", "true");
+    }
+    return [host].filter(Boolean);
   }
 
   function attachControls() {
-    const brand = document.querySelector(".site-header .brand, header .brand");
-    const toggle = document.getElementById("grytzen-silence-toggle");
-    const medallion = document.getElementById("ff-audio-player");
-    const home = !!document.querySelector(".home-manifesto");
-
-    if (toggle && brand) {
-      toggle.classList.remove("gry-floating");
-      brand.insertAdjacentElement("afterend", toggle);
-      toggle.classList.add("gry-header-control");
-      toggle.style.display = "inline-flex";
+    const host = document.getElementById("gry-audio-host");
+    if (host) {
+      host.hidden = true;
+      host.style.display = "none";
+      host.setAttribute("aria-hidden", "true");
     }
-    if (medallion) {
-      if (home) {
-        const target = document.querySelector(".home-manifesto");
-        if (target && medallion.parentElement !== target) target.insertBefore(medallion, target.firstChild);
-        medallion.style.display = "";
-      } else {
-        // Le médaillon complet reste réservé à l'accueil, mais le lecteur audio reste vivant.
-        medallion.style.display = "none";
-        document.body.appendChild(medallion);
-      }
+    if (typeof window.__GRYTZEN_PLACE_PLAYER__ === "function") {
+      window.__GRYTZEN_PLACE_PLAYER__();
     }
   }
 
@@ -93,7 +86,13 @@
       attachControls();
       announcePageReady();
       if (pushState) history.pushState({ grytzen: true }, "", url);
-      window.scrollTo(0, 0);
+      if (url.hash) {
+        const target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
+        else window.scrollTo(0, 0);
+      } else {
+        window.scrollTo(0, 0);
+      }
     } catch (err) {
       console.warn("Navigation GRYTZEN classique utilisée :", err);
       window.location.href = url;

@@ -17,6 +17,7 @@
   const style = document.createElement("style");
   style.id = "grytzen-medallion-style";
   style.textContent = `
+    .gry-audio-anchor { display:block; width:100%; }
     #ff-audio-player, #ff-audio-player * { box-sizing: border-box; }
     #ff-audio-player {
       --g1:#fff0bd; --g2:#d9b66f; --g3:#9a6d35; --g4:#422b17;
@@ -196,12 +197,43 @@
     <div class="ff-nameplate">GRYTZEN</div>
   `;
 
-  // Le médaillon complet reste sur l'accueil ; les autres pages ont le contrôle discret.
-  const isHome = !!document.querySelector(".home-manifesto");
-  if (isHome) {
-    const anchor = document.querySelector(".home-manifesto");
-    anchor.insertBefore(player, anchor.firstChild);
+  // Le grand médaillon conserve sa place sur l'accueil.
+  // Sur les autres pages, son conteneur est rangé dans un hôte invisible.
+  let audioHost = document.getElementById("gry-audio-host");
+  if (!audioHost) {
+    audioHost = document.createElement("div");
+    audioHost.id = "gry-audio-host";
+    audioHost.hidden = true;
+    audioHost.style.display = "none";
+    audioHost.setAttribute("aria-hidden", "true");
+    document.body.appendChild(audioHost);
   }
+
+  const anchor = document.createElement("div");
+  anchor.id = "medaillon-musical";
+  anchor.className = "gry-audio-anchor";
+  anchor.appendChild(player);
+
+  function placePlayer() {
+    const homeSlot = document.querySelector(".home-manifesto");
+    if (homeSlot) {
+      homeSlot.appendChild(anchor);
+      anchor.hidden = false;
+      anchor.style.display = "block";
+      audioHost.hidden = true;
+      audioHost.style.display = "none";
+      audioHost.setAttribute("aria-hidden", "true");
+    } else {
+      audioHost.appendChild(anchor);
+      anchor.hidden = true;
+      anchor.style.display = "none";
+      audioHost.hidden = true;
+      audioHost.style.display = "none";
+      audioHost.setAttribute("aria-hidden", "true");
+    }
+  }
+  window.__GRYTZEN_PLACE_PLAYER__ = placePlayer;
+  placePlayer();
 
   // Instance audio unique : elle reste en mémoire pendant la navigation PJAX.
   const audio = window.__GRYTZEN_AUDIO__ || (window.__GRYTZEN_AUDIO__ = new Audio(AUDIO_SRC));
@@ -212,14 +244,9 @@
   const playButton = player.querySelector(".ff-play");
   const volumeSlider = player.querySelector(".ff-volume");
   const status = player.querySelector(".ff-status");
-  const compact = document.getElementById("grytzen-silence-toggle");
 
   function refreshButton() {
     const playing = !audio.paused;
-    if (compact) {
-      compact.textContent = playing ? "♫ GARDER LE SILENCE" : "♫ MÉDAILLON MUSICAL";
-      compact.setAttribute("aria-label", playing ? "Garder le silence" : "Rétablir la mélodie");
-    }
     if (playButton) {
       playButton.textContent = playing ? "Ⅱ" : "▶";
       playButton.setAttribute("aria-label", playing ? "Mettre en pause" : "Lire la musique");
@@ -235,7 +262,14 @@
     }
     refreshButton();
   }
-  if (compact) compact.addEventListener("click", toggleAudio);
+  // Petit contrôle de l'en-tête : il commande le même audio que le grand médaillon.
+  // La délégation permet de fonctionner aussi après les navigations internes PJAX.
+  document.addEventListener("click", function (event) {
+    const control = event.target.closest(".gry-header-control");
+    if (!control) return;
+    event.preventDefault();
+    toggleAudio();
+  });
   if (playButton) playButton.addEventListener("click", toggleAudio);
   if (volumeSlider) {
     volumeSlider.value = String(audio.volume);
@@ -248,10 +282,7 @@
     if (status) status.textContent = "Fichier audio introuvable ou inaccessible.";
   });
   window.addEventListener("gry-page-ready", function () {
-    const target = document.querySelector(".home-manifesto");
-    if (target && player.parentElement !== target) target.insertBefore(player, target.firstChild);
-    if (!target) { player.style.display = "none"; document.body.appendChild(player); }
-    else player.style.display = "";
+    placePlayer();
     refreshButton();
   });
   refreshButton();
