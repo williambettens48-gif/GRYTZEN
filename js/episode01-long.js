@@ -105,7 +105,7 @@ case"riddle2":{let a=(s.answers&&s.answers.order)||[];show("Seconde épreuve —
 <div class="choice-grid"><button class="game-btn" type="button" onclick="longPick('couronne')">♛ Couronne</button><button class="game-btn" type="button" onclick="longPick('montagne')">⌃ Montagne</button><button class="game-btn" type="button" onclick="longPick('vague')">≈ Vague</button></div>
 <p><strong>Ton ordre :</strong> <span id="long-order">${a.join(" → ")||"Aucun symbole"}</span></p>`,
 btn("Vérifier l'ordre","longCheck2()")+btn("Effacer et recommencer","longClearOrder()",false)+btn("Indice","longHint(2)",false),"ÉNIGME : RÈGNE · DEMEURE · PASSE","Les phrases du relieur donnent une propriété à chaque symbole.");break}
-case"shelves":show("Les reliures muettes",`<div class="chapter-label">ÉNIGME 05 · ORDRE ET RECoupement</div>
+case"shelves":show("Les reliures muettes",`<div class="chapter-label">ÉNIGME 05 · ORDRE ET RECOUPEMENT</div>
 <p>Le relieur te conduit devant trois rayonnages. Chaque livre porte un symbole sur sa tranche : une couronne, une montagne ou une vague. Les livres ont été rangés dans un ordre qui ne correspond ni à l'alphabet ni à leur taille.</p><figure class="clue-illustration"><img src="assets/enigmes/rayonnage-reliures.svg" alt="Trois livres portant une couronne, une montagne et une vague"><figcaption>Les trois reliures trouvées sur l’étagère — leurs symboles correspondent aux plaques de la porte.</figcaption></figure>
 <p>Une fiche de classement indique : « Le livre de la vague vient après celui de la montagne. Le livre de la couronne n'est pas le premier. Le volume le plus ancien est placé avant le livre de la vague. »</p>
 <p>Sur une seconde fiche, une annotation précise : « La montagne est le volume le plus ancien. »</p>
