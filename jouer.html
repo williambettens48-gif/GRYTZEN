@@ -41,20 +41,21 @@ footer strong{display:block;margin-bottom:8px;color:var(--ff-gold);font:500 17px
 .game-btn:hover{background:rgba(130,223,241,.18)}.game-btn.gold{border-color:var(--ff-gold);color:var(--ff-pale);background:rgba(199,165,106,.12)}
 .game-status{font-size:10px!important;letter-spacing:1.5px;color:var(--ff-gold)!important;margin-top:22px}
 @media(max-width:760px){.adventure-intro{grid-template-columns:1fr;padding:38px 20px 22px;gap:18px}.game-section{padding:8px 14px 58px}.grimoire-progress-caption{font-size:8px}.game-actions .game-btn{width:100%;text-align:center}}
+.game-scene-title{margin:0 0 14px;color:#e7d5ae;font:500 21px Cinzel,Georgia,serif}
 </style></head><body><div class="banner"><img src="assets/banniere-grytzen.png" alt="Bannière GRYTZEN"></div><header class="site-header"><div class="nav"><div class="gry-brand-group"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><button class="gry-header-control" type="button" aria-label="Lire ou mettre en pause la musique">♫ MÉDAILLON SONORE</button></div><nav aria-label="Navigation principale"><a href="jouer.html" aria-current="page">JOUER</a><a href="atlas.html">L'ATLAS</a><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav></div></header>
 <main><section class="adventure-intro"><div><div class="page-kicker">LES CHRONIQUES · ÉPISODE 01</div><h1 class="page-title">Le Registre sans nom</h1><p class="page-lead">Une première trace. Un symbole incomplet. Une décision qui semble insignifiante — jusqu'à ce qu'elle ne le soit plus. L'aventure commence dans les ruelles de Valombre.</p></div>
 <aside class="adventure-stamp"><strong>VALOMBRE · PREMIÈRE RENCONTRE</strong>Vos choix et vos découvertes sont conservés sur cet appareil. Vous pourrez quitter l'aventure et la reprendre plus tard dans ce navigateur.</aside></section>
 <section class="game-section" id="episode"><div class="game-panel">
 <div class="game-topline">PREMIÈRE AVENTURE · ÉPISODE 01 · VALOMBRE</div><h2>Le Registre sans nom</h2>
 <p>La pluie tombe sur Valombre. Dans une ruelle du quartier des copistes, une pierre vient de tomber d'un vieux mur. Derrière elle, quelque chose attend depuis bien trop longtemps.</p>
-<div class="grimoire-progress-caption"><span>VOTRE CHEMINEMENT</span><span id="episode-progress">ÉTAPE 0 / 5</span></div>
+<div class="grimoire-progress-caption"><span>VOTRE CHEMINEMENT</span><span id="episode-progress">PROLOGUE · 0%</span></div><div class="grimoire-progress" aria-hidden="true"><span id="episode-progress-bar" style="width:0%"></span></div>
 <div class="game-note">La progression de cet épisode est enregistrée localement dans le navigateur.</div>
-<div aria-live="polite" class="game-scene" id="game-scene"><p>Une cavité sombre apparaît entre deux blocs. À l'intérieur repose un paquet enveloppé dans une toile jaunie. Un cercle incomplet traversé par une ligne verticale est tracé sur le tissu.</p><p><em>Que faites-vous ?</em></p></div>
+<h3 id="scene-title" class="game-scene-title"></h3><div aria-live="polite" class="game-scene" id="game-scene"><p>Une cavité sombre apparaît entre deux blocs. À l'intérieur repose un paquet enveloppé dans une toile jaunie. Un cercle incomplet traversé par une ligne verticale est tracé sur le tissu.</p><p><em>Que faites-vous ?</em></p></div>
 <div class="game-actions" id="game-controls"><button class="game-btn gold" onclick="episodeChoice('prendre')">Prendre le paquet</button><button class="game-btn" onclick="episodeChoice('examiner')">Examiner le symbole</button><button class="game-btn" onclick="episodeChoice('appeler')">Appeler un archiviste</button></div>
 <div class="game-note" id="game-feedback">Chaque choix peut révéler un détail différent. Observez avant d'agir.</div>
 <p class="game-status" id="game-status">PROGRESSION : PREMIÈRE RENCONTRE</p>
-<div class="game-actions"><button class="game-btn" onclick="resetEpisode()">Recommencer l'épisode</button><a class="game-btn" href="grimoire.html">Ouvrir le Grimoire</a></div>
-</div></section></main><footer><strong>✦ GRYTZEN</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer><script src="js/app.js"></script>
+<div class="game-actions"><button class="game-btn" onclick="longEpisodeReset()">Recommencer le volet I</button><a class="game-btn" href="grimoire.html">Ouvrir le Grimoire</a></div>
+</div></section></main><footer><strong>✦ GRYTZEN</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer><script src="js/app.js"></script><script src="js/episode01-long.js"></script>
 <style id="grytzen-pjax-style">
 .site-header .nav, header .nav {display:flex;align-items:center;gap:18px;flex-wrap:nowrap}
 .gry-brand-group{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;min-width:0}
