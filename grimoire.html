@@ -42,99 +42,36 @@ footer strong{display:block;margin-bottom:8px;color:var(--ff-gold);font:500 17px
 .grimoire-seal-note{padding:17px 20px;border-left:2px solid var(--ff-gold);background:rgba(199,165,106,.07);color:#c9c1b3;font-size:12px;line-height:1.8;margin:24px 0}
 .grimoire-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.grimoire-foot{color:#8996a5;font-size:10px;line-height:1.7;margin-top:22px}
 @media(max-width:760px){.grimoire-hero{padding:38px 20px 20px}.grimoire-hero-grid{grid-template-columns:1fr}.grimoire-seal{min-height:120px}.grimoire-section{padding:8px 14px 58px}.grimoire-stats{gap:7px}.grimoire-stat{padding:12px 8px}.grimoire-stat strong{font-size:20px}.grimoire-stat span{font-size:7px;letter-spacing:.7px}.grimoire-grid{grid-template-columns:1fr}.grimoire-actions .game-btn{width:100%}}
-</style>
-<style id="grytzen-atlas-navigation-fix">
-/* Harmonisation du bouton L'ATLAS avec les autres liens du menu */
-header nav > details.nav-dropdown {
-  position: relative;
-  display: inline-block;
-  flex: 0 0 auto;
-  margin: 0;
-  padding: 0;
-  color: inherit;
-  font: inherit;
+</style><style id="grytzen-responsive-banner-fix">
+/* GRYTZEN — bannière complète et accueil compact, tous écrans */
+.banner{
+  height:clamp(190px, 34vh, 360px) !important;
+  min-height:0 !important;
+  overflow:hidden !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:#050912 !important;
 }
-header nav > details.nav-dropdown > summary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  min-height: 38px;
-  margin: 0;
-  padding: 0 13px;
-  list-style: none;
-  cursor: pointer;
-  color: #d9d4ca;
-  font: 700 10px/1.2 Manrope, Arial, sans-serif !important;
-  letter-spacing: 1.6px;
-  text-transform: uppercase;
-  white-space: nowrap;
+.banner img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
 }
-header nav > details.nav-dropdown > summary::-webkit-details-marker {
-  display: none;
+@media(max-width:760px){
+  .banner{height:auto !important; min-height:0 !important;}
+  .banner img{width:100% !important;height:auto !important;object-fit:contain !important;}
 }
-header nav > details.nav-dropdown > summary:hover,
-header nav > details.nav-dropdown[open] > summary {
-  color: var(--ff-ice, var(--ice, #e6c98e));
-}
-header nav > details.nav-dropdown .nav-chevron {
-  display: inline-block;
-  font: inherit;
-  transition: transform .2s ease;
-}
-header nav > details.nav-dropdown[open] .nav-chevron {
-  transform: rotate(180deg);
-}
-header nav > details.nav-dropdown:not([open]) > .nav-submenu {
-  display: none !important;
-}
-header nav > details.nav-dropdown > .nav-submenu {
-  position: absolute;
-  z-index: 10002;
-  top: calc(100% + 7px);
-  left: 50%;
-  right: auto;
-  transform: translateX(-50%);
-  width: 230px;
-  display: grid;
-  gap: 2px;
-  padding: 8px;
-  border: 1px solid rgba(194,157,91,.35);
-  border-radius: 10px;
-  background: #101a29;
-  box-shadow: 0 14px 35px rgba(0,0,0,.45);
-}
-header nav > details.nav-dropdown > .nav-submenu a {
-  display: block;
-  min-height: 0;
-  padding: 10px 12px;
-  border-radius: 6px;
-  color: #e8dfcf;
-  font: 500 12px/1.4 Manrope, Arial, sans-serif;
-  letter-spacing: .04em;
-  text-transform: none;
-  white-space: normal;
-}
-header nav > details.nav-dropdown > .nav-submenu a:hover,
-header nav > details.nav-dropdown > .nav-submenu a:focus {
-  background: rgba(194,157,91,.13);
-  color: #e6c98e;
-}
-@media (max-width: 760px) {
-  header nav > details.nav-dropdown > summary {
-    min-height: 34px;
-    padding: 0 10px;
-    font-size: 9px !important;
-  }
-  header nav > details.nav-dropdown > .nav-submenu {
-    left: auto;
-    right: -45px;
-    transform: none;
-    width: min(230px, 80vw);
-  }
+/* Sur l'accueil, le texte commence directement sous la navigation. */
+.home-hero{min-height:0 !important; align-items:start !important;}
+.home-inner{padding:clamp(24px,4vh,42px) 26px 42px !important;}
+@media(max-width:760px){
+  .home-inner{padding:34px 20px 42px !important;}
 }
 </style>
-
 </head><body><div class="banner"><img src="assets/banniere-grytzen.png" alt="Bannière GRYTZEN"></div><header class="site-header"><div class="nav"><div class="gry-brand-group"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><button class="gry-header-control" type="button" aria-label="Lire ou mettre en pause la musique">♫ MÉDAILLON SONORE</button></div><nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><details class="nav-dropdown"><summary aria-haspopup="true">L'ATLAS <span class="nav-chevron">⌄</span></summary><div class="nav-submenu"><a href="atlas.html?view=map" data-atlas-action="map">Carte et régions</a><a href="atlas.html?view=knowledge" data-atlas-action="knowledge">Explorer les connaissances</a></div></details><a href="grimoire.html" aria-current="page">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav></div></header>
 <main><section class="grimoire-hero"><div class="grimoire-hero-grid"><div><div class="page-kicker">VOTRE MÉMOIRE DE VOYAGE</div><h1 class="page-title">Le Grimoire</h1><p class="page-lead">Ce livre ne raconte pas ce que le monde sait. Il conserve ce que vous avez personnellement découvert. Chaque page révélée est une trace de votre passage.</p></div><div class="grimoire-seal"><div><span>✧</span><small>ARCHIVES PERSONNELLES · GRYTZEN</small></div></div></div></section>
 <section class="grimoire-section" id="grimoire"><div class="grimoire-panel">

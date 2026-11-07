@@ -28,6 +28,36 @@
 .site-header nav a:hover{color:#82dff1}
 @media(max-width:760px){.site-header .nav{padding:10px 12px;flex-direction:column;gap:7px}.site-header .brand{font-size:16px}.site-header nav{width:100%;gap:0;padding-top:5px}.site-header nav a{min-height:34px;padding:0 9px;font-size:9px;letter-spacing:1px}}
 </style>
+<style id="grytzen-responsive-banner-fix">
+/* GRYTZEN — bannière complète et accueil compact, tous écrans */
+.banner{
+  height:clamp(190px, 34vh, 360px) !important;
+  min-height:0 !important;
+  overflow:hidden !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:#050912 !important;
+}
+.banner img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+}
+@media(max-width:760px){
+  .banner{height:auto !important; min-height:0 !important;}
+  .banner img{width:100% !important;height:auto !important;object-fit:contain !important;}
+}
+/* Sur l'accueil, le texte commence directement sous la navigation. */
+.home-hero{min-height:0 !important; align-items:start !important;}
+.home-inner{padding:clamp(24px,4vh,42px) 26px 42px !important;}
+@media(max-width:760px){
+  .home-inner{padding:34px 20px 42px !important;}
+}
+</style>
 </head>
 <body>
 <div class="banner"><img src="assets/banniere-grytzen.png" alt="Bannière GRYTZEN"></div>
