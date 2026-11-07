@@ -1,115 +1,114 @@
 
 /* =========================================================
-   GRYTZEN — MÉDAILLON SONORE
-   Reliquaire ancien gravé, commandes audio intégrées.
+   GRYTZEN — RELIQUAIRE SONORE / MÉDAILLON MÉDIÉVAL V2
+   Médaillon en forme d'écu ancien, reliefs, gravures et sceau.
+   Remplacer entièrement js/audio-player.js par ce fichier.
    ========================================================= */
 (function () {
   "use strict";
+
   if (document.getElementById("ff-audio-player")) return;
 
-  // Chemin relatif : fonctionne aussi après le renommage du dépôt.
+  // Chemin relatif au site : ne dépend pas du nom du dépôt GitHub.
   const AUDIO_SRC = "assets/audio/Whispers-Beyond-Time.mp3";
 
   const style = document.createElement("style");
+  style.id = "grytzen-medallion-style";
   style.textContent = `
-    #ff-audio-player, #ff-audio-player * { box-sizing:border-box; }
+    #ff-audio-player, #ff-audio-player * { box-sizing: border-box; }
     #ff-audio-player {
-      --gold:#d9b875; --bright:#f5dfa5; --shadow:#624522; --ice:#8ed9e8;
-      width:min(292px, calc(100% - 28px)); height:322px;
-      margin:36px auto 42px; position:relative; isolation:isolate;
-      display:flex; flex-direction:column; align-items:center;
-      color:#f3e5c5; font-family:Georgia,serif; text-align:center; z-index:3;
-      filter:drop-shadow(0 13px 13px rgba(0,0,0,.58));
+      --g1:#fff0bd; --g2:#d9b66f; --g3:#9a6d35; --g4:#422b17;
+      position:relative; isolation:isolate; z-index:5;
+      width:min(310px, calc(100% - 28px)); height:382px;
+      margin:26px auto 34px; color:#f1dfb5; text-align:center;
+      font-family:Georgia,serif; filter:drop-shadow(0 16px 15px rgba(0,0,0,.62));
     }
-    /* Anneau de suspension et petite bélière */
-    #ff-audio-player .ff-bail {
-      position:absolute; top:0; left:50%; transform:translateX(-50%);
-      width:48px; height:48px; border:7px ridge #b58b4d; border-radius:50%;
-      background:radial-gradient(circle at 35% 28%,#f8e5ad,#8a6636 58%,#342519 78%);
-      box-shadow:inset 0 0 0 3px #352719,0 0 0 2px #e1c17d;
-      z-index:0;
+    #ff-audio-player .ff-chain {
+      position:absolute; z-index:0; top:0; left:50%; transform:translateX(-50%);
+      width:8px; height:38px; border-left:2px solid #e3c27b; border-right:2px solid #6b4927;
+      background:repeating-linear-gradient(180deg,#f4dfa3 0 4px,#76532d 4px 7px);
+      box-shadow:0 0 0 2px #24190f,0 0 8px #d5b16b;
     }
-    #ff-audio-player .ff-bail:after {
-      content:""; position:absolute; width:17px; height:17px; border:3px solid #172536;
-      border-radius:50%; top:8px; left:8px; box-shadow:inset 0 0 0 2px #d9b875;
+    #ff-audio-player .ff-ring {
+      position:absolute; z-index:3; top:13px; left:50%; transform:translateX(-50%);
+      width:47px; height:47px; border-radius:50%;
+      border:7px ridge #c49a55;
+      background:radial-gradient(circle at 32% 25%,#fff0b7,#a7793e 52%,#392516 78%);
+      box-shadow:inset 0 0 0 3px #302014,0 0 0 2px #ead092,0 3px 7px #000;
     }
-    /* Corps métallique du médaillon */
-    #ff-audio-player .ff-medallion {
-      position:absolute; top:31px; left:50%; transform:translateX(-50%);
-      width:254px; height:254px; border-radius:50%;
-      background:radial-gradient(circle at 34% 24%,#f3d99a 0%,#a77a3f 17%,#49351f 24%,#c29a58 31%,#72502c 38%,#d2b16f 44%,#4b3825 49%,#172638 52%,#0a1421 72%,#050a11 100%);
-      border:4px ridge #d7b875;
-      box-shadow:0 0 0 3px #302519,0 0 0 6px #a47b43,0 0 0 8px #e0c17c,
-        inset 0 0 0 3px #332719,inset 0 0 22px 9px rgba(0,0,0,.85),0 0 22px rgba(111,199,220,.17);
-      z-index:1;
+    #ff-audio-player .ff-ring:after {
+      content:""; position:absolute; inset:8px; border:2px solid #342316;
+      border-radius:50%; box-shadow:inset 0 0 0 2px #e5c47e;
     }
-    #ff-audio-player .ff-medallion:before {
-      content:""; position:absolute; inset:10px; border-radius:50%;
-      border:1px solid rgba(246,220,158,.8); box-shadow:inset 0 0 0 4px rgba(31,23,15,.75),0 0 0 2px rgba(41,29,17,.9);
+    #ff-audio-player .ff-body {
+      position:absolute; z-index:1; left:50%; top:45px; transform:translateX(-50%);
+      width:292px; height:300px; overflow:visible;
     }
-    #ff-audio-player .ff-runes {
-      position:absolute; inset:17px; border-radius:50%; display:flex; align-items:flex-start;
-      justify-content:center; padding-top:2px; color:#f0d69b;
-      font: bold 13px/1 Georgia,serif; letter-spacing:5px; text-shadow:0 1px 2px #160f08,0 0 5px #e5bd6e;
-      transform:rotate(-3deg); z-index:3; pointer-events:none;
+    #ff-audio-player .ff-frame { width:100%; height:100%; overflow:visible; }
+    #ff-audio-player .ff-inner {
+      position:absolute; left:50%; top:72px; transform:translateX(-50%);
+      width:194px; height:206px; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:5px; z-index:4;
+      padding:12px 10px 17px;
     }
-    #ff-audio-player .ff-rivet {
-      position:absolute; width:9px; height:9px; border-radius:50%; z-index:4;
-      background:radial-gradient(circle at 30% 25%,#fff0bb,#b88b4c 55%,#49321c 80%);
-      border:1px solid #382719; box-shadow:0 0 0 1px rgba(245,220,160,.45);
+    #ff-audio-player .ff-kicker {
+      color:#e8c77f; font:700 8px/1.2 Arial,sans-serif; letter-spacing:2.5px;
+      text-shadow:0 2px 3px #000; margin-bottom:1px;
     }
-    #ff-audio-player .ff-r1{top:35px;left:50%;transform:translateX(-50%)}
-    #ff-audio-player .ff-r2{bottom:35px;left:50%;transform:translateX(-50%)}
-    #ff-audio-player .ff-r3{left:35px;top:50%;transform:translateY(-50%)}
-    #ff-audio-player .ff-r4{right:35px;top:50%;transform:translateY(-50%)}
-    #ff-audio-player .ff-core {
-      position:absolute; inset:53px 42px 42px; z-index:5;
-      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
-    }
-    #ff-audio-player .ff-heading {
-      color:#e3c581; font:700 8px/1.2 Arial,sans-serif; letter-spacing:2.5px;
-      text-shadow:0 2px 3px #000; margin-top:1px;
-    }
-    #ff-audio-player .ff-emblem {
-      width:79px; height:79px; margin:1px 0 0;
-      filter:drop-shadow(0 2px 3px #000) drop-shadow(0 0 7px rgba(108,205,225,.35));
+    #ff-audio-player .ff-sigil {
+      width:91px; height:91px; flex:0 0 91px;
+      filter:drop-shadow(0 3px 3px #000) drop-shadow(0 0 8px rgba(93,192,218,.32));
     }
     #ff-audio-player .ff-play {
-      width:39px; height:39px; flex:0 0 39px; margin-top:-2px;
-      display:grid; place-items:center; border-radius:50%; cursor:pointer;
-      border:2px ridge #f1d99b; color:#152333;
-      background:radial-gradient(circle at 32% 23%,#fff3c9,#d0a65c 60%,#76502b 100%);
-      box-shadow:0 0 0 3px rgba(25,17,10,.85),0 0 0 4px #b88d4d, inset 0 1px 3px #fff1c4;
-      font-size:17px; line-height:1; transition:transform .18s,filter .18s;
+      display:grid; place-items:center; width:39px; height:39px; flex:0 0 39px;
+      border-radius:50%; cursor:pointer; color:#1a2025;
+      border:3px ridge #f4dfa4;
+      background:radial-gradient(circle at 30% 22%,#fff8d8,#d5ad63 58%,#79502a 100%);
+      box-shadow:0 0 0 3px #2b1d12,0 0 0 5px #b88c4c,inset 0 1px 4px #fff4c8,0 3px 6px #000;
+      font:700 16px Georgia,serif; line-height:1; transition:transform .18s,filter .18s;
     }
-    #ff-audio-player .ff-play:hover{transform:scale(1.08);filter:brightness(1.14)}
-    #ff-audio-player .ff-play:disabled{opacity:.7;cursor:wait}
+    #ff-audio-player .ff-play:hover { transform:scale(1.08); filter:brightness(1.15); }
+    #ff-audio-player .ff-play:disabled { opacity:.65; cursor:wait; }
     #ff-audio-player .ff-title {
-      max-width:150px; color:#f4e2b8; font:10px/1.25 Georgia,serif;
-      text-shadow:0 2px 3px #000; letter-spacing:.25px;
+      max-width:175px; color:#f5e7c7; font:10px/1.25 Georgia,serif;
+      text-shadow:0 2px 4px #000; margin-top:1px;
     }
-    #ff-audio-player .ff-volume-row { width:116px; display:flex; align-items:center; gap:6px; margin-top:2px; }
-    #ff-audio-player .ff-volume-label { color:#d9bd82; font:700 7px Arial,sans-serif; letter-spacing:1px; }
-    #ff-audio-player .ff-volume { width:100%; min-width:0; height:12px; accent-color:#d9b875; cursor:pointer; }
+    #ff-audio-player .ff-volume-row {
+      width:132px; display:flex; align-items:center; gap:7px; margin-top:1px;
+    }
+    #ff-audio-player .ff-volume-label {
+      color:#e0c27f; font:700 7px Arial,sans-serif; letter-spacing:1px;
+    }
+    #ff-audio-player .ff-volume {
+      width:100%; min-width:0; height:12px; accent-color:#d9b66f; cursor:pointer;
+    }
     #ff-audio-player .ff-status {
-      max-width:158px; min-height:12px; color:#a8d8e1; font:8px/1.25 Arial,sans-serif;
-      text-shadow:0 1px 3px #000; margin-top:0;
+      min-height:13px; max-width:170px; color:#a9dce5;
+      font:8px/1.25 Arial,sans-serif; text-shadow:0 1px 3px #000;
     }
-    #ff-audio-player .ff-plaque {
-      position:absolute; z-index:7; left:50%; bottom:2px; transform:translateX(-50%);
-      width:210px; min-height:28px; padding:6px 8px 5px;
-      border:2px ridge #d4b16b; border-radius:4px;
-      color:#f0d9a5; background:linear-gradient(180deg,#5a4329,#171c23 48%,#49341f);
-      box-shadow:0 3px 5px #000, inset 0 0 0 1px #261b11;
-      font:700 8px/1 Arial,sans-serif; letter-spacing:2px; text-shadow:0 1px 2px #000;
+    #ff-audio-player .ff-nameplate {
+      position:absolute; z-index:6; left:50%; bottom:2px; transform:translateX(-50%);
+      width:190px; min-height:29px; padding:7px 8px 5px;
+      border:3px ridge #d9b66f; border-radius:3px;
+      color:#f4dfaa; background:linear-gradient(180deg,#70502d,#211a16 48%,#634426);
+      box-shadow:0 4px 6px #000,inset 0 0 0 1px #24180e;
+      font:700 8px/1 Arial,sans-serif; letter-spacing:2px; text-shadow:0 2px 2px #000;
     }
-    #ff-audio-player .ff-plaque:before,#ff-audio-player .ff-plaque:after {
-      content:"✦"; position:absolute; top:6px; color:#e7c77e; font-size:10px;
+    #ff-audio-player .ff-nameplate:before,#ff-audio-player .ff-nameplate:after {
+      content:"✦"; position:absolute; top:6px; color:#f5d88e; font-size:10px;
     }
-    #ff-audio-player .ff-plaque:before{left:8px} #ff-audio-player .ff-plaque:after{right:8px}
-    @media(max-width:480px){#ff-audio-player{margin:31px auto 38px;transform:scale(.96);transform-origin:top center;margin-bottom:24px}}
-    @media(prefers-reduced-motion:no-preference){#ff-audio-player .ff-medallion{animation:ff-relic-glow 5s ease-in-out infinite alternate}}
-    @keyframes ff-relic-glow{from{filter:brightness(.97)}to{filter:brightness(1.07) drop-shadow(0 0 7px rgba(111,207,228,.18))}}
+    #ff-audio-player .ff-nameplate:before { left:9px; }
+    #ff-audio-player .ff-nameplate:after { right:9px; }
+    @media(max-width:380px) {
+      #ff-audio-player { transform:scale(.92); transform-origin:top center; margin-bottom:5px; }
+    }
+    @media(prefers-reduced-motion:no-preference) {
+      #ff-audio-player .ff-body { animation:gry-relief-breathe 6s ease-in-out infinite alternate; }
+    }
+    @keyframes gry-relief-breathe {
+      from { filter:brightness(.97) drop-shadow(0 0 0 rgba(112,201,220,0)); }
+      to { filter:brightness(1.06) drop-shadow(0 0 7px rgba(112,201,220,.2)); }
+    }
   `;
   document.head.appendChild(style);
 
@@ -117,37 +116,94 @@
   player.id = "ff-audio-player";
   player.setAttribute("aria-label", "Médaillon sonore de Grytzen");
   player.innerHTML = `
-    <div class="ff-bail" aria-hidden="true"></div>
-    <div class="ff-medallion" aria-hidden="true">
-      <div class="ff-runes">ᚠ ᚱ ᚷ ᚦ ᛟ ᚨ ᛉ ᚾ</div>
-      <i class="ff-rivet ff-r1"></i><i class="ff-rivet ff-r2"></i>
-      <i class="ff-rivet ff-r3"></i><i class="ff-rivet ff-r4"></i>
-    </div>
-    <div class="ff-core">
-      <div class="ff-heading">RELIQUE SONORE</div>
-      <svg class="ff-emblem" viewBox="0 0 100 100" role="img" aria-label="Sceau du dragon">
+    <div class="ff-chain" aria-hidden="true"></div>
+    <div class="ff-ring" aria-hidden="true"></div>
+    <div class="ff-body" aria-hidden="true">
+      <svg class="ff-frame" viewBox="0 0 300 310" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="ffGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0b9"/><stop offset=".48" stop-color="#d5ad62"/><stop offset="1" stop-color="#80552d"/></linearGradient>
+          <linearGradient id="gryMetal" x1="0" y1="0" x2="1" y2="1">
+            <stop stop-color="#fff0b8"/><stop offset=".18" stop-color="#bd914d"/>
+            <stop offset=".34" stop-color="#f4d991"/><stop offset=".52" stop-color="#624222"/>
+            <stop offset=".72" stop-color="#d6b16a"/><stop offset="1" stop-color="#392516"/>
+          </linearGradient>
+          <linearGradient id="gryDark" x1="0" y1="0" x2="0" y2="1">
+            <stop stop-color="#26394a"/><stop offset=".55" stop-color="#101c2a"/><stop offset="1" stop-color="#080d16"/>
+          </linearGradient>
+          <radialGradient id="gryPatina" cx="35%" cy="22%" r="80%">
+            <stop stop-color="#385365"/><stop offset=".55" stop-color="#172737"/><stop offset="1" stop-color="#080e17"/>
+          </radialGradient>
+          <filter id="gryShadow" x="-30%" y="-30%" width="160%" height="170%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+            <feOffset dy="4" result="off"/><feComponentTransfer><feFuncA type="linear" slope=".7"/></feComponentTransfer>
+            <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
         </defs>
-        <circle cx="50" cy="50" r="43" fill="#0c1b2a" stroke="url(#ffGold)" stroke-width="2.5"/>
-        <circle cx="50" cy="50" r="37" fill="none" stroke="#a98750" stroke-width=".8" stroke-dasharray="2 3"/>
-        <path d="M66 22 C54 14 38 20 34 31 C29 43 39 48 31 58 C26 65 18 65 17 76 C28 70 38 72 45 65 C51 59 48 51 57 47 C65 43 74 48 78 56 C83 40 77 29 66 22Z" fill="url(#ffGold)" stroke="#f5dfa5" stroke-width="1.4"/>
-        <path d="M57 31 C47 29 41 35 43 42 C45 49 55 48 59 43 C56 53 47 56 43 62 C54 61 65 55 68 45 C72 35 65 28 57 31Z" fill="#132638" stroke="#d9b875" stroke-width="1.8"/>
-        <path d="M39 33 L25 23 L29 39 L18 47 L36 46 M62 24 L72 15 L70 31 M44 63 L35 81 L52 72 L64 82 L61 62" fill="none" stroke="url(#ffGold)" stroke-width="3" stroke-linejoin="round"/>
-        <circle cx="61" cy="37" r="2" fill="#8ed9e8"/><path d="M65 38 L74 41 L65 43" fill="#8ed9e8"/>
-        <path d="M50 8 L53 16 L50 13 L47 16Z M91 50 L83 53 L86 50 L83 47Z M50 92 L47 84 L50 87 L53 84Z M9 50 L17 47 L14 50 L17 53Z" fill="#f0d99e"/>
+        <!-- Silhouette d'écu ancien, épaules sculptées et pointe basse -->
+        <path d="M150 8 C164 25 180 23 193 18 C202 35 222 38 238 35 C239 54 257 65 274 68 C264 91 282 108 291 119 C273 137 280 159 286 176 C266 187 267 210 268 226 C246 232 239 254 233 268 C210 268 195 285 183 300 L150 307 L117 300 C105 285 90 268 67 268 C61 254 54 232 32 226 C33 210 34 187 14 176 C20 159 27 137 9 119 C18 108 36 91 26 68 C43 65 61 54 62 35 C78 38 98 35 107 18 C120 23 136 25 150 8Z" fill="url(#gryMetal)" stroke="#26180d" stroke-width="5" filter="url(#gryShadow)"/>
+        <path d="M150 18 C165 34 181 32 191 27 C204 46 222 47 248 48 C244 69 260 83 278 91 C264 111 274 132 279 145 C260 160 265 181 260 211 C240 218 232 242 222 255 C202 257 184 278 174 290 L150 297 L126 290 C116 278 98 257 78 255 C68 242 60 218 40 211 C35 181 40 160 21 145 C26 132 36 111 22 91 C40 83 56 69 52 48 C78 47 96 46 109 27 C119 32 135 34 150 18Z" fill="url(#gryDark)" stroke="#f0d28b" stroke-width="2.3"/>
+        <path d="M150 27 C165 43 183 42 193 37 C207 54 224 57 258 58 C250 78 269 96 282 103 C269 123 278 140 283 151 C264 167 269 186 265 216 C244 224 238 245 226 261 C203 265 186 282 176 294 L150 301 L124 294 C114 282 97 265 74 261 C62 245 56 224 35 216 C31 186 36 167 17 151 C22 140 31 123 18 103 C31 96 50 78 42 58 C76 57 93 54 107 37 C117 42 135 43 150 27Z" fill="url(#gryPatina)" stroke="#9a713c" stroke-width="2"/>
+        <!-- gravure intérieure en double filet -->
+        <path d="M150 43 C169 57 187 57 199 52 C213 69 231 70 263 72 C252 92 269 107 271 116 C258 135 268 151 269 160 C252 177 257 194 250 222 C230 231 223 249 214 252 C194 261 180 279 171 284 L150 290 L129 284 C120 279 106 261 86 252 C77 249 70 231 50 222 C43 194 48 177 31 160 C32 151 42 135 29 116 C31 107 48 92 37 72 C69 70 87 69 101 52 C113 57 131 57 150 43Z" fill="none" stroke="#d9b66f" stroke-width="1.2" opacity=".9"/>
+        <!-- entrelacs gravés sur les épaules -->
+        <g fill="none" stroke="#e0bd78" stroke-width="2" opacity=".95" stroke-linecap="round">
+          <path d="M52 65 C67 52 83 56 89 70 C94 82 81 91 69 83 C60 77 65 66 75 66 C84 67 86 76 80 80"/>
+          <path d="M248 65 C233 52 217 56 211 70 C206 82 219 91 231 83 C240 77 235 66 225 66 C216 67 214 76 220 80"/>
+          <path d="M38 177 C52 164 65 168 68 180 C71 192 59 198 51 190 C45 184 50 177 57 178"/>
+          <path d="M262 177 C248 164 235 168 232 180 C229 192 241 198 249 190 C255 184 250 177 243 178"/>
+          <path d="M86 251 Q101 235 112 249 Q120 260 108 267 M214 251 Q199 235 188 249 Q180 260 192 267"/>
+        </g>
+        <!-- petits motifs floraux / étoiles -->
+        <g fill="#f2d995" stroke="#694725" stroke-width="1">
+          <path d="M150 36 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4Z"/>
+          <path d="M43 132 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3Z"/>
+          <path d="M257 132 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3Z"/>
+          <path d="M150 271 l4 8 8 4 -8 4 -4 8 -4 -8 -8 -4 8 -4Z"/>
+        </g>
+        <!-- rivets en relief -->
+        <g fill="url(#gryMetal)" stroke="#392516" stroke-width="2">
+          <circle cx="75" cy="48" r="5"/><circle cx="225" cy="48" r="5"/>
+          <circle cx="30" cy="151" r="5"/><circle cx="270" cy="151" r="5"/>
+          <circle cx="65" cy="232" r="5"/><circle cx="235" cy="232" r="5"/>
+          <circle cx="150" cy="286" r="5"/>
+        </g>
+        <g fill="#f4dfa4" font-family="Georgia,serif" font-size="10" text-anchor="middle">
+          <text x="150" y="67">✦</text><text x="47" y="111">ᚠ</text><text x="253" y="111">ᚱ</text>
+          <text x="45" y="208">ᚷ</text><text x="255" y="208">ᛟ</text>
+        </g>
+      </svg>
+    </div>
+    <div class="ff-inner">
+      <div class="ff-kicker">RELIQUE SONORE</div>
+      <svg class="ff-sigil" viewBox="0 0 100 100" role="img" aria-label="Sceau du dragon de Grytzen">
+        <defs>
+          <linearGradient id="gryDragonGold" x1="0" y1="0" x2="1" y2="1">
+            <stop stop-color="#fff1bd"/><stop offset=".5" stop-color="#d2a85f"/><stop offset="1" stop-color="#79502b"/>
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="45" fill="#0a1723" stroke="url(#gryDragonGold)" stroke-width="3"/>
+        <circle cx="50" cy="50" r="39" fill="none" stroke="#c6a260" stroke-width="1" stroke-dasharray="1.5 3"/>
+        <path d="M67 19 C52 12 35 19 32 33 C29 44 41 49 32 59 C27 65 18 68 17 80 C29 72 39 75 48 66 C55 59 49 51 60 46 C69 42 78 50 82 59 C88 39 80 25 67 19Z" fill="url(#gryDragonGold)" stroke="#f8e3a5" stroke-width="1.4"/>
+        <path d="M60 29 C48 26 41 34 44 43 C47 51 57 49 62 43 C60 54 48 57 43 65 C57 63 68 55 71 44 C74 35 68 29 60 29Z" fill="#142b3a" stroke="#d8b66e" stroke-width="2"/>
+        <path d="M39 32 L23 20 L28 39 L16 48 L37 47 M64 25 L76 13 L72 33 M45 65 L35 84 L53 73 L66 84 L62 62" fill="none" stroke="url(#gryDragonGold)" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="63" cy="37" r="2.3" fill="#8fe1ef"/><path d="M66 38 L78 41 L66 44" fill="#8fe1ef"/>
       </svg>
       <button class="ff-play" type="button" aria-label="Lire la musique">▶</button>
       <div class="ff-title">Les Murmures de la Terre absente</div>
       <div class="ff-volume-row"><span class="ff-volume-label">VOL.</span><input class="ff-volume" type="range" min="0" max="1" step="0.01" value="0.22" aria-label="Volume"></div>
-      <div class="ff-status" aria-live="polite">Une présence murmure au loin…</div>
+      <div class="ff-status" aria-live="polite">Le sceau garde son secret…</div>
     </div>
-    <div class="ff-plaque">GRYTZEN · ARCHIVES ANCIENNES</div>
+    <div class="ff-nameplate">GRYTZEN · RELIQUE ANCIENNE</div>
   `;
 
-  const manifesto = document.querySelector(".home-manifesto");
-  if (manifesto) manifesto.insertBefore(player, manifesto.firstChild);
-  else document.body.appendChild(player);
+  // Insertion dans la section d'accueil prévue ; sinon juste avant le footer.
+  const anchor = document.querySelector(".home-manifesto") || document.querySelector("main") || document.body;
+  if (anchor.classList && anchor.classList.contains("home-manifesto")) {
+    anchor.insertBefore(player, anchor.firstChild);
+  } else if (anchor !== document.body && anchor.parentNode) {
+    anchor.parentNode.insertBefore(player, anchor.nextSibling);
+  } else {
+    document.body.appendChild(player);
+  }
 
   const audio = new Audio(AUDIO_SRC);
   audio.loop = true;
@@ -170,7 +226,9 @@
       } catch (error) {
         console.error("GRYTZEN — Erreur audio :", error);
         status.textContent = "Audio inaccessible : vérifiez le fichier MP3.";
-      } finally { playButton.disabled = false; }
+      } finally {
+        playButton.disabled = false;
+      }
     } else {
       audio.pause();
       playButton.textContent = "▶";
@@ -179,7 +237,9 @@
     }
   });
 
-  volumeSlider.addEventListener("input", function () { audio.volume = Number(volumeSlider.value); });
+  volumeSlider.addEventListener("input", function () {
+    audio.volume = Number(volumeSlider.value);
+  });
   audio.addEventListener("error", function () {
     status.textContent = "Fichier audio introuvable ou inaccessible.";
     playButton.textContent = "▶";
@@ -190,5 +250,7 @@
     playButton.textContent = "▶";
     playButton.setAttribute("aria-label", "Lire la musique");
   });
-  audio.addEventListener("playing", function () { playButton.textContent = "Ⅱ"; });
+  audio.addEventListener("playing", function () {
+    playButton.textContent = "Ⅱ";
+  });
 })();
