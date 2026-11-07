@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="t d">
-<title id="t">Croquis de la pièce aux six cercles</title><desc id="d">Deux faces d'une pièce ancienne. Une face porte un arbre sans feuilles. L'autre montre six cercles autour d'un cercle central. Un cercle extérieur est plus profond et une entaille au centre pointe vers lui.</desc>
+<title id="t">Croquis de la pièce aux six cercles</title><desc id="d">Deux faces d'une pièce ancienne. Une face porte un arbre sans feuilles. L'autre montre six cercles autour d'un cercle central. Un cercle extérieur est plus profond ; une flèche indique le point central comme point de départ.</desc>
 <defs><linearGradient id="paper" x2="0" y2="1"><stop stop-color="#e7d6ad"/><stop offset="1" stop-color="#b99b68"/></linearGradient><radialGradient id="bronze"><stop stop-color="#d6b777"/><stop offset=".72" stop-color="#8c6637"/><stop offset="1" stop-color="#49331f"/></radialGradient><filter id="shadow"><feGaussianBlur stdDeviation="9"/></filter></defs>
 <rect x="8" y="8" width="1184" height="544" rx="24" fill="#101a25" stroke="#b9975b" stroke-width="3"/>
 <path d="M35 45h1130M35 515h1130" stroke="#b9975b" opacity=".55"/>
