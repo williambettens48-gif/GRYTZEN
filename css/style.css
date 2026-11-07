@@ -157,3 +157,10 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 .grimoire-seal-note{margin:20px 0 0;padding:14px 16px;border:1px solid rgba(199,165,106,.2);background:rgba(199,165,106,.045);color:#c4b99f;text-align:center;font:italic 13px/1.7 Georgia,serif}
 @media(max-width:600px){.grimoire-entry.locked:after{right:10px;top:8px}.grimoire-seal-note{font-size:12px}}
 
+
+
+/* GRYTZEN — illustrations d'énigmes */
+.clue-illustration{margin:20px auto 24px;max-width:920px;padding:10px;border:1px solid rgba(199,165,106,.32);background:linear-gradient(145deg,rgba(18,29,43,.9),rgba(6,12,20,.92));box-shadow:0 12px 34px rgba(0,0,0,.25)}
+.clue-illustration img{display:block;width:100%;height:auto;max-height:430px;object-fit:contain;border-radius:3px}
+.clue-illustration figcaption{padding:9px 8px 3px;text-align:center;color:#c7b58f;font:italic 12px/1.6 Georgia,serif;letter-spacing:.2px}
+@media(max-width:600px){.clue-illustration{margin:14px -8px 18px;padding:6px}.clue-illustration img{max-height:none}.clue-illustration figcaption{font-size:11px}}
