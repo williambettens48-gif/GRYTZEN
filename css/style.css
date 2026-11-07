@@ -164,3 +164,49 @@ footer{border-top:1px solid var(--line);padding:34px 26px;text-align:center;colo
 .clue-illustration img{display:block;width:100%;height:auto;max-height:430px;object-fit:contain;border-radius:3px}
 .clue-illustration figcaption{padding:9px 8px 3px;text-align:center;color:#c7b58f;font:italic 12px/1.6 Georgia,serif;letter-spacing:.2px}
 @media(max-width:600px){.clue-illustration{margin:14px -8px 18px;padding:6px}.clue-illustration img{max-height:none}.clue-illustration figcaption{font-size:11px}}
+
+/* GRYTZEN — confort mobile et commandes tactiles (revue du 07/11/2026) */
+.game-btn,
+.riddle-choice {
+  min-height: 44px;
+  touch-action: manipulation;
+}
+.puzzle-input {
+  display: block;
+  width: min(100%, 420px);
+  min-height: 48px;
+  margin: 12px 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(130,223,241,.45);
+  border-radius: 2px;
+  background: #101c2a;
+  color: #fff;
+  font: 16px/1.4 Manrope, Arial, sans-serif;
+}
+.puzzle-input::placeholder { color: #9ba9b7; }
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.choice-grid .game-btn { width: 100%; }
+@media (max-width: 600px) {
+  .game-panel { padding: 20px 15px; }
+  .game-scene { padding: 14px 12px; overflow-wrap: anywhere; }
+  .game-actions { flex-direction: column; align-items: stretch; }
+  .game-actions > .game-btn,
+  .game-actions > a.game-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 46px;
+    padding: 13px 14px;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .choice-grid { grid-template-columns: 1fr; }
+  .clue-illustration { max-width: 100%; }
+  .clue-illustration img { max-width: 100%; }
+}
