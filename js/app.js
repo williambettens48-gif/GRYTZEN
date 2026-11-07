@@ -175,7 +175,7 @@ let ffArchiveOrder=[];
 function episode02OpenCatalogue(){
  ffSetEpisode02State("catalogue",{order:[],hints:0});ffArchiveOrder=[];
  const cards=ffArchiveFragments.map((f,i)=>'<button class="riddle-choice" type="button" onclick="episode02ChooseFragment(\''+f.id+'\')"><strong>'+f.title+'</strong><br><small>'+f.date+'</small></button>').join("");
- ffEpisode02Scene("<p>Maëlan pose les trois feuillets sur une table.</p><p>« Les catalogues rangent ce qui est connu. Les absents ne peuvent être classés qu’à partir de leurs témoins. »</p><p>Les dates sont inscrites au dos. Replace les événements du plus ancien au plus récent. Les marques au revers ne pourront être lues que dans le bon ordre.</p><p><strong>Ordre choisi :</strong> <span id=\"archive-order\">Aucun feuillet</span></p>",
+ ffEpisode02Scene("<p>Maëlan pose les trois feuillets sur une table.</p><figure class=\"clue-illustration\"><img src=\"assets/enigmes/trois-feuillets-hauterive.svg\" alt=\"Trois feuillets d’archives : Serment des Couronnes année 214, Fermeture du Col année 267, Départ des Navigateurs année 311\"><figcaption>Les trois documents retrouvés dans les dépôts — leurs revers ne pourront être lus qu’une fois le classement correct.</figcaption></figure><p>« Les catalogues rangent ce qui est connu. Les absents ne peuvent être classés qu’à partir de leurs témoins. »</p><p>Les dates sont inscrites au bas des feuillets. Replace les événements du plus ancien au plus récent. Les marques au revers ne pourront être lues que dans le bon ordre.</p><p><strong>Ordre choisi :</strong> <span id=\"archive-order\">Aucun feuillet</span></p>",
  '<div class="game-riddle archive-riddle">'+cards+'</div><div class="game-actions"><button class="game-btn gold" onclick="episode02CheckOrder()">Vérifier le classement</button><button class="game-btn" onclick="episode02ResetOrder()">Recommencer</button><button class="game-btn" onclick="episode02Hint()">Demander un indice</button></div>',
  "ÉNIGME : LE CATALOGUE DES ABSENTS","Indice : commence par le plus ancien. Les dates au dos donnent l’ordre.");
 }
@@ -189,7 +189,7 @@ function episode02ChooseFragment(id){
 function episode02ResetOrder(){ffArchiveOrder=[];episode02OpenCatalogue();}
 function episode02Hint(){
  const s=ffEpisode02State(),n=(s.hints||0)+1;ffSetEpisode02State("catalogue",{order:ffArchiveOrder,hints:n});
- const hints=["Indice 1 : les titres racontent une suite d’événements. Commence par le plus ancien.","Indice 2 : compare les années inscrites au dos des feuillets.","Indice 3 : l’ordre chronologique est 214, puis 267, puis 311."];
+ const hints=["Indice 1 : les titres racontent une suite d’événements. Commence par le plus ancien.","Indice 2 : compare les années inscrites au bas des feuillets.","Indice 3 : l’ordre chronologique est 214, puis 267, puis 311."];
  const fb=document.getElementById("game-feedback");if(fb)fb.textContent=hints[Math.min(n-1,2)];
 }
 function episode02CheckOrder(){
