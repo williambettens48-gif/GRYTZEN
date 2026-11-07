@@ -54,28 +54,7 @@ footer strong{display:block;margin-bottom:8px;color:var(--ff-gold);font:500 17px
 @media(max-width:390px){.home-atlas-menu summary{padding:0 7px;letter-spacing:.5px}}
 @media(max-width:600px){.home-inner{padding:62px 20px}.home-copy{font-size:14px}.home-actions a{width:100%}}
 
-/* Accès rapide au médaillon musical — accueil */
-.site-header .nav{justify-content:flex-start}
-.site-header .home-medallion-link{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  min-height:32px;padding:0 11px;margin-left:2px;
-  border:1px solid rgba(199,165,106,.42);border-radius:3px;
-  color:#d8bd86;background:linear-gradient(180deg,rgba(199,165,106,.09),rgba(8,13,24,.35));
-  font:700 9px Manrope,sans-serif;letter-spacing:1.15px;text-decoration:none;
-  white-space:nowrap;transition:border-color .2s,background .2s,color .2s;
-}
-.site-header .home-medallion-link:hover{
-  color:#f2dfb8;border-color:#c7a56a;background:rgba(199,165,106,.16)
-}
-.home-medallion-icon{font:17px Georgia,serif;color:#c7a56a;line-height:1}
-@media(max-width:760px){
-  .site-header .nav{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:9px}
-  .site-header .brand{font-size:15px}
-  .site-header .home-medallion-link{min-height:30px;padding:0 9px;font-size:8px;letter-spacing:.8px}
-  .site-header nav{width:100%;order:3}
-}
-
-</style></head><body><div class="banner"><img src="./assets/banniere-grytzen.png" alt="GRYTZEN — Un monde, six royaumes, une destinée" fetchpriority="high"></div><header class="site-header"><div class="nav"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><button id="grytzen-silence-toggle" class="gry-header-control" type="button">♫ MÉDAILLON MUSICAL</button><nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><details class="home-atlas-menu"><summary>L'ATLAS <span>⌄</span></summary><div class="home-atlas-submenu"><a href="atlas.html?view=map">Carte et régions</a><a href="atlas.html?view=knowledge">Explorer les connaissances</a></div></details><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav></div></header>
+</style></head><body><div class="banner"><img src="./assets/banniere-grytzen.png" alt="GRYTZEN — Un monde, six royaumes, une destinée" fetchpriority="high"></div><header class="site-header"><div class="nav"><div class="gry-brand-group"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><button class="gry-header-control" type="button" aria-label="Lire ou mettre en pause la musique">♫ MÉDAILLON SONORE</button></div><nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><details class="home-atlas-menu"><summary>L'ATLAS <span>⌄</span></summary><div class="home-atlas-submenu"><a href="atlas.html?view=map">Carte et régions</a><a href="atlas.html?view=knowledge">Explorer les connaissances</a></div></details><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav></div></header>
 <main><section class="home-hero"><div class="home-inner">
 <div class="home-note">AVANCEZ À VOTRE RYTHME · CHAQUE DÉCOUVERTE COMPTE</div>
 <div class="home-eyebrow">UNE SAGA INTERACTIVE · UN MONDE À EXPLORER</div>
@@ -83,37 +62,17 @@ footer strong{display:block;margin-bottom:8px;color:var(--ff-gold);font:500 17px
 <p class="home-copy">Des royaumes oubliés. Des peuples que nul ne connaît. Des secrets enfouis depuis des siècles. Ici, chaque découverte ouvre une porte. Et certaines portes auraient dû rester fermées.</p>
 
 </div></section><section class="home-manifesto"><blockquote>« Tu ne viens pas acheter une légende.<br>Tu viens la découvrir. »</blockquote><p>GRYTZEN · LA SAGA COMMENCE</p></section></main><footer><strong>✦ GRYTZEN</strong>UN MONDE · SIX ROYAUMES · UNE DESTINÉE</footer>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const shortcut = document.querySelector(".home-medallion-link");
-  if (!shortcut) return;
-  shortcut.addEventListener("click", function (event) {
-    const target = document.getElementById("medaillon-musical");
-    if (target) return;
-    event.preventDefault();
-    const player = document.getElementById("ff-audio-player");
-    if (player) player.scrollIntoView({behavior:"smooth", block:"center"});
-    else document.querySelector(".home-manifesto")?.scrollIntoView({behavior:"smooth", block:"center"});
-  });
-});
-</script>
-
-
 <style id="grytzen-pjax-style">
-.site-header .nav, header .nav {display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.gry-header-control{
- display:inline-flex;align-items:center;justify-content:center;gap:7px;
- min-height:31px;padding:0 10px;margin:0 8px 0 0;
- border:1px solid rgba(199,165,106,.48);border-radius:3px;
- color:#d8bd86;background:rgba(199,165,106,.055);
- font:700 8px/1.2 Manrope,Arial,sans-serif;letter-spacing:1px;
- white-space:nowrap;cursor:pointer;transition:all .2s;
-}
+.site-header .nav, header .nav {display:flex;align-items:center;gap:18px;flex-wrap:nowrap}
+.gry-brand-group{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;min-width:0}
+.gry-header-control{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:22px;height:22px;padding:0 7px;margin:0;border:1px solid rgba(199,165,106,.42);border-radius:3px;color:#d8bd86;background:rgba(199,165,106,.055);font:600 7px/1 Manrope,Arial,sans-serif;letter-spacing:.55px;text-decoration:none;white-space:nowrap;cursor:pointer;transition:all .2s}
 .gry-header-control:hover{color:#f4dfb8;border-color:#d9b66f;background:rgba(199,165,106,.13)}
+.site-header nav{margin-left:auto;min-width:0}
 @media(max-width:760px){
- .site-header .nav,header .nav{flex-direction:row!important;justify-content:center!important;gap:8px!important}
- .site-header .brand,header .brand{margin-right:2px}
- .gry-header-control{font-size:7px;min-height:29px;padding:0 8px;margin:0}
+ .site-header .nav,header .nav{flex-direction:column!important;justify-content:center!important;gap:7px!important;padding:9px 10px!important}
+ .gry-brand-group{align-self:center;gap:8px}
+ .gry-header-control{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:22px;height:22px;padding:0 7px;margin:0;border:1px solid rgba(199,165,106,.42);border-radius:3px;color:#d8bd86;background:rgba(199,165,106,.055);font:600 7px/1 Manrope,Arial,sans-serif;letter-spacing:.55px;text-decoration:none;white-space:nowrap;cursor:pointer;transition:all .2s}
+ .site-header nav{width:100%;margin:0;justify-content:center;border-top:1px solid rgba(210,178,119,.12);padding-top:4px}
 }
 </style>
 <script src="js/audio-player.js"></script>

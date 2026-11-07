@@ -13,8 +13,8 @@ header nav>a{display:flex;align-items:center;min-height:38px;padding:0 13px;colo
 header nav>a:hover{color:#82dff1}
 @media(max-width:760px){header .nav{padding:10px 12px;flex-direction:column;gap:7px}header .brand{font-size:16px}header nav{width:100%;gap:0;padding-top:5px}header nav>a{min-height:34px;padding:0 9px;font-size:9px;letter-spacing:1px}}
 </style></head><body><div class="banner"><img src="assets/banniere-grytzen.png" alt="Bannière GRYTZEN"></div><header><div class="nav">
-<a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><button id="grytzen-silence-toggle" class="gry-header-control" type="button">♫ MÉDAILLON MUSICAL</button>
-<nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a>
+<div class="gry-brand-group"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><button class="gry-header-control" type="button" aria-label="Lire ou mettre en pause la musique">♫ MÉDAILLON SONORE</button></div>
+<nav aria-label="Navigation de l'Atlas">
 <details class="nav-dropdown">
   <summary aria-haspopup="true">L'ATLAS <span class="nav-chevron">⌄</span></summary>
   <div class="nav-submenu">
@@ -22,7 +22,7 @@ header nav>a:hover{color:#82dff1}
     <a href="atlas.html?view=knowledge" data-atlas-action="knowledge">Explorer les connaissances</a>
   </div>
 </details>
-<a href="grimoire.html">GRIMOIRE</a><a href="boutique.html">BOUTIQUE</a></nav>
+</nav>
 </div></header><main>
 <section class="atlas-home" id="atlas-home">
   <div class="atlas-home-art" role="img" aria-label="Illustration mystérieuse des terres connues d'Grytzen">
@@ -284,20 +284,16 @@ header nav{position:relative;z-index:10000;overflow:visible}
 </script>
 </main><footer><strong>✦ GRYTZEN</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer><script src="js/app.js"></script>
 <style id="grytzen-pjax-style">
-.site-header .nav, header .nav {display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.gry-header-control{
- display:inline-flex;align-items:center;justify-content:center;gap:7px;
- min-height:31px;padding:0 10px;margin:0 8px 0 0;
- border:1px solid rgba(199,165,106,.48);border-radius:3px;
- color:#d8bd86;background:rgba(199,165,106,.055);
- font:700 8px/1.2 Manrope,Arial,sans-serif;letter-spacing:1px;
- white-space:nowrap;cursor:pointer;transition:all .2s;
-}
+.site-header .nav, header .nav {display:flex;align-items:center;gap:18px;flex-wrap:nowrap}
+.gry-brand-group{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;min-width:0}
+.gry-header-control{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:22px;height:22px;padding:0 7px;margin:0;border:1px solid rgba(199,165,106,.42);border-radius:3px;color:#d8bd86;background:rgba(199,165,106,.055);font:600 7px/1 Manrope,Arial,sans-serif;letter-spacing:.55px;text-decoration:none;white-space:nowrap;cursor:pointer;transition:all .2s}
 .gry-header-control:hover{color:#f4dfb8;border-color:#d9b66f;background:rgba(199,165,106,.13)}
+.site-header nav{margin-left:auto;min-width:0}
 @media(max-width:760px){
- .site-header .nav,header .nav{flex-direction:row!important;justify-content:center!important;gap:8px!important}
- .site-header .brand,header .brand{margin-right:2px}
- .gry-header-control{font-size:7px;min-height:29px;padding:0 8px;margin:0}
+ .site-header .nav,header .nav{flex-direction:column!important;justify-content:center!important;gap:7px!important;padding:9px 10px!important}
+ .gry-brand-group{align-self:center;gap:8px}
+ .gry-header-control{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:22px;height:22px;padding:0 7px;margin:0;border:1px solid rgba(199,165,106,.42);border-radius:3px;color:#d8bd86;background:rgba(199,165,106,.055);font:600 7px/1 Manrope,Arial,sans-serif;letter-spacing:.55px;text-decoration:none;white-space:nowrap;cursor:pointer;transition:all .2s}
+ .site-header nav{width:100%;margin:0;justify-content:center;border-top:1px solid rgba(210,178,119,.12);padding-top:4px}
 }
 </style>
 <script src="js/audio-player.js"></script>
