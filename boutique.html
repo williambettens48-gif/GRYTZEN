@@ -37,11 +37,32 @@ footer strong{display:block;margin-bottom:8px;color:var(--ff-gold);font:500 17px
 .shop-principle h2{color:var(--ff-pale);font:500 clamp(23px,3vw,34px) Cinzel,serif}.shop-principle p{color:var(--ff-muted);font-size:13px;line-height:1.9}
 .shop-link{display:inline-flex;margin-top:18px;padding:13px 19px;border:1px solid var(--ff-gold);color:var(--ff-pale);font-size:10px;letter-spacing:1.7px;font-weight:700}
 @media(max-width:760px){.shop-hero{padding:42px 20px 28px}.shop-collections{grid-template-columns:1fr;padding:0 16px 55px}.shop-card{min-height:220px}}
-</style></head><body><div class="banner"><img src="assets/banniere-grytzen.png" alt="Bannière GRYTZEN"></div><header class="site-header"><div class="nav"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><a href="atlas.html">L'ATLAS</a><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html" aria-current="page">BOUTIQUE</a></nav></div></header>
+</style></head><body><div class="banner"><img src="assets/banniere-grytzen.png" alt="Bannière GRYTZEN"></div><header class="site-header"><div class="nav"><a class="brand" href="index.html"><span>✦</span> GRYTZEN</a><button id="grytzen-silence-toggle" class="gry-header-control" type="button">♫ MÉDAILLON MUSICAL</button><nav aria-label="Navigation principale"><a href="jouer.html">JOUER</a><a href="atlas.html">L'ATLAS</a><a href="grimoire.html">GRIMOIRE</a><a href="boutique.html" aria-current="page">BOUTIQUE</a></nav></div></header>
 <main><section class="shop-hero"><div class="page-kicker">LES OBJETS DE LA LÉGENDE</div><h1 class="page-title">La boutique GRYTZEN</h1><p class="page-lead">Certaines découvertes méritent de quitter les pages pour prendre forme dans le monde réel. Les collections de GRYTZEN prolongeront l'univers, ses symboles et ses récits.</p><div class="shop-divider"></div></section>
 <div class="shop-note">La boutique est en préparation. Les collections présentées ici sont des univers de création, pas des produits actuellement disponibles à l'achat.</div>
 <section class="shop-collections" aria-label="Les futures collections">
 <article class="shop-card"><span class="shop-number">COLLECTION 01</span><h2>Les emblèmes</h2><p>Signes, blasons et symboles découverts au fil des aventures. Des fragments visuels qui racontent une histoire.</p><small>COLLECTION EN PRÉPARATION</small></article>
 <article class="shop-card"><span class="shop-number">COLLECTION 02</span><h2>Les reliques</h2><p>Objets et accessoires inspirés des lieux, des peuples et des légendes d'Grytzen.</p><small>COLLECTION EN PRÉPARATION</small></article>
 <article class="shop-card"><span class="shop-number">COLLECTION 03</span><h2>Les chroniques</h2><p>Illustrations et créations à collectionner, pensées comme des souvenirs de votre propre parcours.</p><small>COLLECTION EN PRÉPARATION</small></article>
-</section><section class="shop-principle"><h2>L'aventure ne s'achète pas.</h2><p>Les achats ne donneront aucun avantage, point ou raccourci dans le jeu. L'histoire restera accessible à celles et ceux qui souhaitent simplement explorer.</p><a class="shop-link" href="jouer.html">DÉCOUVRIR L'AVENTURE ↗</a></section></main><footer><strong>✦ GRYTZEN</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer></body></html>
+</section><section class="shop-principle"><h2>L'aventure ne s'achète pas.</h2><p>Les achats ne donneront aucun avantage, point ou raccourci dans le jeu. L'histoire restera accessible à celles et ceux qui souhaitent simplement explorer.</p></section></main><footer><strong>✦ GRYTZEN</strong>UN MONDE À DÉCOUVRIR · UNE HISTOIRE À VIVRE</footer>
+<style id="grytzen-pjax-style">
+.site-header .nav, header .nav {display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.gry-header-control{
+ display:inline-flex;align-items:center;justify-content:center;gap:7px;
+ min-height:31px;padding:0 10px;margin:0 8px 0 0;
+ border:1px solid rgba(199,165,106,.48);border-radius:3px;
+ color:#d8bd86;background:rgba(199,165,106,.055);
+ font:700 8px/1.2 Manrope,Arial,sans-serif;letter-spacing:1px;
+ white-space:nowrap;cursor:pointer;transition:all .2s;
+}
+.gry-header-control:hover{color:#f4dfb8;border-color:#d9b66f;background:rgba(199,165,106,.13)}
+@media(max-width:760px){
+ .site-header .nav,header .nav{flex-direction:row!important;justify-content:center!important;gap:8px!important}
+ .site-header .brand,header .brand{margin-right:2px}
+ .gry-header-control{font-size:7px;min-height:29px;padding:0 8px;margin:0}
+}
+</style>
+<script src="js/audio-player.js"></script>
+<script src="js/grytzen-persistent-nav.js"></script>
+
+</body></html>
