@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#080b10"><meta name="description" content="Prototype 3D jouable de GRYTZEN — AURENTH."><title>GRYTZEN — Le seuil d’AURENTH</title><link rel="stylesheet" href="css/jeu-3d.css"><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script></head>
+<body><canvas id="world" aria-label="Monde 3D de GRYTZEN"></canvas><div class="vignette"></div>
+<div class="loading" id="loading">GRYTZEN<small>OUVERTURE DU SEUIL D’AURENTH…</small></div>
+<header class="topbar"><div class="brand"><span>✦</span> GRYTZEN</div><div class="top-actions"><a class="ui-btn" href="jouer.html">← RETOUR AU RÉCIT</a><button class="ui-btn" id="soundBtn" type="button">SON : ACTIVÉ</button></div></header>
+<div class="location">TERRES ROYALES<strong>AURENTH</strong></div>
+<aside class="quest"><small>JOURNAL DE VOYAGE · PREMIÈRE TRACE</small><h2>La relique sous les pierres</h2><p>Une lueur pulse près des ruines. Approchez-vous du fragment ancien et découvrez ce qu’il cherche à vous révéler.</p></aside>
+<div class="hint"><kbd>Z</kbd><kbd>Q</kbd><kbd>S</kbd><kbd>D</kbd> se déplacer · Souris : orienter la caméra · <kbd>E</kbd> interagir</div>
+<div class="mobile-controls"><div class="stick" id="stick" aria-label="Joystick de déplacement"></div><div class="touch-actions"><button id="interactTouch">INTERAGIR</button><button id="runTouch">COURIR</button></div></div>
+<section class="dialog" id="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="eyebrow">FRAGMENT DÉCOUVERT · AURENTH</div><h2 id="dialogTitle">La mémoire de la pierre</h2><p>« Là où les couronnes se brisent, la première porte demeure. Ne cherche pas la clé dans la main des rois, mais dans la mémoire de la terre. »<br><br>Le fragment rejoint votre carnet de voyage. Cette découverte pourra plus tard alimenter le Grimoire de GRYTZEN.</p><button id="closeDialog">CONSERVER LE FRAGMENT</button></section>
+<script type="module" src="js/jeu-3d.js"></script></body></html>
