@@ -40,15 +40,15 @@ const villageModels=[
  ['cloth-merchant-stall.glb',7,5.5,2.8,0],['medieval-banners-set.glb',-2,-5,5.5,0],['knights-tent-camp.glb',20,17,3.5,0],
  ['village-signs-set.glb',3,10,3.1,0],['siege-catapult.glb',23,4,3.2,-Math.PI/2]
 ];
-const loadingEl=document.querySelector('#loading');let modelsLoaded=0;
+const loadingEl=document.querySelector('#loading');let modelsLoaded=0,modelsFailed=0;
 function addVillageModel(file,x,z,targetHeight,rotation=0){
- const url=`assets/aurenth/modèles/${file}`;
+ const url=`assets/aurenth/models/${file}`;
  villageLoader.load(url,gltf=>{
   const object=gltf.scene;object.updateMatrixWorld(true);const box=new THREE.Box3().setFromObject(object);const size=box.getSize(new THREE.Vector3());
   const currentHeight=Math.max(size.y,size.x*.65,size.z*.65,.001);const scale=targetHeight/currentHeight;object.scale.setScalar(scale);object.updateMatrixWorld(true);
   const scaledBox=new THREE.Box3().setFromObject(object);const center=scaledBox.getCenter(new THREE.Vector3());object.position.x-=center.x;object.position.y-=scaledBox.min.y;object.position.z-=center.z;object.position.x+=x;object.position.z+=z;object.rotation.y=rotation;
-  object.traverse(child=>{if(child.isMesh){child.castShadow=true;child.receiveShadow=true;if(child.material){child.material.side=THREE.FrontSide}}});scene.add(object);modelsLoaded++;loadingEl.innerHTML=`GRYTZEN<small>VILLAGE D’AURENTH · ${modelsLoaded}/26 MODÈLES</small>`;
- },undefined,error=>{console.warn('Modèle non chargé :',file,error);modelsLoaded++;loadingEl.innerHTML=`GRYTZEN<small>CHARGEMENT DU VILLAGE · ${modelsLoaded}/26</small>`});
+  object.traverse(child=>{if(child.isMesh){child.castShadow=true;child.receiveShadow=true;if(child.material){child.material.side=THREE.FrontSide}}});scene.add(object);modelsLoaded++;loadingEl.innerHTML=`GRYTZEN<small>VILLAGE D’AURENTH · ${modelsLoaded}/26 MODÈLES CHARGÉS${modelsFailed?` · ${modelsFailed} ÉCHEC(S)`:''}</small>`;
+ },undefined,error=>{console.warn('Modèle non chargé :',file,error);modelsFailed++;loadingEl.innerHTML=`GRYTZEN<small>CHARGEMENT · ${modelsLoaded}/26 CHARGÉS · ${modelsFailed} ÉCHEC(S)</small>`});
 }
 villageModels.forEach(([file,x,z,h,r])=>addVillageModel(file,x,z,h,r));
 // Le seuil fortifié est complété par une lueur ancienne au bord de la place.
@@ -88,4 +88,4 @@ rune.rotation.y+=dt*.4;shard.rotation.y+=dt*.8;shard.position.y= Math.sin(t*1.6)
 if(!found&&player.position.distanceTo(rune.position)<4.8){document.querySelector('.quest p').textContent='Vous sentez une vibration sous les pierres. Appuyez sur E pour examiner la relique.'}renderer.render(scene,camera)}
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,1.6))});
 if(found){document.querySelector('.quest h2').textContent='Fragment déjà découvert';document.querySelector('.quest p').textContent='Cette mémoire d’AURENTH figure déjà dans votre carnet de voyage.'}
-const loadingWatch=setInterval(()=>{if(modelsLoaded>=villageModels.length){clearInterval(loadingWatch);setTimeout(()=>loadingEl.classList.add('done'),450)}},180);setTimeout(()=>loadingEl.classList.add('done'),12000);animate();
+const loadingWatch=setInterval(()=>{if(modelsLoaded+modelsFailed>=villageModels.length){clearInterval(loadingWatch);setTimeout(()=>loadingEl.classList.add('done'),450)}},180);setTimeout(()=>loadingEl.classList.add('done'),12000);animate();
