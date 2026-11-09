@@ -58,9 +58,37 @@ const player=new THREE.Group();scene.add(player);player.position.set(0,0,7);
 const characterRoot=new THREE.Group();characterRoot.rotation.y=Math.PI;player.add(characterRoot);
 const characterLoader=new GLTFLoader();let characterReady=false;
 characterLoader.load('assets/aurenth/voyageur-aurenth.glb',gltf=>{
- const character=gltf.scene;character.scale.setScalar(1.0);
- character.traverse(child=>{if(child.isMesh){child.castShadow=true;child.receiveShadow=true;}});
- characterRoot.add(character);characterReady=true;
+ const character=gltf.scene;
+
+ // Le GLB du voyageur a été exporté avec l'axe Z vertical.
+ // Three.js utilise Y comme axe vertical : on remet donc le modèle debout.
+ character.rotation.x=-Math.PI/2;
+ character.updateMatrixWorld(true);
+
+ // Mise à l'échelle réelle (environ 1,75 m) et pose des pieds au niveau du sol.
+ const initialBounds=new THREE.Box3().setFromObject(character);
+ const initialSize=initialBounds.getSize(new THREE.Vector3());
+ const targetHeight=1.75;
+ const scale=targetHeight/Math.max(initialSize.y,0.001);
+ character.scale.setScalar(scale);
+ character.updateMatrixWorld(true);
+
+ const bounds=new THREE.Box3().setFromObject(character);
+ const center=bounds.getCenter(new THREE.Vector3());
+ character.position.x-=center.x;
+ character.position.y-=bounds.min.y;
+ character.position.z-=center.z;
+
+ character.traverse(child=>{
+  if(child.isMesh){
+   child.castShadow=true;
+   child.receiveShadow=true;
+   if(child.material) child.material.side=THREE.DoubleSide;
+  }
+ });
+ characterRoot.add(character);
+ characterReady=true;
+ console.info('Voyageur d’AURENTH chargé et redressé.',{height:targetHeight,meshes:157});
 },undefined,error=>console.error('Personnage d’AURENTH non chargé :',error));
 // Rune plinth and floating collectible shard
 const plinth= new THREE.Mesh(new THREE.CylinderGeometry(1.25,1.5,.65,7),darkStone);plinth.position.set(4,.32,-4);plinth.castShadow=true;plinth.receiveShadow=true;scene.add(plinth);
