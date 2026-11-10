@@ -27,10 +27,10 @@ for(let i=0;i<34;i++){const a=i/34*Math.PI*2,r=28+Math.random()*7,x=Math.cos(a)*
 // Lanternes d'ambiance ; les modèles du pack sont chargés en GLB plus bas.
 const flameMat=new THREE.MeshBasicMaterial({color:0xffa34e});
 for(const [x,z] of [[-5,2],[5,2],[-12,-4],[12,-4],[-8,10],[8,10]]){const post=new THREE.Mesh(new THREE.CylinderGeometry(.07,.11,2.1,7),new THREE.MeshStandardMaterial({color:0x33271d,roughness:.9}));post.position.set(x,1.05,z);post.castShadow=true;scene.add(post);const flame=new THREE.Mesh(new THREE.SphereGeometry(.13,8,7),flameMat);flame.position.set(x,2.2,z);scene.add(flame);const light=new THREE.PointLight(0xffa052,8,8,2);light.position.set(x,2.3,z);scene.add(light)}
-// Chargement des 26 modèles libres du pack Medieval Village.
+// Chargement des modèles libres du pack Medieval Village.
 const villageLoader=new GLTFLoader();
 const villageModels=[
- ['castle-gatehouse.glb',0,-23,8,0],['half-timbered-tavern.glb',-10,-7,6.8,.12],['thatched-storybook-cottage.glb',9,-8,5.2,-.18],
+['half-timbered-tavern.glb',-10,-7,6.8,.12],['thatched-storybook-cottage.glb',9,-8,5.2,-.18],
  ['medieval-stone-windmill.glb',-21,-16,8,0],['medieval-water-sawmill.glb',21,-17,7.2,.15],['medieval-horse-stable.glb',13,5,4.5,Math.PI],
  ['blacksmith-workshop.glb',-15,5,5.2,-Math.PI/2],['archery-range-set.glb',21,12,4,Math.PI/2],['village-square-fountain.glb',0,-1,2.5,0],
  ['medieval-produce-stall.glb',-5,5,2.7,0],['medieval-feast-table.glb',6,6,2.4,Math.PI/2],['modular-castle-wall-kit.glb',0,-31,4.8,0],
@@ -41,16 +41,100 @@ const villageModels=[
  ['village-signs-set.glb',3,10,3.1,0],['siege-catapult.glb',23,4,3.2,-Math.PI/2]
 ];
 const loadingEl=document.querySelector('#loading');let modelsLoaded=0,modelsFailed=0;
+const solidColliders=[];
+const solidBuildingFiles=new Set([
+ 'half-timbered-tavern.glb','thatched-storybook-cottage.glb','medieval-stone-windmill.glb',
+ 'medieval-water-sawmill.glb','medieval-horse-stable.glb','blacksmith-workshop.glb',
+ 'village-chapel.glb','half-timbered-townhouse.glb'
+]);
 function addVillageModel(file,x,z,targetHeight,rotation=0){
  const url=`assets/aurenth/models/${file}`;
  villageLoader.load(url,gltf=>{
   const object=gltf.scene;object.updateMatrixWorld(true);const box=new THREE.Box3().setFromObject(object);const size=box.getSize(new THREE.Vector3());
   const currentHeight=Math.max(size.y,size.x*.65,size.z*.65,.001);const scale=targetHeight/currentHeight;object.scale.setScalar(scale);object.updateMatrixWorld(true);
   const scaledBox=new THREE.Box3().setFromObject(object);const center=scaledBox.getCenter(new THREE.Vector3());object.position.x-=center.x;object.position.y-=scaledBox.min.y;object.position.z-=center.z;object.position.x+=x;object.position.z+=z;object.rotation.y=rotation;
-  object.traverse(child=>{if(child.isMesh){child.castShadow=true;child.receiveShadow=true;if(child.material){child.material.side=THREE.FrontSide}}});scene.add(object);modelsLoaded++;loadingEl.innerHTML=`GRYTZEN<small>VILLAGE D’AURENTH · ${modelsLoaded}/26 MODÈLES CHARGÉS${modelsFailed?` · ${modelsFailed} ÉCHEC(S)`:''}</small>`;
- },undefined,error=>{console.warn('Modèle non chargé :',file,error);modelsFailed++;loadingEl.innerHTML=`GRYTZEN<small>CHARGEMENT · ${modelsLoaded}/26 CHARGÉS · ${modelsFailed} ÉCHEC(S)</small>`});
+  object.traverse(child=>{if(child.isMesh){child.castShadow=true;child.receiveShadow=true;if(child.material){child.material.side=THREE.FrontSide}}});scene.add(object);object.updateMatrixWorld(true);
+  if(solidBuildingFiles.has(file)){
+   const solidBox=new THREE.Box3().setFromObject(object);
+   solidColliders.push({minX:solidBox.min.x,maxX:solidBox.max.x,minZ:solidBox.min.z,maxZ:solidBox.max.z});
+  }
+  modelsLoaded++;loadingEl.innerHTML=`GRYTZEN<small>VILLAGE D’AURENTH · ${modelsLoaded}/${villageModels.length} MODÈLES CHARGÉS${modelsFailed?` · ${modelsFailed} ÉCHEC(S)`:''}</small>`;
+ },undefined,error=>{console.warn('Modèle non chargé :',file,error);modelsFailed++;loadingEl.innerHTML=`GRYTZEN<small>CHARGEMENT · ${modelsLoaded}/${villageModels.length} CHARGÉS · ${modelsFailed} ÉCHEC(S)</small>`});
 }
+
 villageModels.forEach(([file,x,z,h,r])=>addVillageModel(file,x,z,h,r));
+
+// Château fort d'AURENTH : enceinte complète, tours, porte et grand hall visitable.
+// Les murs sont séparés autour des ouvertures afin que le joueur puisse réellement entrer.
+const castleStone=new THREE.MeshStandardMaterial({color:0x77766d,roughness:.94});
+const castleDark=new THREE.MeshStandardMaterial({color:0x343633,roughness:1});
+const castleWood=new THREE.MeshStandardMaterial({color:0x49301f,roughness:.88});
+function castleBlock(x,y,z,w,h,d,mat=castleStone,solid=true){
+ const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);
+ mesh.position.set(x,y+h/2,z);mesh.castShadow=true;mesh.receiveShadow=true;scene.add(mesh);
+ if(solid)solidColliders.push({minX:x-w/2,maxX:x+w/2,minZ:z-d/2,maxZ:z+d/2});
+ return mesh;
+}
+function castleTower(x,z,r=1.65,h=10){
+ const tower=new THREE.Mesh(new THREE.CylinderGeometry(r*.88,r,h,12),castleStone);
+ tower.position.set(x,h/2,z);tower.castShadow=true;tower.receiveShadow=true;scene.add(tower);
+ solidColliders.push({minX:x-r,maxX:x+r,minZ:z-r,maxZ:z+r});
+ const cap=new THREE.Mesh(new THREE.CylinderGeometry(r*1.08,r*1.08,.55,12),castleDark);
+ cap.position.set(x,h+.2,z);cap.castShadow=true;scene.add(cap);
+ for(let i=0;i<8;i++){
+  const a=i/8*Math.PI*2;
+  const merlon=new THREE.Mesh(new THREE.BoxGeometry(.42,.85,.42),castleStone);
+  merlon.position.set(x+Math.cos(a)*r*.82,h+.85,z+Math.sin(a)*r*.82);merlon.castShadow=true;scene.add(merlon);
+ }
+}
+const cz=-39;
+// Enceinte extérieure : ouverture centrale de 5,6 m côté village.
+castleBlock(0,0,-49,32,7,1.35);
+castleBlock(-15.3,0,-39,1.35,7,20);
+castleBlock(15.3,0,-39,1.35,7,20);
+castleBlock(-10.5,0,-29,9,7,1.35);
+castleBlock(10.5,0,-29,9,7,1.35);
+castleTower(-15.3,-49,1.8,10);castleTower(15.3,-49,1.8,10);
+castleTower(-15.3,-29,1.8,10);castleTower(15.3,-29,1.8,10);
+castleTower(-4.8,-29,1.35,8);castleTower(4.8,-29,1.35,8);
+// Porte à deux vantaux ouverts, avec un passage central libre.
+castleBlock(-3.15,0,-29,0.32,5.5,.65,castleWood,false);
+castleBlock(3.15,0,-29,0.32,5.5,.65,castleWood,false);
+const archTop=new THREE.Mesh(new THREE.BoxGeometry(6.7,.8,1.2),castleStone);
+archTop.position.set(0,6,-29);archTop.castShadow=true;scene.add(archTop);
+// Grand hall du château, ouvert par une porte centrale de 2,6 m.
+castleBlock(-4.1,0,-42,4.2,8,1.15);
+castleBlock(4.1,0,-42,4.2,8,1.15);
+castleBlock(0,0,-48,12.4,8,1.15);
+castleBlock(-5.65,0,-45,1.15,8,6);
+castleBlock(5.65,0,-45,1.15,8,6);
+castleBlock(0,7.9,-45,12.4,.45,7.2,castleDark,false);
+// Hall entrance lintel and wooden door panels placed open against the sides.
+castleBlock(-1.62,0,-42,.22,5.2,.35,castleWood,false);
+castleBlock(1.62,0,-42,.22,5.2,.35,castleWood,false);
+castleTower(-5.7,-42,1.2,9);castleTower(5.7,-42,1.2,9);
+// Courtyard details: well, banners and warm braziers.
+const castleFloor=new THREE.Mesh(new THREE.PlaneGeometry(26,17),new THREE.MeshStandardMaterial({color:0x514d43,roughness:1}));
+castleFloor.rotation.x=-Math.PI/2;castleFloor.position.set(0,.025,-39);castleFloor.receiveShadow=true;scene.add(castleFloor);
+const well=new THREE.Mesh(new THREE.CylinderGeometry(1.05,1.2,.8,12),castleStone);well.position.set(0,.4,-34.5);well.castShadow=true;well.receiveShadow=true;scene.add(well);
+const wellWater=new THREE.Mesh(new THREE.CircleGeometry(.82,20),new THREE.MeshStandardMaterial({color:0x253f48,metalness:.25,roughness:.25}));
+wellWater.rotation.x=-Math.PI/2;wellWater.position.set(0,.82,-34.5);scene.add(wellWater);
+for(const x of [-11.8,11.8]){
+ const pole=new THREE.Mesh(new THREE.CylinderGeometry(.055,.075,5,8),castleWood);pole.position.set(x,5.2,-38);pole.castShadow=true;scene.add(pole);
+ const banner=new THREE.Mesh(new THREE.PlaneGeometry(1.35,2.1),new THREE.MeshStandardMaterial({color:x<0?0x263e59:0x792f2b,side:THREE.DoubleSide,roughness:.9}));
+ banner.position.set(x-.65,6.35,-38);banner.castShadow=true;scene.add(banner);
+}
+const castleFire=new THREE.PointLight(0xff9b4c,18,18,2);castleFire.position.set(0,3,-34);scene.add(castleFire);
+function collidesAt(x,z){
+ const radius=.42;
+ for(const c of solidColliders){
+  const px=THREE.MathUtils.clamp(x,c.minX,c.maxX),pz=THREE.MathUtils.clamp(z,c.minZ,c.maxZ);
+  const dx=x-px,dz=z-pz;
+  if(dx*dx+dz*dz<radius*radius)return true;
+ }
+ return false;
+}
+
 // Le seuil fortifié est complété par une lueur ancienne au bord de la place.
 warm.position.set(0,3,0);warm.intensity=20;warm.distance=18;
 // Personnage provisoire remplacé par le voyageur encapuchonné d'AURENTH.
@@ -104,8 +188,13 @@ const stick=document.querySelector('#stick');let stickId=null;stick.addEventList
 function interact(){if(player.position.distanceTo(rune.position)<3.1&&!found){found=true;localStorage.setItem('gryzten-aurneth-fragment','yes');dialog.classList.add('show');document.querySelector('.quest p').textContent='Fragment retrouvé : la première mémoire d’AURENTH est désormais inscrite à votre carnet.';document.querySelector('.quest h2').textContent='Fragment découvert';}else if(found){dialog.classList.add('show')}else{const d=player.position.distanceTo(rune.position);document.querySelector('.quest p').textContent=d<5?'La relique est proche. Approchez-vous et appuyez sur E.':'La lueur pulse au-delà des pierres. Explorez les ruines pour la trouver.'}}
 document.querySelector('#closeDialog').addEventListener('click',()=>dialog.classList.remove('show'));document.querySelector('#soundBtn').addEventListener('click',e=>{e.currentTarget.textContent=e.currentTarget.textContent.includes('ACTIVÉ')?'SON : COUPÉ':'SON : ACTIVÉ'});
 const clock=new THREE.Clock();const target=new THREE.Vector3();let step=0;
-function animate(){requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.04),t=clock.elapsedTime;const forward=(keys['z']||keys['w']?1:0)-(keys['s']?1:0)-moveY;const strafe=(keys['d']?1:0)-(keys['q']||keys['a']?1:0)+moveX;const dir=new THREE.Vector3(strafe,0,forward);if(dir.lengthSq()>1)dir.normalize();const moving=dir.lengthSq()>.01;const speed=(running||keys['shift']?6.2:3.35)*dt;const worldForward=new THREE.Vector3(-Math.sin(yaw),0,-Math.cos(yaw));const worldRight=new THREE.Vector3(Math.cos(yaw),0,-Math.sin(yaw));const velocity=worldRight.multiplyScalar(dir.x).add(worldForward.multiplyScalar(dir.z));if(moving){player.position.addScaledVector(velocity,speed);player.rotation.y=Math.atan2(velocity.x,velocity.z);step+=dt*(running?13:8);characterRoot.position.y=Math.abs(Math.sin(step*2))*.045;characterRoot.rotation.z=Math.sin(step)*.018}else{characterRoot.position.y=Math.sin(t*1.8)*.012;characterRoot.rotation.z*=.92}
-player.position.x=THREE.MathUtils.clamp(player.position.x,-22,22);player.position.z=THREE.MathUtils.clamp(player.position.z,-22,22);
+function animate(){requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.04),t=clock.elapsedTime;const forward=(keys['z']||keys['w']?1:0)-(keys['s']?1:0)-moveY;const strafe=(keys['d']?1:0)-(keys['q']||keys['a']?1:0)+moveX;const dir=new THREE.Vector3(strafe,0,forward);if(dir.lengthSq()>1)dir.normalize();const moving=dir.lengthSq()>.01;const speed=(running||keys['shift']?6.2:3.35)*dt;const worldForward=new THREE.Vector3(-Math.sin(yaw),0,-Math.cos(yaw));const worldRight=new THREE.Vector3(Math.cos(yaw),0,-Math.sin(yaw));const velocity=worldRight.multiplyScalar(dir.x).add(worldForward.multiplyScalar(dir.z));if(moving){
+ const nextX=player.position.x+velocity.x*speed;
+ const nextZ=player.position.z+velocity.z*speed;
+ if(!collidesAt(nextX,player.position.z))player.position.x=nextX;
+ if(!collidesAt(player.position.x,nextZ))player.position.z=nextZ;
+ player.rotation.y=Math.atan2(velocity.x,velocity.z);step+=dt*(running?13:8);characterRoot.position.y=Math.abs(Math.sin(step*2))*.045;characterRoot.rotation.z=Math.sin(step)*.018}else{characterRoot.position.y=Math.sin(t*1.8)*.012;characterRoot.rotation.z*=.92}
+player.position.x=THREE.MathUtils.clamp(player.position.x,-27,27);player.position.z=THREE.MathUtils.clamp(player.position.z,-54,24);
 const distance=7.4;const camX=player.position.x+Math.sin(yaw)*Math.cos(pitch)*distance;const camZ=player.position.z+Math.cos(yaw)*Math.cos(pitch)*distance;const camY=player.position.y+2.5+Math.sin(pitch)*distance;camera.position.lerp(new THREE.Vector3(camX,camY,camZ),.12);target.set(player.position.x,1.55,player.position.z);camera.lookAt(target);
 rune.rotation.y+=dt*.4;shard.rotation.y+=dt*.8;shard.position.y= Math.sin(t*1.6)*.12;ring.rotation.z-=dt*.25;runeLight.intensity=18+Math.sin(t*3)*4;warm.intensity=25+Math.sin(t*8)*3;dust.rotation.y+=dt*.008;
 if(!found&&player.position.distanceTo(rune.position)<4.8){document.querySelector('.quest p').textContent='Vous sentez une vibration sous les pierres. Appuyez sur E pour examiner la relique.'}renderer.render(scene,camera)}
